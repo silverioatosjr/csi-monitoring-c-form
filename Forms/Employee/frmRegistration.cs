@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using CSIEmployeeMonitoringSystem.Services;
+using CSIEmployeeMonitoringSystem.Models;
 
 namespace CSIEmployeeMonitoringSystem.Forms.Employee
 {
@@ -30,12 +31,82 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             btnRegister.Click += BtnRegister_Click;
             btnScan.Click += BtnScan_Click;
             btnCancel.Click += BtnCancel_Click;
-            //LoadSssList();
+            sssService = new SssService(apiKey, apiUrl);
+            pagibigService = new PagibigService(apiKey, apiUrl);
+            taxService = new TaxService(apiKey, apiUrl);
+            philhealthService = new PhilhealthService(apiKey, apiUrl);
+            LoadSssList();
+            LoadPagibigList();
+            LoadPhilhealthList();
+            LoadTaxList();
         }
 
         private async void LoadSssList()
         {
             var data = await sssService.GetSssList();
+            List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
+            items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
+            if (null != data)
+            {
+                foreach(SssData s in data.data)
+                {
+                    items.Add(new KeyValuePair<string, string>($"{s.bracket} ({s.amount})", s._id));
+                }
+            }
+            optSSS.DataSource = items;
+            optSSS.DisplayMember = "Key";
+            optSSS.ValueMember = "Value";
+        }
+
+        private async void LoadPagibigList()
+        {
+            var data = await pagibigService.GetPagibigList();
+            List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
+            items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
+            if (null != data)
+            {
+                foreach (PagibigData p in data.data)
+                {
+                    items.Add(new KeyValuePair<string, string>($"{p.percent} ({p.amount})", p._id));
+                }
+            }
+            optPagibig.DataSource = items;
+            optPagibig.DisplayMember = "Key";
+            optPagibig.ValueMember = "Value";
+        }
+
+        private async void LoadPhilhealthList()
+        {
+            var data = await philhealthService.GetPhilhealthList();
+            List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
+            items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
+            if (null != data)
+            {
+                foreach (PhilhealthData t in data.data)
+                {
+                    items.Add(new KeyValuePair<string, string>($"{t.percent}", t._id));
+                }
+            }
+            optPhilhealth.DataSource = items;
+            optPhilhealth.DisplayMember = "Key";
+            optPhilhealth.ValueMember = "Value";
+        }
+
+        private async void LoadTaxList()
+        {
+            var data = await taxService.GetTaxList();
+            List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
+            items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
+            if (null != data)
+            {
+                foreach (TaxData t in data.data)
+                {
+                    items.Add(new KeyValuePair<string, string>($"{t.bracket} ({t.monthlySalary.baseAmount})", t._id));
+                }
+            }
+            optTax.DataSource = items;
+            optTax.DisplayMember = "Key";
+            optTax.ValueMember = "Value";
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)

@@ -44,6 +44,7 @@
             this.payrollToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuConnectToServer = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMainStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +65,7 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuConnectToServer,
             this.loginToolStripMenuItem,
             this.closeWindowToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
@@ -73,13 +75,13 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.loginToolStripMenuItem.Text = "Login";
             // 
             // closeWindowToolStripMenuItem
             // 
             this.closeWindowToolStripMenuItem.Name = "closeWindowToolStripMenuItem";
-            this.closeWindowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeWindowToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.closeWindowToolStripMenuItem.Text = "Close";
             // 
             // mnuEmployees
@@ -94,13 +96,13 @@
             // mnuEmployeeRegistration
             // 
             this.mnuEmployeeRegistration.Name = "mnuEmployeeRegistration";
-            this.mnuEmployeeRegistration.Size = new System.Drawing.Size(152, 22);
+            this.mnuEmployeeRegistration.Size = new System.Drawing.Size(137, 22);
             this.mnuEmployeeRegistration.Text = "Registration";
             // 
             // mnuEmployeesList
             // 
             this.mnuEmployeesList.Name = "mnuEmployeesList";
-            this.mnuEmployeesList.Size = new System.Drawing.Size(152, 22);
+            this.mnuEmployeesList.Size = new System.Drawing.Size(137, 22);
             this.mnuEmployeesList.Text = "List";
             // 
             // scheduleToolStripMenuItem
@@ -166,6 +168,12 @@
             this.historyToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.historyToolStripMenuItem.Text = "History";
             // 
+            // mnuConnectToServer
+            // 
+            this.mnuConnectToServer.Name = "mnuConnectToServer";
+            this.mnuConnectToServer.Size = new System.Drawing.Size(168, 22);
+            this.mnuConnectToServer.Text = "Connect to Server";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,6 +210,7 @@
         private System.Windows.Forms.ToolStripMenuItem payrollToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem mnuConnectToServer;
     }
 }
 

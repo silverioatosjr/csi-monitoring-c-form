@@ -121,6 +121,7 @@
             // 
             // optDesignation
             // 
+            this.optDesignation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.optDesignation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optDesignation.FormattingEnabled = true;
             this.optDesignation.Location = new System.Drawing.Point(249, 113);
@@ -140,6 +141,7 @@
             // 
             // optEmployeeStatus
             // 
+            this.optEmployeeStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.optEmployeeStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optEmployeeStatus.FormattingEnabled = true;
             this.optEmployeeStatus.Location = new System.Drawing.Point(249, 60);
@@ -268,6 +270,7 @@
             // 
             // optPhilhealth
             // 
+            this.optPhilhealth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.optPhilhealth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optPhilhealth.FormattingEnabled = true;
             this.optPhilhealth.Location = new System.Drawing.Point(31, 213);
@@ -287,6 +290,7 @@
             // 
             // optPagibig
             // 
+            this.optPagibig.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.optPagibig.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optPagibig.FormattingEnabled = true;
             this.optPagibig.Location = new System.Drawing.Point(31, 164);
@@ -306,6 +310,7 @@
             // 
             // optSSS
             // 
+            this.optSSS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.optSSS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optSSS.FormattingEnabled = true;
             this.optSSS.Location = new System.Drawing.Point(31, 113);
@@ -325,6 +330,7 @@
             // 
             // optTax
             // 
+            this.optTax.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.optTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optTax.FormattingEnabled = true;
             this.optTax.Location = new System.Drawing.Point(31, 60);

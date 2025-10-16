@@ -20,7 +20,7 @@ namespace CSIEmployeeMonitoringSystem.Services
 
         private string apiKey { get; set; }
         private string apiUrl { get; set; }
-        public async Task<APITaxResponseParser> GetSssList()
+        public async Task<APITaxResponseParser> GetTaxList()
         {
             try
             {
@@ -28,7 +28,7 @@ namespace CSIEmployeeMonitoringSystem.Services
                 client.DefaultRequestHeaders.Add("x-api-key", apiKey);
                 string contentType = "application/json";
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(contentType));
-                HttpResponseMessage response = await client.GetAsync(apiUrl + "/sss");
+                HttpResponseMessage response = await client.GetAsync(apiUrl + "/tax");
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 APITaxResponseParser res = JsonConvert.DeserializeObject<APITaxResponseParser>(responseBody);

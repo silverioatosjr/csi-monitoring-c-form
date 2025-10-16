@@ -10,28 +10,25 @@ using System.Threading.Tasks;
 
 namespace CSIEmployeeMonitoringSystem.Services
 {
-    class PhilhealthService
+    class ConnectionService
     {
-        public PhilhealthService(string _apiKey, string _apiUrl)
+        public ConnectionService(string _apiUrl)
         {
-            apiKey = _apiKey;
             apiUrl = _apiUrl;
         }
 
-        private string apiKey { get; set; }
         private string apiUrl { get; set; }
-        public async Task<APIPhilhealthResponseParser> GetPhilhealthList()
+        public async Task<APIMessageParser> APIConnection()
         {
             try
             {
                 HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Add("x-api-key", apiKey);
                 string contentType = "application/json";
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(contentType));
-                HttpResponseMessage response = await client.GetAsync(apiUrl + "/philhealth");
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
-                APIPhilhealthResponseParser res = JsonConvert.DeserializeObject<APIPhilhealthResponseParser>(responseBody);
+                APIMessageParser res = JsonConvert.DeserializeObject<APIMessageParser>(responseBody);
                 return res;
             }
             catch
@@ -42,3 +39,4 @@ namespace CSIEmployeeMonitoringSystem.Services
         }
     }
 }
+

@@ -28,7 +28,7 @@ namespace CSIEmployeeMonitoringSystem.Services
                 client.DefaultRequestHeaders.Add("x-api-key", apiKey);
                 string contentType = "application/json";
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(contentType));
-                HttpResponseMessage response = await client.GetAsync(apiUrl + "/sss");
+                HttpResponseMessage response = await client.GetAsync(apiUrl + "/pagibig");
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 APIPagibigResponseParser res = JsonConvert.DeserializeObject<APIPagibigResponseParser>(responseBody);
