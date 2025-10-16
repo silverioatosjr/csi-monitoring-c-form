@@ -10,9 +10,11 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using CSIEmployeeMonitoringSystem.Services;
 using CSIEmployeeMonitoringSystem.Models;
+using CSIEmployeeMonitoringSystem.Forms.Biometric;
 
 namespace CSIEmployeeMonitoringSystem.Forms.Employee
 {
+    delegate void Function();
     public partial class frmRegistration : Form
     {
         private string apiKey = Program.xApiKey;
@@ -21,7 +23,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
         private PagibigService pagibigService;
         private TaxService taxService;
         private PhilhealthService philhealthService;
-
+        
         public frmRegistration()
         {
             InitializeComponent();
@@ -111,12 +113,17 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            
+            resetInputFields();
         }
 
         private void BtnScan_Click(object sender, EventArgs e)
         {
-            
+            var frm = new frmBiometricCapturer();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+               
+                //(PictureBox)frm.Controls["picFinger"].BackgroundImage;
+            }
         }
 
         private void BtnRegister_Click(object sender, EventArgs e)
@@ -125,6 +132,20 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             GenerateRandomNumber();
         }
 
+        private void resetInputFields()
+        {
+            GenerateRandomNumber();
+            optDesignation.SelectedIndex = 0;
+            txtBasicSalary.Text = "";
+            txtFirstName.Text = "";
+            txtHourlyRate.Text = "";
+            txtLastName.Text = "";
+            optEmployeeStatus.SelectedIndex = 0;
+            optPagibig.SelectedIndex = 0;
+            optPhilhealth.SelectedIndex = 0;
+            optSSS.SelectedIndex = 0;
+            optTax.SelectedIndex = 0;
+        }
         private void EmployeeStatus()
         {
             List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();

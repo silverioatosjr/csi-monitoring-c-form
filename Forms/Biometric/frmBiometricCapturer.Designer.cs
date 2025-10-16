@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.picFinger = new System.Windows.Forms.PictureBox();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.biometricTimer = new System.Windows.Forms.Timer(this.components);
+            this.btnScan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picFinger)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,11 +54,26 @@
             this.lblStatus.TabIndex = 1;
             this.lblStatus.Text = "Status:";
             // 
+            // biometricTimer
+            // 
+            this.biometricTimer.Tick += new System.EventHandler(this.biometricTimer_Tick);
+            // 
+            // btnScan
+            // 
+            this.btnScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScan.Location = new System.Drawing.Point(50, 175);
+            this.btnScan.Name = "btnScan";
+            this.btnScan.Size = new System.Drawing.Size(109, 30);
+            this.btnScan.TabIndex = 2;
+            this.btnScan.Text = "Start Scanner";
+            this.btnScan.UseVisualStyleBackColor = true;
+            // 
             // frmBiometricCapturer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(219, 187);
+            this.ClientSize = new System.Drawing.Size(219, 221);
+            this.Controls.Add(this.btnScan);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.picFinger);
             this.MaximizeBox = false;
@@ -63,6 +81,7 @@
             this.Name = "frmBiometricCapturer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Biometric";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBiometricCapturer_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.picFinger)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -73,5 +92,7 @@
 
         private System.Windows.Forms.PictureBox picFinger;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Timer biometricTimer;
+        private System.Windows.Forms.Button btnScan;
     }
 }
