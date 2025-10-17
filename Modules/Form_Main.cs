@@ -5,6 +5,8 @@ using System.Drawing.Imaging;
 using System.Threading;
 using System.Windows.Forms;
 using DPUruNet;
+using System.Reflection;
+using System.ComponentModel;
 
 namespace UareUSampleCSharp
 {
@@ -19,7 +21,7 @@ namespace UareUSampleCSharp
             set { fmds = value; }
         }
         private Dictionary<int, Fmd> fmds = new Dictionary<int, Fmd>();
-
+        
         /// <summary>
         /// Reset the UI causing the user to reselect a reader.
         /// </summary>
@@ -76,6 +78,90 @@ namespace UareUSampleCSharp
 
             _capture.Dispose();
             _capture = null;
+        }
+
+        private Verification _verification;
+        private void btnVerify_Click(System.Object sender, System.EventArgs e)
+        {
+            if (_verification == null)
+            {
+                _verification = new Verification();
+                _verification._sender = this;
+            }
+
+            _verification.ShowDialog();
+
+            _verification.Dispose();
+            _verification = null;
+        }
+
+        private Identification _identification;
+        private void btnIdentify_Click(System.Object sender, System.EventArgs e)
+        {
+            if (_identification == null)
+            {
+                _identification = new Identification();
+                _identification._sender = this;
+            }
+
+            _identification.ShowDialog();
+
+            _identification.Dispose();
+            _identification = null;
+        }
+
+        private Enrollment _enrollment;
+        private void btnEnroll_Click(System.Object sender, System.EventArgs e)
+        {
+            if (_enrollment == null)
+            {
+                _enrollment = new Enrollment();
+                _enrollment._sender = this;
+            }
+
+            _enrollment.ShowDialog();
+        }
+
+        private Stream _stream;
+        private void btnStreaming_Click(System.Object sender, System.EventArgs e)
+        {
+            if (_stream == null)
+            {
+                _stream = new Stream();
+                _stream._sender = this;
+            }
+
+            _stream.ShowDialog();
+
+            _stream.Dispose();
+            _stream = null;
+        }
+
+        EnrollmentControl enrollmentControl;
+        private void btnEnrollmentControl_Click(object sender, EventArgs e)
+        {
+            if (enrollmentControl == null)
+            {
+                enrollmentControl = new EnrollmentControl();
+                enrollmentControl._sender = this;
+            }
+
+            enrollmentControl.ShowDialog();
+        }
+
+        IdentificationControl identificationControl;
+        private void btnIdentificationControl_Click(object sender, EventArgs e)
+        {
+            if (identificationControl == null)
+            {
+                identificationControl = new IdentificationControl();
+                identificationControl._sender = this;
+            }
+
+            identificationControl.ShowDialog();
+
+            identificationControl.Dispose();
+            identificationControl = null;
         }
         #endregion
 
@@ -150,11 +236,7 @@ namespace UareUSampleCSharp
 
             if ((result != Constants.ResultCode.DP_SUCCESS))
             {
-                if (CurrentReader != null)
-                {
-                    CurrentReader.Dispose();
-                    CurrentReader = null;
-                }
+                reset = true;
                 throw new Exception("" + result);   
             }
 
@@ -171,7 +253,7 @@ namespace UareUSampleCSharp
                 throw new Exception("Reader Status - " + currentReader.Status.Status);   
             }
         }
-
+        
         /// <summary>
         /// Check quality of the resulting capture.
         /// </summary>
@@ -192,6 +274,7 @@ namespace UareUSampleCSharp
                 }
                 return false;
             }
+
             return true;
         }
 
@@ -276,11 +359,26 @@ namespace UareUSampleCSharp
                         {
                             txtReaderSelected.Text = ((Reader)payload).Description.SerialNumber;
                             btnCapture.Enabled = true;
+                            btnStreaming.Enabled = true;
+                            btnVerify.Enabled = true;
+                            btnIdentify.Enabled = true;
+                            btnEnroll.Enabled = true;
+                            btnEnrollmentControl.Enabled = true;
+                            if (fmds.Count > 0)
+                            {
+                                btnIdentificationControl.Enabled = true;
+                            }
                         }
                         else
                         {
                             txtReaderSelected.Text = String.Empty;
                             btnCapture.Enabled = false;
+                            btnStreaming.Enabled = false;
+                            btnVerify.Enabled = false;
+                            btnIdentify.Enabled = false;
+                            btnEnroll.Enabled = false;
+                            btnEnrollmentControl.Enabled = false;
+                            btnIdentificationControl.Enabled = false;
                         }
                         break;
                     default:

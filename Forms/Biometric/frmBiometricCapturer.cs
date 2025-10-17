@@ -11,7 +11,6 @@ using CSIEmployeeMonitoringSystem.Forms.Employee;
 using DPUruNet;
 using System.Threading;
 using System.Drawing.Imaging;
-using UareUSampleCSharp;
 
 namespace CSIEmployeeMonitoringSystem.Forms.Biometric
 {
@@ -20,14 +19,10 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
         public frmBiometricCapturer()
         {
             InitializeComponent();
-            btnScan.Click += BtnScan_Click;
         }
         public frmRegistration _sender;
 
-        private void BtnScan_Click(object sender, EventArgs e)
-        {
-        }
-
+       
         protected void SetStatus(string status)
         {
            lblPlaceFinger.Text = status;
@@ -48,12 +43,17 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
             }
         }
 
+
         public void OnCaptured(CaptureResult captureResult)
         {
             try
             {
                 // Check capture quality and throw an error if bad.
-                if (!_sender.CheckCaptureResult(captureResult)) return;
+                if (!_sender.CheckCaptureResult(captureResult))
+                {
+                    lblPlaceFinger.Text = "Status: Low quality image";
+                    return;
+                }
 
                 // Create bitmap
                 foreach (Fid.Fiv fiv in captureResult.Data.Views)
@@ -97,6 +97,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
                         case Action.SendBitmap:
                             pbFingerprint.Image = (Bitmap)payload;
                             pbFingerprint.Refresh();
+                            Close();
                             break;
                     }
                 }

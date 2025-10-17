@@ -32,7 +32,6 @@
             this.pbFingerprint = new System.Windows.Forms.PictureBox();
             this.lblPlaceFinger = new System.Windows.Forms.Label();
             this.biometricTimer = new System.Windows.Forms.Timer(this.components);
-            this.btnScan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbFingerprint)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,22 +54,11 @@
             this.lblPlaceFinger.TabIndex = 1;
             this.lblPlaceFinger.Text = "Status:";
             // 
-            // btnScan
-            // 
-            this.btnScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnScan.Location = new System.Drawing.Point(50, 175);
-            this.btnScan.Name = "btnScan";
-            this.btnScan.Size = new System.Drawing.Size(109, 30);
-            this.btnScan.TabIndex = 2;
-            this.btnScan.Text = "Start Scanner";
-            this.btnScan.UseVisualStyleBackColor = true;
-            // 
             // frmBiometricCapturer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(224, 228);
-            this.Controls.Add(this.btnScan);
+            this.ClientSize = new System.Drawing.Size(224, 191);
             this.Controls.Add(this.lblPlaceFinger);
             this.Controls.Add(this.pbFingerprint);
             this.MaximizeBox = false;
@@ -91,6 +79,5 @@
         private System.Windows.Forms.PictureBox pbFingerprint;
         private System.Windows.Forms.Label lblPlaceFinger;
         private System.Windows.Forms.Timer biometricTimer;
-        private System.Windows.Forms.Button btnScan;
     }
 }
