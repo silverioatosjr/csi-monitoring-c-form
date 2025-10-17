@@ -19,12 +19,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
         public frmBiometricCapturer()
         {
             InitializeComponent();
-            btnClose.Click += BtnClose_Click;
+            btnReload.Click += BtnClose_Click;
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            getReaders();
         }
 
         public frmRegistration _sender;
@@ -63,7 +63,6 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
         private void frmBiometricCapturer_Load(object sender, EventArgs e)
         {
             getReaders();
-            btnClose.Enabled = false;
         }
 
 
@@ -289,9 +288,11 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
                 _sender.preenrollmentFmds = new List<Fmd>();
                 count = 0;
                 SendMessage(Actions.SendMessage, "Place a finger on the reader.");
+                btnReload.Enabled = false;
             }
             else
             {
+                btnReload.Enabled = true;
                 lblPlaceFinger.Text = "STATUS: Unable to connect.";
                 MessageBox.Show("Please connect the fingerprint reader", "Biometrics", MessageBoxButtons.OK);
             }

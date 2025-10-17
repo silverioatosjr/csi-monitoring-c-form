@@ -244,7 +244,7 @@
     <Compile Include="ApiParser\APISssResponseParser.cs" />
     <Compile Include="InputFilter.cs" />
     <Compile Include="Models\Deduction.cs" />
-    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmployeeData.cs" />
     <Compile Include="Models\PagibigData.cs" />
     <Compile Include="Models\PhilhealthData.cs" />
     <Compile Include="Models\SssData.cs" />

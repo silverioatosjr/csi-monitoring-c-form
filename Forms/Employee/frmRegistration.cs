@@ -25,14 +25,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
         private PagibigService pagibigService;
         private TaxService taxService;
         private PhilhealthService philhealthService;
+        private EmployeeService employeeService;
         private string fingerPrint;
         private InputFilter inputs;
         public frmRegistration()
         {
             InitializeComponent();
-            EmployeeStatus();
-            GenerateRandomNumber();
-            EmployeeDesignation();
             btnRegister.Click += BtnRegister_Click;
             btnScan.Click += BtnScan_Click;
             btnCancel.Click += BtnCancel_Click;
@@ -42,15 +40,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             txtBasicSalary.TextChanged += txt_TextChanged;
             txtBasicSalary.LostFocus += txt_LostFocus;
             txtBasicSalary.GotFocus += txt_GotFocus;
-            sssService = new SssService(apiKey, apiUrl);
-            pagibigService = new PagibigService(apiKey, apiUrl);
-            taxService = new TaxService(apiKey, apiUrl);
-            philhealthService = new PhilhealthService(apiKey, apiUrl);
-            LoadSssList();
-            LoadPagibigList();
-            LoadPhilhealthList();
-            LoadTaxList();
-            inputs = new InputFilter();
+            
         }
 
         private void txt_LostFocus(object sender, EventArgs e)
@@ -168,11 +158,32 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             _capture = null;
         }
 
-        private void BtnRegister_Click(object sender, EventArgs e)
+        private async void BtnRegister_Click(object sender, EventArgs e)
         {
             //if all required fields are filled up
             if(inputValidator())
             {
+                EmployeeData employee = new EmployeeData();
+                //Deduction deduction = new Deduction();
+                if (optTax.SelectedValue.ToString() != string.Empty)
+                    employee.deduction.tax = optTax.SelectedValue.ToString();
+                if(optSSS.SelectedValue.ToString() != string.Empty)
+                    employee.deduction.sss = optSSS.SelectedValue.ToString();
+                if (optPagibig.SelectedValue.ToString() != string.Empty)
+                    employee.deduction.pagibig = optPagibig.SelectedValue.ToString();
+                if (optPhilhealth.SelectedValue.ToString() != string.Empty)
+                    employee.deduction.philhealth = optPhilhealth.SelectedValue.ToString();
+                
+                employee.biometric = fingerPrint;
+                employee.firstName = txtFirstName.Text;
+                employee.lastName = txtLastName.Text;
+                employee.code = txtCode.Text;
+                employee.basicSalary = float.Parse(txtBasicSalary.Text);
+                employee.hourlyRate = float.Parse(txtHourlyRate.Text);
+                employee.designation = optDesignation.SelectedValue.ToString();
+                employee.employmentStatus = optEmployeeStatus.SelectedValue.ToString();
+                //employee.deduction = deduction;
+                var data = await employeeService.SaveEmployee(employee);
 
                 resetInputFields();
                 GenerateRandomNumber();
@@ -245,6 +256,19 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
         
         private void frmRegistration_Load(object sender, EventArgs e)
         {
+            EmployeeStatus();
+            GenerateRandomNumber();
+            EmployeeDesignation();
+            sssService = new SssService(apiKey, apiUrl);
+            pagibigService = new PagibigService(apiKey, apiUrl);
+            taxService = new TaxService(apiKey, apiUrl);
+            philhealthService = new PhilhealthService(apiKey, apiUrl);
+            employeeService = new EmployeeService(apiKey, apiUrl);
+            LoadSssList();
+            LoadPagibigList();
+            LoadPhilhealthList();
+            LoadTaxList();
+            inputs = new InputFilter();
             txtBasicSalary.Text = "0";
             txtHourlyRate.Text = "0";
             fingerPrint = string.Empty;
