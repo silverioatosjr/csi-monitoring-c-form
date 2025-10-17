@@ -213,6 +213,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiParser\APIAuthParser.cs" />
     <Compile Include="ApiParser\APIMessageParser.cs" />
     <Compile Include="ApiParser\APIPagibigResponseParser.cs" />
     <Compile Include="ApiParser\APIPhilhealthResponseParser.cs" />
@@ -250,6 +251,8 @@
     </Compile>
     <Compile Include="ApiParser\APISssResponseParser.cs" />
     <Compile Include="InputFilter.cs" />
+    <Compile Include="Models\Auth\Auth.cs" />
+    <Compile Include="Models\Auth\AuthPost.cs" />
     <Compile Include="Models\Deduction.cs" />
     <Compile Include="Models\DeductionList.cs" />
     <Compile Include="Models\EmployeePost.cs" />
@@ -322,6 +325,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\ConnectionService.cs" />
     <Compile Include="Services\EmployeeService.cs" />
     <Compile Include="Services\PagibigService.cs" />

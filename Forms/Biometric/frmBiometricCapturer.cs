@@ -62,7 +62,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
 
         private void frmBiometricCapturer_Load(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             getReaders();
+            Cursor = Cursors.Arrow;
         }
 
 

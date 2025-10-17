@@ -15,18 +15,46 @@ namespace CSIEmployeeMonitoringSystem
 {
     public partial class frmMain : Form
     {
-        private frmLogin frmLogin = new frmLogin();
+        private frmLogin frmLogin;
         private frmRegistration frmRegistrationForm = new frmRegistration();
         private ConnectionService connectionService;
         private frmEmployeesList frmEmployeesList = new frmEmployeesList();
+        public string userRole;
         public frmMain()
         {
             InitializeComponent();
-            connectionService = new ConnectionService(Program.serverUrl);
-            CheckApiConnection();
+            
             mnuEmployeeRegistration.Click += MnuEmployeeRegistration_Click;
             mnuConnectToServer.Click += MnuConnectToServer_Click;
             mnuEmployeesList.Click += MnuEmployeesList_Click;
+            mnuCloseWindow.Click += MnuCloseWindow_Click;
+            mnuLogin.Click += MnuLogin_Click;
+        }
+
+        private void MnuLogin_Click(object sender, EventArgs e)
+        {
+            if(mnuLogin.Text == "Login")
+            {
+                if (frmLogin == null)
+                {
+                    frmLogin = new frmLogin();
+                    frmLogin._sender = this;
+                }
+
+                frmLogin.ShowDialog();
+                SetUserAccessPrivilege();
+                mnuLogin.Text = "Logout";
+            } else
+            {
+                userRole = "";
+                mnuLogin.Text = "Login";
+                SetUserAccessPrivilege();
+            }
+        }
+
+        private void MnuCloseWindow_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void MnuEmployeesList_Click(object sender, EventArgs e)
@@ -52,6 +80,7 @@ namespace CSIEmployeeMonitoringSystem
 
         private async void CheckApiConnection()
         {
+            Cursor = Cursors.WaitCursor;
             var con = await connectionService.APIConnection();
             if(null == con)
             {
@@ -61,6 +90,7 @@ namespace CSIEmployeeMonitoringSystem
             {
                 mnuConnectToServer.Enabled = false;
             }
+            Cursor = Cursors.Arrow;
         }
 
         private void MnuEmployeeRegistration_Click(object sender, EventArgs e)
@@ -79,9 +109,49 @@ namespace CSIEmployeeMonitoringSystem
             frmRegistrationForm.BringToFront();
         }
 
-        private void generatePayrollToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DisableAllButtons()
         {
+            mnuEmployees.Enabled = false;
+            mnuSchedule.Enabled = false;
+            mnuDtr.Enabled = false;
+            mnuPayroll.Enabled = false;
+            mnuPrint.Enabled = false;
+        }
 
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            DisableAllButtons();
+            connectionService = new ConnectionService(Program.serverUrl);
+            CheckApiConnection();
+            userRole = "";
+        }
+
+        private void SetUserAccessPrivilege()
+        {
+            if(userRole == "administrator")
+            {
+                mnuEmployees.Enabled = true;
+                mnuSchedule.Enabled = true;
+                mnuDtr.Enabled = true;
+                mnuPayroll.Enabled = true;
+                mnuPrint.Enabled = true;
+                mnuEmployeeRegistration.Enabled = true;
+                mnuDtrList.Enabled = true;
+            }
+            else if(userRole == string.Empty)
+            {
+                DisableAllButtons();
+            }
+            else
+            {
+                mnuEmployees.Enabled = false;
+                mnuSchedule.Enabled = false;
+                mnuDtr.Enabled = true;
+                mnuPayroll.Enabled = false;
+                mnuPrint.Enabled = false;
+                mnuEmployeeRegistration.Enabled = false;
+                mnuDtrList.Enabled = false;
+            }
         }
     }
 }
