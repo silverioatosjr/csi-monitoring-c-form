@@ -230,6 +230,12 @@
     <Compile Include="Forms\Biometric\frmBiometricCapturer.Designer.cs">
       <DependentUpon>frmBiometricCapturer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Employee\frmEmployeesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Employee\frmEmployeesList.Designer.cs">
+      <DependentUpon>frmEmployeesList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Employee\frmRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,7 +253,7 @@
     <Compile Include="Models\Deduction.cs" />
     <Compile Include="Models\DeductionList.cs" />
     <Compile Include="Models\EmployeePost.cs" />
-    <Compile Include="Models\EmployeesGet.cs" />
+    <Compile Include="Models\EmployeesList.cs" />
     <Compile Include="Models\Pagibig.cs" />
     <Compile Include="Models\Philhealth.cs" />
     <Compile Include="Models\Schedules.cs" />
@@ -327,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Biometric\frmBiometricCapturer.resx">
       <DependentUpon>frmBiometricCapturer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Employee\frmEmployeesList.resx">
+      <DependentUpon>frmEmployeesList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Employee\frmRegistration.resx">
       <DependentUpon>frmRegistration.cs</DependentUpon>

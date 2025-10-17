@@ -18,6 +18,7 @@ namespace CSIEmployeeMonitoringSystem
         private frmLogin frmLogin = new frmLogin();
         private frmRegistration frmRegistrationForm = new frmRegistration();
         private ConnectionService connectionService;
+        private frmEmployeesList frmEmployeesList = new frmEmployeesList();
         public frmMain()
         {
             InitializeComponent();
@@ -30,7 +31,18 @@ namespace CSIEmployeeMonitoringSystem
 
         private void MnuEmployeesList_Click(object sender, EventArgs e)
         {
-            
+            if (!frmEmployeesList.Created)
+            {
+                frmEmployeesList = new frmEmployeesList();
+                frmEmployeesList.MdiParent = this;
+                //frmEmployeesList.WindowState = FormWindowState.Maximized;
+                frmEmployeesList.Show();
+            }
+            else if (frmEmployeesList.WindowState == FormWindowState.Minimized)
+            {
+                frmEmployeesList.WindowState = FormWindowState.Maximized;
+            }
+            frmEmployeesList.BringToFront();
         }
 
         private void MnuConnectToServer_Click(object sender, EventArgs e)

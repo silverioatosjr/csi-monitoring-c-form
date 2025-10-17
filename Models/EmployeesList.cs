@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSIEmployeeMonitoringSystem.Models
 {
-    class EmployeesGet
+    class EmployeesList
     {
         public DeductionList deduction { get; set; }
         public List<Schedules> schedules { get; set; }

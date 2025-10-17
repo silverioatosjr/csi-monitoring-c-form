@@ -47,14 +47,10 @@ namespace CSIEmployeeMonitoringSystem.Services
             }
         }
 
-        public async Task<APIEmployeesGetParser> GetSssList()
+        public async Task<APIEmployeesGetParser> GetEmployeesList()
         {
             try
             {
-                HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Add("x-api-key", apiKey);
-                string contentType = "application/json";
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(contentType));
                 HttpResponseMessage response = await client.GetAsync(apiUrl + "/employees");
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
