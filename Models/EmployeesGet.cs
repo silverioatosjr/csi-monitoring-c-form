@@ -8,7 +8,7 @@ namespace CSIEmployeeMonitoringSystem.Models
 {
     class EmployeesGet
     {
-        public Deduction deduction { get; set; }
+        public DeductionList deduction { get; set; }
         public List<Schedules> schedules { get; set; }
         public string code { get; set; }
         public string _id { get; set; }

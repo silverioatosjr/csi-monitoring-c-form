@@ -46,5 +46,26 @@ namespace CSIEmployeeMonitoringSystem.Services
                 return null;
             }
         }
+
+        public async Task<APIEmployeesGetParser> GetSssList()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Add("x-api-key", apiKey);
+                string contentType = "application/json";
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(contentType));
+                HttpResponseMessage response = await client.GetAsync(apiUrl + "/employees");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APIEmployeesGetParser res = JsonConvert.DeserializeObject<APIEmployeesGetParser>(responseBody);
+                return res;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
     }
 }

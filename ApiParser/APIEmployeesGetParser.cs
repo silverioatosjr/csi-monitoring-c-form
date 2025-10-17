@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CSIEmployeeMonitoringSystem.ApiParser
 {
-    class EmployeesGetParser
+    class APIEmployeesGetParser
     {
         public string message { get; set; }
         public List<EmployeesGet> data { get; set; }

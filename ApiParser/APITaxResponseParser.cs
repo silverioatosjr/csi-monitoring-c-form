@@ -10,6 +10,6 @@ namespace CSIEmployeeMonitoringSystem.ApiParser
     class APITaxResponseParser
     {
         public string message { get; set; }
-        public List<TaxData> data { get; set; }
+        public List<Tax> data { get; set; }
     }
 }

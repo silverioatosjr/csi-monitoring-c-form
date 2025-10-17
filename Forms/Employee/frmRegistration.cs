@@ -126,7 +126,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
             if (null != data)
             {
-                foreach (TaxData t in data.data)
+                foreach (Tax t in data.data)
                 {
                     items.Add(new KeyValuePair<string, string>($"{t.bracket} ({t.monthlySalary.baseAmount})", t._id));
                 }
@@ -152,7 +152,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
 
             _capture.ShowDialog();
             picFingerprint.Image = ((PictureBox)_capture.Controls["pbFingerprint"]).Image;
-            fingerPrint = Fmd.SerializeXml(preenrollmentFmds[0]);
+            fingerPrint = Fmd.SerializeXml(preenrollmentFmds[2]);
             preenrollmentFmds.Clear();
             //_capture.Dispose();
             _capture = null;
@@ -163,30 +163,33 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             //if all required fields are filled up
             if(inputValidator())
             {
-                EmployeePost employee = new EmployeePost();
-                //Deduction deduction = new Deduction();
-                if (optTax.SelectedValue.ToString() != string.Empty)
-                    employee.deduction.tax = optTax.SelectedValue.ToString();
-                if(optSSS.SelectedValue.ToString() != string.Empty)
-                    employee.deduction.sss = optSSS.SelectedValue.ToString();
-                if (optPagibig.SelectedValue.ToString() != string.Empty)
-                    employee.deduction.pagibig = optPagibig.SelectedValue.ToString();
-                if (optPhilhealth.SelectedValue.ToString() != string.Empty)
-                    employee.deduction.philhealth = optPhilhealth.SelectedValue.ToString();
+                if (MessageBox.Show("Click Ok to continue.", "Employee Registration", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    EmployeePost employee = new EmployeePost();
+                    //Deduction deduction = new Deduction();
+                    if (optTax.SelectedValue.ToString() != string.Empty)
+                        employee.deduction.tax = optTax.SelectedValue.ToString();
+                    if(optSSS.SelectedValue.ToString() != string.Empty)
+                        employee.deduction.sss = optSSS.SelectedValue.ToString();
+                    if (optPagibig.SelectedValue.ToString() != string.Empty)
+                        employee.deduction.pagibig = optPagibig.SelectedValue.ToString();
+                    if (optPhilhealth.SelectedValue.ToString() != string.Empty)
+                        employee.deduction.philhealth = optPhilhealth.SelectedValue.ToString();
                 
-                employee.biometric = fingerPrint;
-                employee.firstName = txtFirstName.Text;
-                employee.lastName = txtLastName.Text;
-                employee.code = txtCode.Text;
-                employee.basicSalary = float.Parse(txtBasicSalary.Text);
-                employee.hourlyRate = float.Parse(txtHourlyRate.Text);
-                employee.designation = optDesignation.SelectedValue.ToString();
-                employee.employmentStatus = optEmployeeStatus.SelectedValue.ToString();
-                //employee.deduction = deduction;
-                var data = await employeeService.SaveEmployee(employee);
+                    employee.biometric = fingerPrint;
+                    employee.firstName = txtFirstName.Text;
+                    employee.lastName = txtLastName.Text;
+                    employee.code = txtCode.Text;
+                    employee.basicSalary = float.Parse(txtBasicSalary.Text);
+                    employee.hourlyRate = float.Parse(txtHourlyRate.Text);
+                    employee.designation = optDesignation.SelectedValue.ToString();
+                    employee.employmentStatus = optEmployeeStatus.SelectedValue.ToString();
+                    //employee.deduction = deduction;
+                    var data = await employeeService.SaveEmployee(employee);
 
-                resetInputFields();
-                GenerateRandomNumber();
+                    resetInputFields();
+                    GenerateRandomNumber();
+                }
             } else
             {
                 MessageBox.Show("Fill in all the required (*) fields", "Employee Registration", MessageBoxButtons.OK);

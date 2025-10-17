@@ -8,5 +8,16 @@ namespace CSIEmployeeMonitoringSystem.Models
 {
     class Schedules
     {
+        public string _id { get; set; }
+        public string subject { get; set; }
+        public string subjectCode { get; set; }
+        public string instructor { get; set; }
+        public string startTime { get; set; }
+        public string endTime { get; set; }
+        public string room { get; set; }
+        public string day { get; set; }
+        public string schoolYear { get; set; }
+        public string semester {get; set; }
+        public bool isOpen { get; set; }
     }
 }

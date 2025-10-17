@@ -25,6 +25,12 @@ namespace CSIEmployeeMonitoringSystem
             CheckApiConnection();
             mnuEmployeeRegistration.Click += MnuEmployeeRegistration_Click;
             mnuConnectToServer.Click += MnuConnectToServer_Click;
+            mnuEmployeesList.Click += MnuEmployeesList_Click;
+        }
+
+        private void MnuEmployeesList_Click(object sender, EventArgs e)
+        {
+            
         }
 
         private void MnuConnectToServer_Click(object sender, EventArgs e)

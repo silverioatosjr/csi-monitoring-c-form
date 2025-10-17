@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSIEmployeeMonitoringSystem.Models
 {
-    class TaxData
+    class Tax
     {
         public string _id { get; set; }
         public string bracket { get; set; }
