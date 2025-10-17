@@ -40,7 +40,7 @@
             this.pbFingerprint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbFingerprint.Location = new System.Drawing.Point(24, 26);
             this.pbFingerprint.Name = "pbFingerprint";
-            this.pbFingerprint.Size = new System.Drawing.Size(169, 119);
+            this.pbFingerprint.Size = new System.Drawing.Size(169, 175);
             this.pbFingerprint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbFingerprint.TabIndex = 0;
             this.pbFingerprint.TabStop = false;
@@ -48,17 +48,17 @@
             // lblPlaceFinger
             // 
             this.lblPlaceFinger.AutoSize = true;
-            this.lblPlaceFinger.Location = new System.Drawing.Point(21, 151);
+            this.lblPlaceFinger.Location = new System.Drawing.Point(21, 211);
             this.lblPlaceFinger.Name = "lblPlaceFinger";
-            this.lblPlaceFinger.Size = new System.Drawing.Size(40, 13);
+            this.lblPlaceFinger.Size = new System.Drawing.Size(53, 13);
             this.lblPlaceFinger.TabIndex = 1;
-            this.lblPlaceFinger.Text = "Status:";
+            this.lblPlaceFinger.Text = "STATUS:";
             // 
             // frmBiometricCapturer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(224, 191);
+            this.ClientSize = new System.Drawing.Size(225, 251);
             this.Controls.Add(this.lblPlaceFinger);
             this.Controls.Add(this.pbFingerprint);
             this.MaximizeBox = false;

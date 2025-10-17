@@ -30,6 +30,7 @@
         {
             this.mnuMainStrip = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuConnectToServer = new System.Windows.Forms.ToolStripMenuItem();
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEmployees = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,7 +45,7 @@
             this.payrollToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuConnectToServer = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.mnuMainStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +72,12 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(63, 20);
             this.toolStripMenuItem1.Text = "Window";
+            // 
+            // mnuConnectToServer
+            // 
+            this.mnuConnectToServer.Name = "mnuConnectToServer";
+            this.mnuConnectToServer.Size = new System.Drawing.Size(168, 22);
+            this.mnuConnectToServer.Text = "Connect to Server";
             // 
             // loginToolStripMenuItem
             // 
@@ -168,17 +175,20 @@
             this.historyToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.historyToolStripMenuItem.Text = "History";
             // 
-            // mnuConnectToServer
+            // statusStrip1
             // 
-            this.mnuConnectToServer.Name = "mnuConnectToServer";
-            this.mnuConnectToServer.Size = new System.Drawing.Size(168, 22);
-            this.mnuConnectToServer.Text = "Connect to Server";
+            this.statusStrip1.Location = new System.Drawing.Point(0, 707);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1350, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.mnuMainStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mnuMainStrip;
@@ -211,6 +221,7 @@
         private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem mnuConnectToServer;
+        private System.Windows.Forms.StatusStrip statusStrip1;
     }
 }
 
