@@ -25,7 +25,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
         private PagibigService pagibigService;
         private TaxService taxService;
         private PhilhealthService philhealthService;
-        
+        private string fingerPrint;
+        private InputFilter inputs;
         public frmRegistration()
         {
             InitializeComponent();
@@ -35,6 +36,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             btnRegister.Click += BtnRegister_Click;
             btnScan.Click += BtnScan_Click;
             btnCancel.Click += BtnCancel_Click;
+            txtHourlyRate.TextChanged += txt_TextChanged;
+            txtHourlyRate.LostFocus += txt_LostFocus;
+            txtHourlyRate.GotFocus += txt_GotFocus;
+            txtBasicSalary.TextChanged += txt_TextChanged;
+            txtBasicSalary.LostFocus += txt_LostFocus;
+            txtBasicSalary.GotFocus += txt_GotFocus;
             sssService = new SssService(apiKey, apiUrl);
             pagibigService = new PagibigService(apiKey, apiUrl);
             taxService = new TaxService(apiKey, apiUrl);
@@ -43,7 +50,31 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             LoadPagibigList();
             LoadPhilhealthList();
             LoadTaxList();
+            inputs = new InputFilter();
         }
+
+        private void txt_LostFocus(object sender, EventArgs e)
+        {
+            if(((TextBox)sender).Text == string.Empty)
+            {
+                ((TextBox)sender).Text = "0";
+            }
+        }
+
+        private void txt_TextChanged(object sender, EventArgs e)
+        {
+            inputs.Filter((TextBox)sender);
+        }
+
+        private void txt_GotFocus(object sender, EventArgs e)
+        {
+            if (sender.GetType().Name == "TextBox")
+            {
+                ((TextBox)sender).Text = (((TextBox)sender).Text == "0") ? "" : ((TextBox)sender).Text;
+                ((TextBox)sender).SelectionStart = ((TextBox)sender).TextLength;
+            }
+        }
+
         public List<Fmd> preenrollmentFmds;
         
 
@@ -131,7 +162,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
 
             _capture.ShowDialog();
             picFingerprint.Image = ((PictureBox)_capture.Controls["pbFingerprint"]).Image;
-            MessageBox.Show(Fmd.SerializeXml(preenrollmentFmds[0]));
+            fingerPrint = Fmd.SerializeXml(preenrollmentFmds[0]);
             preenrollmentFmds.Clear();
             //_capture.Dispose();
             _capture = null;
@@ -139,23 +170,47 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
 
         private void BtnRegister_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(optEmployeeStatus.SelectedValue.ToString());
-            GenerateRandomNumber();
+            //if all required fields are filled up
+            if(inputValidator())
+            {
+
+                resetInputFields();
+                GenerateRandomNumber();
+            } else
+            {
+                MessageBox.Show("Fill in all the required (*) fields", "Employee Registration", MessageBoxButtons.OK);
+            }
+        }
+
+        private bool inputValidator()
+        {
+            var hasEmpty = false;
+            if( optDesignation.SelectedIndex > 0 &&
+                optEmployeeStatus.SelectedIndex > 0 &&
+                txtFirstName.Text.Trim() != string.Empty &&
+                txtLastName.Text.Trim() != string.Empty &&
+                fingerPrint != string.Empty )
+            {
+                hasEmpty = true;
+            }
+            return hasEmpty;
         }
 
         private void resetInputFields()
         {
             GenerateRandomNumber();
             optDesignation.SelectedIndex = 0;
-            txtBasicSalary.Text = "";
+            txtBasicSalary.Text = "0";
             txtFirstName.Text = "";
-            txtHourlyRate.Text = "";
+            txtHourlyRate.Text = "0";
             txtLastName.Text = "";
             optEmployeeStatus.SelectedIndex = 0;
             optPagibig.SelectedIndex = 0;
             optPhilhealth.SelectedIndex = 0;
             optSSS.SelectedIndex = 0;
             optTax.SelectedIndex = 0;
+            picFingerprint.Image = null;
+            fingerPrint = string.Empty;
         }
         private void EmployeeStatus()
         {
@@ -187,20 +242,13 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             txtCode.Text = generator.Next(0, 1000000).ToString("D6");
         }
 
-        //================= BIOMETRICS CODES =========================
         
-        
-        
-
         private void frmRegistration_Load(object sender, EventArgs e)
         {
-            //getReaders();
+            txtBasicSalary.Text = "0";
+            txtHourlyRate.Text = "0";
+            fingerPrint = string.Empty;
         }
-
         
-
-       
-
-        //================= BIOMETRICS CODES =========================
     }
 }
