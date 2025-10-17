@@ -18,7 +18,6 @@ namespace CSIEmployeeMonitoringSystem
         private frmLogin frmLogin = new frmLogin();
         private frmRegistration frmRegistrationForm = new frmRegistration();
         private ConnectionService connectionService;
-        private bool hasConnection = false;
         public frmMain()
         {
             InitializeComponent();
@@ -38,12 +37,10 @@ namespace CSIEmployeeMonitoringSystem
             var con = await connectionService.APIConnection();
             if(null == con)
             {
-                hasConnection = false;
                 mnuConnectToServer.Enabled = true;
                 MessageBox.Show("Unable to connect to API. Please check your network connection", "Service error", MessageBoxButtons.OK);
             } else
             {
-                hasConnection = true;
                 mnuConnectToServer.Enabled = false;
             }
         }

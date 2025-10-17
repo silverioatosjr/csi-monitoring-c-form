@@ -55,6 +55,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.optTax = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnReloadScanner = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnScan = new System.Windows.Forms.Button();
@@ -106,6 +107,7 @@
             this.picFingerprint.Location = new System.Drawing.Point(249, 164);
             this.picFingerprint.Name = "picFingerprint";
             this.picFingerprint.Size = new System.Drawing.Size(169, 119);
+            this.picFingerprint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picFingerprint.TabIndex = 16;
             this.picFingerprint.TabStop = false;
             // 
@@ -340,6 +342,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnReloadScanner);
             this.groupBox3.Controls.Add(this.btnCancel);
             this.groupBox3.Controls.Add(this.btnRegister);
             this.groupBox3.Controls.Add(this.btnScan);
@@ -350,6 +353,14 @@
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Controls";
+            // 
+            // btnReloadScanner
+            // 
+            this.btnReloadScanner.Location = new System.Drawing.Point(170, 28);
+            this.btnReloadScanner.Name = "btnReloadScanner";
+            this.btnReloadScanner.Size = new System.Drawing.Size(144, 38);
+            this.btnReloadScanner.TabIndex = 0;
+            this.btnReloadScanner.Text = "Refresh Scanner";
             // 
             // btnCancel
             // 
@@ -394,6 +405,7 @@
             this.Name = "frmRegistration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Employee Registration";
+            this.Load += new System.EventHandler(this.frmRegistration_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFingerprint)).EndInit();
@@ -436,5 +448,6 @@
         private System.Windows.Forms.Button btnScan;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Button btnReloadScanner;
     }
 }

@@ -11,10 +11,12 @@ using System.Runtime.InteropServices;
 using CSIEmployeeMonitoringSystem.Services;
 using CSIEmployeeMonitoringSystem.Models;
 using CSIEmployeeMonitoringSystem.Forms.Biometric;
+using DPUruNet;
+using System.Threading;
+using System.Drawing.Imaging;
 
 namespace CSIEmployeeMonitoringSystem.Forms.Employee
 {
-    delegate void Function();
     public partial class frmRegistration : Form
     {
         private string apiKey = Program.xApiKey;
@@ -33,6 +35,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             btnRegister.Click += BtnRegister_Click;
             btnScan.Click += BtnScan_Click;
             btnCancel.Click += BtnCancel_Click;
+            btnReloadScanner.Click += BtnReloadScanner_Click;
             sssService = new SssService(apiKey, apiUrl);
             pagibigService = new PagibigService(apiKey, apiUrl);
             taxService = new TaxService(apiKey, apiUrl);
@@ -41,6 +44,11 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             LoadPagibigList();
             LoadPhilhealthList();
             LoadTaxList();
+        }
+
+        private void BtnReloadScanner_Click(object sender, EventArgs e)
+        {
+            getReaders();
         }
 
         private async void LoadSssList()
@@ -116,14 +124,19 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             resetInputFields();
         }
 
+        private frmBiometricCapturer _capture;
         private void BtnScan_Click(object sender, EventArgs e)
         {
-            var frm = new frmBiometricCapturer();
-            if (frm.ShowDialog() == DialogResult.OK)
+            if (_capture == null)
             {
-               
-                //(PictureBox)frm.Controls["picFinger"].BackgroundImage;
+                _capture = new frmBiometricCapturer();
+                _capture._sender = this;
             }
+
+            _capture.ShowDialog();
+            picFingerprint.Image = ((PictureBox)_capture.Controls["pbFingerprint"]).Image;
+            _capture.Dispose();
+            _capture = null;
         }
 
         private void BtnRegister_Click(object sender, EventArgs e)
@@ -175,5 +188,227 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             Random generator = new Random();
             txtCode.Text = generator.Next(0, 1000000).ToString("D6");
         }
+
+        //================= BIOMETRICS CODES =========================
+        public Dictionary<int, Fmd> Fmds
+        {
+            get { return fmds; }
+            set { fmds = value; }
+        }
+        private Dictionary<int, Fmd> fmds = new Dictionary<int, Fmd>();
+        private string biometricSerial = null;
+        /// <summary>
+        /// Reset the UI causing the user to reselect a reader.
+        /// </summary>
+        public bool Reset
+        {
+            get { return reset; }
+            set { reset = value; }
+        }
+        private bool reset;
+        public Reader CurrentReader
+        {
+            get { return currentReader; }
+            set
+            {
+                currentReader = value;
+                SendMessage(Action.UpdateReaderState, value);
+            }
+        }
+        private ReaderCollection _readers;
+        private Reader currentReader;
+        private enum Action
+        {
+            UpdateReaderState
+        }
+        public bool OpenReader()
+        {
+            reset = false;
+            Constants.ResultCode result = Constants.ResultCode.DP_DEVICE_FAILURE;
+
+            // Open reader
+            result = currentReader.Open(Constants.CapturePriority.DP_PRIORITY_COOPERATIVE);
+
+            if (result != Constants.ResultCode.DP_SUCCESS)
+            {
+                MessageBox.Show("Error:  " + result);
+                reset = true;
+                return false;
+            }
+
+            return true;
+        }
+        public bool StartCaptureAsync(Reader.CaptureCallback OnCaptured)
+        {
+            // Activate capture handler
+            currentReader.On_Captured += new Reader.CaptureCallback(OnCaptured);
+
+            // Call capture
+            if (!CaptureFingerAsync())
+            {
+                return false;
+            }
+
+            return true;
+        }
+        public bool CaptureFingerAsync()
+        {
+            try
+            {
+                GetStatus();
+
+                Constants.ResultCode captureResult = currentReader.CaptureAsync(Constants.Formats.Fid.ANSI, Constants.CaptureProcessing.DP_IMG_PROC_DEFAULT, currentReader.Capabilities.Resolutions[0]);
+                if (captureResult != Constants.ResultCode.DP_SUCCESS)
+                {
+                    reset = true;
+                    throw new Exception("" + captureResult);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:  " + ex.Message);
+                return false;
+            }
+        }
+        public void GetStatus()
+        {
+            Constants.ResultCode result = currentReader.GetStatus();
+
+            if ((result != Constants.ResultCode.DP_SUCCESS))
+            {
+                if (CurrentReader != null)
+                {
+                    CurrentReader.Dispose();
+                    CurrentReader = null;
+                }
+                throw new Exception("" + result);
+            }
+
+            if ((currentReader.Status.Status == Constants.ReaderStatuses.DP_STATUS_BUSY))
+            {
+                Thread.Sleep(50);
+            }
+            else if ((currentReader.Status.Status == Constants.ReaderStatuses.DP_STATUS_NEED_CALIBRATION))
+            {
+                currentReader.Calibrate();
+            }
+            else if ((currentReader.Status.Status != Constants.ReaderStatuses.DP_STATUS_READY))
+            {
+                throw new Exception("Reader Status - " + currentReader.Status.Status);
+            }
+        }
+        private delegate void SendMessageCallback(Action state, object payload);
+        private void SendMessage(Action state, object payload)
+        {
+            if (biometricSerial == string.Empty)
+            {
+                SendMessageCallback d = new SendMessageCallback(SendMessage);
+                this.Invoke(d, new object[] { state, payload });
+            }
+            else
+            {
+                switch (state)
+                {
+                    case Action.UpdateReaderState:
+                        if ((Reader)payload != null)
+                        {
+                            biometricSerial = ((Reader)payload).Description.SerialNumber;
+                            btnScan.Enabled = true;
+                        }
+                        else
+                        {
+                            biometricSerial = String.Empty;
+                            btnScan.Enabled = false;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        public bool CheckCaptureResult(CaptureResult captureResult)
+        {
+            if (captureResult.Data == null)
+            {
+                if (captureResult.ResultCode != Constants.ResultCode.DP_SUCCESS)
+                {
+                    reset = true;
+                    throw new Exception(captureResult.ResultCode.ToString());
+                }
+
+                // Send message if quality shows fake finger
+                if ((captureResult.Quality != Constants.CaptureQuality.DP_QUALITY_CANCELED))
+                {
+                    throw new Exception("Quality - " + captureResult.Quality);
+                }
+                return false;
+            }
+            return true;
+        }
+        public Bitmap CreateBitmap(byte[] bytes, int width, int height)
+        {
+            byte[] rgbBytes = new byte[bytes.Length * 3];
+
+            for (int i = 0; i <= bytes.Length - 1; i++)
+            {
+                rgbBytes[(i * 3)] = bytes[i];
+                rgbBytes[(i * 3) + 1] = bytes[i];
+                rgbBytes[(i * 3) + 2] = bytes[i];
+            }
+            Bitmap bmp = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+
+            BitmapData data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+
+            for (int i = 0; i <= bmp.Height - 1; i++)
+            {
+                IntPtr p = new IntPtr(data.Scan0.ToInt64() + data.Stride * i);
+                System.Runtime.InteropServices.Marshal.Copy(rgbBytes, i * bmp.Width * 3, p, bmp.Width * 3);
+            }
+
+            bmp.UnlockBits(data);
+
+            return bmp;
+        }
+        public void CancelCaptureAndCloseReader(Reader.CaptureCallback OnCaptured)
+        {
+            if (currentReader != null)
+            {
+                currentReader.CancelCapture();
+
+                // Dispose of reader handle and unhook reader events.
+                currentReader.Dispose();
+
+                if (reset)
+                {
+                    CurrentReader = null;
+                }
+            }
+        }
+
+        private void frmRegistration_Load(object sender, EventArgs e)
+        {
+            getReaders();
+        }
+
+        private void getReaders()
+        {
+            _readers = ReaderCollection.GetReaders();
+            if (_readers.ToList().Count > 0)
+            {
+                btnScan.Enabled = true;
+                biometricSerial=(_readers[0].Description.SerialNumber);
+                CurrentReader = _readers[0];
+            } else
+            {
+                btnScan.Enabled = false;
+                MessageBox.Show("Please connect the fingerprin reader", "Biometrics", MessageBoxButtons.OK);
+            }
+        }
+
+       
+
+        //================= BIOMETRICS CODES =========================
     }
 }

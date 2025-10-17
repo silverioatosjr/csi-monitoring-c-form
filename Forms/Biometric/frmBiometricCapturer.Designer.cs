@@ -29,34 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.picFinger = new System.Windows.Forms.PictureBox();
-            this.lblStatus = new System.Windows.Forms.Label();
+            this.pbFingerprint = new System.Windows.Forms.PictureBox();
+            this.lblPlaceFinger = new System.Windows.Forms.Label();
             this.biometricTimer = new System.Windows.Forms.Timer(this.components);
             this.btnScan = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.picFinger)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFingerprint)).BeginInit();
             this.SuspendLayout();
             // 
-            // picFinger
+            // pbFingerprint
             // 
-            this.picFinger.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picFinger.Location = new System.Drawing.Point(24, 26);
-            this.picFinger.Name = "picFinger";
-            this.picFinger.Size = new System.Drawing.Size(169, 119);
-            this.picFinger.TabIndex = 0;
-            this.picFinger.TabStop = false;
+            this.pbFingerprint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbFingerprint.Location = new System.Drawing.Point(24, 26);
+            this.pbFingerprint.Name = "pbFingerprint";
+            this.pbFingerprint.Size = new System.Drawing.Size(169, 119);
+            this.pbFingerprint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbFingerprint.TabIndex = 0;
+            this.pbFingerprint.TabStop = false;
             // 
-            // lblStatus
+            // lblPlaceFinger
             // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(21, 151);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(40, 13);
-            this.lblStatus.TabIndex = 1;
-            this.lblStatus.Text = "Status:";
-            // 
-            // biometricTimer
-            // 
-            this.biometricTimer.Tick += new System.EventHandler(this.biometricTimer_Tick);
+            this.lblPlaceFinger.AutoSize = true;
+            this.lblPlaceFinger.Location = new System.Drawing.Point(21, 151);
+            this.lblPlaceFinger.Name = "lblPlaceFinger";
+            this.lblPlaceFinger.Size = new System.Drawing.Size(40, 13);
+            this.lblPlaceFinger.TabIndex = 1;
+            this.lblPlaceFinger.Text = "Status:";
             // 
             // btnScan
             // 
@@ -72,17 +69,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(219, 221);
+            this.ClientSize = new System.Drawing.Size(224, 228);
             this.Controls.Add(this.btnScan);
-            this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.picFinger);
+            this.Controls.Add(this.lblPlaceFinger);
+            this.Controls.Add(this.pbFingerprint);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmBiometricCapturer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Biometric";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBiometricCapturer_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.picFinger)).EndInit();
+            this.Text = "Biometrics";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmBiometricCapturer_FormClosed);
+            this.Load += new System.EventHandler(this.frmBiometricCapturer_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbFingerprint)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -90,8 +88,8 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox picFinger;
-        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.PictureBox pbFingerprint;
+        private System.Windows.Forms.Label lblPlaceFinger;
         private System.Windows.Forms.Timer biometricTimer;
         private System.Windows.Forms.Button btnScan;
     }

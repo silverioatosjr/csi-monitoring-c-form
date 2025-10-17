@@ -7,157 +7,103 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DPFP;
-using DPFP.Capture;
 using CSIEmployeeMonitoringSystem.Forms.Employee;
+using DPUruNet;
+using System.Threading;
+using System.Drawing.Imaging;
+using UareUSampleCSharp;
 
 namespace CSIEmployeeMonitoringSystem.Forms.Biometric
 {
-    public partial class frmBiometricCapturer : Form, DPFP.Capture.EventHandler
+    public partial class frmBiometricCapturer : Form
     {
-        DPFP.Capture.Capture Capturer;
         public frmBiometricCapturer()
         {
             InitializeComponent();
             btnScan.Click += BtnScan_Click;
         }
+        public frmRegistration _sender;
 
         private void BtnScan_Click(object sender, EventArgs e)
         {
-            biometricTimer.Interval = 1000;
-            biometricTimer.Start();
         }
 
         protected void SetStatus(string status)
         {
-           lblStatus.Text = status;
+           lblPlaceFinger.Text = status;
+        }
+        
+        private void frmBiometricCapturer_Load(object sender, EventArgs e)
+        {
+            pbFingerprint.Image = null;
+
+            if (!_sender.OpenReader())
+            {
+                this.Close();
+            }
+
+            if (!_sender.StartCaptureAsync(this.OnCaptured))
+            {
+                this.Close();
+            }
         }
 
-        protected virtual void Init()
+        public void OnCaptured(CaptureResult captureResult)
         {
             try
             {
-                Capturer = new DPFP.Capture.Capture();
-                if(null != Capturer)
-                {
-                    Capturer.EventHandler = this;
-                } else
-                {
-                    SetStatus("STATUS: Can't initiate capture");
-                }
+                // Check capture quality and throw an error if bad.
+                if (!_sender.CheckCaptureResult(captureResult)) return;
 
-            } catch
+                // Create bitmap
+                foreach (Fid.Fiv fiv in captureResult.Data.Views)
+                {
+                    SendMessage(Action.SendBitmap, _sender.CreateBitmap(fiv.RawImage, fiv.Width, fiv.Height));
+                }
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("Unable to initialize capture operation", "Fingerprint Reader");
+                // Send error message, then close form
+                SendMessage(Action.SendMessage, "Error:  " + ex.Message);
             }
         }
 
-        protected virtual void Process(DPFP.Sample sample)
+        private void frmBiometricCapturer_FormClosed(object sender, FormClosedEventArgs e)
         {
-            DrawPicture(ConvertToBitmap(sample));
+            _sender.CancelCaptureAndCloseReader(this.OnCaptured);
         }
-
-        private void DrawPicture(Bitmap bitmap)
+        private enum Action
         {
-            this.Invoke(new Function(delegate()
-            {
-                picFinger.Image = new Bitmap(bitmap, picFinger.Size);
-            }));
+            SendBitmap,
+            SendMessage
         }
-
-        protected void Start()
+        private delegate void SendMessageCallback(Action action, object payload);
+        private void SendMessage(Action action, object payload)
         {
-            if(null != Capturer)
+            try
             {
-                try
+                if (this.pbFingerprint.InvokeRequired)
                 {
-                    Capturer.StartCapture();
-                    SetStatus("STATUS: Ready to scan your fingerprint");
-                } catch(Exception ex)
+                    SendMessageCallback d = new SendMessageCallback(SendMessage);
+                    this.Invoke(d, new object[] { action, payload });
+                }
+                else
                 {
-                    SetStatus(ex.Message);
+                    switch (action)
+                    {
+                        case Action.SendMessage:
+                            MessageBox.Show((string)payload);
+                            break;
+                        case Action.SendBitmap:
+                            pbFingerprint.Image = (Bitmap)payload;
+                            pbFingerprint.Refresh();
+                            break;
+                    }
                 }
             }
-        }
-
-        protected void Stop()
-        {
-            if (null != Capturer)
+            catch (Exception)
             {
-                try
-                {
-                    Capturer.StopCapture();
-                }
-                catch
-                {
-                    SetStatus("Unable to terminate scanner");
-                }
             }
-        }
-
-        protected DPFP.FeatureSet ExtractFeatures(DPFP.Sample sample, DPFP.Processing.DataPurpose purpose)
-        {
-            DPFP.Processing.FeatureExtraction extractor = new DPFP.Processing.FeatureExtraction();
-            DPFP.Capture.CaptureFeedback feedback = DPFP.Capture.CaptureFeedback.None;
-            DPFP.FeatureSet features = new FeatureSet();
-            if(feedback == DPFP.Capture.CaptureFeedback.Good)
-            {
-                return features;
-            } else
-            {
-                return null;
-            }
-        }
-
-        protected Bitmap ConvertToBitmap(DPFP.Sample sample)
-        {
-            DPFP.Capture.SampleConversion Converter = new SampleConversion();
-            Bitmap bitmap = null;
-            Converter.ConvertToPicture(sample, ref bitmap);
-            return bitmap;
-        }
-
-
-        public void OnComplete(object Capture, string ReaderSerialNumber, Sample Sample)
-        {
-            
-        }
-
-        public void OnFingerGone(object Capture, string ReaderSerialNumber)
-        {
-            
-        }
-
-        public void OnFingerTouch(object Capture, string ReaderSerialNumber)
-        {
-            
-        }
-
-        public void OnReaderConnect(object Capture, string ReaderSerialNumber)
-        {
-            
-        }
-
-        public void OnReaderDisconnect(object Capture, string ReaderSerialNumber)
-        {
-            
-        }
-
-        public void OnSampleQuality(object Capture, string ReaderSerialNumber, CaptureFeedback CaptureFeedback)
-        {
-            
-        }
-
-        private void frmBiometricCapturer_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Stop();
-        }
-
-        private void biometricTimer_Tick(object sender, EventArgs e)
-        {
-            Init();
-            Start();
-           
         }
     }
 }
