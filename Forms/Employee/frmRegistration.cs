@@ -44,11 +44,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             LoadPhilhealthList();
             LoadTaxList();
         }
-
-        private void BtnReloadScanner_Click(object sender, EventArgs e)
-        {
-            //getReaders();
-        }
+        public List<Fmd> preenrollmentFmds;
+        
 
         private async void LoadSssList()
         {
@@ -129,11 +126,14 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             if (_capture == null)
             {
                 _capture = new frmBiometricCapturer();
+                _capture._sender = this;
             }
 
             _capture.ShowDialog();
             picFingerprint.Image = ((PictureBox)_capture.Controls["pbFingerprint"]).Image;
-            _capture.Dispose();
+            MessageBox.Show(Fmd.SerializeXml(preenrollmentFmds[0]));
+            preenrollmentFmds.Clear();
+            //_capture.Dispose();
             _capture = null;
         }
 

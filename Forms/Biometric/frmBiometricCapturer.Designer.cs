@@ -32,6 +32,7 @@
             this.pbFingerprint = new System.Windows.Forms.PictureBox();
             this.lblPlaceFinger = new System.Windows.Forms.Label();
             this.biometricTimer = new System.Windows.Forms.Timer(this.components);
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbFingerprint)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,7 +41,7 @@
             this.pbFingerprint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbFingerprint.Location = new System.Drawing.Point(24, 26);
             this.pbFingerprint.Name = "pbFingerprint";
-            this.pbFingerprint.Size = new System.Drawing.Size(169, 175);
+            this.pbFingerprint.Size = new System.Drawing.Size(221, 252);
             this.pbFingerprint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbFingerprint.TabIndex = 0;
             this.pbFingerprint.TabStop = false;
@@ -48,17 +49,28 @@
             // lblPlaceFinger
             // 
             this.lblPlaceFinger.AutoSize = true;
-            this.lblPlaceFinger.Location = new System.Drawing.Point(21, 211);
+            this.lblPlaceFinger.Location = new System.Drawing.Point(21, 284);
             this.lblPlaceFinger.Name = "lblPlaceFinger";
             this.lblPlaceFinger.Size = new System.Drawing.Size(53, 13);
             this.lblPlaceFinger.TabIndex = 1;
             this.lblPlaceFinger.Text = "STATUS:";
             // 
+            // btnClose
+            // 
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(76, 312);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(122, 41);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            // 
             // frmBiometricCapturer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(225, 251);
+            this.ClientSize = new System.Drawing.Size(275, 375);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblPlaceFinger);
             this.Controls.Add(this.pbFingerprint);
             this.MaximizeBox = false;
@@ -79,5 +91,6 @@
         private System.Windows.Forms.PictureBox pbFingerprint;
         private System.Windows.Forms.Label lblPlaceFinger;
         private System.Windows.Forms.Timer biometricTimer;
+        private System.Windows.Forms.Button btnClose;
     }
 }
