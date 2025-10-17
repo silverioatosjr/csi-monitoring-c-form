@@ -10,6 +10,6 @@ namespace CSIEmployeeMonitoringSystem.ApiParser
     class APIPagibigResponseParser
     {
         public string message { get; set; }
-        public List<PagibigData> data { get; set; }
+        public List<Pagibig> data { get; set; }
     }
 }

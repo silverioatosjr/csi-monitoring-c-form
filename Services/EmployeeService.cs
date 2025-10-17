@@ -26,7 +26,7 @@ namespace CSIEmployeeMonitoringSystem.Services
         private string apiKey { get; set; }
         private string apiUrl { get; set; }
         private HttpClient client { get; set; }
-        public async Task<APIMessageParser> SaveEmployee(EmployeeData payload)
+        public async Task<APIMessageParser> SaveEmployee(EmployeePost payload)
         {
             try
             {

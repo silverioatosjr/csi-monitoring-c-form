@@ -217,6 +217,7 @@
     <Compile Include="ApiParser\APIPagibigResponseParser.cs" />
     <Compile Include="ApiParser\APIPhilhealthResponseParser.cs" />
     <Compile Include="ApiParser\APITaxResponseParser.cs" />
+    <Compile Include="ApiParser\EmployeesGetParser.cs" />
     <Compile Include="Forms\Admin\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,10 +245,12 @@
     <Compile Include="ApiParser\APISssResponseParser.cs" />
     <Compile Include="InputFilter.cs" />
     <Compile Include="Models\Deduction.cs" />
-    <Compile Include="Models\EmployeeData.cs" />
-    <Compile Include="Models\PagibigData.cs" />
-    <Compile Include="Models\PhilhealthData.cs" />
-    <Compile Include="Models\SssData.cs" />
+    <Compile Include="Models\EmployeePost.cs" />
+    <Compile Include="Models\EmployeesGet.cs" />
+    <Compile Include="Models\Pagibig.cs" />
+    <Compile Include="Models\Philhealth.cs" />
+    <Compile Include="Models\Schedules.cs" />
+    <Compile Include="Models\Sss.cs" />
     <Compile Include="Models\TaxData.cs" />
     <Compile Include="Models\TaxSalary.cs" />
     <Compile Include="Modules\Capabilities.cs">

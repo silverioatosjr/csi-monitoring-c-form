@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace CSIEmployeeMonitoringSystem.Models
 {
-    class SssData
+    class Pagibig
     {
         public string _id { get; set; }
         public float percent { get; set; }
-        public string bracket { get; set; }
         public float amount { get; set; }
     }
 }

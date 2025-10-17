@@ -75,7 +75,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
             if (null != data)
             {
-                foreach(SssData s in data.data)
+                foreach(Sss s in data.data)
                 {
                     items.Add(new KeyValuePair<string, string>($"{s.bracket} ({s.amount})", s._id));
                 }
@@ -92,7 +92,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
             if (null != data)
             {
-                foreach (PagibigData p in data.data)
+                foreach (Pagibig p in data.data)
                 {
                     items.Add(new KeyValuePair<string, string>($"{p.percent} ({p.amount})", p._id));
                 }
@@ -109,7 +109,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
             if (null != data)
             {
-                foreach (PhilhealthData t in data.data)
+                foreach (Philhealth t in data.data)
                 {
                     items.Add(new KeyValuePair<string, string>($"{t.percent}", t._id));
                 }
@@ -163,7 +163,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             //if all required fields are filled up
             if(inputValidator())
             {
-                EmployeeData employee = new EmployeeData();
+                EmployeePost employee = new EmployeePost();
                 //Deduction deduction = new Deduction();
                 if (optTax.SelectedValue.ToString() != string.Empty)
                     employee.deduction.tax = optTax.SelectedValue.ToString();
