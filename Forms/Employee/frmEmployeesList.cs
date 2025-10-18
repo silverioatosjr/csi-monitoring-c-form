@@ -54,14 +54,15 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
                     dgvEmployeesList.Rows.Add(
                         s._id, $"{s.firstName} {s.lastName}", 
                         s.code, s.hourlyRate, s.basicSalary, 
-                        s.designation, s.employmentStatus 
-                        //s.deduction.tax.bracket.ToString(), 
-                        //s.deduction.sss.amount.ToString(), 
-                        //s.deduction.pagibig.amount.ToString(), 
-                        //s.deduction.philhealth.percent.ToString()
-                        );
+                        s.designation, s.employmentStatus,
+                        employeeService.formatDgvTaxCellValue(s.deduction),
+                        employeeService.formatDgvSssCellValue(s.deduction),
+                        employeeService.formatDgvPagibigCellValue(s.deduction),
+                        employeeService.formatDgvPhilhealthCellValue(s.deduction)
+                    );
                 }
             }
         }
+        
     }
 }

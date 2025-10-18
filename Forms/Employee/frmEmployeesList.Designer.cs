@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvEmployeesList = new System.Windows.Forms.DataGridView();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this._id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +40,7 @@
             this.sss = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pagibig = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.philhealth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeesList)).BeginInit();
             this.SuspendLayout();
@@ -61,21 +61,12 @@
             this.pagibig,
             this.philhealth});
             this.dgvEmployeesList.Location = new System.Drawing.Point(13, 65);
-            this.dgvEmployeesList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvEmployeesList.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvEmployeesList.MultiSelect = false;
             this.dgvEmployeesList.Name = "dgvEmployeesList";
+            this.dgvEmployeesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEmployeesList.Size = new System.Drawing.Size(1145, 539);
             this.dgvEmployeesList.TabIndex = 0;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.Location = new System.Drawing.Point(1038, 24);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(123, 33);
-            this.btnRefresh.TabIndex = 1;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
             // 
             // _id
             // 
@@ -139,6 +130,17 @@
             this.philhealth.HeaderText = "PHILHEALTH";
             this.philhealth.Name = "philhealth";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.Location = new System.Drawing.Point(1038, 24);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(123, 33);
+            this.btnRefresh.TabIndex = 1;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -158,7 +160,7 @@
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.dgvEmployeesList);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmEmployeesList";

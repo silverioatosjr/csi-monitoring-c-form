@@ -63,5 +63,60 @@ namespace CSIEmployeeMonitoringSystem.Services
             }
 
         }
+
+        public string formatDgvTaxCellValue(DeductionList deduction)
+        {
+            string value = "";
+            if (null != deduction)
+            {
+                if (null != deduction.tax)
+                {
+                    return deduction.tax.monthlySalary.baseAmount.ToString();
+                }
+            }
+
+            return value;
+        }
+
+        public string formatDgvPagibigCellValue(DeductionList deduction)
+        {
+            string value = "";
+            if (null != deduction)
+            {
+                if (null != deduction.pagibig)
+                {
+                    return deduction.pagibig.amount.ToString();
+                }
+            }
+
+            return value;
+        }
+        public string formatDgvPhilhealthCellValue(DeductionList deduction)
+        {
+            string value = "";
+            if (null != deduction)
+            {
+                if (null != deduction.philhealth)
+                {
+                    return deduction.philhealth.percent.ToString();
+                }
+            }
+
+            return value;
+        }
+
+        public string formatDgvSssCellValue(DeductionList deduction)
+        {
+            string value = "";
+            if (null != deduction)
+            {
+                if (null != deduction.sss)
+                {
+                    return deduction.sss.amount.ToString();
+                }
+            }
+
+            return value;
+        }
     }
 }

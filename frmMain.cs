@@ -43,7 +43,8 @@ namespace CSIEmployeeMonitoringSystem
 
                 frmLogin.ShowDialog();
                 SetUserAccessPrivilege();
-                mnuLogin.Text = "Logout";
+                if(userRole!= string.Empty)
+                    mnuLogin.Text = "Logout";
             } else
             {
                 userRole = "";
@@ -85,10 +86,12 @@ namespace CSIEmployeeMonitoringSystem
             if(null == con)
             {
                 mnuConnectToServer.Enabled = true;
+                mnuConnectToServer.Text = "Connect to Server";
                 MessageBox.Show("Unable to connect to API. Please check your network connection", "Service error", MessageBoxButtons.OK);
             } else
             {
                 mnuConnectToServer.Enabled = false;
+                mnuConnectToServer.Text = "Connected to Server";
             }
             Cursor = Cursors.Arrow;
         }
@@ -120,7 +123,7 @@ namespace CSIEmployeeMonitoringSystem
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            DisableAllButtons();
+            //DisableAllButtons();
             connectionService = new ConnectionService(Program.serverUrl);
             CheckApiConnection();
             userRole = "";
