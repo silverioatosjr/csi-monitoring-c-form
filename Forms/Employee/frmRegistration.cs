@@ -70,6 +70,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
 
         private async void LoadSssList()
         {
+            Cursor = Cursors.WaitCursor;
             var data = await sssService.GetSssList();
             List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
             items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
@@ -83,10 +84,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             optSSS.DataSource = items;
             optSSS.DisplayMember = "Key";
             optSSS.ValueMember = "Value";
+            Cursor = Cursor = Cursors.Arrow;
         }
 
         private async void LoadPagibigList()
         {
+            Cursor = Cursors.WaitCursor;
             var data = await pagibigService.GetPagibigList();
             List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
             items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
@@ -100,10 +103,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             optPagibig.DataSource = items;
             optPagibig.DisplayMember = "Key";
             optPagibig.ValueMember = "Value";
+            Cursor = Cursors.Arrow;
         }
 
         private async void LoadPhilhealthList()
         {
+            Cursor = Cursors.WaitCursor;
             var data = await philhealthService.GetPhilhealthList();
             List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
             items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
@@ -117,10 +122,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             optPhilhealth.DataSource = items;
             optPhilhealth.DisplayMember = "Key";
             optPhilhealth.ValueMember = "Value";
+            Cursor = Cursors.Arrow;
         }
 
         private async void LoadTaxList()
         {
+            Cursor = Cursors.WaitCursor;
             var data = await taxService.GetTaxList();
             List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
             items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
@@ -134,6 +141,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             optTax.DataSource = items;
             optTax.DisplayMember = "Key";
             optTax.ValueMember = "Value";
+            Cursor = Cursors.Arrow;
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
@@ -248,6 +256,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             items.Add(new KeyValuePair<string, string>("College", "college"));
             items.Add(new KeyValuePair<string, string>("Senior High", "senior_high"));
             items.Add(new KeyValuePair<string, string>("Both", "both"));
+            items.Add(new KeyValuePair<string, string>("Others", "other"));
             optDesignation.DataSource = items;
             optDesignation.DisplayMember = "Key";
             optDesignation.ValueMember = "Value";

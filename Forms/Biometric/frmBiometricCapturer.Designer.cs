@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBiometricCapturer));
             this.pbFingerprint = new System.Windows.Forms.PictureBox();
             this.lblPlaceFinger = new System.Windows.Forms.Label();
             this.biometricTimer = new System.Windows.Forms.Timer(this.components);
@@ -73,6 +74,7 @@
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.lblPlaceFinger);
             this.Controls.Add(this.pbFingerprint);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmBiometricCapturer";

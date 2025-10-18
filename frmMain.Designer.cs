@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.mnuMainStrip = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConnectToServer = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,19 +38,18 @@
             this.mnuEmployeeRegistration = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEmployeesList = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSchedule = new System.Windows.Forms.ToolStripMenuItem();
-            this.addScheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAddSchedule = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDtr = new System.Windows.Forms.ToolStripMenuItem();
             this.collegeInstructorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDtrList = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPayroll = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.mnuPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPrintSchedules = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPrintDtr = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPrintPayroll = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.mnuMainStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,35 +108,28 @@
             // mnuEmployeeRegistration
             // 
             this.mnuEmployeeRegistration.Name = "mnuEmployeeRegistration";
-            this.mnuEmployeeRegistration.Size = new System.Drawing.Size(152, 22);
+            this.mnuEmployeeRegistration.Size = new System.Drawing.Size(137, 22);
             this.mnuEmployeeRegistration.Text = "Registration";
             // 
             // mnuEmployeesList
             // 
             this.mnuEmployeesList.Name = "mnuEmployeesList";
-            this.mnuEmployeesList.Size = new System.Drawing.Size(152, 22);
+            this.mnuEmployeesList.Size = new System.Drawing.Size(137, 22);
             this.mnuEmployeesList.Text = "List";
             // 
             // mnuSchedule
             // 
             this.mnuSchedule.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addScheduleToolStripMenuItem,
-            this.listToolStripMenuItem1});
+            this.mnuAddSchedule});
             this.mnuSchedule.Name = "mnuSchedule";
             this.mnuSchedule.Size = new System.Drawing.Size(72, 20);
             this.mnuSchedule.Text = "Schedules";
             // 
-            // addScheduleToolStripMenuItem
+            // mnuAddSchedule
             // 
-            this.addScheduleToolStripMenuItem.Name = "addScheduleToolStripMenuItem";
-            this.addScheduleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.addScheduleToolStripMenuItem.Text = "Add";
-            // 
-            // listToolStripMenuItem1
-            // 
-            this.listToolStripMenuItem1.Name = "listToolStripMenuItem1";
-            this.listToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.listToolStripMenuItem1.Text = "List";
+            this.mnuAddSchedule.Name = "mnuAddSchedule";
+            this.mnuAddSchedule.Size = new System.Drawing.Size(169, 22);
+            this.mnuAddSchedule.Text = "Subjects Schedule";
             // 
             // mnuDtr
             // 
@@ -150,13 +143,13 @@
             // collegeInstructorsToolStripMenuItem
             // 
             this.collegeInstructorsToolStripMenuItem.Name = "collegeInstructorsToolStripMenuItem";
-            this.collegeInstructorsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.collegeInstructorsToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.collegeInstructorsToolStripMenuItem.Text = "View Present";
             // 
             // mnuDtrList
             // 
             this.mnuDtrList.Name = "mnuDtrList";
-            this.mnuDtrList.Size = new System.Drawing.Size(152, 22);
+            this.mnuDtrList.Size = new System.Drawing.Size(141, 22);
             this.mnuDtrList.Text = "List";
             // 
             // mnuPayroll
@@ -171,22 +164,14 @@
             // modifyToolStripMenuItem2
             // 
             this.modifyToolStripMenuItem2.Name = "modifyToolStripMenuItem2";
-            this.modifyToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.modifyToolStripMenuItem2.Size = new System.Drawing.Size(114, 22);
             this.modifyToolStripMenuItem2.Text = "Current";
             // 
             // historyToolStripMenuItem
             // 
             this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            this.historyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.historyToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.historyToolStripMenuItem.Text = "History";
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 707);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1350, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
             // 
             // mnuPrint
             // 
@@ -201,28 +186,37 @@
             // mnuPrintSchedules
             // 
             this.mnuPrintSchedules.Name = "mnuPrintSchedules";
-            this.mnuPrintSchedules.Size = new System.Drawing.Size(152, 22);
+            this.mnuPrintSchedules.Size = new System.Drawing.Size(127, 22);
             this.mnuPrintSchedules.Text = "Schedules";
             // 
             // mnuPrintDtr
             // 
             this.mnuPrintDtr.Name = "mnuPrintDtr";
-            this.mnuPrintDtr.Size = new System.Drawing.Size(152, 22);
+            this.mnuPrintDtr.Size = new System.Drawing.Size(127, 22);
             this.mnuPrintDtr.Text = "DTR";
             // 
             // mnuPrintPayroll
             // 
             this.mnuPrintPayroll.Name = "mnuPrintPayroll";
-            this.mnuPrintPayroll.Size = new System.Drawing.Size(152, 22);
+            this.mnuPrintPayroll.Size = new System.Drawing.Size(127, 22);
             this.mnuPrintPayroll.Text = "Payroll";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 687);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1350, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.ClientSize = new System.Drawing.Size(1350, 709);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.mnuMainStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mnuMainStrip;
             this.Name = "frmMain";
@@ -246,8 +240,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuEmployeeRegistration;
         private System.Windows.Forms.ToolStripMenuItem mnuEmployeesList;
         private System.Windows.Forms.ToolStripMenuItem mnuSchedule;
-        private System.Windows.Forms.ToolStripMenuItem addScheduleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem listToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mnuAddSchedule;
         private System.Windows.Forms.ToolStripMenuItem mnuDtr;
         private System.Windows.Forms.ToolStripMenuItem collegeInstructorsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuDtrList;

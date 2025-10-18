@@ -10,12 +10,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CSIEmployeeMonitoringSystem.Forms.Employee;
 using CSIEmployeeMonitoringSystem.Services;
+using CSIEmployeeMonitoringSystem.Forms.Schedules;
 
 namespace CSIEmployeeMonitoringSystem
 {
     public partial class frmMain : Form
     {
         private frmLogin frmLogin;
+        private frmAddSchedules frmAddSchedules;
         private frmRegistration frmRegistrationForm = new frmRegistration();
         private ConnectionService connectionService;
         private frmEmployeesList frmEmployeesList = new frmEmployeesList();
@@ -29,6 +31,23 @@ namespace CSIEmployeeMonitoringSystem
             mnuEmployeesList.Click += MnuEmployeesList_Click;
             mnuCloseWindow.Click += MnuCloseWindow_Click;
             mnuLogin.Click += MnuLogin_Click;
+            mnuAddSchedule.Click += MnuAddSchedule_Click;
+        }
+
+        private void MnuAddSchedule_Click(object sender, EventArgs e)
+        {
+            if (frmAddSchedules == null)
+            {
+                frmAddSchedules = new frmAddSchedules();
+                frmAddSchedules.MdiParent = this;
+                //frmEmployeesList.WindowState = FormWindowState.Maximized;
+                frmAddSchedules.Show();
+            }
+            else if (frmAddSchedules.WindowState == FormWindowState.Minimized)
+            {
+                frmAddSchedules.WindowState = FormWindowState.Maximized;
+            }
+            frmAddSchedules.BringToFront();
         }
 
         private void MnuLogin_Click(object sender, EventArgs e)

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistration));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -436,7 +437,7 @@
             // 
             this.btnCancel.Location = new System.Drawing.Point(399, 28);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(127, 38);
+            this.btnCancel.Size = new System.Drawing.Size(127, 42);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -445,7 +446,7 @@
             // 
             this.btnRegister.Location = new System.Drawing.Point(539, 28);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(127, 38);
+            this.btnRegister.Size = new System.Drawing.Size(127, 42);
             this.btnRegister.TabIndex = 1;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
@@ -454,7 +455,7 @@
             // 
             this.btnScan.Location = new System.Drawing.Point(29, 28);
             this.btnScan.Name = "btnScan";
-            this.btnScan.Size = new System.Drawing.Size(127, 38);
+            this.btnScan.Size = new System.Drawing.Size(127, 42);
             this.btnScan.TabIndex = 0;
             this.btnScan.Text = "Scan Fingerprint";
             this.btnScan.UseVisualStyleBackColor = true;
@@ -469,6 +470,7 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

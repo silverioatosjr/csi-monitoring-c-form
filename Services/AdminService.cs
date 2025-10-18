@@ -40,7 +40,7 @@ namespace CSIEmployeeMonitoringSystem.Services
                     return res;
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 return null;
             }
