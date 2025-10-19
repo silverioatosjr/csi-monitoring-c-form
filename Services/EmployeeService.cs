@@ -12,20 +12,11 @@ using System.Windows.Forms;
 
 namespace CSIEmployeeMonitoringSystem.Services
 {
-    class EmployeeService
+    class EmployeeService: BaseClass
     {
-        public EmployeeService(string _apiKey, string _apiUrl)
-        {
-            apiKey = _apiKey;
-            apiUrl = _apiUrl;
-            client = new HttpClient();
-            client.DefaultRequestHeaders.Add("x-api-key", apiKey);
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        }
+        public EmployeeService(string _apiKey, string _apiUrl) : base(_apiKey, _apiUrl)
+        {}
 
-        private string apiKey { get; set; }
-        private string apiUrl { get; set; }
-        private HttpClient client { get; set; }
         public async Task<APIMessageParser> SaveEmployee(EmployeePost payload)
         {
             try

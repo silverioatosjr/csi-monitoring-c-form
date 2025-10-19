@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace CSIEmployeeMonitoringSystem.Services
 {
-    class InstructorService
+    class InstructorService:BaseClass
     {
+        public InstructorService(string _apiKey, string _apiUrl):base(_apiKey, _apiUrl)
+        {}
+
     }
 }

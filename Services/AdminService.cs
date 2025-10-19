@@ -11,20 +11,10 @@ using System.Threading.Tasks;
 
 namespace CSIEmployeeMonitoringSystem.Services
 {
-    class AdminService
+    class AdminService: BaseClass
     {
-        public AdminService(string _apiKey, string _apiUrl)
-        {
-            apiKey = _apiKey;
-            apiUrl = _apiUrl;
-            client = new HttpClient();
-            client.DefaultRequestHeaders.Add("x-api-key", apiKey);
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        }
-
-        private string apiKey { get; set; }
-        private string apiUrl { get; set; }
-        private HttpClient client { get; set; }
+        public AdminService(string _apiKey, string _apiUrl) : base(_apiKey, _apiUrl)
+        {}
         public async Task<APIAuthParser> Authenticate(AuthPost payload)
         {
             try

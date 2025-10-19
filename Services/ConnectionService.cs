@@ -10,21 +10,15 @@ using System.Threading.Tasks;
 
 namespace CSIEmployeeMonitoringSystem.Services
 {
-    class ConnectionService
+    class ConnectionService:BaseClass
     {
-        public ConnectionService(string _apiUrl)
-        {
-            apiUrl = _apiUrl;
-        }
+        public ConnectionService(string _apiKey, string _apiUrl) : base(_apiKey, _apiUrl)
+        {}
 
-        private string apiUrl { get; set; }
         public async Task<APIMessageParser> APIConnection()
         {
             try
             {
-                HttpClient client = new HttpClient();
-                string contentType = "application/json";
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(contentType));
                 HttpResponseMessage response = await client.GetAsync(apiUrl);
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();

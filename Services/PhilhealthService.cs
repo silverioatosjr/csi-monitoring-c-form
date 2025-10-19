@@ -10,24 +10,15 @@ using System.Threading.Tasks;
 
 namespace CSIEmployeeMonitoringSystem.Services
 {
-    class PhilhealthService
+    class PhilhealthService: BaseClass
     {
-        public PhilhealthService(string _apiKey, string _apiUrl)
-        {
-            apiKey = _apiKey;
-            apiUrl = _apiUrl;
-        }
+        public PhilhealthService(string _apiKey, string _apiUrl) : base(_apiKey, _apiUrl)
+        {}
 
-        private string apiKey { get; set; }
-        private string apiUrl { get; set; }
         public async Task<APIPhilhealthResponseParser> GetPhilhealthList()
         {
             try
             {
-                HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Add("x-api-key", apiKey);
-                string contentType = "application/json";
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(contentType));
                 HttpResponseMessage response = await client.GetAsync(apiUrl + "/philhealth");
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();

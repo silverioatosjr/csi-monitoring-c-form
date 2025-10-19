@@ -142,7 +142,7 @@ namespace CSIEmployeeMonitoringSystem
         private void frmMain_Load(object sender, EventArgs e)
         {
             //DisableAllButtons();
-            connectionService = new ConnectionService(Program.serverUrl);
+            connectionService = new ConnectionService(Program.xApiKey, Program.serverUrl);
             CheckApiConnection();
             userRole = "";
         }

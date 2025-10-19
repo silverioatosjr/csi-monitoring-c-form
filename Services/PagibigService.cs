@@ -10,24 +10,15 @@ using System.Threading.Tasks;
 
 namespace CSIEmployeeMonitoringSystem.Services
 {
-    class PagibigService
+    class PagibigService: BaseClass
     {
-        public PagibigService(string _apiKey, string _apiUrl)
-        {
-            apiKey = _apiKey;
-            apiUrl = _apiUrl;
-        }
+        public PagibigService(string _apiKey, string _apiUrl) : base(_apiKey, _apiUrl)
+        {}
 
-        private string apiKey { get; set; }
-        private string apiUrl { get; set; }
         public async Task<APIPagibigResponseParser> GetPagibigList()
         {
             try
             {
-                HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Add("x-api-key", apiKey);
-                string contentType = "application/json";
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(contentType));
                 HttpResponseMessage response = await client.GetAsync(apiUrl + "/pagibig");
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
