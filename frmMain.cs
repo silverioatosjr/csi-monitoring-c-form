@@ -17,7 +17,7 @@ namespace CSIEmployeeMonitoringSystem
     public partial class frmMain : Form
     {
         private frmLogin frmLogin;
-        private frmAddSchedules frmAddSchedules;
+        private frmParentSchedules frmParentSchedules;
         private frmRegistration frmRegistrationForm = new frmRegistration();
         private ConnectionService connectionService;
         private frmEmployeesList frmEmployeesList = new frmEmployeesList();
@@ -36,18 +36,17 @@ namespace CSIEmployeeMonitoringSystem
 
         private void MnuAddSchedule_Click(object sender, EventArgs e)
         {
-            if (frmAddSchedules == null)
+            if (frmParentSchedules == null)
             {
-                frmAddSchedules = new frmAddSchedules();
-                frmAddSchedules.MdiParent = this;
-                //frmEmployeesList.WindowState = FormWindowState.Maximized;
-                frmAddSchedules.Show();
+                frmParentSchedules = new frmParentSchedules();
+                frmParentSchedules.MdiParent = this;
+                frmParentSchedules.Show();
             }
-            else if (frmAddSchedules.WindowState == FormWindowState.Minimized)
+            else if (frmParentSchedules.WindowState == FormWindowState.Minimized)
             {
-                frmAddSchedules.WindowState = FormWindowState.Maximized;
+                frmParentSchedules.WindowState = FormWindowState.Maximized;
             }
-            frmAddSchedules.BringToFront();
+            frmParentSchedules.BringToFront();
         }
 
         private void MnuLogin_Click(object sender, EventArgs e)

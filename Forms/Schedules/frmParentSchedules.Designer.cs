@@ -1,6 +1,6 @@
 ﻿namespace CSIEmployeeMonitoringSystem.Forms.Schedules
 {
-    partial class frmAddSchedules
+    partial class frmParentSchedules
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddSchedules));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmParentSchedules));
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.grpControls = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDeleteSchedule = new System.Windows.Forms.Button();
+            this.btnUpdateSchedule = new System.Windows.Forms.Button();
+            this.btnAddSchedule = new System.Windows.Forms.Button();
             this.btnDeleteSchedules = new System.Windows.Forms.Button();
             this.btnUploadXLSFile = new System.Windows.Forms.Button();
             this.grpSchedules = new System.Windows.Forms.GroupBox();
@@ -59,7 +61,9 @@
             // 
             // grpControls
             // 
-            this.grpControls.Controls.Add(this.button1);
+            this.grpControls.Controls.Add(this.btnDeleteSchedule);
+            this.grpControls.Controls.Add(this.btnUpdateSchedule);
+            this.grpControls.Controls.Add(this.btnAddSchedule);
             this.grpControls.Controls.Add(this.btnDeleteSchedules);
             this.grpControls.Controls.Add(this.btnUploadXLSFile);
             this.grpControls.Location = new System.Drawing.Point(24, 430);
@@ -69,16 +73,38 @@
             this.grpControls.TabStop = false;
             this.grpControls.Text = "Controls";
             // 
-            // button1
+            // btnDeleteSchedule
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(161, 36);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 42);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Add New Schedule";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDeleteSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteSchedule.Location = new System.Drawing.Point(463, 36);
+            this.btnDeleteSchedule.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteSchedule.Name = "btnDeleteSchedule";
+            this.btnDeleteSchedule.Size = new System.Drawing.Size(127, 42);
+            this.btnDeleteSchedule.TabIndex = 10;
+            this.btnDeleteSchedule.Text = "Delete Selected Schedule";
+            this.btnDeleteSchedule.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdateSchedule
+            // 
+            this.btnUpdateSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateSchedule.Location = new System.Drawing.Point(317, 36);
+            this.btnUpdateSchedule.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdateSchedule.Name = "btnUpdateSchedule";
+            this.btnUpdateSchedule.Size = new System.Drawing.Size(127, 42);
+            this.btnUpdateSchedule.TabIndex = 9;
+            this.btnUpdateSchedule.Text = "Update Selected Schedule";
+            this.btnUpdateSchedule.UseVisualStyleBackColor = true;
+            // 
+            // btnAddSchedule
+            // 
+            this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSchedule.Location = new System.Drawing.Point(171, 36);
+            this.btnAddSchedule.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddSchedule.Name = "btnAddSchedule";
+            this.btnAddSchedule.Size = new System.Drawing.Size(127, 42);
+            this.btnAddSchedule.TabIndex = 8;
+            this.btnAddSchedule.Text = "Add New Schedule";
+            this.btnAddSchedule.UseVisualStyleBackColor = true;
             // 
             // btnDeleteSchedules
             // 
@@ -88,7 +114,7 @@
             this.btnDeleteSchedules.Name = "btnDeleteSchedules";
             this.btnDeleteSchedules.Size = new System.Drawing.Size(127, 42);
             this.btnDeleteSchedules.TabIndex = 7;
-            this.btnDeleteSchedules.Text = "Delete Schedules";
+            this.btnDeleteSchedules.Text = "Delete All Schedules";
             this.btnDeleteSchedules.UseVisualStyleBackColor = true;
             // 
             // btnUploadXLSFile
@@ -207,7 +233,7 @@
             this.schoolYear.Name = "schoolYear";
             this.schoolYear.Width = 130;
             // 
-            // frmAddSchedules
+            // frmParentSchedules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -219,7 +245,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmAddSchedules";
+            this.Name = "frmParentSchedules";
             this.Text = "Subjects Schedule";
             this.grpControls.ResumeLayout(false);
             this.grpSchedules.ResumeLayout(false);
@@ -233,7 +259,7 @@
 
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.GroupBox grpControls;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddSchedule;
         private System.Windows.Forms.Button btnDeleteSchedules;
         private System.Windows.Forms.Button btnUploadXLSFile;
         private System.Windows.Forms.GroupBox grpSchedules;
@@ -250,5 +276,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn room;
         private System.Windows.Forms.DataGridViewTextBoxColumn semester;
         private System.Windows.Forms.DataGridViewTextBoxColumn schoolYear;
+        private System.Windows.Forms.Button btnDeleteSchedule;
+        private System.Windows.Forms.Button btnUpdateSchedule;
     }
 }

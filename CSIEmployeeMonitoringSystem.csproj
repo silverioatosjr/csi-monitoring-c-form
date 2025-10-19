@@ -248,11 +248,29 @@
     <Compile Include="Forms\Employee\frmRegistration.Designer.cs">
       <DependentUpon>frmRegistration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Schedules\frmAddSchedules.cs">
+    <Compile Include="Forms\Schedules\frmAddSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Schedules\frmAddSchedules.Designer.cs">
-      <DependentUpon>frmAddSchedules.cs</DependentUpon>
+    <Compile Include="Forms\Schedules\frmAddSchedule.Designer.cs">
+      <DependentUpon>frmAddSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Schedules\frmParentSchedules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Schedules\frmParentSchedules.Designer.cs">
+      <DependentUpon>frmParentSchedules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Schedules\frmUpdateSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Schedules\frmUpdateSchedule.Designer.cs">
+      <DependentUpon>frmUpdateSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Schedules\frmUploadSchedules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Schedules\frmUploadSchedules.Designer.cs">
+      <DependentUpon>frmUploadSchedules.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -339,6 +357,7 @@
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\ConnectionService.cs" />
     <Compile Include="Services\EmployeeService.cs" />
+    <Compile Include="Services\InstructorService.cs" />
     <Compile Include="Services\PagibigService.cs" />
     <Compile Include="Services\PhilhealthService.cs" />
     <Compile Include="Services\SssService.cs" />
@@ -355,8 +374,17 @@
     <EmbeddedResource Include="Forms\Employee\frmRegistration.resx">
       <DependentUpon>frmRegistration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Schedules\frmAddSchedules.resx">
-      <DependentUpon>frmAddSchedules.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Schedules\frmAddSchedule.resx">
+      <DependentUpon>frmAddSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Schedules\frmParentSchedules.resx">
+      <DependentUpon>frmParentSchedules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Schedules\frmUpdateSchedule.resx">
+      <DependentUpon>frmUpdateSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Schedules\frmUploadSchedules.resx">
+      <DependentUpon>frmUploadSchedules.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

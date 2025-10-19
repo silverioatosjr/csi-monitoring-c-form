@@ -335,7 +335,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(486, 13);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(231, 311);
+            this.groupBox2.Size = new System.Drawing.Size(317, 311);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Deductions";
@@ -357,7 +357,7 @@
             this.optPhilhealth.FormattingEnabled = true;
             this.optPhilhealth.Location = new System.Drawing.Point(31, 213);
             this.optPhilhealth.Name = "optPhilhealth";
-            this.optPhilhealth.Size = new System.Drawing.Size(169, 24);
+            this.optPhilhealth.Size = new System.Drawing.Size(257, 24);
             this.optPhilhealth.TabIndex = 20;
             // 
             // label10
@@ -377,7 +377,7 @@
             this.optPagibig.FormattingEnabled = true;
             this.optPagibig.Location = new System.Drawing.Point(31, 164);
             this.optPagibig.Name = "optPagibig";
-            this.optPagibig.Size = new System.Drawing.Size(169, 24);
+            this.optPagibig.Size = new System.Drawing.Size(257, 24);
             this.optPagibig.TabIndex = 18;
             // 
             // label9
@@ -397,7 +397,7 @@
             this.optSSS.FormattingEnabled = true;
             this.optSSS.Location = new System.Drawing.Point(31, 113);
             this.optSSS.Name = "optSSS";
-            this.optSSS.Size = new System.Drawing.Size(169, 24);
+            this.optSSS.Size = new System.Drawing.Size(257, 24);
             this.optSSS.TabIndex = 16;
             // 
             // label8
@@ -417,7 +417,7 @@
             this.optTax.FormattingEnabled = true;
             this.optTax.Location = new System.Drawing.Point(31, 60);
             this.optTax.Name = "optTax";
-            this.optTax.Size = new System.Drawing.Size(169, 24);
+            this.optTax.Size = new System.Drawing.Size(257, 24);
             this.optTax.TabIndex = 14;
             // 
             // groupBox3
@@ -428,14 +428,14 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(20, 334);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(696, 91);
+            this.groupBox3.Size = new System.Drawing.Size(783, 91);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Controls";
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(399, 28);
+            this.btnCancel.Location = new System.Drawing.Point(487, 28);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(127, 42);
             this.btnCancel.TabIndex = 2;
@@ -444,7 +444,7 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(539, 28);
+            this.btnRegister.Location = new System.Drawing.Point(627, 28);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(127, 42);
             this.btnRegister.TabIndex = 1;
@@ -464,7 +464,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 447);
+            this.ClientSize = new System.Drawing.Size(827, 447);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

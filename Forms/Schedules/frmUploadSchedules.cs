@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CSIEmployeeMonitoringSystem.Forms.Schedules
 {
-    public partial class frmAddSchedules : Form
+    public partial class frmUploadSchedules : Form
     {
-        public frmAddSchedules()
+        public frmUploadSchedules()
         {
             InitializeComponent();
         }

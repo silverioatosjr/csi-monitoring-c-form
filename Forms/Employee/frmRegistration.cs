@@ -135,7 +135,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             {
                 foreach (Tax t in data.data)
                 {
-                    items.Add(new KeyValuePair<string, string>($"{t.bracket} ({t.monthlySalary.baseAmount})", t._id));
+                    items.Add(new KeyValuePair<string, string>($"{t.bracket} income", t._id));
                 }
             }
             optTax.DataSource = items;
@@ -197,7 +197,10 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
                     employee.employmentStatus = optEmployeeStatus.SelectedValue.ToString();
                     //employee.deduction = deduction;
                     var data = await employeeService.SaveEmployee(employee);
-
+                    if(null != data)
+                    {
+                        MessageBox.Show("New record added", "Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                     resetInputFields();
                     GenerateRandomNumber();
                 }
@@ -256,7 +259,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             items.Add(new KeyValuePair<string, string>("College", "college"));
             items.Add(new KeyValuePair<string, string>("Senior High", "senior_high"));
             items.Add(new KeyValuePair<string, string>("Both", "both"));
-            items.Add(new KeyValuePair<string, string>("Others", "other"));
+            items.Add(new KeyValuePair<string, string>("Others (e.g.: Registrar)", "other"));
             optDesignation.DataSource = items;
             optDesignation.DisplayMember = "Key";
             optDesignation.ValueMember = "Value";
