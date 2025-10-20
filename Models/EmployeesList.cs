@@ -9,7 +9,7 @@ namespace CSIEmployeeMonitoringSystem.Models
     class EmployeesList
     {
         public DeductionList deduction { get; set; }
-        public List<Schedules> schedules { get; set; }
+        public List<Schedule> schedules { get; set; }
         public string code { get; set; }
         public string _id { get; set; }
         public string firstName { get; set; }

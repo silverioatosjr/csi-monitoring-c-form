@@ -222,6 +222,8 @@
     <Compile Include="ApiParser\APIMessageParser.cs" />
     <Compile Include="ApiParser\APIPagibigResponseParser.cs" />
     <Compile Include="ApiParser\APIPhilhealthResponseParser.cs" />
+    <Compile Include="ApiParser\APIScheduleParser.cs" />
+    <Compile Include="ApiParser\APISchedulesParser.cs" />
     <Compile Include="ApiParser\APITaxResponseParser.cs" />
     <Compile Include="ApiParser\APIEmployeesGetParser.cs" />
     <Compile Include="Forms\Admin\frmLogin.cs">
@@ -288,6 +290,7 @@
     <Compile Include="Models\EmployeesList.cs" />
     <Compile Include="Models\Pagibig.cs" />
     <Compile Include="Models\Philhealth.cs" />
+    <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\Schedules.cs" />
     <Compile Include="Models\Sss.cs" />
     <Compile Include="Models\Tax.cs" />
@@ -361,6 +364,7 @@
     <Compile Include="Services\InstructorService.cs" />
     <Compile Include="Services\PagibigService.cs" />
     <Compile Include="Services\PhilhealthService.cs" />
+    <Compile Include="Services\ScheduleService.cs" />
     <Compile Include="Services\SssService.cs" />
     <Compile Include="Services\TaxService.cs" />
     <EmbeddedResource Include="Forms\Admin\frmLogin.resx">

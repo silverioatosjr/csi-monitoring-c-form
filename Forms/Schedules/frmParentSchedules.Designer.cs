@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmParentSchedules));
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.grpControls = new System.Windows.Forms.GroupBox();
             this.btnDeleteSchedule = new System.Windows.Forms.Button();
             this.btnUpdateSchedule = new System.Windows.Forms.Button();
@@ -50,14 +49,11 @@
             this.room = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.semester = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.schoolYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnReset = new System.Windows.Forms.Button();
             this.grpControls.SuspendLayout();
             this.grpSchedules.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubjectSchedules)).BeginInit();
             this.SuspendLayout();
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.FileName = "subjectSchedules";
             // 
             // grpControls
             // 
@@ -66,9 +62,9 @@
             this.grpControls.Controls.Add(this.btnAddSchedule);
             this.grpControls.Controls.Add(this.btnDeleteSchedules);
             this.grpControls.Controls.Add(this.btnUploadXLSFile);
-            this.grpControls.Location = new System.Drawing.Point(24, 430);
+            this.grpControls.Location = new System.Drawing.Point(24, 458);
             this.grpControls.Name = "grpControls";
-            this.grpControls.Size = new System.Drawing.Size(1025, 108);
+            this.grpControls.Size = new System.Drawing.Size(1025, 105);
             this.grpControls.TabIndex = 6;
             this.grpControls.TabStop = false;
             this.grpControls.Text = "Controls";
@@ -130,12 +126,13 @@
             // 
             // grpSchedules
             // 
+            this.grpSchedules.Controls.Add(this.btnReset);
             this.grpSchedules.Controls.Add(this.label1);
             this.grpSchedules.Controls.Add(this.optInstructor);
             this.grpSchedules.Controls.Add(this.dgvSubjectSchedules);
             this.grpSchedules.Location = new System.Drawing.Point(24, 12);
             this.grpSchedules.Name = "grpSchedules";
-            this.grpSchedules.Size = new System.Drawing.Size(1025, 404);
+            this.grpSchedules.Size = new System.Drawing.Size(1025, 430);
             this.grpSchedules.TabIndex = 7;
             this.grpSchedules.TabStop = false;
             this.grpSchedules.Text = "Schedules";
@@ -152,10 +149,11 @@
             // optInstructor
             // 
             this.optInstructor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.optInstructor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optInstructor.FormattingEnabled = true;
-            this.optInstructor.Location = new System.Drawing.Point(145, 21);
+            this.optInstructor.Location = new System.Drawing.Point(145, 20);
             this.optInstructor.Name = "optInstructor";
-            this.optInstructor.Size = new System.Drawing.Size(270, 24);
+            this.optInstructor.Size = new System.Drawing.Size(330, 26);
             this.optInstructor.TabIndex = 6;
             // 
             // dgvSubjectSchedules
@@ -176,7 +174,7 @@
             this.dgvSubjectSchedules.MultiSelect = false;
             this.dgvSubjectSchedules.Name = "dgvSubjectSchedules";
             this.dgvSubjectSchedules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSubjectSchedules.Size = new System.Drawing.Size(973, 321);
+            this.dgvSubjectSchedules.Size = new System.Drawing.Size(973, 349);
             this.dgvSubjectSchedules.TabIndex = 5;
             // 
             // subjectId
@@ -233,11 +231,20 @@
             this.schoolYear.Name = "schoolYear";
             this.schoolYear.Width = 130;
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(490, 19);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(77, 29);
+            this.btnReset.TabIndex = 8;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            // 
             // frmParentSchedules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 559);
+            this.ClientSize = new System.Drawing.Size(1074, 582);
             this.Controls.Add(this.grpSchedules);
             this.Controls.Add(this.grpControls);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -256,8 +263,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.GroupBox grpControls;
         private System.Windows.Forms.Button btnAddSchedule;
         private System.Windows.Forms.Button btnDeleteSchedules;
@@ -278,5 +283,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn schoolYear;
         private System.Windows.Forms.Button btnDeleteSchedule;
         private System.Windows.Forms.Button btnUpdateSchedule;
+        private System.Windows.Forms.Button btnReset;
     }
 }
