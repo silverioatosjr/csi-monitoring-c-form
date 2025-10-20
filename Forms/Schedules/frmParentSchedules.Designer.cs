@@ -62,7 +62,7 @@
             this.grpControls.Controls.Add(this.btnAddSchedule);
             this.grpControls.Controls.Add(this.btnDeleteSchedules);
             this.grpControls.Controls.Add(this.btnUploadXLSFile);
-            this.grpControls.Location = new System.Drawing.Point(24, 458);
+            this.grpControls.Location = new System.Drawing.Point(24, 463);
             this.grpControls.Name = "grpControls";
             this.grpControls.Size = new System.Drawing.Size(1025, 105);
             this.grpControls.TabIndex = 6;
@@ -132,7 +132,7 @@
             this.grpSchedules.Controls.Add(this.dgvSubjectSchedules);
             this.grpSchedules.Location = new System.Drawing.Point(24, 12);
             this.grpSchedules.Name = "grpSchedules";
-            this.grpSchedules.Size = new System.Drawing.Size(1025, 430);
+            this.grpSchedules.Size = new System.Drawing.Size(1025, 440);
             this.grpSchedules.TabIndex = 7;
             this.grpSchedules.TabStop = false;
             this.grpSchedules.Text = "Schedules";
@@ -140,7 +140,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 24);
+            this.label1.Location = new System.Drawing.Point(29, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 16);
             this.label1.TabIndex = 7;
@@ -151,7 +151,7 @@
             this.optInstructor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.optInstructor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optInstructor.FormattingEnabled = true;
-            this.optInstructor.Location = new System.Drawing.Point(145, 20);
+            this.optInstructor.Location = new System.Drawing.Point(145, 28);
             this.optInstructor.Name = "optInstructor";
             this.optInstructor.Size = new System.Drawing.Size(330, 26);
             this.optInstructor.TabIndex = 6;
@@ -170,7 +170,7 @@
             this.room,
             this.semester,
             this.schoolYear});
-            this.dgvSubjectSchedules.Location = new System.Drawing.Point(26, 56);
+            this.dgvSubjectSchedules.Location = new System.Drawing.Point(26, 64);
             this.dgvSubjectSchedules.MultiSelect = false;
             this.dgvSubjectSchedules.Name = "dgvSubjectSchedules";
             this.dgvSubjectSchedules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -233,7 +233,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(490, 19);
+            this.btnReset.Location = new System.Drawing.Point(490, 27);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(77, 29);
             this.btnReset.TabIndex = 8;
@@ -244,7 +244,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 582);
+            this.ClientSize = new System.Drawing.Size(1074, 590);
             this.Controls.Add(this.grpSchedules);
             this.Controls.Add(this.grpControls);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -254,6 +254,7 @@
             this.MinimizeBox = false;
             this.Name = "frmParentSchedules";
             this.Text = "Subjects Schedule";
+            this.Load += new System.EventHandler(this.frmParentSchedules_Load);
             this.grpControls.ResumeLayout(false);
             this.grpSchedules.ResumeLayout(false);
             this.grpSchedules.PerformLayout();

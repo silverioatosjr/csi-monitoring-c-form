@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CSIEmployeeMonitoringSystem.Models;
+using CSIEmployeeMonitoringSystem.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
         private frmAddSchedule frmAddSchedule;
         private frmUpdateSchedule frmUpdateSchedule;
         private frmUploadSchedules frmUploadSchedules;
+        private ScheduleService scheduleService;
+        private InstructorService instructorService;
         public frmParentSchedules()
         {
             InitializeComponent();
@@ -23,6 +27,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             btnUpdateSchedule.Click += BtnUpdateSchedule_Click;
             btnAddSchedule.Click += BtnAddSchedule_Click;
             btnUploadXLSFile.Click += BtnUploadXLSFile_Click;
+            btnReset.Click += BtnReset_Click;
+        }
+
+        private void BtnReset_Click(object sender, EventArgs e)
+        {
+            optInstructor.SelectedIndex = 0;
         }
 
         private void BtnUploadXLSFile_Click(object sender, EventArgs e)
@@ -51,6 +61,51 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
         private void BtnDeleteSchedules_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private async void GetSchedules()
+        {
+            var response = await scheduleService.GetSchedules();
+            dgvSubjectSchedules.Rows.Clear();
+            if (null != response)
+            {
+                foreach (Schedule s in response.data)
+                {
+                    //dgvSubjectSchedules.Rows.Add(s.subjectCode);
+                }
+            }
+        }
+        private async void GetInstructors()
+        {
+            var response = await instructorService.GetInstructors();
+            if (null != response)
+            {
+                List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
+                items.Add(new KeyValuePair<string, string>("<<Select Instructor>>", ""));
+                if (null != response)
+                {
+                    foreach (EmployeesList i in response.data)
+                    {
+                        items.Add(new KeyValuePair<string, string>($"{i.firstName} {i.lastName} ({i.code})", i._id));
+                    }
+                }
+                optInstructor.DataSource = items;
+                optInstructor.DisplayMember = "Key";
+                optInstructor.ValueMember = "Value";
+            }
+        }
+
+        private void frmParentSchedules_Load(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            scheduleService = new ScheduleService(Program.xApiKey, Program.serverUrl);
+            GetSchedules();
+            instructorService = new InstructorService(Program.xApiKey, Program.serverUrl);
+            GetInstructors();
+            btnUpdateSchedule.Enabled = false;
+            btnDeleteSchedule.Enabled = false;
+
+            Cursor = Cursors.Arrow;
         }
     }
 }

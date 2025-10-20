@@ -10,6 +10,6 @@ namespace CSIEmployeeMonitoringSystem.ApiParser
     class APISchedulesParser
     {
         public string message { get; set; }
-        public List<Schedules> data { get; set; }
+        public List<Schedule> data { get; set; }
     }
 }
