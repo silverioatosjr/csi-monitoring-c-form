@@ -60,6 +60,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             if(null!= response)
             {
                 MessageBox.Show("Schedules has been successfully uploaded", "Upload Schedule",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             } else
             {

@@ -28,6 +28,13 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             btnAddSchedule.Click += BtnAddSchedule_Click;
             btnUploadXLSFile.Click += BtnUploadXLSFile_Click;
             btnReset.Click += BtnReset_Click;
+            btnClose.Click += BtnClose_Click;
+        }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            this.Close();
         }
 
         private void BtnReset_Click(object sender, EventArgs e)
@@ -38,7 +45,10 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
         private void BtnUploadXLSFile_Click(object sender, EventArgs e)
         {
             frmUploadSchedules = new frmUploadSchedules();
-            frmUploadSchedules.ShowDialog();
+            if(frmUploadSchedules.ShowDialog() == DialogResult.OK)
+            {
+                GetSchedules();
+            }
         }
 
         private void BtnAddSchedule_Click(object sender, EventArgs e)
@@ -71,7 +81,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             {
                 foreach (Schedule s in response.data)
                 {
-                    //dgvSubjectSchedules.Rows.Add(s.subjectCode);
+                    dgvSubjectSchedules.Rows.Add(s._id, s.instructor._id, $"{s.instructor.firstName} {s.instructor.lastName}", s.subjectCode, s.subject, s.startTime, s.endTime, s.day, s.room, s.semester, s.schoolYear);
                 }
             }
         }

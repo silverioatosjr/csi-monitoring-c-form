@@ -17,7 +17,7 @@ namespace CSIEmployeeMonitoringSystem
     public partial class frmMain : Form
     {
         private frmLogin frmLogin;
-        private frmParentSchedules frmParentSchedules;
+        private frmParentSchedules frmParentSchedules = new frmParentSchedules();
         private frmRegistration frmRegistrationForm = new frmRegistration();
         private ConnectionService connectionService;
         private frmEmployeesList frmEmployeesList = new frmEmployeesList();
@@ -36,7 +36,7 @@ namespace CSIEmployeeMonitoringSystem
 
         private void MnuAddSchedule_Click(object sender, EventArgs e)
         {
-            if (frmParentSchedules == null)
+            if (!frmParentSchedules.Created)
             {
                 frmParentSchedules = new frmParentSchedules();
                 frmParentSchedules.MdiParent = this;

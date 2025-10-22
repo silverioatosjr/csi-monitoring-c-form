@@ -11,7 +11,7 @@ namespace CSIEmployeeMonitoringSystem.Models
         public string _id { get; set; }
         public string subject { get; set; }
         public string subjectCode { get; set; }
-        public string instructor { get; set; }
+        public Instructor instructor { get; set; }
         public string startTime { get; set; }
         public string endTime { get; set; }
         public string room { get; set; }

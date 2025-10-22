@@ -55,6 +55,23 @@ namespace CSIEmployeeMonitoringSystem.Services
 
         }
 
+        public async Task<APIEmployeeGetParser> GetEmployeeDetails(string id)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl + $"/employees/{id}");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APIEmployeeGetParser res = JsonConvert.DeserializeObject<APIEmployeeGetParser>(responseBody);
+                return res;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+
         public string formatDgvTaxCellValue(DeductionList deduction)
         {
             string value = "";

@@ -175,9 +175,9 @@ namespace CSIEmployeeMonitoringSystem.Services
                         else if (counter == 2)
                             sched.day = cell.Value.ToString();
                         else if (counter == 3)
-                            sched.startTime = cell.Value.ToString();
+                            sched.startTime = FormatTime(cell.Value.ToString());
                         else if (counter == 4)
-                            sched.endTime = cell.Value.ToString();
+                            sched.endTime = FormatTime(cell.Value.ToString());
                         else if (counter == 5)
                             sched.room = cell.Value.ToString();
                         else if (counter == 6)
@@ -326,6 +326,17 @@ namespace CSIEmployeeMonitoringSystem.Services
                 }
             }
             return true;
+        }
+        private string FormatTime(string datetime)
+        {
+            string formattedTime = "";
+            DateTime result;
+            if (DateTime.TryParse(datetime, out result))
+            {
+                DateTime dt = DateTime.Parse(datetime);
+                formattedTime = dt.ToString("HH:mm");
+            }
+            return formattedTime;
         }
     }
 }

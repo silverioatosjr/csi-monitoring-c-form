@@ -1,4 +1,8 @@
-﻿using System;
+﻿using CSIEmployeeMonitoringSystem.Forms.Biometric;
+using CSIEmployeeMonitoringSystem.Models;
+using CSIEmployeeMonitoringSystem.Services;
+using DPUruNet;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,17 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using CSIEmployeeMonitoringSystem.Services;
-using CSIEmployeeMonitoringSystem.Models;
-using CSIEmployeeMonitoringSystem.Forms.Biometric;
-using DPUruNet;
-using System.Threading;
-using System.Drawing.Imaging;
 
 namespace CSIEmployeeMonitoringSystem.Forms.Employee
 {
-    public partial class frmRegistration : Form
+    public partial class frmUpdateEmployee : Form
     {
         private string apiKey = Program.xApiKey;
         private string apiUrl = Program.serverUrl;
@@ -28,10 +25,11 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
         private EmployeeService employeeService;
         private string fingerPrint;
         private InputFilter inputs;
-        public frmRegistration()
+        public string employeeId;
+        public frmUpdateEmployee()
         {
             InitializeComponent();
-            btnRegister.Click += BtnRegister_Click;
+            btnUpdate.Click += BtnUpdate_Click;
             btnScan.Click += BtnScan_Click;
             btnCancel.Click += BtnCancel_Click;
             txtHourlyRate.TextChanged += txt_TextChanged;
@@ -40,12 +38,10 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             txtBasicSalary.TextChanged += txt_TextChanged;
             txtBasicSalary.LostFocus += txt_LostFocus;
             txtBasicSalary.GotFocus += txt_GotFocus;
-            
         }
-
         private void txt_LostFocus(object sender, EventArgs e)
         {
-            if(((TextBox)sender).Text == string.Empty)
+            if (((TextBox)sender).Text == string.Empty)
             {
                 ((TextBox)sender).Text = "0";
             }
@@ -66,7 +62,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
         }
 
         public List<Fmd> preenrollmentFmds;
-        
+
+
         private async void LoadSssList()
         {
             Cursor = Cursors.WaitCursor;
@@ -75,7 +72,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
             if (null != data)
             {
-                foreach(Sss s in data.data)
+                foreach (Sss s in data.data)
                 {
                     items.Add(new KeyValuePair<string, string>($"{s.bracket} ({s.amount})", s._id));
                 }
@@ -103,6 +100,36 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             optPagibig.DisplayMember = "Key";
             optPagibig.ValueMember = "Value";
             Cursor = Cursors.Arrow;
+        }
+        private async void GetEmployeeDetails()
+        {
+            var data = await employeeService.GetEmployeeDetails(employeeId);
+            if(null != data)
+            {
+                txtCode.Text = data.data.code;
+                txtBasicSalary.Text = data.data.basicSalary.ToString();
+                txtHourlyRate.Text = data.data.hourlyRate.ToString();
+                txtFirstName.Text = data.data.firstName;
+                txtLastName.Text = data.data.lastName;
+                optDesignation.SelectedValue = data.data.designation;
+                optEmployeeStatus.SelectedValue = data.data.employmentStatus;
+                if(data.data.deduction.tax != null)
+                {
+                    optTax.SelectedValue = data.data.deduction.tax._id;
+                }
+                if (data.data.deduction.sss != null)
+                {
+                    optSSS.SelectedValue = data.data.deduction.sss._id;
+                }
+                if (data.data.deduction.philhealth != null)
+                {
+                    optPhilhealth.SelectedValue = data.data.deduction.philhealth._id;
+                }
+                if (data.data.deduction.pagibig != null)
+                {
+                    optPagibig.SelectedValue = data.data.deduction.pagibig._id;
+                }
+            }
         }
 
         private async void LoadPhilhealthList()
@@ -145,21 +172,22 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            resetInputFields();
+            this.Dispose();
+            this.Close();
         }
 
-        private frmBiometricCapturer _capture;
+        private frmBiometricUpdateCapturer _capture;
         private void BtnScan_Click(object sender, EventArgs e)
         {
             if (_capture == null)
             {
-                _capture = new frmBiometricCapturer();
+                _capture = new frmBiometricUpdateCapturer();
                 _capture._sender = this;
             }
-            //resultEnrollment = null;
+
             _capture.ShowDialog();
             picFingerprint.Image = ((PictureBox)_capture.Controls["pbFingerprint"]).Image;
-            if(null != preenrollmentFmds)
+            if (null != preenrollmentFmds)
             {
                 fingerPrint = Fmd.SerializeXml(preenrollmentFmds[2]);
                 preenrollmentFmds.Clear();
@@ -168,24 +196,24 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             _capture = null;
         }
 
-        private async void BtnRegister_Click(object sender, EventArgs e)
+        private async void BtnUpdate_Click(object sender, EventArgs e)
         {
             //if all required fields are filled up
-            if(inputValidator())
+            if (inputValidator())
             {
-                if (MessageBox.Show("Click Ok to continue.", "Employee Registration", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (MessageBox.Show("Click Ok to continue.", "Employee Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     EmployeePost employee = new EmployeePost();
-                    Deduction deduction = new Deduction();
+                    //Deduction deduction = new Deduction();
                     if (optTax.SelectedValue.ToString() != string.Empty)
-                        deduction.tax = optTax.SelectedValue.ToString();
-                    if(optSSS.SelectedValue.ToString() != string.Empty)
-                        deduction.sss = optSSS.SelectedValue.ToString();
+                        employee.deduction.tax = optTax.SelectedValue.ToString();
+                    if (optSSS.SelectedValue.ToString() != string.Empty)
+                        employee.deduction.sss = optSSS.SelectedValue.ToString();
                     if (optPagibig.SelectedValue.ToString() != string.Empty)
-                        deduction.pagibig = optPagibig.SelectedValue.ToString();
+                        employee.deduction.pagibig = optPagibig.SelectedValue.ToString();
                     if (optPhilhealth.SelectedValue.ToString() != string.Empty)
-                        deduction.philhealth = optPhilhealth.SelectedValue.ToString();
-                
+                        employee.deduction.philhealth = optPhilhealth.SelectedValue.ToString();
+
                     employee.biometric = fingerPrint;
                     employee.firstName = txtFirstName.Text;
                     employee.lastName = txtLastName.Text;
@@ -194,51 +222,34 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
                     employee.hourlyRate = float.Parse(txtHourlyRate.Text);
                     employee.designation = optDesignation.SelectedValue.ToString();
                     employee.employmentStatus = optEmployeeStatus.SelectedValue.ToString();
-                    employee.deduction = deduction;
+                    //employee.deduction = deduction;
                     var data = await employeeService.SaveEmployee(employee);
-                    if(null != data)
+                    if (null != data)
                     {
-                        MessageBox.Show("Employee details has been added", "Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Employee details has been updated", "Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    resetInputFields();
-                    GenerateRandomNumber();
                 }
-            } else
+            }
+            else
             {
-                MessageBox.Show("Fill in all the required (*) fields. \nBasic salary or Hourly rate must have a value.", "Employee Registration", MessageBoxButtons.OK);
+                MessageBox.Show("Fill in all the required (*) fields.\nBasic salary or Hourly rate must have a value", "Employee Registration", MessageBoxButtons.OK);
             }
         }
 
         private bool inputValidator()
         {
             var hasEmpty = false;
-            if( optDesignation.SelectedIndex > 0 &&
+            if (optDesignation.SelectedIndex > 0 &&
                 optEmployeeStatus.SelectedIndex > 0 &&
                 txtFirstName.Text.Trim() != string.Empty &&
                 txtLastName.Text.Trim() != string.Empty &&
-                fingerPrint != string.Empty && (txtBasicSalary.Text !="0" || txtHourlyRate.Text != "0") )
+                fingerPrint != string.Empty && (txtBasicSalary.Text != "0" || txtHourlyRate.Text != "0"))
             {
                 hasEmpty = true;
             }
             return hasEmpty;
         }
 
-        private void resetInputFields()
-        {
-            GenerateRandomNumber();
-            optDesignation.SelectedIndex = 0;
-            txtBasicSalary.Text = "0";
-            txtFirstName.Text = "";
-            txtHourlyRate.Text = "0";
-            txtLastName.Text = "";
-            optEmployeeStatus.SelectedIndex = 0;
-            optPagibig.SelectedIndex = 0;
-            optPhilhealth.SelectedIndex = 0;
-            optSSS.SelectedIndex = 0;
-            optTax.SelectedIndex = 0;
-            picFingerprint.Image = null;
-            fingerPrint = string.Empty;
-        }
         private void EmployeeStatus()
         {
             List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
@@ -264,17 +275,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             optDesignation.ValueMember = "Value";
         }
 
-        private void GenerateRandomNumber()
-        {
-            Random generator = new Random();
-            txtCode.Text = generator.Next(0, 1000000).ToString("D6");
-        }
-
-        
-        private void frmRegistration_Load(object sender, EventArgs e)
+        private void frmUpdateEmployee_Load(object sender, EventArgs e)
         {
             EmployeeStatus();
-            GenerateRandomNumber();
             EmployeeDesignation();
             sssService = new SssService(apiKey, apiUrl);
             pagibigService = new PagibigService(apiKey, apiUrl);
@@ -289,7 +292,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             txtBasicSalary.Text = "0";
             txtHourlyRate.Text = "0";
             fingerPrint = string.Empty;
+            GetEmployeeDetails();
         }
-        
+
+        private void frmUpdateEmployee_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

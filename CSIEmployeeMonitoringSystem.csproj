@@ -219,6 +219,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiParser\APIAuthParser.cs" />
+    <Compile Include="ApiParser\APIEmployeeGetParser.cs" />
     <Compile Include="ApiParser\APIMessageParser.cs" />
     <Compile Include="ApiParser\APIPagibigResponseParser.cs" />
     <Compile Include="ApiParser\APIPhilhealthResponseParser.cs" />
@@ -238,6 +239,12 @@
     <Compile Include="Forms\Biometric\frmBiometricCapturer.Designer.cs">
       <DependentUpon>frmBiometricCapturer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Biometric\frmBiometricUpdateCapturer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Biometric\frmBiometricUpdateCapturer.Designer.cs">
+      <DependentUpon>frmBiometricUpdateCapturer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Employee\frmEmployeesList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +256,12 @@
     </Compile>
     <Compile Include="Forms\Employee\frmRegistration.Designer.cs">
       <DependentUpon>frmRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Employee\frmUpdateEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Employee\frmUpdateEmployee.Designer.cs">
+      <DependentUpon>frmUpdateEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Schedules\frmAddSchedule.cs">
       <SubType>Form</SubType>
@@ -288,6 +301,7 @@
     <Compile Include="Models\DeductionList.cs" />
     <Compile Include="Models\EmployeePost.cs" />
     <Compile Include="Models\EmployeesList.cs" />
+    <Compile Include="Models\Instructor.cs" />
     <Compile Include="Models\Pagibig.cs" />
     <Compile Include="Models\Philhealth.cs" />
     <Compile Include="Models\Schedule.cs" />
@@ -375,11 +389,17 @@
     <EmbeddedResource Include="Forms\Biometric\frmBiometricCapturer.resx">
       <DependentUpon>frmBiometricCapturer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Biometric\frmBiometricUpdateCapturer.resx">
+      <DependentUpon>frmBiometricUpdateCapturer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Employee\frmEmployeesList.resx">
       <DependentUpon>frmEmployeesList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Employee\frmRegistration.resx">
       <DependentUpon>frmRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Employee\frmUpdateEmployee.resx">
+      <DependentUpon>frmUpdateEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Schedules\frmAddSchedule.resx">
       <DependentUpon>frmAddSchedule.cs</DependentUpon>

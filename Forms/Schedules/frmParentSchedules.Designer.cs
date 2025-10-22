@@ -30,17 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmParentSchedules));
             this.grpControls = new System.Windows.Forms.GroupBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnDeleteSchedule = new System.Windows.Forms.Button();
             this.btnUpdateSchedule = new System.Windows.Forms.Button();
             this.btnAddSchedule = new System.Windows.Forms.Button();
             this.btnDeleteSchedules = new System.Windows.Forms.Button();
             this.btnUploadXLSFile = new System.Windows.Forms.Button();
             this.grpSchedules = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.optInstructor = new System.Windows.Forms.ComboBox();
             this.dgvSubjectSchedules = new System.Windows.Forms.DataGridView();
             this.subjectId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.instructorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.instructor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subjectCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.start = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +52,6 @@
             this.room = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.semester = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.schoolYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnReset = new System.Windows.Forms.Button();
             this.grpControls.SuspendLayout();
             this.grpSchedules.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubjectSchedules)).BeginInit();
@@ -57,6 +59,7 @@
             // 
             // grpControls
             // 
+            this.grpControls.Controls.Add(this.btnClose);
             this.grpControls.Controls.Add(this.btnDeleteSchedule);
             this.grpControls.Controls.Add(this.btnUpdateSchedule);
             this.grpControls.Controls.Add(this.btnAddSchedule);
@@ -68,6 +71,17 @@
             this.grpControls.TabIndex = 6;
             this.grpControls.TabStop = false;
             this.grpControls.Text = "Controls";
+            // 
+            // btnClose
+            // 
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(878, 36);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(127, 42);
+            this.btnClose.TabIndex = 11;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // btnDeleteSchedule
             // 
@@ -105,7 +119,7 @@
             // btnDeleteSchedules
             // 
             this.btnDeleteSchedules.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteSchedules.Location = new System.Drawing.Point(872, 36);
+            this.btnDeleteSchedules.Location = new System.Drawing.Point(734, 36);
             this.btnDeleteSchedules.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteSchedules.Name = "btnDeleteSchedules";
             this.btnDeleteSchedules.Size = new System.Drawing.Size(127, 42);
@@ -137,10 +151,19 @@
             this.grpSchedules.TabStop = false;
             this.grpSchedules.Text = "Schedules";
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(481, 27);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(77, 29);
+            this.btnReset.TabIndex = 8;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 32);
+            this.label1.Location = new System.Drawing.Point(20, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 16);
             this.label1.TabIndex = 7;
@@ -151,17 +174,21 @@
             this.optInstructor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.optInstructor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optInstructor.FormattingEnabled = true;
-            this.optInstructor.Location = new System.Drawing.Point(145, 28);
+            this.optInstructor.Location = new System.Drawing.Point(136, 28);
             this.optInstructor.Name = "optInstructor";
             this.optInstructor.Size = new System.Drawing.Size(330, 26);
             this.optInstructor.TabIndex = 6;
             // 
             // dgvSubjectSchedules
             // 
+            this.dgvSubjectSchedules.AllowUserToAddRows = false;
+            this.dgvSubjectSchedules.AllowUserToDeleteRows = false;
+            this.dgvSubjectSchedules.AllowUserToResizeColumns = false;
             this.dgvSubjectSchedules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSubjectSchedules.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.subjectId,
             this.instructorId,
+            this.instructor,
             this.subjectCode,
             this.subject,
             this.start,
@@ -170,11 +197,11 @@
             this.room,
             this.semester,
             this.schoolYear});
-            this.dgvSubjectSchedules.Location = new System.Drawing.Point(26, 64);
+            this.dgvSubjectSchedules.Location = new System.Drawing.Point(26, 62);
             this.dgvSubjectSchedules.MultiSelect = false;
             this.dgvSubjectSchedules.Name = "dgvSubjectSchedules";
             this.dgvSubjectSchedules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSubjectSchedules.Size = new System.Drawing.Size(973, 349);
+            this.dgvSubjectSchedules.Size = new System.Drawing.Size(979, 349);
             this.dgvSubjectSchedules.TabIndex = 5;
             // 
             // subjectId
@@ -188,6 +215,12 @@
             this.instructorId.HeaderText = "INSTRUCTOR ID";
             this.instructorId.Name = "instructorId";
             this.instructorId.Visible = false;
+            // 
+            // instructor
+            // 
+            this.instructor.HeaderText = "INSTRUCTOR";
+            this.instructor.Name = "instructor";
+            this.instructor.Width = 200;
             // 
             // subjectCode
             // 
@@ -231,15 +264,6 @@
             this.schoolYear.Name = "schoolYear";
             this.schoolYear.Width = 130;
             // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(490, 27);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(77, 29);
-            this.btnReset.TabIndex = 8;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            // 
             // frmParentSchedules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -272,8 +296,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox optInstructor;
         private System.Windows.Forms.DataGridView dgvSubjectSchedules;
+        private System.Windows.Forms.Button btnDeleteSchedule;
+        private System.Windows.Forms.Button btnUpdateSchedule;
+        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.DataGridViewTextBoxColumn subjectId;
         private System.Windows.Forms.DataGridViewTextBoxColumn instructorId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn instructor;
         private System.Windows.Forms.DataGridViewTextBoxColumn subjectCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn subject;
         private System.Windows.Forms.DataGridViewTextBoxColumn start;
@@ -282,8 +310,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn room;
         private System.Windows.Forms.DataGridViewTextBoxColumn semester;
         private System.Windows.Forms.DataGridViewTextBoxColumn schoolYear;
-        private System.Windows.Forms.Button btnDeleteSchedule;
-        private System.Windows.Forms.Button btnUpdateSchedule;
-        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnClose;
     }
 }
