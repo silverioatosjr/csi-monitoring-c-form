@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmParentSchedules));
             this.grpControls = new System.Windows.Forms.GroupBox();
             this.btnClose = new System.Windows.Forms.Button();
@@ -52,9 +53,13 @@
             this.room = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.semester = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.schoolYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.grpControls.SuspendLayout();
             this.grpSchedules.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubjectSchedules)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpControls
@@ -264,6 +269,26 @@
             this.schoolYear.Name = "schoolYear";
             this.schoolYear.Width = 130;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuUpdate,
+            this.mnuDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 48);
+            // 
+            // mnuUpdate
+            // 
+            this.mnuUpdate.Name = "mnuUpdate";
+            this.mnuUpdate.Size = new System.Drawing.Size(112, 22);
+            this.mnuUpdate.Text = "Update";
+            // 
+            // mnuDelete
+            // 
+            this.mnuDelete.Name = "mnuDelete";
+            this.mnuDelete.Size = new System.Drawing.Size(112, 22);
+            this.mnuDelete.Text = "Delete";
+            // 
             // frmParentSchedules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -283,6 +308,7 @@
             this.grpSchedules.ResumeLayout(false);
             this.grpSchedules.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubjectSchedules)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -311,5 +337,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn semester;
         private System.Windows.Forms.DataGridViewTextBoxColumn schoolYear;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mnuUpdate;
+        private System.Windows.Forms.ToolStripMenuItem mnuDelete;
     }
 }
