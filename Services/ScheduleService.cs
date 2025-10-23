@@ -31,6 +31,21 @@ namespace CSIEmployeeMonitoringSystem.Services
                 return null;
             }
         }
+        public async Task<APISchedulesParser> GetIntructorSchedules(string id)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl + $"/schedules/by-instructor/{id}");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APISchedulesParser res = JsonConvert.DeserializeObject<APISchedulesParser>(responseBody);
+                return res;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public async Task<APIScheduleParser> GetSchedule(string id)
         {
             try
@@ -87,7 +102,7 @@ namespace CSIEmployeeMonitoringSystem.Services
             }
         }
 
-        public async Task<APIMessageParser> UpdateSchedule(string id, Schedule payload)
+        public async Task<APIMessageParser> UpdateSchedule(string id, SchedulePost payload)
         {
             try
             {

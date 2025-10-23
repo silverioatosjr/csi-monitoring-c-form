@@ -28,13 +28,48 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             btnUpdateSchedule.Click += BtnUpdateSchedule_Click;
             btnAddSchedule.Click += BtnAddSchedule_Click;
             btnUploadXLSFile.Click += BtnUploadXLSFile_Click;
-            btnReset.Click += BtnReset_Click;
             btnClose.Click += BtnClose_Click;
             dgvSubjectSchedules.CellClick += DgvSubjectSchedules_CellClick;
             dgvSubjectSchedules.MouseClick += DgvSubjectSchedules_MouseClick;
             mnuUpdate.Click += BtnUpdateSchedule_Click;
             mnuDelete.Click += BtnDeleteSchedule_Click;
+            btnSearch.Click += BtnSearch_Click;
+            btnReset.Click += BtnReset_Click;
 
+        }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            if (optInstructor.SelectedValue.ToString() == string.Empty)
+            {
+                GetInstructors();
+            }
+            else
+            {
+                GetFilteredInstructors();
+            }
+            Cursor = Cursors.Arrow;
+        }
+
+        
+        private async void GetFilteredInstructors()
+        {
+            if(optInstructor.SelectedValue.ToString() != string.Empty)
+            {
+                string instructorId = optInstructor.SelectedValue.ToString();
+                var response = await scheduleService.GetIntructorSchedules(instructorId);
+                dgvSubjectSchedules.Rows.Clear();
+                if (null != response)
+                {
+                    foreach (Schedule s in response.data)
+                    {
+                        dgvSubjectSchedules.Rows.Add(s._id, s.instructor._id, $"{s.instructor.firstName} {s.instructor.lastName}", s.subjectCode, s.subject, s.startTime, s.endTime, s.day, s.room, s.semester, s.schoolYear);
+                    }
+                    if (response.data.Count > 0)
+                        btnDeleteSchedules.Enabled = true;
+                }
+            }
         }
 
         private void DgvSubjectSchedules_MouseClick(object sender, MouseEventArgs e)
@@ -106,12 +141,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
                 frmUpdateSchedule = new frmUpdateSchedule();
             }
             frmUpdateSchedule.scheduleId = scheduleId;
+            btnUpdateSchedule.Enabled = false;
+            btnDeleteSchedule.Enabled = false;
             if (frmUpdateSchedule.ShowDialog() == DialogResult.OK)
             {
                 scheduleId = string.Empty;
                 GetSchedules();
-                btnUpdateSchedule.Enabled = false;
-                btnDeleteSchedule.Enabled = false;
             }
         }
 

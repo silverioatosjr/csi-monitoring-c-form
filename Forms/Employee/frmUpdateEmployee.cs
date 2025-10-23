@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -330,6 +331,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             txtBasicSalary.Text = "0";
             txtHourlyRate.Text = "0";
             fingerPrint = string.Empty;
+            Thread.Sleep(1000);
             GetEmployeeDetails();
         }
 

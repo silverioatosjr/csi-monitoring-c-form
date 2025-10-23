@@ -38,7 +38,6 @@
             this.btnDeleteSchedules = new System.Windows.Forms.Button();
             this.btnUploadXLSFile = new System.Windows.Forms.Button();
             this.grpSchedules = new System.Windows.Forms.GroupBox();
-            this.btnReset = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.optInstructor = new System.Windows.Forms.ComboBox();
             this.dgvSubjectSchedules = new System.Windows.Forms.DataGridView();
@@ -56,6 +55,8 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.grpControls.SuspendLayout();
             this.grpSchedules.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubjectSchedules)).BeginInit();
@@ -146,6 +147,7 @@
             // grpSchedules
             // 
             this.grpSchedules.Controls.Add(this.btnReset);
+            this.grpSchedules.Controls.Add(this.btnSearch);
             this.grpSchedules.Controls.Add(this.label1);
             this.grpSchedules.Controls.Add(this.optInstructor);
             this.grpSchedules.Controls.Add(this.dgvSubjectSchedules);
@@ -155,15 +157,6 @@
             this.grpSchedules.TabIndex = 7;
             this.grpSchedules.TabStop = false;
             this.grpSchedules.Text = "Schedules";
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(481, 27);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(77, 29);
-            this.btnReset.TabIndex = 8;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -289,6 +282,24 @@
             this.mnuDelete.Size = new System.Drawing.Size(112, 22);
             this.mnuDelete.Text = "Delete";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(481, 27);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(77, 29);
+            this.btnSearch.TabIndex = 9;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(574, 27);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(77, 29);
+            this.btnReset.TabIndex = 10;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            // 
             // frmParentSchedules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -324,7 +335,6 @@
         private System.Windows.Forms.DataGridView dgvSubjectSchedules;
         private System.Windows.Forms.Button btnDeleteSchedule;
         private System.Windows.Forms.Button btnUpdateSchedule;
-        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.DataGridViewTextBoxColumn subjectId;
         private System.Windows.Forms.DataGridViewTextBoxColumn instructorId;
         private System.Windows.Forms.DataGridViewTextBoxColumn instructor;
@@ -340,5 +350,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mnuUpdate;
         private System.Windows.Forms.ToolStripMenuItem mnuDelete;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnReset;
     }
 }

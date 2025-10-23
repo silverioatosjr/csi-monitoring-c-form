@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -34,11 +36,13 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             {
                 if (MessageBox.Show("Click OK to continue.", "Update Schedule", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
+                    UpdateSchedule();
+                    BtnCancel_Click(sender, e);
                 }
             }
         }
 
-        private async void PostSchedule()
+        private async void UpdateSchedule()
         {
             SchedulePost payload = new SchedulePost();
             payload.day = optDay.SelectedValue.ToString();
@@ -59,30 +63,19 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             payload.subjectCode = txtSubjectCode.Text.Trim();
             payload.subject = txtSubject.Text.Trim();
 
-            var data = await scheduleService.PostSchedule(payload);
+            var data = await scheduleService.UpdateSchedule(scheduleId, payload);
             if (null != data)
             {
-                MessageBox.Show("Schedule has been added", "Add Schedule", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ResetInputs();
+                MessageBox.Show("Schedule has been updated", "Update Schedule", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
             }
             else
             {
-                MessageBox.Show("Unable to save schedule", "Add Schedule", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Unable to update schedule", "Update Schedule", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
-
-        private void ResetInputs()
-        {
-            txtRoom.Text = string.Empty;
-            txtSubject.Text = string.Empty;
-            txtSubjectCode.Text = string.Empty;
-            optDay.SelectedIndex = 0;
-            optInstructor.SelectedIndex = 0;
-            optSemester.SelectedIndex = 0;
-            chkOpenTime.Checked = false;
-        }
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
@@ -148,6 +141,21 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             if(null != data)
             {
                 optInstructor.SelectedValue = data.data.instructor._id;
+                optDay.SelectedValue = data.data.day;
+                optSemester.SelectedValue = data.data.semester;
+                txtRoom.Text = data.data.room;
+                txtSchoolYear.Text = data.data.schoolYear;
+                txtSubject.Text = data.data.subject;
+                txtSubjectCode.Text = data.data.subjectCode;
+                if(data.data.endTime == string.Empty)
+                {
+                    chkOpenTime.Checked = true;
+                } else
+                {
+                    string format = "HH:mm"; // The exact format of the timeString
+                    dtEndTime.Value = DateTime.ParseExact(data.data.endTime, format, CultureInfo.InvariantCulture);
+                    dtStartTime.Value = DateTime.ParseExact(data.data.startTime, format, CultureInfo.InvariantCulture);
+                }
             }
         }
 
@@ -169,12 +177,15 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
 
         private void frmUpdateSchedule_Load(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             instructorService = new InstructorService(Program.xApiKey, Program.serverUrl);
             scheduleService = new ScheduleService(Program.xApiKey, Program.serverUrl);
+            GetInstructors();
             GetDays();
             GetSemesters();
-            GetInstructors();
+            Thread.Sleep(1000);
             GetSchedule();
+            Cursor = Cursors.Arrow;
         }
 
         private void frmUpdateSchedule_FormClosed(object sender, FormClosedEventArgs e)
