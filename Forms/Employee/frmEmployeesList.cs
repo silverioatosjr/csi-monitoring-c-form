@@ -70,14 +70,22 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             }
         }
 
-        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(MessageBox.Show("To delete this record, click OK button", "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
-                employeeId = string.Empty;
-                GetEmployees();
-                btnUpdateEmployee.Enabled = false;
-                btnDeleteEmployee.Enabled = false;
+                var data = await employeeService.DeleteEmployee(employeeId);
+                if (null != data)
+                {
+                    MessageBox.Show("Employee has been deleted", "Delete Employee", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    employeeId = string.Empty;
+                    GetEmployees();
+                    btnUpdateEmployee.Enabled = false;
+                    btnDeleteEmployee.Enabled = false;
+                } else
+                {
+                    MessageBox.Show("Unable to delete employee", "Delete Employee", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

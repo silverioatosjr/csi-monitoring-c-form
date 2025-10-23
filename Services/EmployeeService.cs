@@ -72,6 +72,43 @@ namespace CSIEmployeeMonitoringSystem.Services
 
         }
 
+        public async Task<APIMessageParser> UpdateEmployee(string id, EmployeePost payload)
+        {
+            try
+            {
+                string jsonContent = JsonConvert.SerializeObject(payload);
+                using (var content = new StringContent(jsonContent, UnicodeEncoding.UTF8, "application/json"))
+                {
+
+                    HttpResponseMessage response = await client.PutAsync(apiUrl + $"/employees/{id}", content);
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    APIMessageParser res = JsonConvert.DeserializeObject<APIMessageParser>(responseBody);
+                    return res;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<APIMessageParser> DeleteEmployee(string id)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.DeleteAsync(apiUrl + $"/employees/{id}");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APIMessageParser res = JsonConvert.DeserializeObject<APIMessageParser>(responseBody);
+                return res;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public string formatDgvTaxCellValue(DeductionList deduction)
         {
             string value = "";

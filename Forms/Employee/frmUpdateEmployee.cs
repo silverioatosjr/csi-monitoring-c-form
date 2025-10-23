@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -112,24 +113,55 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
                 txtFirstName.Text = data.data.firstName;
                 txtLastName.Text = data.data.lastName;
                 optDesignation.SelectedValue = data.data.designation;
+                fingerPrint = data.data.biometric;
+                //var fmdData = Fmd.DeserializeXml(data.data.biometric);
+                //picFingerprint.Image = CreateBitmap(fmdData.Bytes, fmdData.Width, fmdData.Height);
+                //picFingerprint.Refresh();
                 optEmployeeStatus.SelectedValue = data.data.employmentStatus;
-                if(data.data.deduction.tax != null)
+                if(data.data.deduction != null)
                 {
-                    optTax.SelectedValue = data.data.deduction.tax._id;
-                }
-                if (data.data.deduction.sss != null)
-                {
-                    optSSS.SelectedValue = data.data.deduction.sss._id;
-                }
-                if (data.data.deduction.philhealth != null)
-                {
-                    optPhilhealth.SelectedValue = data.data.deduction.philhealth._id;
-                }
-                if (data.data.deduction.pagibig != null)
-                {
-                    optPagibig.SelectedValue = data.data.deduction.pagibig._id;
+                    if(data.data.deduction.tax != null)
+                    {
+                        optTax.SelectedValue = data.data.deduction.tax._id;
+                    }
+                    if (data.data.deduction.sss != null)
+                    {
+                        optSSS.SelectedValue = data.data.deduction.sss._id;
+                    }
+                    if (data.data.deduction.philhealth != null)
+                    {
+                        optPhilhealth.SelectedValue = data.data.deduction.philhealth._id;
+                    }
+                    if (data.data.deduction.pagibig != null)
+                    {
+                        optPagibig.SelectedValue = data.data.deduction.pagibig._id;
+                    }
                 }
             }
+        }
+        private Bitmap CreateBitmap(byte[] bytes, int width, int height)
+        {
+            byte[] rgbBytes = new byte[bytes.Length * 3];
+
+            for (int i = 0; i <= bytes.Length - 1; i++)
+            {
+                rgbBytes[(i * 3)] = bytes[i];
+                rgbBytes[(i * 3) + 1] = bytes[i];
+                rgbBytes[(i * 3) + 2] = bytes[i];
+            }
+            Bitmap bmp = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+
+            BitmapData data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+
+            for (int i = 0; i <= bmp.Height - 1; i++)
+            {
+                IntPtr p = new IntPtr(data.Scan0.ToInt64() + data.Stride * i);
+                System.Runtime.InteropServices.Marshal.Copy(rgbBytes, i * bmp.Width * 3, p, bmp.Width * 3);
+            }
+
+            bmp.UnlockBits(data);
+
+            return bmp;
         }
 
         private async void LoadPhilhealthList()
@@ -204,15 +236,15 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
                 if (MessageBox.Show("Click Ok to continue.", "Employee Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     EmployeePost employee = new EmployeePost();
-                    //Deduction deduction = new Deduction();
+                    Deduction deduction = new Deduction();
                     if (optTax.SelectedValue.ToString() != string.Empty)
-                        employee.deduction.tax = optTax.SelectedValue.ToString();
+                        deduction.tax = optTax.SelectedValue.ToString();
                     if (optSSS.SelectedValue.ToString() != string.Empty)
-                        employee.deduction.sss = optSSS.SelectedValue.ToString();
+                        deduction.sss = optSSS.SelectedValue.ToString();
                     if (optPagibig.SelectedValue.ToString() != string.Empty)
-                        employee.deduction.pagibig = optPagibig.SelectedValue.ToString();
+                        deduction.pagibig = optPagibig.SelectedValue.ToString();
                     if (optPhilhealth.SelectedValue.ToString() != string.Empty)
-                        employee.deduction.philhealth = optPhilhealth.SelectedValue.ToString();
+                        deduction.philhealth = optPhilhealth.SelectedValue.ToString();
 
                     employee.biometric = fingerPrint;
                     employee.firstName = txtFirstName.Text;
@@ -222,17 +254,23 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
                     employee.hourlyRate = float.Parse(txtHourlyRate.Text);
                     employee.designation = optDesignation.SelectedValue.ToString();
                     employee.employmentStatus = optEmployeeStatus.SelectedValue.ToString();
-                    //employee.deduction = deduction;
-                    var data = await employeeService.SaveEmployee(employee);
+                    employee.deduction = deduction;
+                    var data = await employeeService.UpdateEmployee(employeeId, employee);
                     if (null != data)
                     {
-                        MessageBox.Show("Employee details has been updated", "Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Employee details has been updated", "Update Employee", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK;
+                        this.Dispose();
+                        this.Close();
+                    } else
+                    {
+                        MessageBox.Show("Unable to update employee details", "Update Employee", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Fill in all the required (*) fields.\nBasic salary or Hourly rate must have a value", "Employee Registration", MessageBoxButtons.OK);
+                MessageBox.Show("Fill in all the required (*) fields.\nBasic salary or Hourly rate must have a value", "Update Employee", MessageBoxButtons.OK);
             }
         }
 

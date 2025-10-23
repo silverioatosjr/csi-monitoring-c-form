@@ -40,6 +40,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
         private void BtnReset_Click(object sender, EventArgs e)
         {
             optInstructor.SelectedIndex = 0;
+            GetSchedules();
         }
 
         private void BtnUploadXLSFile_Click(object sender, EventArgs e)
@@ -54,7 +55,10 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
         private void BtnAddSchedule_Click(object sender, EventArgs e)
         {
             frmAddSchedule = new frmAddSchedule();
-            frmAddSchedule.ShowDialog();
+            if(frmAddSchedule.ShowDialog() == DialogResult.OK)
+            {
+                GetSchedules();
+            }
         }
 
         private void BtnUpdateSchedule_Click(object sender, EventArgs e)
