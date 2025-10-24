@@ -18,7 +18,6 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         private string apiUrl = Program.serverUrl;
         private EmployeeService employeeService;
         private DtrService dtrService;
-        private string fingerPrint;
         public frmDTR()
         {
             InitializeComponent();
@@ -33,7 +32,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             }
             if(frmTimeLog.ShowDialog() == DialogResult.OK)
             {
-
+                MessageBox.Show("Fetch the dtr logs");
             }
         }
 

@@ -318,6 +318,7 @@
     <Compile Include="Models\Auth\AuthPost.cs" />
     <Compile Include="Models\Deduction.cs" />
     <Compile Include="Models\DeductionList.cs" />
+    <Compile Include="Models\DTRVerfication.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployeeGet.cs" />
     <Compile Include="Models\EmployeePost.cs" />

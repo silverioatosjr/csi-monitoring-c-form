@@ -81,12 +81,13 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
                 if(compare.Score < (PROBABILITY_ONE / 100000))
                 {
                     this.Invoke(new Action(delegate() {
-                     MessageBox.Show("matched");
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
                     }));
                 } else
                 {
                     this.Invoke(new Action(delegate () {
-                        MessageBox.Show("did not matched");
+                        MessageBox.Show("Fingerprint did not matched. Try again.", "Verification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }));
                 }
                 
