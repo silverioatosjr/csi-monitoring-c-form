@@ -316,6 +316,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
 
         private void frmUpdateEmployee_Load(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             EmployeeStatus();
             EmployeeDesignation();
             sssService = new SssService(apiKey, apiUrl);
@@ -333,6 +334,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             fingerPrint = string.Empty;
             Thread.Sleep(1000);
             GetEmployeeDetails();
+            Cursor = Cursors.Arrow;
         }
 
         private void frmUpdateEmployee_FormClosed(object sender, FormClosedEventArgs e)

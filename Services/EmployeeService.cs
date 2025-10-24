@@ -72,6 +72,23 @@ namespace CSIEmployeeMonitoringSystem.Services
 
         }
 
+        public async Task<APIEmployeeLogParser> GetEmployeeDetailsByCode(string code)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl + $"/employees/code/{code}");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APIEmployeeLogParser res = JsonConvert.DeserializeObject<APIEmployeeLogParser>(responseBody);
+                return res;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+
         public async Task<APIMessageParser> UpdateEmployee(string id, EmployeePost payload)
         {
             try

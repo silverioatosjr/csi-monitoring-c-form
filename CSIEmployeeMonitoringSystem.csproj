@@ -220,6 +220,7 @@
   <ItemGroup>
     <Compile Include="ApiParser\APIAuthParser.cs" />
     <Compile Include="ApiParser\APIEmployeeGetParser.cs" />
+    <Compile Include="ApiParser\APIEmployeeLogParser.cs" />
     <Compile Include="ApiParser\APIMessageParser.cs" />
     <Compile Include="ApiParser\APIPagibigResponseParser.cs" />
     <Compile Include="ApiParser\APIPhilhealthResponseParser.cs" />
@@ -244,6 +245,24 @@
     </Compile>
     <Compile Include="Forms\Biometric\frmBiometricUpdateCapturer.Designer.cs">
       <DependentUpon>frmBiometricUpdateCapturer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Biometric\frmBiometricVerification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Biometric\frmBiometricVerification.Designer.cs">
+      <DependentUpon>frmBiometricVerification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmDTR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmDTR.Designer.cs">
+      <DependentUpon>frmDTR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmTimeLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmTimeLog.Designer.cs">
+      <DependentUpon>frmTimeLog.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Employee\frmEmployeesList.cs">
       <SubType>Form</SubType>
@@ -299,6 +318,8 @@
     <Compile Include="Models\Auth\AuthPost.cs" />
     <Compile Include="Models\Deduction.cs" />
     <Compile Include="Models\DeductionList.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmployeeGet.cs" />
     <Compile Include="Models\EmployeePost.cs" />
     <Compile Include="Models\EmployeesList.cs" />
     <Compile Include="Models\Instructor.cs" />
@@ -376,6 +397,7 @@
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\BaseClass.cs" />
     <Compile Include="Services\ConnectionService.cs" />
+    <Compile Include="Services\DtrService.cs" />
     <Compile Include="Services\EmployeeService.cs" />
     <Compile Include="Services\InstructorService.cs" />
     <Compile Include="Services\PagibigService.cs" />
@@ -391,6 +413,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Biometric\frmBiometricUpdateCapturer.resx">
       <DependentUpon>frmBiometricUpdateCapturer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Biometric\frmBiometricVerification.resx">
+      <DependentUpon>frmBiometricVerification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dtr\frmDTR.resx">
+      <DependentUpon>frmDTR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dtr\frmTimeLog.resx">
+      <DependentUpon>frmTimeLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Employee\frmEmployeesList.resx">
       <DependentUpon>frmEmployeesList.cs</DependentUpon>

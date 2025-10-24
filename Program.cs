@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DotNetEnv;
+using CSIEmployeeMonitoringSystem.Forms.Dtr;
 
 namespace CSIEmployeeMonitoringSystem
 {
@@ -22,7 +23,7 @@ namespace CSIEmployeeMonitoringSystem
             serverUrl = Environment.GetEnvironmentVariable("SERVER_URL");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new frmDTR()); //frmMain()
         }
     }
 }
