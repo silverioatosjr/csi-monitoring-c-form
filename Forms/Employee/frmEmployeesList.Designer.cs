@@ -35,6 +35,11 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvEmployeesList = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnDeleteEmployee = new System.Windows.Forms.Button();
+            this.btnUpdateEmployee = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this._id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,11 +51,6 @@
             this.sss = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pagibig = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.philhealth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnDeleteEmployee = new System.Windows.Forms.Button();
-            this.btnUpdateEmployee = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.contextMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeesList)).BeginInit();
@@ -111,71 +111,9 @@
             this.dgvEmployeesList.Margin = new System.Windows.Forms.Padding(4);
             this.dgvEmployeesList.MultiSelect = false;
             this.dgvEmployeesList.Name = "dgvEmployeesList";
-            this.dgvEmployeesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvEmployeesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvEmployeesList.Size = new System.Drawing.Size(1098, 402);
             this.dgvEmployeesList.TabIndex = 1;
-            // 
-            // _id
-            // 
-            this._id.HeaderText = "Id";
-            this._id.Name = "_id";
-            this._id.Visible = false;
-            // 
-            // fullName
-            // 
-            this.fullName.HeaderText = "NAME";
-            this.fullName.Name = "fullName";
-            this.fullName.Width = 250;
-            // 
-            // code
-            // 
-            this.code.HeaderText = "CODE";
-            this.code.Name = "code";
-            // 
-            // hourlyRate
-            // 
-            this.hourlyRate.HeaderText = "HOURLY RATE";
-            this.hourlyRate.Name = "hourlyRate";
-            this.hourlyRate.Width = 130;
-            // 
-            // basicSalary
-            // 
-            this.basicSalary.FillWeight = 150F;
-            this.basicSalary.HeaderText = "MONTHLY SALARY";
-            this.basicSalary.Name = "basicSalary";
-            this.basicSalary.Width = 160;
-            // 
-            // designation
-            // 
-            this.designation.HeaderText = "DESIGNATION";
-            this.designation.Name = "designation";
-            this.designation.Width = 120;
-            // 
-            // employeeStatus
-            // 
-            this.employeeStatus.HeaderText = "CONTRACT";
-            this.employeeStatus.Name = "employeeStatus";
-            this.employeeStatus.Width = 120;
-            // 
-            // tax
-            // 
-            this.tax.HeaderText = "TAX";
-            this.tax.Name = "tax";
-            // 
-            // sss
-            // 
-            this.sss.HeaderText = "SSS";
-            this.sss.Name = "sss";
-            // 
-            // pagibig
-            // 
-            this.pagibig.HeaderText = "PAGIBIG";
-            this.pagibig.Name = "pagibig";
-            // 
-            // philhealth
-            // 
-            this.philhealth.HeaderText = "PHILHEALTH";
-            this.philhealth.Name = "philhealth";
             // 
             // groupBox2
             // 
@@ -234,6 +172,79 @@
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
             // 
+            // _id
+            // 
+            this._id.HeaderText = "ID";
+            this._id.Name = "_id";
+            this._id.ReadOnly = true;
+            this._id.Width = 200;
+            // 
+            // fullName
+            // 
+            this.fullName.HeaderText = "NAME";
+            this.fullName.Name = "fullName";
+            this.fullName.ReadOnly = true;
+            this.fullName.Width = 250;
+            // 
+            // code
+            // 
+            this.code.HeaderText = "CODE";
+            this.code.Name = "code";
+            this.code.ReadOnly = true;
+            // 
+            // hourlyRate
+            // 
+            this.hourlyRate.HeaderText = "HOURLY RATE";
+            this.hourlyRate.Name = "hourlyRate";
+            this.hourlyRate.ReadOnly = true;
+            this.hourlyRate.Width = 130;
+            // 
+            // basicSalary
+            // 
+            this.basicSalary.FillWeight = 150F;
+            this.basicSalary.HeaderText = "MONTHLY SALARY";
+            this.basicSalary.Name = "basicSalary";
+            this.basicSalary.ReadOnly = true;
+            this.basicSalary.Width = 160;
+            // 
+            // designation
+            // 
+            this.designation.HeaderText = "DESIGNATION";
+            this.designation.Name = "designation";
+            this.designation.ReadOnly = true;
+            this.designation.Width = 120;
+            // 
+            // employeeStatus
+            // 
+            this.employeeStatus.HeaderText = "CONTRACT";
+            this.employeeStatus.Name = "employeeStatus";
+            this.employeeStatus.ReadOnly = true;
+            this.employeeStatus.Width = 120;
+            // 
+            // tax
+            // 
+            this.tax.HeaderText = "TAX";
+            this.tax.Name = "tax";
+            this.tax.ReadOnly = true;
+            // 
+            // sss
+            // 
+            this.sss.HeaderText = "SSS";
+            this.sss.Name = "sss";
+            this.sss.ReadOnly = true;
+            // 
+            // pagibig
+            // 
+            this.pagibig.HeaderText = "PAGIBIG";
+            this.pagibig.Name = "pagibig";
+            this.pagibig.ReadOnly = true;
+            // 
+            // philhealth
+            // 
+            this.philhealth.HeaderText = "PHILHEALTH";
+            this.philhealth.Name = "philhealth";
+            this.philhealth.ReadOnly = true;
+            // 
             // frmEmployeesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -263,6 +274,11 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvEmployeesList;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnDeleteEmployee;
+        private System.Windows.Forms.Button btnUpdateEmployee;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DataGridViewTextBoxColumn _id;
         private System.Windows.Forms.DataGridViewTextBoxColumn fullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn code;
@@ -274,10 +290,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sss;
         private System.Windows.Forms.DataGridViewTextBoxColumn pagibig;
         private System.Windows.Forms.DataGridViewTextBoxColumn philhealth;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.Button btnDeleteEmployee;
-        private System.Windows.Forms.Button btnUpdateEmployee;
-        private System.Windows.Forms.Button btnClose;
     }
 }

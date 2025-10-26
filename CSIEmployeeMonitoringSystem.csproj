@@ -219,6 +219,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiParser\APIAuthParser.cs" />
+    <Compile Include="ApiParser\APIDtrTempParser.cs" />
     <Compile Include="ApiParser\APIEmployeeGetParser.cs" />
     <Compile Include="ApiParser\APIEmployeeLogParser.cs" />
     <Compile Include="ApiParser\APIMessageParser.cs" />
@@ -318,6 +319,7 @@
     <Compile Include="Models\Auth\AuthPost.cs" />
     <Compile Include="Models\Deduction.cs" />
     <Compile Include="Models\DeductionList.cs" />
+    <Compile Include="Models\DtrTemp.cs" />
     <Compile Include="Models\DTRVerfication.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployeeGet.cs" />

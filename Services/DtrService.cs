@@ -35,5 +35,21 @@ namespace CSIEmployeeMonitoringSystem.Services
                 return null;
             }
         }
+        public async Task<APIDtrTempParser> GetDtrTempList()
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl + "/dtr/dtr-temp");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APIDtrTempParser res = JsonConvert.DeserializeObject<APIDtrTempParser>(responseBody);
+                return res;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
     }
 }

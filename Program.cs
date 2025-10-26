@@ -19,11 +19,11 @@ namespace CSIEmployeeMonitoringSystem
         static void Main()
         {
             Env.TraversePath().Load();
-            xApiKey = Environment.GetEnvironmentVariable("X_API_KEY");
-            serverUrl = Environment.GetEnvironmentVariable("SERVER_URL");
+            xApiKey = "x2TUlfsc09tGoetyBo4p8HT3zi";//Environment.GetEnvironmentVariable("X_API_KEY");
+            serverUrl = "http://localhost:3004/api";//Environment.GetEnvironmentVariable("SERVER_URL");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDTR()); //frmMain()
+            Application.Run(new frmMain()); //frmMain()
         }
     }
 }

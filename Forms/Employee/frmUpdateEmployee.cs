@@ -222,8 +222,11 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             picFingerprint.Image = ((PictureBox)_capture.Controls["pbFingerprint"]).Image;
             if (null != preenrollmentFmds)
             {
-                fingerPrint = Fmd.SerializeXml(preenrollmentFmds[2]);
-                preenrollmentFmds.Clear();
+                if(preenrollmentFmds != null)
+                {
+                    fingerPrint = Fmd.SerializeXml(preenrollmentFmds[2]);
+                    preenrollmentFmds.Clear();
+                }
             }
             //_capture.Dispose();
             _capture = null;

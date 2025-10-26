@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDTR));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -37,11 +38,13 @@
             this.txtHolidays = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvDtr = new System.Windows.Forms.DataGridView();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtAnnouncement = new System.Windows.Forms.TextBox();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.room = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtAnnouncement = new System.Windows.Forms.TextBox();
+            this.timerDtrTemp = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -137,7 +140,8 @@
             this.dgvDtr.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
             this.subject,
-            this.time});
+            this.time,
+            this.room});
             this.dgvDtr.Enabled = false;
             this.dgvDtr.Location = new System.Drawing.Point(17, 34);
             this.dgvDtr.Name = "dgvDtr";
@@ -145,6 +149,34 @@
             this.dgvDtr.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDtr.Size = new System.Drawing.Size(695, 450);
             this.dgvDtr.TabIndex = 1;
+            // 
+            // name
+            // 
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.name.DefaultCellStyle = dataGridViewCellStyle2;
+            this.name.HeaderText = "EMPLOYEE";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 200;
+            // 
+            // subject
+            // 
+            this.subject.HeaderText = "SUBJECT";
+            this.subject.Name = "subject";
+            this.subject.ReadOnly = true;
+            this.subject.Width = 250;
+            // 
+            // time
+            // 
+            this.time.HeaderText = "LOG TIME";
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            // 
+            // room
+            // 
+            this.room.HeaderText = "ROOM";
+            this.room.Name = "room";
+            this.room.ReadOnly = true;
             // 
             // groupBox4
             // 
@@ -174,27 +206,10 @@
             this.txtAnnouncement.TabIndex = 0;
             this.txtAnnouncement.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // name
+            // timerDtrTemp
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.name.DefaultCellStyle = dataGridViewCellStyle1;
-            this.name.HeaderText = "EMPLOYEE";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 250;
-            // 
-            // subject
-            // 
-            this.subject.HeaderText = "SUBJECT";
-            this.subject.Name = "subject";
-            this.subject.ReadOnly = true;
-            this.subject.Width = 300;
-            // 
-            // time
-            // 
-            this.time.HeaderText = "LOG TIME";
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
+            this.timerDtrTemp.Interval = 10000;
+            this.timerDtrTemp.Tick += new System.EventHandler(this.timerDtrTemp_Tick);
             // 
             // frmDTR
             // 
@@ -214,7 +229,6 @@
             this.Name = "frmDTR";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CSI DTR SYSTEM";
-            this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmDTR_Load);
             this.groupBox1.ResumeLayout(false);
@@ -242,5 +256,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn subject;
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn room;
+        private System.Windows.Forms.Timer timerDtrTemp;
     }
 }
