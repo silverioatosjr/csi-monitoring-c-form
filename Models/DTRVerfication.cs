@@ -9,5 +9,6 @@ namespace CSIEmployeeMonitoringSystem.Models
     class DTRVerfication
     {
         public string employee { get; set; }
+        public string schedule { get; set; }
     }
 }

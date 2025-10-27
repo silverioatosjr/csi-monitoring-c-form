@@ -509,6 +509,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include=".gitignore" />
+    <None Include="csiLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">

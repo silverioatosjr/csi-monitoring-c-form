@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDTR));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -38,13 +38,13 @@
             this.txtHolidays = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvDtr = new System.Windows.Forms.DataGridView();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtAnnouncement = new System.Windows.Forms.TextBox();
+            this.timerDtrTemp = new System.Windows.Forms.Timer(this.components);
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.room = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtAnnouncement = new System.Windows.Forms.TextBox();
-            this.timerDtrTemp = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -56,7 +56,7 @@
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 561);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1059, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1064, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -65,9 +65,11 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.btnLogTime);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox1.Location = new System.Drawing.Point(25, 45);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(248, 154);
+            this.groupBox1.Size = new System.Drawing.Size(228, 154);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "LOGTIME";
@@ -77,13 +79,15 @@
             this.btnLogTime.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLogTime.BackColor = System.Drawing.Color.SteelBlue;
             this.btnLogTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnLogTime.Location = new System.Drawing.Point(23, 50);
             this.btnLogTime.Name = "btnLogTime";
-            this.btnLogTime.Size = new System.Drawing.Size(200, 69);
+            this.btnLogTime.Size = new System.Drawing.Size(180, 69);
             this.btnLogTime.TabIndex = 0;
             this.btnLogTime.Text = "CLICK TO LOG YOUR TIME";
-            this.btnLogTime.UseVisualStyleBackColor = true;
+            this.btnLogTime.UseVisualStyleBackColor = false;
             // 
             // groupBox2
             // 
@@ -92,9 +96,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.txtHolidays);
             this.groupBox2.Enabled = false;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox2.Location = new System.Drawing.Point(25, 378);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(248, 168);
+            this.groupBox2.Size = new System.Drawing.Size(228, 168);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "HOLIDAYS";
@@ -110,7 +116,7 @@
             this.txtHolidays.Multiline = true;
             this.txtHolidays.Name = "txtHolidays";
             this.txtHolidays.ReadOnly = true;
-            this.txtHolidays.Size = new System.Drawing.Size(200, 115);
+            this.txtHolidays.Size = new System.Drawing.Size(180, 115);
             this.txtHolidays.TabIndex = 1;
             this.txtHolidays.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -118,11 +124,14 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.BackColor = System.Drawing.Color.LightSteelBlue;
             this.groupBox3.Controls.Add(this.dgvDtr);
             this.groupBox3.Enabled = false;
-            this.groupBox3.Location = new System.Drawing.Point(302, 45);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox3.Location = new System.Drawing.Point(269, 45);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(733, 501);
+            this.groupBox3.Size = new System.Drawing.Size(774, 501);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "LOGS";
@@ -143,40 +152,12 @@
             this.time,
             this.room});
             this.dgvDtr.Enabled = false;
-            this.dgvDtr.Location = new System.Drawing.Point(17, 34);
+            this.dgvDtr.Location = new System.Drawing.Point(18, 34);
             this.dgvDtr.Name = "dgvDtr";
             this.dgvDtr.ReadOnly = true;
             this.dgvDtr.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDtr.Size = new System.Drawing.Size(695, 450);
+            this.dgvDtr.Size = new System.Drawing.Size(735, 450);
             this.dgvDtr.TabIndex = 1;
-            // 
-            // name
-            // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.name.DefaultCellStyle = dataGridViewCellStyle2;
-            this.name.HeaderText = "EMPLOYEE";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 200;
-            // 
-            // subject
-            // 
-            this.subject.HeaderText = "SUBJECT";
-            this.subject.Name = "subject";
-            this.subject.ReadOnly = true;
-            this.subject.Width = 250;
-            // 
-            // time
-            // 
-            this.time.HeaderText = "LOG TIME";
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
-            // 
-            // room
-            // 
-            this.room.HeaderText = "ROOM";
-            this.room.Name = "room";
-            this.room.ReadOnly = true;
             // 
             // groupBox4
             // 
@@ -184,9 +165,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.txtAnnouncement);
             this.groupBox4.Enabled = false;
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox4.Location = new System.Drawing.Point(25, 208);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(248, 160);
+            this.groupBox4.Size = new System.Drawing.Size(228, 160);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "ANOUNCEMENTS";
@@ -202,7 +185,7 @@
             this.txtAnnouncement.Multiline = true;
             this.txtAnnouncement.Name = "txtAnnouncement";
             this.txtAnnouncement.ReadOnly = true;
-            this.txtAnnouncement.Size = new System.Drawing.Size(200, 107);
+            this.txtAnnouncement.Size = new System.Drawing.Size(180, 107);
             this.txtAnnouncement.TabIndex = 0;
             this.txtAnnouncement.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -211,18 +194,48 @@
             this.timerDtrTemp.Interval = 10000;
             this.timerDtrTemp.Tick += new System.EventHandler(this.timerDtrTemp_Tick);
             // 
+            // name
+            // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.name.DefaultCellStyle = dataGridViewCellStyle1;
+            this.name.HeaderText = "EMPLOYEE";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 230;
+            // 
+            // subject
+            // 
+            this.subject.HeaderText = "SUBJECT";
+            this.subject.Name = "subject";
+            this.subject.ReadOnly = true;
+            this.subject.Width = 260;
+            // 
+            // time
+            // 
+            this.time.HeaderText = "TIME";
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            // 
+            // room
+            // 
+            this.room.HeaderText = "ROOM";
+            this.room.Name = "room";
+            this.room.ReadOnly = true;
+            // 
             // frmDTR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1059, 583);
+            this.ClientSize = new System.Drawing.Size(1064, 583);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
@@ -253,10 +266,10 @@
         private System.Windows.Forms.Button btnLogTime;
         private System.Windows.Forms.TextBox txtHolidays;
         private System.Windows.Forms.TextBox txtAnnouncement;
+        private System.Windows.Forms.Timer timerDtrTemp;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn subject;
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewTextBoxColumn room;
-        private System.Windows.Forms.Timer timerDtrTemp;
     }
 }

@@ -18,6 +18,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         private string apiKey = Program.xApiKey;
         private string apiUrl = Program.serverUrl;
         private EmployeeService employeeService;
+        private ConnectionService connectionService;
         private DtrService dtrService;
         public frmDTR()
         {
@@ -61,9 +62,31 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         {
             employeeService = new EmployeeService(apiKey, apiUrl);
             dtrService = new DtrService(apiKey, apiUrl);
-            GetDtrTemp();
-            timerDtrTemp.Start();
+            connectionService = new ConnectionService(Program.xApiKey, Program.serverUrl);
+            CheckApiConnection();
+        }
 
+        private async void CheckApiConnection()
+        {
+            Cursor = Cursors.WaitCursor;
+            btnLogTime.Enabled = false;
+            var con = await connectionService.APIConnection();
+            if (null == con)
+            {
+                if(MessageBox.Show("Unable to connect to API. Please check your network connection", "Service error", MessageBoxButtons.OK) == DialogResult.OK)
+                {
+                    Cursor = Cursors.WaitCursor;
+                    CheckApiConnection();
+                    Cursor = Cursors.Arrow;
+                }
+            } else
+            {
+                GetDtrTemp();
+                timerDtrTemp.Start();
+                btnLogTime.Enabled = true;
+                btnLogTime.Focus();
+            }
+            Cursor = Cursors.Arrow;
         }
 
 
