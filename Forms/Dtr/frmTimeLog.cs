@@ -53,6 +53,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 } else
                 {
                     MessageBox.Show(response.message, "Verification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtCode.Text = string.Empty;
+                    txtCode.Enabled = true;
+                    txtCode.Focus();
                 }
             } else
             {
@@ -80,6 +83,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 } else
                 {
                     MessageBox.Show("Failed to log time", "Log Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
             }
             txtCode.Enabled = true;
