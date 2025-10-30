@@ -42,10 +42,11 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         private async void GetDtrTemp()
         {
             var response = await dtrService.GetDtrTempList();
+            dgvDtr.Enabled = true;
             dgvDtr.Rows.Clear();
+            
             if (null != response)
             {
-                
                 foreach (DtrTemp d in response.data)
                 {
                     dgvDtr.Rows.Add(
@@ -56,24 +57,25 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                     );
                 }
             }
+            dgvDtr.Enabled = false;
         }
 
         private void frmDTR_Load(object sender, EventArgs e)
         {
             employeeService = new EmployeeService(apiKey, apiUrl);
             dtrService = new DtrService(apiKey, apiUrl);
-            connectionService = new ConnectionService(Program.xApiKey, Program.serverUrl);
+            connectionService = new ConnectionService(apiKey, apiUrl);
             CheckApiConnection();
         }
 
         private async void CheckApiConnection()
         {
             Cursor = Cursors.WaitCursor;
-            btnLogTime.Enabled = false;
+            //btnLogTime.Enabled = false;
             var con = await connectionService.APIConnection();
             if (null == con)
             {
-                if(MessageBox.Show("Unable to connect to API. Please check your network connection", "Service error", MessageBoxButtons.OK) == DialogResult.OK)
+                if (MessageBox.Show("Unable to connect to API. Please check your network connection", "Service error", MessageBoxButtons.OK) == DialogResult.OK)
                 {
                     Cursor = Cursors.WaitCursor;
                     CheckApiConnection();
@@ -81,9 +83,10 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 }
             } else
             {
+                btnLogTime.Enabled = true;
+                timerDtrTemp.Stop();
                 GetDtrTemp();
                 timerDtrTemp.Start();
-                btnLogTime.Enabled = true;
                 btnLogTime.Focus();
             }
             Cursor = Cursors.Arrow;

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CSIEmployeeMonitoringSystem.Services
 {
@@ -45,8 +46,9 @@ namespace CSIEmployeeMonitoringSystem.Services
                 APIDtrTempParser res = JsonConvert.DeserializeObject<APIDtrTempParser>(responseBody);
                 return res;
             }
-            catch
+            catch(Exception err)
             {
+                //MessageBox.Show(err.Message);
                 return null;
             }
 

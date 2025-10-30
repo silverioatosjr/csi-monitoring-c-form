@@ -20,6 +20,24 @@ namespace CSIEmployeeMonitoringSystem.Forms.Admin
         {
             InitializeComponent();
             btnLogin.Click += BtnLogin_Click;
+            txtPassword.KeyDown += TxtPassword_KeyDown;
+            txtUsename.KeyDown += TxtUsename_KeyDown;
+        }
+
+        private void TxtUsename_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                txtPassword.Focus();
+            }
+        }
+
+        private void TxtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                BtnLogin_Click(sender, e);
+            }
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
