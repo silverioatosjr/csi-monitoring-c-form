@@ -65,10 +65,16 @@
             this.lblEmployeeCode = new System.Windows.Forms.Label();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtCode = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtContractedHours = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFingerprint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -79,14 +85,14 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(20, 334);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(783, 91);
+            this.groupBox3.Size = new System.Drawing.Size(810, 91);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Controls";
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(487, 28);
+            this.btnCancel.Location = new System.Drawing.Point(514, 28);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(127, 42);
             this.btnCancel.TabIndex = 2;
@@ -95,7 +101,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(627, 28);
+            this.btnUpdate.Location = new System.Drawing.Point(654, 28);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(127, 42);
             this.btnUpdate.TabIndex = 1;
@@ -122,7 +128,7 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.optTax);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(486, 13);
+            this.groupBox2.Location = new System.Drawing.Point(513, 13);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(317, 311);
             this.groupBox2.TabIndex = 6;
@@ -211,6 +217,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.txtContractedHours);
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.label15);
@@ -236,7 +247,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(20, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(448, 312);
+            this.groupBox1.Size = new System.Drawing.Size(472, 312);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Employee Information";
@@ -246,7 +257,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(316, 146);
+            this.label17.Location = new System.Drawing.Point(307, 194);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(12, 15);
             this.label17.TabIndex = 23;
@@ -257,7 +268,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(321, 95);
+            this.label16.Location = new System.Drawing.Point(314, 95);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(12, 15);
             this.label16.TabIndex = 22;
@@ -268,7 +279,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(358, 42);
+            this.label15.Location = new System.Drawing.Point(357, 42);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(12, 15);
             this.label15.TabIndex = 21;
@@ -311,18 +322,18 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(248, 146);
+            this.label7.Location = new System.Drawing.Point(239, 194);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 15);
+            this.label7.Size = new System.Drawing.Size(76, 15);
             this.label7.TabIndex = 17;
-            this.label7.Text = "Fingerprint:";
+            this.label7.Text = "Fingerprint1:";
             // 
             // picFingerprint
             // 
             this.picFingerprint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picFingerprint.Location = new System.Drawing.Point(249, 164);
+            this.picFingerprint.Location = new System.Drawing.Point(240, 212);
             this.picFingerprint.Name = "picFingerprint";
-            this.picFingerprint.Size = new System.Drawing.Size(169, 119);
+            this.picFingerprint.Size = new System.Drawing.Size(75, 71);
             this.picFingerprint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picFingerprint.TabIndex = 16;
             this.picFingerprint.TabStop = false;
@@ -331,7 +342,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(246, 95);
+            this.label6.Location = new System.Drawing.Point(239, 95);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 15);
             this.label6.TabIndex = 15;
@@ -342,16 +353,16 @@
             this.optDesignation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.optDesignation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optDesignation.FormattingEnabled = true;
-            this.optDesignation.Location = new System.Drawing.Point(249, 113);
+            this.optDesignation.Location = new System.Drawing.Point(242, 113);
             this.optDesignation.Name = "optDesignation";
-            this.optDesignation.Size = new System.Drawing.Size(169, 24);
+            this.optDesignation.Size = new System.Drawing.Size(205, 24);
             this.optDesignation.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(246, 42);
+            this.label5.Location = new System.Drawing.Point(239, 42);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(113, 15);
             this.label5.TabIndex = 13;
@@ -362,9 +373,9 @@
             this.optEmployeeStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.optEmployeeStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optEmployeeStatus.FormattingEnabled = true;
-            this.optEmployeeStatus.Location = new System.Drawing.Point(249, 60);
+            this.optEmployeeStatus.Location = new System.Drawing.Point(242, 60);
             this.optEmployeeStatus.Name = "optEmployeeStatus";
-            this.optEmployeeStatus.Size = new System.Drawing.Size(169, 24);
+            this.optEmployeeStatus.Size = new System.Drawing.Size(205, 24);
             this.optEmployeeStatus.TabIndex = 4;
             // 
             // label3
@@ -382,7 +393,7 @@
             this.txtBasicSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBasicSalary.Location = new System.Drawing.Point(29, 261);
             this.txtBasicSalary.Name = "txtBasicSalary";
-            this.txtBasicSalary.Size = new System.Drawing.Size(169, 22);
+            this.txtBasicSalary.Size = new System.Drawing.Size(120, 22);
             this.txtBasicSalary.TabIndex = 3;
             this.txtBasicSalary.Text = "0";
             // 
@@ -401,7 +412,7 @@
             this.txtHourlyRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHourlyRate.Location = new System.Drawing.Point(29, 213);
             this.txtHourlyRate.Name = "txtHourlyRate";
-            this.txtHourlyRate.Size = new System.Drawing.Size(169, 22);
+            this.txtHourlyRate.Size = new System.Drawing.Size(120, 22);
             this.txtHourlyRate.TabIndex = 2;
             this.txtHourlyRate.Text = "0";
             // 
@@ -460,11 +471,62 @@
             this.txtCode.Size = new System.Drawing.Size(169, 22);
             this.txtCode.TabIndex = 10;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Red;
+            this.label18.Location = new System.Drawing.Point(440, 195);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(12, 15);
+            this.label18.TabIndex = 26;
+            this.label18.Text = "*";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(371, 195);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(76, 15);
+            this.label19.TabIndex = 25;
+            this.label19.Text = "Fingerprint2:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(372, 213);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(75, 71);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(237, 146);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(208, 15);
+            this.label20.TabIndex = 28;
+            this.label20.Text = "Regular full time load (hrs per week):";
+            // 
+            // txtContractedHours
+            // 
+            this.txtContractedHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContractedHours.Location = new System.Drawing.Point(240, 164);
+            this.txtContractedHours.MaxLength = 7;
+            this.txtContractedHours.Name = "txtContractedHours";
+            this.txtContractedHours.Size = new System.Drawing.Size(120, 22);
+            this.txtContractedHours.TabIndex = 27;
+            this.txtContractedHours.Text = "0";
+            // 
             // frmUpdateEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 447);
+            this.ClientSize = new System.Drawing.Size(852, 447);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -484,6 +546,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFingerprint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -526,5 +589,10 @@
         private System.Windows.Forms.Label lblEmployeeCode;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.TextBox txtCode;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtContractedHours;
     }
 }

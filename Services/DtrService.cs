@@ -46,7 +46,7 @@ namespace CSIEmployeeMonitoringSystem.Services
                 APIDtrTempParser res = JsonConvert.DeserializeObject<APIDtrTempParser>(responseBody);
                 return res;
             }
-            catch(Exception err)
+            catch
             {
                 //MessageBox.Show(err.Message);
                 return null;

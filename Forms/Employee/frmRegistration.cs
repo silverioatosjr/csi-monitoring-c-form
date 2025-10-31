@@ -40,7 +40,22 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             txtBasicSalary.TextChanged += txt_TextChanged;
             txtBasicSalary.LostFocus += txt_LostFocus;
             txtBasicSalary.GotFocus += txt_GotFocus;
-            
+            txtContractedHours.TextChanged += txt_TextChanged;
+            txtContractedHours.LostFocus += txt_LostFocus;
+            txtContractedHours.GotFocus += txt_GotFocus;
+            optEmployeeStatus.SelectedIndexChanged += OptEmployeeStatus_SelectedValueChanged;
+            optDesignation.SelectedIndexChanged += OptEmployeeStatus_SelectedValueChanged;
+        }
+
+        private void OptEmployeeStatus_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if(optEmployeeStatus.SelectedIndex == 1 && optDesignation.SelectedIndex != 0 && optDesignation.SelectedIndex != 4)
+            {
+                txtContractedHours.Enabled = true;
+            } else
+            {
+                txtContractedHours.Enabled = false;
+            }
         }
 
         private void txt_LostFocus(object sender, EventArgs e)
@@ -158,7 +173,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             }
             //resultEnrollment = null;
             _capture.ShowDialog();
-            picFingerprint.Image = ((PictureBox)_capture.Controls["pbFingerprint"]).Image;
+            picFingerprint1.Image = ((PictureBox)_capture.Controls["pbFingerprint"]).Image;
             if(null != preenrollmentFmds)
             {
                 fingerPrint = Fmd.SerializeXml(preenrollmentFmds[2]);
@@ -236,7 +251,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             optPhilhealth.SelectedIndex = 0;
             optSSS.SelectedIndex = 0;
             optTax.SelectedIndex = 0;
-            picFingerprint.Image = null;
+            picFingerprint1.Image = null;
             fingerPrint = string.Empty;
         }
         private void EmployeeStatus()
@@ -288,6 +303,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             inputs = new InputFilter();
             txtBasicSalary.Text = "0";
             txtHourlyRate.Text = "0";
+            txtContractedHours.Text = "0";
+            txtContractedHours.Enabled = false;
             fingerPrint = string.Empty;
         }
         

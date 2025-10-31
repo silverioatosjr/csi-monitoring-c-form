@@ -16,6 +16,7 @@ namespace CSIEmployeeMonitoringSystem.Models
         public string biometric { get; set; }
         public string designation { get; set; }
         public float hourlyRate { get; set; }
+        public float contractedHours { get; set; }
         public float basicSalary { get; set; }
     }
 }

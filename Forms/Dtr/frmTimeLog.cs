@@ -78,6 +78,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 var response = await dtrService.SaveDtr(employee);
                 if(null != response)
                 {
+                    MessageBox.Show(response.message, "Log Time", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 } else
