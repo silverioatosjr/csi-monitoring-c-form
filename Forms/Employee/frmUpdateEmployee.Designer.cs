@@ -43,6 +43,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.optTax = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtContractedHours = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.picFingerprint2 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -50,7 +55,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.picFingerprint = new System.Windows.Forms.PictureBox();
+            this.picFingerprint1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.optDesignation = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -65,16 +70,11 @@
             this.lblEmployeeCode = new System.Windows.Forms.Label();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtCode = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.txtContractedHours = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picFingerprint)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFingerprint2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFingerprint1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -221,7 +221,7 @@
             this.groupBox1.Controls.Add(this.txtContractedHours);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.picFingerprint2);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.label15);
@@ -229,7 +229,7 @@
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.picFingerprint);
+            this.groupBox1.Controls.Add(this.picFingerprint1);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.optDesignation);
             this.groupBox1.Controls.Add(this.label5);
@@ -251,6 +251,57 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Employee Information";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(237, 146);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(208, 15);
+            this.label20.TabIndex = 28;
+            this.label20.Text = "Regular full time load (hrs per week):";
+            // 
+            // txtContractedHours
+            // 
+            this.txtContractedHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContractedHours.Location = new System.Drawing.Point(240, 164);
+            this.txtContractedHours.MaxLength = 10;
+            this.txtContractedHours.Name = "txtContractedHours";
+            this.txtContractedHours.Size = new System.Drawing.Size(120, 22);
+            this.txtContractedHours.TabIndex = 27;
+            this.txtContractedHours.Text = "0";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Red;
+            this.label18.Location = new System.Drawing.Point(440, 195);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(12, 15);
+            this.label18.TabIndex = 26;
+            this.label18.Text = "*";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(371, 195);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(76, 15);
+            this.label19.TabIndex = 25;
+            this.label19.Text = "Fingerprint2:";
+            // 
+            // picFingerprint2
+            // 
+            this.picFingerprint2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picFingerprint2.Location = new System.Drawing.Point(372, 213);
+            this.picFingerprint2.Name = "picFingerprint2";
+            this.picFingerprint2.Size = new System.Drawing.Size(75, 71);
+            this.picFingerprint2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picFingerprint2.TabIndex = 24;
+            this.picFingerprint2.TabStop = false;
             // 
             // label17
             // 
@@ -328,15 +379,15 @@
             this.label7.TabIndex = 17;
             this.label7.Text = "Fingerprint1:";
             // 
-            // picFingerprint
+            // picFingerprint1
             // 
-            this.picFingerprint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picFingerprint.Location = new System.Drawing.Point(240, 212);
-            this.picFingerprint.Name = "picFingerprint";
-            this.picFingerprint.Size = new System.Drawing.Size(75, 71);
-            this.picFingerprint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picFingerprint.TabIndex = 16;
-            this.picFingerprint.TabStop = false;
+            this.picFingerprint1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picFingerprint1.Location = new System.Drawing.Point(240, 212);
+            this.picFingerprint1.Name = "picFingerprint1";
+            this.picFingerprint1.Size = new System.Drawing.Size(75, 71);
+            this.picFingerprint1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picFingerprint1.TabIndex = 16;
+            this.picFingerprint1.TabStop = false;
             // 
             // label6
             // 
@@ -392,6 +443,7 @@
             // 
             this.txtBasicSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBasicSalary.Location = new System.Drawing.Point(29, 261);
+            this.txtBasicSalary.MaxLength = 10;
             this.txtBasicSalary.Name = "txtBasicSalary";
             this.txtBasicSalary.Size = new System.Drawing.Size(120, 22);
             this.txtBasicSalary.TabIndex = 3;
@@ -411,6 +463,7 @@
             // 
             this.txtHourlyRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHourlyRate.Location = new System.Drawing.Point(29, 213);
+            this.txtHourlyRate.MaxLength = 10;
             this.txtHourlyRate.Name = "txtHourlyRate";
             this.txtHourlyRate.Size = new System.Drawing.Size(120, 22);
             this.txtHourlyRate.TabIndex = 2;
@@ -471,57 +524,6 @@
             this.txtCode.Size = new System.Drawing.Size(169, 22);
             this.txtCode.TabIndex = 10;
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Red;
-            this.label18.Location = new System.Drawing.Point(440, 195);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(12, 15);
-            this.label18.TabIndex = 26;
-            this.label18.Text = "*";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(371, 195);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(76, 15);
-            this.label19.TabIndex = 25;
-            this.label19.Text = "Fingerprint2:";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(372, 213);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 71);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(237, 146);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(208, 15);
-            this.label20.TabIndex = 28;
-            this.label20.Text = "Regular full time load (hrs per week):";
-            // 
-            // txtContractedHours
-            // 
-            this.txtContractedHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContractedHours.Location = new System.Drawing.Point(240, 164);
-            this.txtContractedHours.MaxLength = 7;
-            this.txtContractedHours.Name = "txtContractedHours";
-            this.txtContractedHours.Size = new System.Drawing.Size(120, 22);
-            this.txtContractedHours.TabIndex = 27;
-            this.txtContractedHours.Text = "0";
-            // 
             // frmUpdateEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -545,8 +547,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picFingerprint)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFingerprint2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFingerprint1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -574,7 +576,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.PictureBox picFingerprint;
+        private System.Windows.Forms.PictureBox picFingerprint1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox optDesignation;
         private System.Windows.Forms.Label label5;
@@ -591,7 +593,7 @@
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picFingerprint2;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtContractedHours;
     }

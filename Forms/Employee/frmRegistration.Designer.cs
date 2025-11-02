@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistration));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.picFingerprint2 = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtContractedHours = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -67,14 +70,11 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnScan = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.picFingerprint2 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picFingerprint2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picFingerprint1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picFingerprint2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -114,6 +114,37 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Employee Information";
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Red;
+            this.label19.Location = new System.Drawing.Point(439, 195);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(12, 15);
+            this.label19.TabIndex = 28;
+            this.label19.Text = "*";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(371, 195);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(76, 15);
+            this.label20.TabIndex = 27;
+            this.label20.Text = "Fingerprint2:";
+            // 
+            // picFingerprint2
+            // 
+            this.picFingerprint2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picFingerprint2.Location = new System.Drawing.Point(372, 213);
+            this.picFingerprint2.Name = "picFingerprint2";
+            this.picFingerprint2.Size = new System.Drawing.Size(75, 71);
+            this.picFingerprint2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picFingerprint2.TabIndex = 26;
+            this.picFingerprint2.TabStop = false;
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -131,7 +162,7 @@
             this.txtContractedHours.MaxLength = 7;
             this.txtContractedHours.Name = "txtContractedHours";
             this.txtContractedHours.Size = new System.Drawing.Size(120, 22);
-            this.txtContractedHours.TabIndex = 6;
+            this.txtContractedHours.TabIndex = 10;
             this.txtContractedHours.Text = "0";
             // 
             // label17
@@ -274,7 +305,7 @@
             // 
             this.txtBasicSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBasicSalary.Location = new System.Drawing.Point(29, 261);
-            this.txtBasicSalary.MaxLength = 7;
+            this.txtBasicSalary.MaxLength = 10;
             this.txtBasicSalary.Name = "txtBasicSalary";
             this.txtBasicSalary.Size = new System.Drawing.Size(120, 22);
             this.txtBasicSalary.TabIndex = 3;
@@ -294,7 +325,7 @@
             // 
             this.txtHourlyRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHourlyRate.Location = new System.Drawing.Point(29, 213);
-            this.txtHourlyRate.MaxLength = 7;
+            this.txtHourlyRate.MaxLength = 10;
             this.txtHourlyRate.Name = "txtHourlyRate";
             this.txtHourlyRate.Size = new System.Drawing.Size(120, 22);
             this.txtHourlyRate.TabIndex = 2;
@@ -493,37 +524,6 @@
             this.btnScan.Text = "Scan Fingerprint";
             this.btnScan.UseVisualStyleBackColor = true;
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.Red;
-            this.label19.Location = new System.Drawing.Point(439, 195);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(12, 15);
-            this.label19.TabIndex = 28;
-            this.label19.Text = "*";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(371, 195);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(76, 15);
-            this.label20.TabIndex = 27;
-            this.label20.Text = "Fingerprint2:";
-            // 
-            // picFingerprint2
-            // 
-            this.picFingerprint2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picFingerprint2.Location = new System.Drawing.Point(372, 213);
-            this.picFingerprint2.Name = "picFingerprint2";
-            this.picFingerprint2.Size = new System.Drawing.Size(75, 71);
-            this.picFingerprint2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picFingerprint2.TabIndex = 26;
-            this.picFingerprint2.TabStop = false;
-            // 
             // frmRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -544,11 +544,11 @@
             this.Load += new System.EventHandler(this.frmRegistration_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picFingerprint2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picFingerprint1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picFingerprint2)).EndInit();
             this.ResumeLayout(false);
 
         }

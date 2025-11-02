@@ -142,7 +142,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
                 {
                     dgvEmployeesList.Rows.Add(
                         s._id, $"{s.firstName} {s.lastName}", 
-                        s.code, s.hourlyRate, s.basicSalary, 
+                        s.code, s.hourlyRate, s.basicSalary, s.contractedHours, 
                         s.designation, s.employmentStatus,
                         employeeService.formatDgvTaxCellValue(s.deduction),
                         employeeService.formatDgvSssCellValue(s.deduction),

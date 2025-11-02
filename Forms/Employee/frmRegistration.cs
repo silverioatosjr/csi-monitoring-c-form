@@ -26,7 +26,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
         private TaxService taxService;
         private PhilhealthService philhealthService;
         private EmployeeService employeeService;
-        private string fingerPrint;
+        public string fingerPrint1;
+        public string fingerPrint2;
         private InputFilter inputs;
         public frmRegistration()
         {
@@ -172,12 +173,16 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
                 _capture._sender = this;
             }
             //resultEnrollment = null;
-            _capture.ShowDialog();
-            picFingerprint1.Image = ((PictureBox)_capture.Controls["pbFingerprint"]).Image;
-            if(null != preenrollmentFmds)
+            if(_capture.ShowDialog() == DialogResult.OK)
             {
-                fingerPrint = Fmd.SerializeXml(preenrollmentFmds[2]);
-                preenrollmentFmds.Clear();
+                picFingerprint1.Image = ((PictureBox)_capture.Controls["pbFingerprint1"]).Image;
+                picFingerprint2.Image = ((PictureBox)_capture.Controls["pbFingerprint2"]).Image;
+                if (null != preenrollmentFmds)
+                {
+                    fingerPrint1 = Fmd.SerializeXml(preenrollmentFmds[0]);
+                    fingerPrint2 = Fmd.SerializeXml(preenrollmentFmds[1]);
+                    preenrollmentFmds.Clear();
+                }
             }
             //_capture.Dispose();
             _capture = null;
@@ -201,12 +206,14 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
                     if (optPhilhealth.SelectedValue.ToString() != string.Empty)
                         deduction.philhealth = optPhilhealth.SelectedValue.ToString();
                 
-                    employee.biometric = fingerPrint;
+                    employee.biometric1 = fingerPrint1;
+                    employee.biometric2 = fingerPrint2;
                     employee.firstName = txtFirstName.Text;
                     employee.lastName = txtLastName.Text;
                     employee.code = txtCode.Text;
                     employee.basicSalary = float.Parse(txtBasicSalary.Text);
                     employee.hourlyRate = float.Parse(txtHourlyRate.Text);
+                    employee.contractedHours = float.Parse(txtContractedHours.Text);
                     employee.designation = optDesignation.SelectedValue.ToString();
                     employee.employmentStatus = optEmployeeStatus.SelectedValue.ToString();
                     employee.deduction = deduction;
@@ -220,7 +227,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
                 }
             } else
             {
-                MessageBox.Show("Fill in all the required (*) fields. \nBasic salary or Hourly rate must have a value.", "Employee Registration", MessageBoxButtons.OK);
+                MessageBox.Show("Fill in all the required (*) fields. \nBasic salary, Hourly rate, or contracted hours must have a value.", "Employee Registration", MessageBoxButtons.OK);
             }
         }
 
@@ -231,11 +238,26 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
                 optEmployeeStatus.SelectedIndex > 0 &&
                 txtFirstName.Text.Trim() != string.Empty &&
                 txtLastName.Text.Trim() != string.Empty &&
-                fingerPrint != string.Empty && (txtBasicSalary.Text !="0" || txtHourlyRate.Text != "0") )
+                fingerPrint1 != string.Empty && 
+                fingerPrint2 != string.Empty && 
+                (txtBasicSalary.Text !="0" || txtHourlyRate.Text != "0") &&
+                validateContractedHours()
+              )
             {
                 hasEmpty = true;
             }
             return hasEmpty;
+        }
+        private bool validateContractedHours()
+        {
+            var valid = true;
+            if (optEmployeeStatus.SelectedIndex == 1 && 
+                (optDesignation.SelectedIndex== 1 || 
+                 optDesignation.SelectedIndex == 2 || 
+                 optDesignation.SelectedIndex == 3) &&
+                 txtContractedHours.Text == "0")
+                valid = false;
+            return valid;
         }
 
         private void resetInputFields()
@@ -252,7 +274,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             optSSS.SelectedIndex = 0;
             optTax.SelectedIndex = 0;
             picFingerprint1.Image = null;
-            fingerPrint = string.Empty;
+            fingerPrint1 = string.Empty;
+            picFingerprint2.Image = null;
+            fingerPrint2 = string.Empty;
         }
         private void EmployeeStatus()
         {
@@ -305,7 +329,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             txtHourlyRate.Text = "0";
             txtContractedHours.Text = "0";
             txtContractedHours.Enabled = false;
-            fingerPrint = string.Empty;
+            fingerPrint1 = string.Empty;
+            fingerPrint2 = string.Empty;
         }
         
     }

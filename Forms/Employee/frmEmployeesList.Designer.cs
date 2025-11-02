@@ -45,6 +45,7 @@
             this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hourlyRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.basicSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contractedHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.designation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,6 +102,7 @@
             this.code,
             this.hourlyRate,
             this.basicSalary,
+            this.contractedHours,
             this.designation,
             this.employeeStatus,
             this.tax,
@@ -207,6 +209,12 @@
             this.basicSalary.ReadOnly = true;
             this.basicSalary.Width = 160;
             // 
+            // contractedHours
+            // 
+            this.contractedHours.HeaderText = "CONTRACTED HRS";
+            this.contractedHours.Name = "contractedHours";
+            this.contractedHours.Width = 170;
+            // 
             // designation
             // 
             this.designation.HeaderText = "DESIGNATION";
@@ -284,6 +292,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn code;
         private System.Windows.Forms.DataGridViewTextBoxColumn hourlyRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn basicSalary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contractedHours;
         private System.Windows.Forms.DataGridViewTextBoxColumn designation;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn tax;

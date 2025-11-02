@@ -109,6 +109,7 @@ namespace CSIEmployeeMonitoringSystem
             } else
             {
                 mnuConnectToServer.Enabled = false;
+                mnuLogin.Enabled = true;
                 mnuConnectToServer.Text = "Connected to Server";
             }
             Cursor = Cursors.Arrow;
@@ -141,10 +142,11 @@ namespace CSIEmployeeMonitoringSystem
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            DisableAllButtons();
+            //DisableAllButtons();
             connectionService = new ConnectionService(Program.xApiKey, Program.serverUrl);
             CheckApiConnection();
             userRole = "";
+            mnuLogin.Enabled = false;
         }
 
         private void SetUserAccessPrivilege()

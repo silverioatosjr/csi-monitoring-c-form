@@ -56,7 +56,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
             SendMessage
         }
         //ENROLL VARIABLES
-        int count;
+        private int count;
 
         //================== VARIABLES END =====================
 
@@ -79,17 +79,13 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
                     return;
                 }
 
-                // Create bitmap
-                foreach (Fid.Fiv fiv in captureResult.Data.Views)
-                {
-                    SendMessage(Actions.SendBitmap, CreateBitmap(fiv.RawImage, fiv.Width, fiv.Height));
-                }
                 count++;
+                // Create bitmap
+                
 
                 DataResult<Fmd> resultConversion = FeatureExtraction.CreateFmdFromFid(captureResult.Data, Constants.Formats.Fmd.ANSI);
 
-                SendMessage(Actions.SendMessage, "A finger was captured. Count:  " + (count));
-
+                
                 if (resultConversion.ResultCode != Constants.ResultCode.DP_SUCCESS)
                 {
                     Reset = true;
@@ -97,35 +93,33 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
                 }
 
                 _sender.preenrollmentFmds.Add(resultConversion.Data);
-
-                if (count >= 1)
+                if(count == 1)
                 {
-                    DataResult<Fmd> resultEnrollment = DPUruNet.Enrollment.CreateEnrollmentFmd(Constants.Formats.Fmd.ANSI, _sender.preenrollmentFmds);
-
-                    if (resultEnrollment.ResultCode == Constants.ResultCode.DP_SUCCESS)
-                    {
-                        SendMessage(Actions.SendMessage, "Enrollment was successful.");
-                        MessageBox.Show("Fingerprint samples are successfully created", "Biometrics", MessageBoxButtons.OK);
-                        //_sender.preenrollmentFmds.Clear();
+                     foreach (Fid.Fiv fiv in captureResult.Data.Views)
+                     {
+                         SendMessage(Actions.SendBitmap, CreateBitmap(fiv.RawImage, fiv.Width, fiv.Height));
+                     }
+                     SendMessage(Actions.SendMessage, "Fingerprint1 was captured.");
+                     MessageBox.Show("Place your next finger", "Biometrics", MessageBoxButtons.OK);
+             
+                } else if (count == 2)
+                {
+                    
+                        foreach (Fid.Fiv fiv in captureResult.Data.Views)
+                        {
+                            SendMessage(Actions.SendBitmap, CreateBitmap(fiv.RawImage, fiv.Width, fiv.Height));
+                        }
+                        SendMessage(Actions.SendMessage, "Fingerprint2 was captured.");
+                        MessageBox.Show("Fingerprints samples are successfully created", "Biometrics", MessageBoxButtons.OK);
                         this.Invoke(new Action(delegate ()
                         {
+                            this.DialogResult = DialogResult.OK;
                             this.Close();
                         }));
-                        count = 0;
                         
                         return;
-                    }
-                    else if (resultEnrollment.ResultCode == Constants.ResultCode.DP_ENROLLMENT_INVALID_SET)
-                    {
-                        SendMessage(Actions.SendMessage, "Enrollment was unsuccessful");
-                        //SendMessage(Actions.SendMessage, "Place a finger on the reader.");
-                        _sender.preenrollmentFmds.Clear();
-                        count = 0;
-                        return;
-                    }
+                    
                 }
-                if(count<4)
-                    SendMessage(Actions.SendMessage, "Place the same finger.");
             }
             catch (Exception ex)
             {
@@ -286,7 +280,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
                 CurrentReader = _readers[0];
                 OpenReader();
                 StartCaptureAsync(this.OnCaptured);
-                pbFingerprint.Image = null;
+                pbFingerprint1.Image = null;
+                pbFingerprint2.Image = null;
                 _sender.preenrollmentFmds = new List<Fmd>();
                 count = 0;
                 SendMessage(Actions.SendMessage, "Place a finger on the reader.");
@@ -304,7 +299,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
         {
             try
             {
-                if (this.pbFingerprint.InvokeRequired)
+                if (this.pbFingerprint1.InvokeRequired || this.pbFingerprint2.InvokeRequired)
                 {
                     SendMessageCallback d = new SendMessageCallback(SendMessage);
                     this.Invoke(d, new object[] { action, payload });
@@ -317,10 +312,16 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
                             lblPlaceFinger.Text=$"STATUS: {(string)payload}";
                             break;
                         case Actions.SendBitmap:
-                            pbFingerprint.Image = (Bitmap)payload;
-                            pbFingerprint.Refresh();
-                            lblPlaceFinger.Text = "STATUS: Fingerprint was captured.";
-                            //Close();
+                            if(count == 1)
+                            {
+                                pbFingerprint1.Image = (Bitmap)payload;
+                                pbFingerprint1.Refresh();
+
+                            } else
+                            {
+                                pbFingerprint2.Image = (Bitmap)payload;
+                                pbFingerprint2.Refresh();
+                            }
                             break;
                     }
                 }
