@@ -16,6 +16,7 @@ namespace CSIEmployeeMonitoringSystem.Models
         public string endTime { get; set; }
         public string room { get; set; }
         public string day { get; set; }
+        public string course { get; set; }
         public float unit { get; set; }
         public string schoolYear { get; set; }
         public string semester {get; set; }

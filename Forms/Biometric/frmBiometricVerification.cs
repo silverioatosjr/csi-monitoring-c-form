@@ -76,9 +76,11 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
                 SendMessage(Actions.SendMessage, "A finger was captured.");
 
                 preenrollmentFmd = resultConversion.Data;
-                Fmd finger = Fmd.DeserializeXml(_sender.fingerPrint);
-                CompareResult compare = Comparison.Compare(preenrollmentFmd, 0, finger, 0);
-                if(compare.Score < (PROBABILITY_ONE / 100000))
+                Fmd finger1 = Fmd.DeserializeXml(_sender.fingerPrint1);
+                Fmd finger2 = Fmd.DeserializeXml(_sender.fingerPrint2);
+                CompareResult compare1 = Comparison.Compare(preenrollmentFmd, 0, finger1, 0);
+                CompareResult compare2 = Comparison.Compare(preenrollmentFmd, 0, finger2, 0);
+                if (compare1.Score < (PROBABILITY_ONE / 100000) || compare2.Score < (PROBABILITY_ONE / 100000))
                 {
                     this.Invoke(new Action(delegate() {
                         this.DialogResult = DialogResult.OK;

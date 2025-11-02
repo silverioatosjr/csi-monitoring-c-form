@@ -57,6 +57,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             payload.semester = optSemester.SelectedValue.ToString();
             payload.subjectCode = txtSubjectCode.Text.Trim();
             payload.subject = txtSubject.Text.Trim();
+            payload.course = txtCourse.Text.Trim();
 
             var data = await scheduleService.PostSchedule(payload);
             if(null != data)
@@ -80,6 +81,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             optInstructor.SelectedIndex = 0;
             optSemester.SelectedIndex = 0;
             chkOpenTime.Checked = false;
+            txtCourse.Text = string.Empty;
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
@@ -157,7 +159,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
                 optInstructor.SelectedIndex == 0 ||
                 txtSubject.Text.Trim() == string.Empty ||
                 txtSubjectCode.Text.Trim() == string.Empty ||
-                txtRoom.Text.Trim() == string.Empty)
+                txtRoom.Text.Trim() == string.Empty ||
+                txtCourse.Text.Trim() == string.Empty)
                 
             {
                 hasError = true;

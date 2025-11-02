@@ -19,7 +19,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         private frmBiometricVerification frmBiometricVerification;
         private EmployeeService employeeService;
         private DtrService dtrService;
-        public string fingerPrint;
+        public string fingerPrint1;
+        public string fingerPrint2;
         private string employeeId;
         public bool isMatched;
         public frmTimeLog()
@@ -46,7 +47,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             {
                 if(response.isAllowed)
                 {
-                    fingerPrint = response.data.biometric;
+                    fingerPrint1 = response.data.biometric1;
+                    fingerPrint2 = response.data.biometric2;
                     employeeId = response.data._id;
                     OpenBiometric();
 
@@ -107,7 +109,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             dtrService = new DtrService(Program.xApiKey, Program.serverUrl);
             txtCode.Text = string.Empty;
             isMatched = false;
-            fingerPrint = string.Empty;
+            fingerPrint1 = string.Empty;
+            fingerPrint2 = string.Empty;
             employeeId = string.Empty;
         }
     }

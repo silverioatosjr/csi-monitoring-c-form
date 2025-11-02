@@ -18,6 +18,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
         private frmUpdateSchedule frmUpdateSchedule = new frmUpdateSchedule();
         private frmUploadSchedules frmUploadSchedules;
         private ScheduleService scheduleService;
+        private PrintService printService;
         private InstructorService instructorService;
         public string scheduleId;
         public frmParentSchedules()
@@ -35,7 +36,18 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             mnuDelete.Click += BtnDeleteSchedule_Click;
             btnSearch.Click += BtnSearch_Click;
             btnReset.Click += BtnReset_Click;
+            btnPrint.Click += BtnPrint_Click;
 
+        }
+
+        private void BtnPrint_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Click OK to continue...", "Print Schedules", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                printSchedules.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("schedules", 816, 1056);
+                printSchedulesDialog.Document = printSchedules;
+                printSchedulesDialog.Document.Print();
+            }
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -60,8 +72,13 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
                 string instructorId = optInstructor.SelectedValue.ToString();
                 var response = await scheduleService.GetIntructorSchedules(instructorId);
                 dgvSubjectSchedules.Rows.Clear();
+                btnPrint.Enabled = false;
                 if (null != response)
                 {
+                    if (response.data.Count > 0)
+                    {
+                        btnPrint.Enabled = true;
+                    }
                     foreach (Schedule s in response.data)
                     {
                         dgvSubjectSchedules.Rows.Add(s._id, s.instructor._id, $"{s.instructor.firstName} {s.instructor.lastName}", s.subjectCode, s.subject, s.startTime, s.endTime, s.day, s.room, s.semester, s.schoolYear);
@@ -209,8 +226,13 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             Cursor = Cursors.WaitCursor;
             var response = await scheduleService.GetSchedules();
             dgvSubjectSchedules.Rows.Clear();
+            btnPrint.Enabled = false;
             if (null != response)
             {
+                if(response.data.Count>0)
+                {
+                    btnPrint.Enabled = true;
+                }
                 foreach (Schedule s in response.data)
                 {
                     dgvSubjectSchedules.Rows.Add(s._id, s.instructor._id, $"{s.instructor.firstName} {s.instructor.lastName}", s.subjectCode, s.subject, s.startTime, s.endTime, s.day, s.room, s.semester, s.schoolYear);
@@ -244,15 +266,22 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
         {
             Cursor = Cursors.WaitCursor;
             scheduleService = new ScheduleService(Program.xApiKey, Program.serverUrl);
+            printService = new PrintService();
             GetSchedules();
             instructorService = new InstructorService(Program.xApiKey, Program.serverUrl);
             GetInstructors();
             btnUpdateSchedule.Enabled = false;
             btnDeleteSchedule.Enabled = false;
             btnDeleteSchedules.Enabled = false;
+            btnPrint.Enabled = false;
             scheduleId = string.Empty;
 
             Cursor = Cursors.Arrow;
+        }
+
+        private void printSchedules_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            printService.PrintSchedules(e, dgvSubjectSchedules);
         }
     }
 }

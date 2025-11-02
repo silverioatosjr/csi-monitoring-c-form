@@ -40,20 +40,14 @@
             this.mnuSchedule = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAddSchedule = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDtr = new System.Windows.Forms.ToolStripMenuItem();
-            this.collegeInstructorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.currentWeekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.currentMonthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDtrList = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCurrentDtr = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDtrHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPayroll = new System.Windows.Forms.ToolStripMenuItem();
-            this.modifyToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuPrint = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuPrintSchedules = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuPrintDtr = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuPrintPayroll = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.mnuCurrentPayroll = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuArchivedPayroll = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUsersManual = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.mnuMainStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +59,6 @@
             this.mnuSchedule,
             this.mnuDtr,
             this.mnuPayroll,
-            this.mnuPrint,
             this.helpToolStripMenuItem});
             this.mnuMainStrip.Location = new System.Drawing.Point(0, 0);
             this.mnuMainStrip.Name = "mnuMainStrip";
@@ -139,94 +132,44 @@
             // mnuDtr
             // 
             this.mnuDtr.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.collegeInstructorsToolStripMenuItem,
-            this.currentWeekToolStripMenuItem,
-            this.currentMonthToolStripMenuItem,
-            this.mnuDtrList});
+            this.mnuCurrentDtr,
+            this.mnuDtrHistory});
             this.mnuDtr.Name = "mnuDtr";
             this.mnuDtr.Size = new System.Drawing.Size(39, 20);
             this.mnuDtr.Text = "DTR";
             // 
-            // collegeInstructorsToolStripMenuItem
+            // mnuCurrentDtr
             // 
-            this.collegeInstructorsToolStripMenuItem.Name = "collegeInstructorsToolStripMenuItem";
-            this.collegeInstructorsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.collegeInstructorsToolStripMenuItem.Text = "Current Day";
+            this.mnuCurrentDtr.Name = "mnuCurrentDtr";
+            this.mnuCurrentDtr.Size = new System.Drawing.Size(152, 22);
+            this.mnuCurrentDtr.Text = "Current";
             // 
-            // currentWeekToolStripMenuItem
+            // mnuDtrHistory
             // 
-            this.currentWeekToolStripMenuItem.Name = "currentWeekToolStripMenuItem";
-            this.currentWeekToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.currentWeekToolStripMenuItem.Text = "Current Week";
-            // 
-            // currentMonthToolStripMenuItem
-            // 
-            this.currentMonthToolStripMenuItem.Name = "currentMonthToolStripMenuItem";
-            this.currentMonthToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.currentMonthToolStripMenuItem.Text = "Current Month";
-            // 
-            // mnuDtrList
-            // 
-            this.mnuDtrList.Name = "mnuDtrList";
-            this.mnuDtrList.Size = new System.Drawing.Size(153, 22);
-            this.mnuDtrList.Text = "History";
+            this.mnuDtrHistory.Name = "mnuDtrHistory";
+            this.mnuDtrHistory.Size = new System.Drawing.Size(152, 22);
+            this.mnuDtrHistory.Text = "History";
             // 
             // mnuPayroll
             // 
             this.mnuPayroll.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.modifyToolStripMenuItem2,
-            this.historyToolStripMenuItem});
+            this.mnuCurrentPayroll,
+            this.mnuArchivedPayroll});
             this.mnuPayroll.Name = "mnuPayroll";
             this.mnuPayroll.Size = new System.Drawing.Size(55, 20);
             this.mnuPayroll.Text = "Payroll";
             // 
-            // modifyToolStripMenuItem2
+            // mnuCurrentPayroll
             // 
-            this.modifyToolStripMenuItem2.Name = "modifyToolStripMenuItem2";
-            this.modifyToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.modifyToolStripMenuItem2.Text = "Current";
+            this.mnuCurrentPayroll.Name = "mnuCurrentPayroll";
+            this.mnuCurrentPayroll.Size = new System.Drawing.Size(152, 22);
+            this.mnuCurrentPayroll.Text = "Current";
             // 
-            // historyToolStripMenuItem
+            // mnuArchivedPayroll
             // 
-            this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            this.historyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.historyToolStripMenuItem.Text = "History";
-            // 
-            // mnuPrint
-            // 
-            this.mnuPrint.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuPrintSchedules,
-            this.mnuPrintDtr,
-            this.mnuPrintPayroll});
-            this.mnuPrint.Name = "mnuPrint";
-            this.mnuPrint.Size = new System.Drawing.Size(44, 20);
-            this.mnuPrint.Text = "Print";
-            // 
-            // mnuPrintSchedules
-            // 
-            this.mnuPrintSchedules.Name = "mnuPrintSchedules";
-            this.mnuPrintSchedules.Size = new System.Drawing.Size(152, 22);
-            this.mnuPrintSchedules.Text = "Schedules";
-            // 
-            // mnuPrintDtr
-            // 
-            this.mnuPrintDtr.Name = "mnuPrintDtr";
-            this.mnuPrintDtr.Size = new System.Drawing.Size(152, 22);
-            this.mnuPrintDtr.Text = "DTR";
-            // 
-            // mnuPrintPayroll
-            // 
-            this.mnuPrintPayroll.Name = "mnuPrintPayroll";
-            this.mnuPrintPayroll.Size = new System.Drawing.Size(152, 22);
-            this.mnuPrintPayroll.Text = "Payroll";
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 687);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1350, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
+            this.mnuArchivedPayroll.Name = "mnuArchivedPayroll";
+            this.mnuArchivedPayroll.Size = new System.Drawing.Size(152, 22);
+            this.mnuArchivedPayroll.Text = "Archived";
             // 
             // helpToolStripMenuItem
             // 
@@ -241,6 +184,14 @@
             this.mnuUsersManual.Name = "mnuUsersManual";
             this.mnuUsersManual.Size = new System.Drawing.Size(152, 22);
             this.mnuUsersManual.Text = "User\'s Manual";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 687);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1350, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // frmMain
             // 
@@ -275,19 +226,13 @@
         private System.Windows.Forms.ToolStripMenuItem mnuSchedule;
         private System.Windows.Forms.ToolStripMenuItem mnuAddSchedule;
         private System.Windows.Forms.ToolStripMenuItem mnuDtr;
-        private System.Windows.Forms.ToolStripMenuItem collegeInstructorsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mnuDtrList;
+        private System.Windows.Forms.ToolStripMenuItem mnuCurrentDtr;
+        private System.Windows.Forms.ToolStripMenuItem mnuDtrHistory;
         private System.Windows.Forms.ToolStripMenuItem mnuPayroll;
-        private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem mnuArchivedPayroll;
+        private System.Windows.Forms.ToolStripMenuItem mnuCurrentPayroll;
         private System.Windows.Forms.ToolStripMenuItem mnuConnectToServer;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripMenuItem mnuPrint;
-        private System.Windows.Forms.ToolStripMenuItem mnuPrintSchedules;
-        private System.Windows.Forms.ToolStripMenuItem mnuPrintDtr;
-        private System.Windows.Forms.ToolStripMenuItem mnuPrintPayroll;
-        private System.Windows.Forms.ToolStripMenuItem currentWeekToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem currentMonthToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuUsersManual;
     }

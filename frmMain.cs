@@ -137,7 +137,6 @@ namespace CSIEmployeeMonitoringSystem
             mnuSchedule.Enabled = false;
             mnuDtr.Enabled = false;
             mnuPayroll.Enabled = false;
-            mnuPrint.Enabled = false;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -157,9 +156,8 @@ namespace CSIEmployeeMonitoringSystem
                 mnuSchedule.Enabled = true;
                 mnuDtr.Enabled = true;
                 mnuPayroll.Enabled = true;
-                mnuPrint.Enabled = true;
                 mnuEmployeeRegistration.Enabled = true;
-                mnuDtrList.Enabled = true;
+                mnuDtrHistory.Enabled = true;
             }
             else if(userRole == string.Empty)
             {
@@ -171,9 +169,8 @@ namespace CSIEmployeeMonitoringSystem
                 mnuSchedule.Enabled = false;
                 mnuDtr.Enabled = true;
                 mnuPayroll.Enabled = false;
-                mnuPrint.Enabled = false;
                 mnuEmployeeRegistration.Enabled = false;
-                mnuDtrList.Enabled = false;
+                mnuDtrHistory.Enabled = false;
             }
         }
     }
