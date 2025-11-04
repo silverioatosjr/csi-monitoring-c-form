@@ -188,18 +188,20 @@ namespace CSIEmployeeMonitoringSystem.Services
                         else if (counter == 1)
                             sched.subject = cell.Value.ToString();
                         else if (counter == 2)
-                            sched.day = cell.Value.ToString();
+                            sched.course = cell.Value.ToString();
                         else if (counter == 3)
-                            sched.startTime = FormatTime(cell.Value.ToString());
+                            sched.day = cell.Value.ToString();
                         else if (counter == 4)
-                            sched.endTime = FormatTime(cell.Value.ToString());
+                            sched.startTime = FormatTime(cell.Value.ToString());
                         else if (counter == 5)
-                            sched.room = cell.Value.ToString();
+                            sched.endTime = FormatTime(cell.Value.ToString());
                         else if (counter == 6)
-                            sched.semester = cell.Value.ToString();
+                            sched.room = cell.Value.ToString();
                         else if (counter == 7)
-                            sched.schoolYear = cell.Value.ToString();
+                            sched.semester = cell.Value.ToString();
                         else if (counter == 8)
+                            sched.schoolYear = cell.Value.ToString();
+                        else if (counter == 9)
                             sched.instructor = cell.Value.ToString();
                         counter++;
                     }
@@ -221,20 +223,22 @@ namespace CSIEmployeeMonitoringSystem.Services
                 errors = errors + "Error on A1: Code Column header\n";
             if (sheet["B1"].Value.ToString() != "Subject")
                 errors = errors + "Error on B1: Subject Column header\n";
-            if (sheet["C1"].Value.ToString() != "Day")
-                errors = errors + "Error on C1: Day Column header\n";
-            if (sheet["D1"].Value.ToString() != "Start Time")
-                errors = errors + "Error on D1: Start Time Column header\n";
-            if (sheet["E1"].Value.ToString() != "End Time")
-                errors = errors + "Error on E1: End Time Column header\n";
-            if (sheet["F1"].Value.ToString() != "Room")
-                errors = errors + "Error on F1: Room Column header\n";
-            if (sheet["G1"].Value.ToString() != "Semester")
-                errors = errors + "Error on G1: Semester Column header\n";
-            if (sheet["H1"].Value.ToString() != "School Year")
-                errors = errors + "Error on H1: School Year Column header\n";
-            if (sheet["I1"].Value.ToString() != "Instructor Id")
-                errors = errors + "Error on I1: Instructor Id Column header\n";
+            if (sheet["C1"].Value.ToString() != "Course")
+                errors = errors + "Error on C1: Course Column header\n";
+            if (sheet["D1"].Value.ToString() != "Day")
+                errors = errors + "Error on D1: Day Column header\n";
+            if (sheet["E1"].Value.ToString() != "Start Time")
+                errors = errors + "Error on E1: Start Time Column header\n";
+            if (sheet["F1"].Value.ToString() != "End Time")
+                errors = errors + "Error on F1: End Time Column header\n";
+            if (sheet["G1"].Value.ToString() != "Room")
+                errors = errors + "Error on G1: Room Column header\n";
+            if (sheet["H1"].Value.ToString() != "Semester")
+                errors = errors + "Error on H1: Semester Column header\n";
+            if (sheet["I1"].Value.ToString() != "School Year")
+                errors = errors + "Error on I1: School Year Column header\n";
+            if (sheet["J1"].Value.ToString() != "Instructor Id")
+                errors = errors + "Error on J1: Instructor Id Column header\n";
             /**
              * 0-A CODE
              * 1-B SUBJECT
@@ -264,20 +268,27 @@ namespace CSIEmployeeMonitoringSystem.Services
                         {
                             errors = errors + $"Error on row {rowCounter} - Subject: {cell.Value.ToString()}\n";
                         }
-                    } else if (counter == 2)
+                    }
+                    else if (counter == 2)
+                    {
+                        if (cell.Value.ToString() == string.Empty)
+                        {
+                            errors = errors + $"Error on row {rowCounter} - Course: {cell.Value.ToString()}\n";
+                        }
+                    } else if (counter == 3)
                     {
                         if (!IsValidDay(cell.Value.ToString()))
                         {
                             errors = errors + $"Error on row {rowCounter} - Day: {cell.Value.ToString()}\n";
                         }
-                    } else if(counter == 3)
+                    } else if(counter == 4)
                     {
                         if (cell.Value.ToString() != string.Empty)
                             if(!IsValidTime(cell.Value.ToString())) {
                                 errors = errors + $"Error on row {rowCounter} - Start Time: {cell.Value.ToString()}\n";
                             }
                     }
-                    else if(counter == 4)
+                    else if(counter == 5)
                     {
                         if(cell.Value.ToString() != string.Empty)
                             if (!IsValidTime(cell.Value.ToString()))
@@ -287,18 +298,25 @@ namespace CSIEmployeeMonitoringSystem.Services
                     }
                     else if (counter == 6)
                     {
+                        if (cell.Value.ToString() == string.Empty)
+                        {
+                            errors = errors + $"Error on row {rowCounter} - Room: {cell.Value.ToString()}\n";
+                        }
+                    }
+                    else if (counter == 7)
+                    {
                         if (!IsValidSemester(cell.Value.ToString()) || cell.Value.ToString() == string.Empty)
                         {
                             errors = errors + $"Error on row {rowCounter} - Semester: {cell.Value.ToString()}\n";
                         }
                     }
-                    else if (counter == 7)
+                    else if (counter == 8)
                     {
                         if (cell.Value.ToString() == string.Empty)
                         {
                             errors = errors + $"Error on row {rowCounter} - School Year: {cell.Value.ToString()}\n";
                         }
-                    } else if (counter == 8)
+                    } else if (counter == 9)
                     {
                         if (!IsValidMongoId(cell.Value.ToString()) || cell.Value.ToString() == string.Empty)
                         {

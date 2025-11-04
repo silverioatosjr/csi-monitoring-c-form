@@ -76,7 +76,7 @@ namespace CSIEmployeeMonitoringSystem.Services
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync(apiUrl + $"/dtr/validate-employee-by-code/{code}");
+                HttpResponseMessage response = await client.GetAsync(apiUrl + $"/dtrs/validate-employee-by-code/{code}");
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 APIEmployeeLogParser res = JsonConvert.DeserializeObject<APIEmployeeLogParser>(responseBody);

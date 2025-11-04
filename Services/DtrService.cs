@@ -24,7 +24,7 @@ namespace CSIEmployeeMonitoringSystem.Services
                 using (var content = new StringContent(jsonContent, UnicodeEncoding.UTF8, "application/json"))
                 {
 
-                    HttpResponseMessage response = await client.PostAsync(apiUrl + $"/dtr", content);
+                    HttpResponseMessage response = await client.PostAsync(apiUrl + $"/dtrs", content);
                     response.EnsureSuccessStatusCode();
                     string responseBody = await response.Content.ReadAsStringAsync();
                     APIMessageParser res = JsonConvert.DeserializeObject<APIMessageParser>(responseBody);
@@ -40,7 +40,7 @@ namespace CSIEmployeeMonitoringSystem.Services
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync(apiUrl + "/dtr/dtr-temp");
+                HttpResponseMessage response = await client.GetAsync(apiUrl + "/dtrs/active/in");
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 APIDtrTempParser res = JsonConvert.DeserializeObject<APIDtrTempParser>(responseBody);
