@@ -348,6 +348,7 @@
     <Compile Include="Models\DtrGetDateRange.cs" />
     <Compile Include="Models\DtrGetWithEmployee.cs" />
     <Compile Include="Models\DtrTemp.cs" />
+    <Compile Include="Models\DtrUpdate.cs" />
     <Compile Include="Models\DTRVerfication.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployeeGet.cs" />

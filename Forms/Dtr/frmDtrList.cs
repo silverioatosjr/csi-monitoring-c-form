@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +16,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
     public partial class frmDtrList : Form
     {
         private EmployeeService employeeService;
+        private DtrService dtrService;
         public string dtrId;
         public frmDtrList()
         {
@@ -47,6 +49,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             {
                 optEmployees.SelectedIndex = 0;
             }
+            ResetDateFilter();
+            GetDtrs();
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -58,12 +62,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             } else
             {
                 Cursor = Cursors.WaitCursor;
-                if (optEmployees.SelectedValue.ToString() == string.Empty)
-                {
-                }
-                else
-                {
-                }
+                GetDtrs();
                 Cursor = Cursors.Arrow;
            }
         }
@@ -78,11 +77,14 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         private void frmDtrList_Load(object sender, EventArgs e)
         {
             employeeService = new EmployeeService(Program.xApiKey, Program.serverUrl);
+            dtrService = new DtrService(Program.xApiKey, Program.serverUrl);
             ResetDateFilter();
             dtrId = string.Empty;
             btnDtrDetails.Enabled = false;
             btnPrint.Enabled = false;
             GetEmployees();
+            //Thread.Sleep(500);
+            //GetDtrs();
         }
 
         private async void GetEmployees()
@@ -104,7 +106,51 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 optEmployees.ValueMember = "Value";
             }
         }
+        private async void GetDtrs()
+        {
+            if(optEmployees.SelectedIndex == 0)
+            {
+                var payload = new DtrGetDateRange();
+                payload.dateFrom = dtpFrom.Value;
+                payload.dateTo = dtpTo.Value;
+                var response = await dtrService.GetDtrs(payload);
+                if(null != response)
+                {
+                    PopulateDgv(response.data);
+                }
+            } else
+            {
+                var payload = new DtrGetWithEmployee();
+                payload.dateFrom = dtpFrom.Value;
+                payload.dateTo = dtpTo.Value;
+                payload.employee = optEmployees.SelectedValue.ToString();
+                var response = await dtrService.GetEmployeeDtrs(payload);
+                if (null != response)
+                {
+                    PopulateDgv(response.data);
+                }
+            }
+        }
 
-        
+        private void PopulateDgv(List<DTR> dtrs)
+        {
+            dgvDtrs.Rows.Clear();
+            if(dtrs.Count>0)
+            {
+                btnPrint.Enabled = true;
+            } else
+            {
+                btnPrint.Enabled = false;
+            }
+            foreach (DTR d in dtrs)
+            {
+                dgvDtrs.Rows.Add(
+                    d._id, $"{d.employee.firstName} {d.employee.lastName}",
+                    d.subjectCode, d.timeIn, d.timeOUt, d.hoursRendered,
+                    d.day, d.date
+                );
+            }
+            
+        }
     }
 }

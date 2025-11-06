@@ -153,7 +153,7 @@ namespace CSIEmployeeMonitoringSystem.Services
         {
             try
             {
-                HttpResponseMessage response = await client.PostAsync(apiUrl + $"/dtrs/archive-active-dtrs", null);
+                HttpResponseMessage response = await client.PostAsync(apiUrl + "/dtrs/archive-active-dtrs", null);
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 APIMessageParser res = JsonConvert.DeserializeObject<APIMessageParser>(responseBody);
