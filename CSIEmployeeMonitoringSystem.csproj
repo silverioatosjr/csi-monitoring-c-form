@@ -259,6 +259,24 @@
     <Compile Include="Forms\Dtr\frmDTR.Designer.cs">
       <DependentUpon>frmDTR.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Dtr\frmCurrentLogs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmCurrentLogs.Designer.cs">
+      <DependentUpon>frmCurrentLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmDtrDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmDtrDetails.Designer.cs">
+      <DependentUpon>frmDtrDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmDtrList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmDtrList.Designer.cs">
+      <DependentUpon>frmDtrList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Dtr\frmTimeLog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -429,6 +447,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dtr\frmDTR.resx">
       <DependentUpon>frmDTR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dtr\frmCurrentLogs.resx">
+      <DependentUpon>frmCurrentLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dtr\frmDtrDetails.resx">
+      <DependentUpon>frmDtrDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dtr\frmDtrList.resx">
+      <DependentUpon>frmDtrList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dtr\frmTimeLog.resx">
       <DependentUpon>frmTimeLog.cs</DependentUpon>

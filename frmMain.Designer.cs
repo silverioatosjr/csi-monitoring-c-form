@@ -148,7 +148,7 @@
             // 
             this.mnuDtrHistory.Name = "mnuDtrHistory";
             this.mnuDtrHistory.Size = new System.Drawing.Size(152, 22);
-            this.mnuDtrHistory.Text = "History";
+            this.mnuDtrHistory.Text = "List";
             // 
             // mnuPayroll
             // 
@@ -162,13 +162,13 @@
             // mnuCurrentPayroll
             // 
             this.mnuCurrentPayroll.Name = "mnuCurrentPayroll";
-            this.mnuCurrentPayroll.Size = new System.Drawing.Size(152, 22);
+            this.mnuCurrentPayroll.Size = new System.Drawing.Size(121, 22);
             this.mnuCurrentPayroll.Text = "Current";
             // 
             // mnuArchivedPayroll
             // 
             this.mnuArchivedPayroll.Name = "mnuArchivedPayroll";
-            this.mnuArchivedPayroll.Size = new System.Drawing.Size(152, 22);
+            this.mnuArchivedPayroll.Size = new System.Drawing.Size(121, 22);
             this.mnuArchivedPayroll.Text = "Archived";
             // 
             // helpToolStripMenuItem
@@ -182,7 +182,7 @@
             // mnuUsersManual
             // 
             this.mnuUsersManual.Name = "mnuUsersManual";
-            this.mnuUsersManual.Size = new System.Drawing.Size(152, 22);
+            this.mnuUsersManual.Size = new System.Drawing.Size(148, 22);
             this.mnuUsersManual.Text = "User\'s Manual";
             // 
             // statusStrip1

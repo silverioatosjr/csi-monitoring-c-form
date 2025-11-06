@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using CSIEmployeeMonitoringSystem.Forms.Employee;
 using CSIEmployeeMonitoringSystem.Services;
 using CSIEmployeeMonitoringSystem.Forms.Schedules;
+using CSIEmployeeMonitoringSystem.Forms.Dtr;
 
 namespace CSIEmployeeMonitoringSystem
 {
@@ -21,6 +22,8 @@ namespace CSIEmployeeMonitoringSystem
         private frmRegistration frmRegistrationForm = new frmRegistration();
         private ConnectionService connectionService;
         private frmEmployeesList frmEmployeesList = new frmEmployeesList();
+        private frmCurrentLogs frmCurrentLogs = new frmCurrentLogs();
+        private frmDtrList frmDtrList = new frmDtrList();
         public string userRole;
         public frmMain()
         {
@@ -32,6 +35,32 @@ namespace CSIEmployeeMonitoringSystem
             mnuCloseWindow.Click += MnuCloseWindow_Click;
             mnuLogin.Click += MnuLogin_Click;
             mnuAddSchedule.Click += MnuAddSchedule_Click;
+            mnuCurrentDtr.Click += MnuCurrentDtr_Click;
+            mnuDtrHistory.Click += MnuDtrHistory_Click;
+        }
+
+        private void MnuDtrHistory_Click(object sender, EventArgs e)
+        {
+            if (!frmDtrList.Created)
+            {
+                frmDtrList = new frmDtrList();
+                frmDtrList.MdiParent = this;
+                frmDtrList.Show();
+            }
+
+            frmDtrList.BringToFront();
+        }
+
+        private void MnuCurrentDtr_Click(object sender, EventArgs e)
+        {
+            if (!frmCurrentLogs.Created)
+            {
+                frmCurrentLogs = new frmCurrentLogs();
+                frmCurrentLogs.MdiParent = this;
+                frmCurrentLogs.Show();
+            }
+
+            frmCurrentLogs.BringToFront();
         }
 
         private void MnuAddSchedule_Click(object sender, EventArgs e)
