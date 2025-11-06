@@ -8,12 +8,6 @@ namespace CSIEmployeeMonitoringSystem.Models
 {
     class DtrUpdate
     {
-        public string _id { get; set; }
-        public string subjectCode { get; set; }
-        public string timeIn { get; set; }
-        public string timeOUt { get; set; }
         public float hoursRendered { get; set; }
-        public string date { get; set; }
-        public string day { get; set; }
     }
 }

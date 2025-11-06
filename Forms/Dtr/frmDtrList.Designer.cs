@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDtrList));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -35,14 +36,6 @@
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.dgvDtrs = new System.Windows.Forms.DataGridView();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.optEmployees = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnDtrDetails = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subjectCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,9 +44,23 @@
             this.hoursRendered = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.optEmployees = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnDtrDetails = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuViewDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.printDtr = new System.Drawing.Printing.PrintDocument();
+            this.printDtrDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDtrs)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -129,6 +136,50 @@
             this.dgvDtrs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDtrs.Size = new System.Drawing.Size(1004, 337);
             this.dgvDtrs.TabIndex = 15;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "DTR";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // employee
+            // 
+            this.employee.HeaderText = "EMPLOYEE";
+            this.employee.Name = "employee";
+            this.employee.Width = 250;
+            // 
+            // subjectCode
+            // 
+            this.subjectCode.HeaderText = "CODE";
+            this.subjectCode.Name = "subjectCode";
+            // 
+            // timeIn
+            // 
+            this.timeIn.HeaderText = "TIME IN";
+            this.timeIn.Name = "timeIn";
+            // 
+            // timeOut
+            // 
+            this.timeOut.HeaderText = "TIME OUT";
+            this.timeOut.Name = "timeOut";
+            // 
+            // hoursRendered
+            // 
+            this.hoursRendered.HeaderText = "HOURS RENDERED";
+            this.hoursRendered.Name = "hoursRendered";
+            this.hoursRendered.Width = 160;
+            // 
+            // day
+            // 
+            this.day.HeaderText = "DAY";
+            this.day.Name = "day";
+            this.day.Width = 150;
+            // 
+            // date
+            // 
+            this.date.HeaderText = "DATE";
+            this.date.Name = "date";
             // 
             // btnReset
             // 
@@ -212,49 +263,39 @@
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
             // 
-            // id
+            // contextMenu
             // 
-            this.id.HeaderText = "DTR";
-            this.id.Name = "id";
-            this.id.Visible = false;
+            this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuViewDetails,
+            this.mnuDelete});
+            this.contextMenu.Name = "contextMenu";
+            this.contextMenu.Size = new System.Drawing.Size(138, 48);
             // 
-            // employee
+            // mnuViewDetails
             // 
-            this.employee.HeaderText = "EMPLOYEE";
-            this.employee.Name = "employee";
-            this.employee.Width = 250;
+            this.mnuViewDetails.Name = "mnuViewDetails";
+            this.mnuViewDetails.Size = new System.Drawing.Size(137, 22);
+            this.mnuViewDetails.Text = "View Details";
             // 
-            // subjectCode
+            // mnuDelete
             // 
-            this.subjectCode.HeaderText = "CODE";
-            this.subjectCode.Name = "subjectCode";
+            this.mnuDelete.Name = "mnuDelete";
+            this.mnuDelete.Size = new System.Drawing.Size(137, 22);
+            this.mnuDelete.Text = "Delete";
             // 
-            // timeIn
+            // printDtr
             // 
-            this.timeIn.HeaderText = "TIME IN";
-            this.timeIn.Name = "timeIn";
+            this.printDtr.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDtr_PrintPage);
             // 
-            // timeOut
+            // printDtrDialog
             // 
-            this.timeOut.HeaderText = "TIME OUT";
-            this.timeOut.Name = "timeOut";
-            // 
-            // hoursRendered
-            // 
-            this.hoursRendered.HeaderText = "HOURS RENDERED";
-            this.hoursRendered.Name = "hoursRendered";
-            this.hoursRendered.Width = 160;
-            // 
-            // day
-            // 
-            this.day.HeaderText = "DAY";
-            this.day.Name = "day";
-            this.day.Width = 150;
-            // 
-            // date
-            // 
-            this.date.HeaderText = "DATE";
-            this.date.Name = "date";
+            this.printDtrDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printDtrDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printDtrDialog.ClientSize = new System.Drawing.Size(400, 300);
+            this.printDtrDialog.Enabled = true;
+            this.printDtrDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printDtrDialog.Icon")));
+            this.printDtrDialog.Name = "printDtrDialog";
+            this.printDtrDialog.Visible = false;
             // 
             // frmDtrList
             // 
@@ -277,6 +318,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDtrs)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.contextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -305,5 +347,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn hoursRendered;
         private System.Windows.Forms.DataGridViewTextBoxColumn day;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
+        private System.Windows.Forms.ContextMenuStrip contextMenu;
+        private System.Windows.Forms.ToolStripMenuItem mnuViewDetails;
+        private System.Windows.Forms.ToolStripMenuItem mnuDelete;
+        private System.Drawing.Printing.PrintDocument printDtr;
+        private System.Windows.Forms.PrintPreviewDialog printDtrDialog;
     }
 }

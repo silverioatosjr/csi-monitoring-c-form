@@ -17,6 +17,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
     {
         private EmployeeService employeeService;
         private DtrService dtrService;
+        private frmDtrDetails frmDtrDetails = new frmDtrDetails();
+        private PrintService printService;
         public string dtrId;
         public frmDtrList()
         {
@@ -26,11 +28,64 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             btnClose.Click += BtnClose_Click;
             btnPrint.Click += BtnPrint_Click;
             btnDtrDetails.Click += BtnDtrDetails_Click;
+            dgvDtrs.CellClick += DgvDtrs_CellClick;
+            dgvDtrs.MouseClick += DgvDtrs_MouseClick;
+            mnuViewDetails.Click += MnuViewDetails_Click;
+            mnuDelete.Click += MnuDelete_Click;
+        }
+
+        private void MnuDelete_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Are you sure you want to delete?", "Dtr", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void MnuViewDetails_Click(object sender, EventArgs e)
+        {
+            if (!frmDtrDetails.Created)
+            {
+                frmDtrDetails = new frmDtrDetails();
+            }
+            frmDtrDetails.dtrId = dtrId;
+            if (frmDtrDetails.ShowDialog() == DialogResult.OK)
+            {
+                dtrId = string.Empty;
+                GetDtrs();
+                btnDtrDetails.Enabled = false;
+            }
+        }
+
+        private void DgvDtrs_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dgvDtrs.HitTest(e.X, e.Y).RowIndex;
+                if (currentMouseOverRow >= 0)
+                {
+                    dgvDtrs.Rows[currentMouseOverRow].Selected = true;
+                    dtrId = dgvDtrs.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    contextMenu.Show(dgvDtrs, new Point(e.X, e.Y));
+                    btnDtrDetails.Enabled = true;
+                }
+
+            }
+        }
+
+        private void DgvDtrs_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                dtrId = dgvDtrs.Rows[e.RowIndex].Cells[0].Value.ToString();
+                btnDtrDetails.Enabled = true;
+            }
         }
 
         private void BtnDtrDetails_Click(object sender, EventArgs e)
         {
-            
+            MnuViewDetails_Click(sender, e);
         }
 
         private void BtnPrint_Click(object sender, EventArgs e)
@@ -78,6 +133,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         {
             employeeService = new EmployeeService(Program.xApiKey, Program.serverUrl);
             dtrService = new DtrService(Program.xApiKey, Program.serverUrl);
+            printService = new PrintService();
             ResetDateFilter();
             dtrId = string.Empty;
             btnDtrDetails.Enabled = false;
@@ -135,6 +191,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         private void PopulateDgv(List<DTR> dtrs)
         {
             dgvDtrs.Rows.Clear();
+            btnDtrDetails.Enabled = false;
             if(dtrs.Count>0)
             {
                 btnPrint.Enabled = true;
@@ -146,11 +203,16 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             {
                 dgvDtrs.Rows.Add(
                     d._id, $"{d.employee.firstName} {d.employee.lastName}",
-                    d.subjectCode, d.timeIn, d.timeOUt, d.hoursRendered,
-                    d.day, d.date
+                    d.subjectCode, d.timeIn, d.timeOut, d.hoursRendered,
+                    d.day, DateTime.Parse(d.date).ToString("MM/dd/yyyy")
                 );
             }
             
+        }
+
+        private void printDtr_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
         }
     }
 }
