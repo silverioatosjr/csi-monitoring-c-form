@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDtrList));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.dgvDtrs = new System.Windows.Forms.DataGridView();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -39,16 +43,14 @@
             this.btnDtrDetails = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subjectCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hoursRendered = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
-            this.dtpTo = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDtrs)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -67,17 +69,55 @@
             this.groupBox1.Controls.Add(this.optEmployees);
             this.groupBox1.Location = new System.Drawing.Point(20, 16);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(953, 427);
+            this.groupBox1.Size = new System.Drawing.Size(1055, 427);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DTR List";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(567, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(28, 16);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "To:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(391, 35);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 16);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "From:";
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTo.Location = new System.Drawing.Point(599, 32);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(114, 24);
+            this.dtpTo.TabIndex = 17;
+            // 
+            // dtpFrom
+            // 
+            this.dtpFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFrom.Location = new System.Drawing.Point(439, 32);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(114, 24);
+            this.dtpFrom.TabIndex = 16;
             // 
             // dgvDtrs
             // 
             this.dgvDtrs.AllowUserToAddRows = false;
             this.dgvDtrs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDtrs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
             this.employee,
+            this.subjectCode,
             this.timeIn,
             this.timeOut,
             this.hoursRendered,
@@ -87,7 +127,7 @@
             this.dgvDtrs.MultiSelect = false;
             this.dgvDtrs.Name = "dgvDtrs";
             this.dgvDtrs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDtrs.Size = new System.Drawing.Size(904, 337);
+            this.dgvDtrs.Size = new System.Drawing.Size(1004, 337);
             this.dgvDtrs.TabIndex = 15;
             // 
             // btnReset
@@ -134,7 +174,7 @@
             this.groupBox2.Controls.Add(this.btnPrint);
             this.groupBox2.Location = new System.Drawing.Point(20, 464);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(953, 105);
+            this.groupBox2.Size = new System.Drawing.Size(1055, 105);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Controls";
@@ -153,7 +193,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(801, 37);
+            this.btnClose.Location = new System.Drawing.Point(901, 37);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(127, 42);
@@ -172,11 +212,22 @@
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
             // 
+            // id
+            // 
+            this.id.HeaderText = "DTR";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
             // employee
             // 
             this.employee.HeaderText = "EMPLOYEE";
             this.employee.Name = "employee";
             this.employee.Width = 250;
+            // 
+            // subjectCode
+            // 
+            this.subjectCode.HeaderText = "CODE";
+            this.subjectCode.Name = "subjectCode";
             // 
             // timeIn
             // 
@@ -205,47 +256,11 @@
             this.date.HeaderText = "DATE";
             this.date.Name = "date";
             // 
-            // dtpFrom
-            // 
-            this.dtpFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFrom.Location = new System.Drawing.Point(439, 32);
-            this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(114, 24);
-            this.dtpFrom.TabIndex = 16;
-            // 
-            // dtpTo
-            // 
-            this.dtpTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTo.Location = new System.Drawing.Point(599, 32);
-            this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(114, 24);
-            this.dtpTo.TabIndex = 17;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(391, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 16);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "From:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(567, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 16);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "To:";
-            // 
             // frmDtrList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(994, 591);
+            this.ClientSize = new System.Drawing.Size(1100, 591);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -278,15 +293,17 @@
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnDtrDetails;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtpTo;
+        private System.Windows.Forms.DateTimePicker dtpFrom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn employee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subjectCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeOut;
         private System.Windows.Forms.DataGridViewTextBoxColumn hoursRendered;
         private System.Windows.Forms.DataGridViewTextBoxColumn day;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dtpTo;
-        private System.Windows.Forms.DateTimePicker dtpFrom;
     }
 }

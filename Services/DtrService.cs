@@ -53,5 +53,117 @@ namespace CSIEmployeeMonitoringSystem.Services
             }
 
         }
+
+        public async Task<APIDtrsParser> GetDtrs(DtrGetDateRange payload)
+        {
+            try
+            {
+                string jsonContent = JsonConvert.SerializeObject(payload);
+                using (var content = new StringContent(jsonContent, UnicodeEncoding.UTF8, "application/json"))
+                {
+
+                    HttpResponseMessage response = await client.PostAsync(apiUrl + $"/dtrs/all", content);
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    APIDtrsParser res = JsonConvert.DeserializeObject<APIDtrsParser>(responseBody);
+                    return res;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<APIDtrsParser> GetEmployeeDtrs(DtrGetWithEmployee payload)
+        {
+            try
+            {
+                string jsonContent = JsonConvert.SerializeObject(payload);
+                using (var content = new StringContent(jsonContent, UnicodeEncoding.UTF8, "application/json"))
+                {
+
+                    HttpResponseMessage response = await client.PostAsync(apiUrl + $"/dtrs/employee", content);
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    APIDtrsParser res = JsonConvert.DeserializeObject<APIDtrsParser>(responseBody);
+                    return res;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<APIDtrParser> GetDtr(string id)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl + $"/dtrs/{id}");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APIDtrParser res = JsonConvert.DeserializeObject<APIDtrParser>(responseBody);
+                return res;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<APIMessageParser> UpdateDtr(string id, DtrUpdate payload)
+        {
+            try
+            {
+                string jsonContent = JsonConvert.SerializeObject(payload);
+                using (var content = new StringContent(jsonContent, UnicodeEncoding.UTF8, "application/json"))
+                {
+
+                    HttpResponseMessage response = await client.PutAsync(apiUrl + $"/dtrs/{id}", content);
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    APIMessageParser res = JsonConvert.DeserializeObject<APIMessageParser>(responseBody);
+                    return res;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<APIMessageParser> DeleteDtr(string id)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.DeleteAsync(apiUrl + $"/dtrs/{id}");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APIMessageParser res = JsonConvert.DeserializeObject<APIMessageParser>(responseBody);
+                return res;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<APIMessageParser> ArchivedAllActiveDtrs()
+        {
+            try
+            {
+                HttpResponseMessage response = await client.PostAsync(apiUrl + $"/dtrs/archive-active-dtrs", null);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APIMessageParser res = JsonConvert.DeserializeObject<APIMessageParser>(responseBody);
+                return res;  
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
     }
 }
