@@ -44,7 +44,7 @@ namespace CSIEmployeeMonitoringSystem.Services
                 string jsonContent = JsonConvert.SerializeObject(payload);
                 using (var content = new StringContent(jsonContent, UnicodeEncoding.UTF8, "application/json"))
                 {
-                    HttpResponseMessage response = await client.PostAsync(apiUrl + $"/payroll/generate-payroll", content);
+                    HttpResponseMessage response = await client.PostAsync(apiUrl + $"/payroll/get-archived-payroll", content);
                     response.EnsureSuccessStatusCode();
                     string responseBody = await response.Content.ReadAsStringAsync();
                     APIPayrollGetsParser res = JsonConvert.DeserializeObject<APIPayrollGetsParser>(responseBody);

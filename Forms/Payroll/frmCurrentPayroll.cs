@@ -57,6 +57,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             if(null != response)
             {
                 MessageBox.Show("Current payrolls have been archived.\nYou can see it in the archived window", "Payroll", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } else
+            {
+                MessageBox.Show("Unable to archived payroll.", "Payroll", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void BtnGeneratePayroll_Click(object sender, EventArgs e)
