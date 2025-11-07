@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CSIEmployeeMonitoringSystem.Forms.Payroll
 {
-    public partial class frmPayroll : Form
+    public partial class frmPayrollDetails : Form
     {
-        public frmPayroll()
+        public frmPayrollDetails()
         {
             InitializeComponent();
         }

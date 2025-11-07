@@ -12,6 +12,7 @@ using CSIEmployeeMonitoringSystem.Forms.Employee;
 using CSIEmployeeMonitoringSystem.Services;
 using CSIEmployeeMonitoringSystem.Forms.Schedules;
 using CSIEmployeeMonitoringSystem.Forms.Dtr;
+using CSIEmployeeMonitoringSystem.Forms.Payroll;
 
 namespace CSIEmployeeMonitoringSystem
 {
@@ -24,6 +25,9 @@ namespace CSIEmployeeMonitoringSystem
         private frmEmployeesList frmEmployeesList = new frmEmployeesList();
         private frmCurrentLogs frmCurrentLogs = new frmCurrentLogs();
         private frmDtrList frmDtrList = new frmDtrList();
+        private frmCurrentPayroll frmCurrentPayroll = new frmCurrentPayroll();
+        private frmArchivedPayroll frmArchivedPayroll = new frmArchivedPayroll();
+      
         public string userRole;
         public frmMain()
         {
@@ -37,6 +41,32 @@ namespace CSIEmployeeMonitoringSystem
             mnuAddSchedule.Click += MnuAddSchedule_Click;
             mnuCurrentDtr.Click += MnuCurrentDtr_Click;
             mnuDtrHistory.Click += MnuDtrHistory_Click;
+            mnuCurrentPayroll.Click += MnuCurrentPayroll_Click;
+            mnuArchivedPayroll.Click += MnuArchivedPayroll_Click;
+        }
+
+        private void MnuArchivedPayroll_Click(object sender, EventArgs e)
+        {
+            if (!frmArchivedPayroll.Created)
+            {
+                frmArchivedPayroll = new frmArchivedPayroll();
+                frmArchivedPayroll.MdiParent = this;
+                frmArchivedPayroll.Show();
+            }
+
+            frmArchivedPayroll.BringToFront();
+        }
+
+        private void MnuCurrentPayroll_Click(object sender, EventArgs e)
+        {
+            if (!frmCurrentPayroll.Created)
+            {
+                frmCurrentPayroll = new frmCurrentPayroll();
+                frmCurrentPayroll.MdiParent = this;
+                frmCurrentPayroll.Show();
+            }
+
+            frmCurrentPayroll.BringToFront();
         }
 
         private void MnuDtrHistory_Click(object sender, EventArgs e)
