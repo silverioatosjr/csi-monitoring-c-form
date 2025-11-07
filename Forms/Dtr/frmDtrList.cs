@@ -36,9 +36,25 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
 
         private void MnuDelete_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Are you sure you want to delete?", "Dtr", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.OK)
+            if(MessageBox.Show("Are you sure you want to delete?", "Dtr", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                Cursor = Cursors.WaitCursor;
+                DeleteDtr();
+                GetDtrs();
+                Cursor = Cursors.Arrow;
+            }
+        }
+        private async void DeleteDtr()
+        {
+            var response = await dtrService.DeleteDtr(dtrId);
+            if(null != response)
+            {
+                MessageBox.Show("Dtr has been deleted.", "Dtr", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dtrId = string.Empty;
 
+            } else
+            {
+                MessageBox.Show("Unable to delete Dtr.", "Dtr", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -90,7 +106,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
 
         private void BtnPrint_Click(object sender, EventArgs e)
         {
-            
+            if (MessageBox.Show("Click OK to continue...", "Print DTRs", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                printDtr.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("dtrs", 816, 1056);
+                printDtrDialog.Document = printDtr;
+                printDtrDialog.Document.Print();
+            }
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -212,7 +233,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
 
         private void printDtr_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-
+            printService.PrintDtrs(e, dgvDtrs);
         }
     }
 }
