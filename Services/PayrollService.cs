@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CSIEmployeeMonitoringSystem.Services
 {
@@ -101,8 +102,9 @@ namespace CSIEmployeeMonitoringSystem.Services
                 APIPayrollGetsParser res = JsonConvert.DeserializeObject<APIPayrollGetsParser>(responseBody);
                 return res;
             }
-            catch
+            catch(Exception e)
             {
+                MessageBox.Show(e.ToString());
                 return null;
             }
         }

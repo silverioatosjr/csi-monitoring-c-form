@@ -10,6 +10,6 @@ namespace CSIEmployeeMonitoringSystem.ApiParser.PayrollParser
     class APIPayrollGetParser
     {
         public string message { get; set; }
-        public Payroll data { get; set; }
+        public PayrollData data { get; set; }
     }
 }

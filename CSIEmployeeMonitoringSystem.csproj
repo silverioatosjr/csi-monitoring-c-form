@@ -379,7 +379,8 @@
     <Compile Include="Models\Pagibig.cs" />
     <Compile Include="Models\Payroll\ArchivePayroll.cs" />
     <Compile Include="Models\Payroll\GeneratePayroll.cs" />
-    <Compile Include="Models\Payroll\Payroll.cs" />
+    <Compile Include="Models\Payroll\PayrollData.cs" />
+    <Compile Include="Models\Payroll\PayrollDtr.cs" />
     <Compile Include="Models\Payroll\PayrollUpdate.cs" />
     <Compile Include="Models\Philhealth.cs" />
     <Compile Include="Models\Schedule.cs" />

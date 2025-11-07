@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CSIEmployeeMonitoringSystem.Models.Payroll
 {
-    class Payroll
+    class PayrollData
     {
         public string _id { get; set; }
         public Employee employee { get; set; }
         public float totalHours { get; set; }
-        public List<DTR> dtrs { get; set; }
+        public List<PayrollDtr> dtrs { get; set; }
         public float grossPay { get; set; }
         public float netPay { get; set; }
         public float sss { get; set; }
@@ -21,7 +21,7 @@ namespace CSIEmployeeMonitoringSystem.Models.Payroll
         public float daysAbsent { get; set; }
         public float tax { get; set; }
         public float philhealth { get; set; }
-        public float cutOff { get; set; }
+        public string cutOff { get; set; }
         public string month { get; set; }
 }
 }
