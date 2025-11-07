@@ -23,8 +23,42 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             btnClose.Click += BtnClose_Click;
             btnViewDetails.Click += BtnViewDetails_Click;
             btnGeneratePayroll.Click += BtnGeneratePayroll_Click;
+            btnArchivePayroll.Click += BtnArchivePayroll_Click;
+            btnDeleteCurrentPayroll.Click += BtnDeleteCurrentPayroll_Click;
         }
 
+        private void BtnDeleteCurrentPayroll_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deleting payroll cannot be reverted. Are you sure?", "Payroll", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                DeleteParolls();
+                GetCurrentPayrolls();
+            }
+        }
+        private async void DeleteParolls()
+        {
+            var response = await payrollService.DeleteCureentPayroll();
+            if (null != response)
+            {
+                MessageBox.Show("Current payrolls have been deleted.", "Payroll", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void BtnArchivePayroll_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Archiving payroll cannot be reverted. Are you sure?", "Payroll", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                ArchiveParolls();
+                GetCurrentPayrolls();
+            }
+        }
+        private async void ArchiveParolls()
+        {
+            var response = await payrollService.ArchiveCurrentPayroll();
+            if(null != response)
+            {
+                MessageBox.Show("Current payrolls have been archived.\nYou can see it in the archived window", "Payroll", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         private void BtnGeneratePayroll_Click(object sender, EventArgs e)
         {
             if(frmGeneratePayroll.ShowDialog() == DialogResult.OK)
@@ -35,14 +69,19 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
 
         private async void GetCurrentPayrolls()
         {
+            dgvCurrentPayroll.Rows.Clear();
             var response = await payrollService.GetCurrentPayrolls();
             if(null != response)
             {
-               
+                Cursor = Cursors.WaitCursor;
                 PopulateGdv(response.data);
+                Cursor = Cursors.Arrow;
             } else
             {
                 btnGeneratePayroll.Enabled = true;
+                btnArchivePayroll.Enabled = false;
+                btnDeleteCurrentPayroll.Enabled = false;
+                btnPrintAll.Enabled = false;
             }
         }
 
@@ -52,7 +91,6 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             if (payrolls.Count > 0)
             {
                 btnPrintAll.Enabled = true;
-                btnPrintAll.Cursor = Cursors.Arrow;
                 btnGeneratePayroll.Enabled = false;
                 btnArchivePayroll.Enabled = true;
                 btnDeleteCurrentPayroll.Enabled = true;
@@ -60,9 +98,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             else
             {
                 btnPrintAll.Enabled = false;
-                btnGeneratePayroll.Enabled = false;
+                btnGeneratePayroll.Enabled = true;
                 btnArchivePayroll.Enabled = false;
-                btnDeleteCurrentPayroll.Enabled = true;
+                btnDeleteCurrentPayroll.Enabled = false;
             }
 
             foreach (PayrollData p in payrolls)

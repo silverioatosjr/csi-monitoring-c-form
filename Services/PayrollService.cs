@@ -104,7 +104,6 @@ namespace CSIEmployeeMonitoringSystem.Services
             }
             catch(Exception e)
             {
-                MessageBox.Show(e.ToString());
                 return null;
             }
         }
