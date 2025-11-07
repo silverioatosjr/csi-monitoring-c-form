@@ -52,6 +52,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             if (payrolls.Count > 0)
             {
                 btnPrintAll.Enabled = true;
+                btnPrintAll.Cursor = Cursors.Arrow;
                 btnGeneratePayroll.Enabled = false;
                 btnArchivePayroll.Enabled = true;
                 btnDeleteCurrentPayroll.Enabled = true;
@@ -67,8 +68,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             foreach (PayrollData p in payrolls)
             {
                 dgvCurrentPayroll.Rows.Add(
-                    p._id, $"{p.employee.firstName} {p.employee.lastName}"
-                    //d.subjectCode, d.timeIn, d.timeOut, d.hoursRendered,
+                    p._id, $"{p.employee.firstName} {p.employee.lastName}",
+                    p.month, p.days, p.daysWorked, p.totalHours,p.grossPay, p.netPay,
+                    p.tax, p.sss, p.pagibig, p.philhealth
                     //d.day, DateTime.Parse(d.date).ToString("MM/dd/yyyy")
                 );
             }
