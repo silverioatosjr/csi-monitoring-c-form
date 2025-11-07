@@ -10,5 +10,6 @@ namespace CSIEmployeeMonitoringSystem.Models.Payroll
     {
         public string month { get; set; }
         public string year { get; set; }
+        public string employee { get; set; }
     }
 }
