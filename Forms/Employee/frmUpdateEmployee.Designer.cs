@@ -92,30 +92,39 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.LightSlateGray;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCancel.Location = new System.Drawing.Point(514, 28);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(127, 42);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             // 
             // btnUpdate
             // 
+            this.btnUpdate.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnUpdate.Location = new System.Drawing.Point(654, 28);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(127, 42);
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.UseVisualStyleBackColor = false;
             // 
             // btnScan
             // 
+            this.btnScan.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnScan.Location = new System.Drawing.Point(29, 28);
             this.btnScan.Name = "btnScan";
             this.btnScan.Size = new System.Drawing.Size(127, 42);
             this.btnScan.TabIndex = 0;
             this.btnScan.Text = "Scan Fingerprint";
-            this.btnScan.UseVisualStyleBackColor = true;
+            this.btnScan.UseVisualStyleBackColor = false;
             // 
             // groupBox2
             // 
@@ -528,6 +537,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(852, 447);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);

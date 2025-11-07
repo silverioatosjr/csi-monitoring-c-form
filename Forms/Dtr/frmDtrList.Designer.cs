@@ -120,6 +120,7 @@
             // dgvDtrs
             // 
             this.dgvDtrs.AllowUserToAddRows = false;
+            this.dgvDtrs.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgvDtrs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDtrs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -183,21 +184,27 @@
             // 
             // btnReset
             // 
+            this.btnReset.BackColor = System.Drawing.Color.SlateGray;
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnReset.Location = new System.Drawing.Point(851, 30);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(77, 29);
             this.btnReset.TabIndex = 14;
             this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.UseVisualStyleBackColor = false;
             // 
             // btnSearch
             // 
+            this.btnSearch.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSearch.Location = new System.Drawing.Point(758, 30);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(77, 29);
             this.btnSearch.TabIndex = 13;
             this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -232,36 +239,42 @@
             // 
             // btnDtrDetails
             // 
-            this.btnDtrDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDtrDetails.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnDtrDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDtrDetails.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnDtrDetails.Location = new System.Drawing.Point(23, 37);
             this.btnDtrDetails.Margin = new System.Windows.Forms.Padding(4);
             this.btnDtrDetails.Name = "btnDtrDetails";
             this.btnDtrDetails.Size = new System.Drawing.Size(127, 42);
             this.btnDtrDetails.TabIndex = 15;
             this.btnDtrDetails.Text = "View Details";
-            this.btnDtrDetails.UseVisualStyleBackColor = true;
+            this.btnDtrDetails.UseVisualStyleBackColor = false;
             // 
             // btnClose
             // 
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnClose.Location = new System.Drawing.Point(901, 37);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(127, 42);
             this.btnClose.TabIndex = 14;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             // 
             // btnPrint
             // 
-            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnPrint.Location = new System.Drawing.Point(170, 37);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(127, 42);
             this.btnPrint.TabIndex = 13;
             this.btnPrint.Text = "Print";
-            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.UseVisualStyleBackColor = false;
             // 
             // contextMenu
             // 
@@ -301,6 +314,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1100, 591);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

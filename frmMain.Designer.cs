@@ -53,6 +53,8 @@
             // 
             // mnuMainStrip
             // 
+            this.mnuMainStrip.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.mnuMainStrip.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnuMainStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.mnuEmployees,
@@ -62,7 +64,7 @@
             this.helpToolStripMenuItem});
             this.mnuMainStrip.Location = new System.Drawing.Point(0, 0);
             this.mnuMainStrip.Name = "mnuMainStrip";
-            this.mnuMainStrip.Size = new System.Drawing.Size(1350, 24);
+            this.mnuMainStrip.Size = new System.Drawing.Size(1350, 25);
             this.mnuMainStrip.TabIndex = 0;
             this.mnuMainStrip.Text = "csiMainMenu";
             // 
@@ -73,25 +75,25 @@
             this.mnuLogin,
             this.mnuCloseWindow});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(63, 20);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(71, 21);
             this.toolStripMenuItem1.Text = "Window";
             // 
             // mnuConnectToServer
             // 
             this.mnuConnectToServer.Name = "mnuConnectToServer";
-            this.mnuConnectToServer.Size = new System.Drawing.Size(168, 22);
+            this.mnuConnectToServer.Size = new System.Drawing.Size(186, 22);
             this.mnuConnectToServer.Text = "Connect to Server";
             // 
             // mnuLogin
             // 
             this.mnuLogin.Name = "mnuLogin";
-            this.mnuLogin.Size = new System.Drawing.Size(168, 22);
+            this.mnuLogin.Size = new System.Drawing.Size(186, 22);
             this.mnuLogin.Text = "Login";
             // 
             // mnuCloseWindow
             // 
             this.mnuCloseWindow.Name = "mnuCloseWindow";
-            this.mnuCloseWindow.Size = new System.Drawing.Size(168, 22);
+            this.mnuCloseWindow.Size = new System.Drawing.Size(186, 22);
             this.mnuCloseWindow.Text = "Close";
             // 
             // mnuEmployees
@@ -100,19 +102,19 @@
             this.mnuEmployeeRegistration,
             this.mnuEmployeesList});
             this.mnuEmployees.Name = "mnuEmployees";
-            this.mnuEmployees.Size = new System.Drawing.Size(76, 20);
+            this.mnuEmployees.Size = new System.Drawing.Size(86, 21);
             this.mnuEmployees.Text = "Employees";
             // 
             // mnuEmployeeRegistration
             // 
             this.mnuEmployeeRegistration.Name = "mnuEmployeeRegistration";
-            this.mnuEmployeeRegistration.Size = new System.Drawing.Size(137, 22);
+            this.mnuEmployeeRegistration.Size = new System.Drawing.Size(151, 22);
             this.mnuEmployeeRegistration.Text = "Registration";
             // 
             // mnuEmployeesList
             // 
             this.mnuEmployeesList.Name = "mnuEmployeesList";
-            this.mnuEmployeesList.Size = new System.Drawing.Size(137, 22);
+            this.mnuEmployeesList.Size = new System.Drawing.Size(151, 22);
             this.mnuEmployeesList.Text = "List";
             // 
             // mnuSchedule
@@ -120,13 +122,13 @@
             this.mnuSchedule.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuAddSchedule});
             this.mnuSchedule.Name = "mnuSchedule";
-            this.mnuSchedule.Size = new System.Drawing.Size(72, 20);
+            this.mnuSchedule.Size = new System.Drawing.Size(81, 21);
             this.mnuSchedule.Text = "Schedules";
             // 
             // mnuAddSchedule
             // 
             this.mnuAddSchedule.Name = "mnuAddSchedule";
-            this.mnuAddSchedule.Size = new System.Drawing.Size(169, 22);
+            this.mnuAddSchedule.Size = new System.Drawing.Size(186, 22);
             this.mnuAddSchedule.Text = "Subjects Schedule";
             // 
             // mnuDtr
@@ -135,19 +137,19 @@
             this.mnuCurrentDtr,
             this.mnuDtrHistory});
             this.mnuDtr.Name = "mnuDtr";
-            this.mnuDtr.Size = new System.Drawing.Size(39, 20);
+            this.mnuDtr.Size = new System.Drawing.Size(46, 21);
             this.mnuDtr.Text = "DTR";
             // 
             // mnuCurrentDtr
             // 
             this.mnuCurrentDtr.Name = "mnuCurrentDtr";
-            this.mnuCurrentDtr.Size = new System.Drawing.Size(152, 22);
+            this.mnuCurrentDtr.Size = new System.Drawing.Size(122, 22);
             this.mnuCurrentDtr.Text = "Current";
             // 
             // mnuDtrHistory
             // 
             this.mnuDtrHistory.Name = "mnuDtrHistory";
-            this.mnuDtrHistory.Size = new System.Drawing.Size(152, 22);
+            this.mnuDtrHistory.Size = new System.Drawing.Size(122, 22);
             this.mnuDtrHistory.Text = "List";
             // 
             // mnuPayroll
@@ -156,19 +158,19 @@
             this.mnuCurrentPayroll,
             this.mnuArchivedPayroll});
             this.mnuPayroll.Name = "mnuPayroll";
-            this.mnuPayroll.Size = new System.Drawing.Size(55, 20);
+            this.mnuPayroll.Size = new System.Drawing.Size(63, 21);
             this.mnuPayroll.Text = "Payroll";
             // 
             // mnuCurrentPayroll
             // 
             this.mnuCurrentPayroll.Name = "mnuCurrentPayroll";
-            this.mnuCurrentPayroll.Size = new System.Drawing.Size(121, 22);
+            this.mnuCurrentPayroll.Size = new System.Drawing.Size(130, 22);
             this.mnuCurrentPayroll.Text = "Current";
             // 
             // mnuArchivedPayroll
             // 
             this.mnuArchivedPayroll.Name = "mnuArchivedPayroll";
-            this.mnuArchivedPayroll.Size = new System.Drawing.Size(121, 22);
+            this.mnuArchivedPayroll.Size = new System.Drawing.Size(130, 22);
             this.mnuArchivedPayroll.Text = "Archived";
             // 
             // helpToolStripMenuItem
@@ -176,13 +178,13 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuUsersManual});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(49, 21);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // mnuUsersManual
             // 
             this.mnuUsersManual.Name = "mnuUsersManual";
-            this.mnuUsersManual.Size = new System.Drawing.Size(148, 22);
+            this.mnuUsersManual.Size = new System.Drawing.Size(162, 22);
             this.mnuUsersManual.Text = "User\'s Manual";
             // 
             // statusStrip1

@@ -44,11 +44,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.optInstructor = new System.Windows.Forms.ComboBox();
             this.dgvSubjectSchedules = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.printSchedulesDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.printSchedules = new System.Drawing.Printing.PrintDocument();
             this.subjectId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.instructorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.instructor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +56,11 @@
             this.room = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.semester = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.schoolYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.printSchedulesDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.printSchedules = new System.Drawing.Printing.PrintDocument();
             this.grpControls.SuspendLayout();
             this.grpSchedules.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubjectSchedules)).BeginInit();
@@ -85,80 +85,94 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnPrint.Location = new System.Drawing.Point(608, 36);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(127, 42);
             this.btnPrint.TabIndex = 12;
             this.btnPrint.Text = "Print";
-            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.UseVisualStyleBackColor = false;
             // 
             // btnClose
             // 
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnClose.Location = new System.Drawing.Point(1004, 36);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(127, 42);
             this.btnClose.TabIndex = 11;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             // 
             // btnDeleteSchedule
             // 
-            this.btnDeleteSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteSchedule.BackColor = System.Drawing.Color.Firebrick;
+            this.btnDeleteSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteSchedule.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnDeleteSchedule.Location = new System.Drawing.Point(463, 36);
             this.btnDeleteSchedule.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteSchedule.Name = "btnDeleteSchedule";
             this.btnDeleteSchedule.Size = new System.Drawing.Size(127, 42);
             this.btnDeleteSchedule.TabIndex = 10;
             this.btnDeleteSchedule.Text = "Delete Selected Schedule";
-            this.btnDeleteSchedule.UseVisualStyleBackColor = true;
+            this.btnDeleteSchedule.UseVisualStyleBackColor = false;
             // 
             // btnUpdateSchedule
             // 
-            this.btnUpdateSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateSchedule.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnUpdateSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateSchedule.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnUpdateSchedule.Location = new System.Drawing.Point(317, 36);
             this.btnUpdateSchedule.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateSchedule.Name = "btnUpdateSchedule";
             this.btnUpdateSchedule.Size = new System.Drawing.Size(127, 42);
             this.btnUpdateSchedule.TabIndex = 9;
             this.btnUpdateSchedule.Text = "Update Selected Schedule";
-            this.btnUpdateSchedule.UseVisualStyleBackColor = true;
+            this.btnUpdateSchedule.UseVisualStyleBackColor = false;
             // 
             // btnAddSchedule
             // 
-            this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSchedule.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSchedule.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAddSchedule.Location = new System.Drawing.Point(171, 36);
             this.btnAddSchedule.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(127, 42);
             this.btnAddSchedule.TabIndex = 8;
             this.btnAddSchedule.Text = "Add New Schedule";
-            this.btnAddSchedule.UseVisualStyleBackColor = true;
+            this.btnAddSchedule.UseVisualStyleBackColor = false;
             // 
             // btnDeleteSchedules
             // 
-            this.btnDeleteSchedules.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteSchedules.BackColor = System.Drawing.Color.Firebrick;
+            this.btnDeleteSchedules.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteSchedules.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnDeleteSchedules.Location = new System.Drawing.Point(860, 36);
             this.btnDeleteSchedules.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteSchedules.Name = "btnDeleteSchedules";
             this.btnDeleteSchedules.Size = new System.Drawing.Size(127, 42);
             this.btnDeleteSchedules.TabIndex = 7;
             this.btnDeleteSchedules.Text = "Delete All Schedules";
-            this.btnDeleteSchedules.UseVisualStyleBackColor = true;
+            this.btnDeleteSchedules.UseVisualStyleBackColor = false;
             // 
             // btnUploadXLSFile
             // 
-            this.btnUploadXLSFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUploadXLSFile.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnUploadXLSFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUploadXLSFile.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnUploadXLSFile.Location = new System.Drawing.Point(26, 36);
             this.btnUploadXLSFile.Margin = new System.Windows.Forms.Padding(4);
             this.btnUploadXLSFile.Name = "btnUploadXLSFile";
             this.btnUploadXLSFile.Size = new System.Drawing.Size(127, 42);
             this.btnUploadXLSFile.TabIndex = 6;
             this.btnUploadXLSFile.Text = "Upload New Schedules";
-            this.btnUploadXLSFile.UseVisualStyleBackColor = true;
+            this.btnUploadXLSFile.UseVisualStyleBackColor = false;
             // 
             // grpSchedules
             // 
@@ -176,21 +190,27 @@
             // 
             // btnReset
             // 
+            this.btnReset.BackColor = System.Drawing.Color.SlateGray;
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnReset.Location = new System.Drawing.Point(574, 27);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(77, 29);
             this.btnReset.TabIndex = 10;
             this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.UseVisualStyleBackColor = false;
             // 
             // btnSearch
             // 
+            this.btnSearch.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSearch.Location = new System.Drawing.Point(481, 27);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(77, 29);
             this.btnSearch.TabIndex = 9;
             this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -216,6 +236,7 @@
             this.dgvSubjectSchedules.AllowUserToAddRows = false;
             this.dgvSubjectSchedules.AllowUserToDeleteRows = false;
             this.dgvSubjectSchedules.AllowUserToResizeColumns = false;
+            this.dgvSubjectSchedules.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgvSubjectSchedules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSubjectSchedules.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.subjectId,
@@ -236,40 +257,6 @@
             this.dgvSubjectSchedules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSubjectSchedules.Size = new System.Drawing.Size(1105, 349);
             this.dgvSubjectSchedules.TabIndex = 5;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuUpdate,
-            this.mnuDelete});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 48);
-            // 
-            // mnuUpdate
-            // 
-            this.mnuUpdate.Name = "mnuUpdate";
-            this.mnuUpdate.Size = new System.Drawing.Size(112, 22);
-            this.mnuUpdate.Text = "Update";
-            // 
-            // mnuDelete
-            // 
-            this.mnuDelete.Name = "mnuDelete";
-            this.mnuDelete.Size = new System.Drawing.Size(112, 22);
-            this.mnuDelete.Text = "Delete";
-            // 
-            // printSchedulesDialog
-            // 
-            this.printSchedulesDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printSchedulesDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printSchedulesDialog.ClientSize = new System.Drawing.Size(400, 300);
-            this.printSchedulesDialog.Enabled = true;
-            this.printSchedulesDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printSchedulesDialog.Icon")));
-            this.printSchedulesDialog.Name = "printSchedulesDialog";
-            this.printSchedulesDialog.Visible = false;
-            // 
-            // printSchedules
-            // 
-            this.printSchedules.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printSchedules_PrintPage);
             // 
             // subjectId
             // 
@@ -336,10 +323,45 @@
             this.schoolYear.Name = "schoolYear";
             this.schoolYear.Width = 130;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuUpdate,
+            this.mnuDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 48);
+            // 
+            // mnuUpdate
+            // 
+            this.mnuUpdate.Name = "mnuUpdate";
+            this.mnuUpdate.Size = new System.Drawing.Size(112, 22);
+            this.mnuUpdate.Text = "Update";
+            // 
+            // mnuDelete
+            // 
+            this.mnuDelete.Name = "mnuDelete";
+            this.mnuDelete.Size = new System.Drawing.Size(112, 22);
+            this.mnuDelete.Text = "Delete";
+            // 
+            // printSchedulesDialog
+            // 
+            this.printSchedulesDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printSchedulesDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printSchedulesDialog.ClientSize = new System.Drawing.Size(400, 300);
+            this.printSchedulesDialog.Enabled = true;
+            this.printSchedulesDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printSchedulesDialog.Icon")));
+            this.printSchedulesDialog.Name = "printSchedulesDialog";
+            this.printSchedulesDialog.Visible = false;
+            // 
+            // printSchedules
+            // 
+            this.printSchedules.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printSchedules_PrintPage);
+            // 
             // frmParentSchedules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1201, 590);
             this.Controls.Add(this.grpSchedules);
             this.Controls.Add(this.grpControls);

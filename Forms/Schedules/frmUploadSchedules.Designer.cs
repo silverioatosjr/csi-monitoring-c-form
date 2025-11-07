@@ -38,30 +38,39 @@
             // 
             // btnSelectFile
             // 
+            this.btnSelectFile.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnSelectFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectFile.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSelectFile.Location = new System.Drawing.Point(26, 37);
             this.btnSelectFile.Name = "btnSelectFile";
             this.btnSelectFile.Size = new System.Drawing.Size(117, 42);
             this.btnSelectFile.TabIndex = 0;
             this.btnSelectFile.Text = "Select XLS File";
-            this.btnSelectFile.UseVisualStyleBackColor = true;
+            this.btnSelectFile.UseVisualStyleBackColor = false;
             // 
             // btnUpload
             // 
+            this.btnUpload.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpload.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnUpload.Location = new System.Drawing.Point(253, 132);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(117, 42);
             this.btnUpload.TabIndex = 1;
             this.btnUpload.Text = "Upload File";
-            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.UseVisualStyleBackColor = false;
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.LightSlateGray;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCancel.Location = new System.Drawing.Point(119, 132);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(117, 42);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             // 
             // lblFilename
             // 
@@ -77,6 +86,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(397, 203);
             this.Controls.Add(this.lblFilename);
             this.Controls.Add(this.btnCancel);

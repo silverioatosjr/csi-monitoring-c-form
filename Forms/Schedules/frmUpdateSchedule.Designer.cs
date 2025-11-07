@@ -33,6 +33,9 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtCourse = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.txtRoom = new System.Windows.Forms.TextBox();
@@ -58,9 +61,6 @@
             this.txtSubjectCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.optInstructor = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtCourse = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -78,21 +78,27 @@
             // 
             // btnUpdate
             // 
+            this.btnUpdate.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnUpdate.Location = new System.Drawing.Point(383, 36);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(127, 42);
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.UseVisualStyleBackColor = false;
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.LightSlateGray;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCancel.Location = new System.Drawing.Point(232, 36);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(127, 42);
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "Close";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             // 
             // groupBox1
             // 
@@ -130,6 +136,34 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Subject Schedule";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Red;
+            this.label16.Location = new System.Drawing.Point(72, 183);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(14, 18);
+            this.label16.TabIndex = 29;
+            this.label16.Text = "*";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(25, 186);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(49, 15);
+            this.label17.TabIndex = 28;
+            this.label17.Text = "Course:";
+            // 
+            // txtCourse
+            // 
+            this.txtCourse.Location = new System.Drawing.Point(28, 204);
+            this.txtCourse.Name = "txtCourse";
+            this.txtCourse.Size = new System.Drawing.Size(224, 22);
+            this.txtCourse.TabIndex = 27;
             // 
             // label14
             // 
@@ -373,38 +407,11 @@
             this.optInstructor.Size = new System.Drawing.Size(224, 24);
             this.optInstructor.TabIndex = 1;
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(72, 183);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(14, 18);
-            this.label16.TabIndex = 29;
-            this.label16.Text = "*";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(25, 186);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(49, 15);
-            this.label17.TabIndex = 28;
-            this.label17.Text = "Course:";
-            // 
-            // txtCourse
-            // 
-            this.txtCourse.Location = new System.Drawing.Point(28, 204);
-            this.txtCourse.Name = "txtCourse";
-            this.txtCourse.Size = new System.Drawing.Size(224, 22);
-            this.txtCourse.TabIndex = 27;
-            // 
             // frmUpdateSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(590, 525);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

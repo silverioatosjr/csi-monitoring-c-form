@@ -35,11 +35,6 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvEmployeesList = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnDeleteEmployee = new System.Windows.Forms.Button();
-            this.btnUpdateEmployee = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this._id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +47,11 @@
             this.sss = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pagibig = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.philhealth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnDeleteEmployee = new System.Windows.Forms.Button();
+            this.btnUpdateEmployee = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.contextMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeesList)).BeginInit();
@@ -95,6 +95,7 @@
             this.dgvEmployeesList.AllowUserToDeleteRows = false;
             this.dgvEmployeesList.AllowUserToResizeColumns = false;
             this.dgvEmployeesList.AllowUserToResizeRows = false;
+            this.dgvEmployeesList.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgvEmployeesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployeesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this._id,
@@ -116,63 +117,6 @@
             this.dgvEmployeesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvEmployeesList.Size = new System.Drawing.Size(1098, 402);
             this.dgvEmployeesList.TabIndex = 1;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnClose);
-            this.groupBox2.Controls.Add(this.btnDeleteEmployee);
-            this.groupBox2.Controls.Add(this.btnUpdateEmployee);
-            this.groupBox2.Controls.Add(this.btnRefresh);
-            this.groupBox2.Location = new System.Drawing.Point(21, 485);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1140, 105);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Controls";
-            // 
-            // btnClose
-            // 
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(992, 37);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(127, 42);
-            this.btnClose.TabIndex = 13;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
-            // btnDeleteEmployee
-            // 
-            this.btnDeleteEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteEmployee.Location = new System.Drawing.Point(167, 37);
-            this.btnDeleteEmployee.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDeleteEmployee.Name = "btnDeleteEmployee";
-            this.btnDeleteEmployee.Size = new System.Drawing.Size(127, 42);
-            this.btnDeleteEmployee.TabIndex = 12;
-            this.btnDeleteEmployee.Text = "Delete Selected Employee";
-            this.btnDeleteEmployee.UseVisualStyleBackColor = true;
-            // 
-            // btnUpdateEmployee
-            // 
-            this.btnUpdateEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateEmployee.Location = new System.Drawing.Point(21, 37);
-            this.btnUpdateEmployee.Margin = new System.Windows.Forms.Padding(4);
-            this.btnUpdateEmployee.Name = "btnUpdateEmployee";
-            this.btnUpdateEmployee.Size = new System.Drawing.Size(127, 42);
-            this.btnUpdateEmployee.TabIndex = 11;
-            this.btnUpdateEmployee.Text = "Update Selected Employee";
-            this.btnUpdateEmployee.UseVisualStyleBackColor = true;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.Location = new System.Drawing.Point(851, 37);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(123, 42);
-            this.btnRefresh.TabIndex = 3;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
             // 
             // _id
             // 
@@ -253,10 +197,76 @@
             this.philhealth.Name = "philhealth";
             this.philhealth.ReadOnly = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnClose);
+            this.groupBox2.Controls.Add(this.btnDeleteEmployee);
+            this.groupBox2.Controls.Add(this.btnUpdateEmployee);
+            this.groupBox2.Controls.Add(this.btnRefresh);
+            this.groupBox2.Location = new System.Drawing.Point(21, 485);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1140, 105);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Controls";
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnClose.Location = new System.Drawing.Point(992, 37);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(127, 42);
+            this.btnClose.TabIndex = 13;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            // 
+            // btnDeleteEmployee
+            // 
+            this.btnDeleteEmployee.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnDeleteEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteEmployee.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDeleteEmployee.Location = new System.Drawing.Point(167, 37);
+            this.btnDeleteEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteEmployee.Name = "btnDeleteEmployee";
+            this.btnDeleteEmployee.Size = new System.Drawing.Size(127, 42);
+            this.btnDeleteEmployee.TabIndex = 12;
+            this.btnDeleteEmployee.Text = "Delete Selected Employee";
+            this.btnDeleteEmployee.UseVisualStyleBackColor = false;
+            // 
+            // btnUpdateEmployee
+            // 
+            this.btnUpdateEmployee.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnUpdateEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateEmployee.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnUpdateEmployee.Location = new System.Drawing.Point(21, 37);
+            this.btnUpdateEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdateEmployee.Name = "btnUpdateEmployee";
+            this.btnUpdateEmployee.Size = new System.Drawing.Size(127, 42);
+            this.btnUpdateEmployee.TabIndex = 11;
+            this.btnUpdateEmployee.Text = "Update Selected Employee";
+            this.btnUpdateEmployee.UseVisualStyleBackColor = false;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.SlateGray;
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnRefresh.Location = new System.Drawing.Point(851, 37);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(123, 42);
+            this.btnRefresh.TabIndex = 3;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            // 
             // frmEmployeesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1187, 609);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
