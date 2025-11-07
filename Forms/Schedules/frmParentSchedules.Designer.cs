@@ -85,10 +85,10 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnPrint.BackColor = System.Drawing.Color.OliveDrab;
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnPrint.Location = new System.Drawing.Point(608, 36);
+            this.btnPrint.Location = new System.Drawing.Point(461, 36);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(127, 42);
@@ -111,10 +111,10 @@
             // 
             // btnDeleteSchedule
             // 
-            this.btnDeleteSchedule.BackColor = System.Drawing.Color.Firebrick;
+            this.btnDeleteSchedule.BackColor = System.Drawing.Color.IndianRed;
             this.btnDeleteSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteSchedule.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeleteSchedule.Location = new System.Drawing.Point(463, 36);
+            this.btnDeleteSchedule.Location = new System.Drawing.Point(716, 36);
             this.btnDeleteSchedule.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteSchedule.Name = "btnDeleteSchedule";
             this.btnDeleteSchedule.Size = new System.Drawing.Size(127, 42);
@@ -163,7 +163,7 @@
             // 
             // btnUploadXLSFile
             // 
-            this.btnUploadXLSFile.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnUploadXLSFile.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.btnUploadXLSFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUploadXLSFile.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnUploadXLSFile.Location = new System.Drawing.Point(26, 36);

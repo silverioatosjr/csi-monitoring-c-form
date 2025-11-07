@@ -265,7 +265,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnPrint.BackColor = System.Drawing.Color.OliveDrab;
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnPrint.Location = new System.Drawing.Point(170, 37);

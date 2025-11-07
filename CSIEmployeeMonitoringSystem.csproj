@@ -231,6 +231,9 @@
     <Compile Include="ApiParser\APISchedulesParser.cs" />
     <Compile Include="ApiParser\APITaxResponseParser.cs" />
     <Compile Include="ApiParser\APIEmployeesGetParser.cs" />
+    <Compile Include="ApiParser\PayrollParser\APIPayrollGetParser.cs" />
+    <Compile Include="ApiParser\PayrollParser\APIPayrollGetsParser.cs" />
+    <Compile Include="ApiParser\PayrollParser\APIPayrollUpdateParser.cs" />
     <Compile Include="Forms\Admin\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,6 +318,12 @@
     <Compile Include="Forms\Payroll\frmCurrentPayroll.Designer.cs">
       <DependentUpon>frmCurrentPayroll.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Payroll\frmGeneratePayroll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Payroll\frmGeneratePayroll.Designer.cs">
+      <DependentUpon>frmGeneratePayroll.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Payroll\frmPayrollDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -368,6 +377,10 @@
     <Compile Include="Models\EmployeesList.cs" />
     <Compile Include="Models\Instructor.cs" />
     <Compile Include="Models\Pagibig.cs" />
+    <Compile Include="Models\Payroll\ArchivePayroll.cs" />
+    <Compile Include="Models\Payroll\GeneratePayroll.cs" />
+    <Compile Include="Models\Payroll\Payroll.cs" />
+    <Compile Include="Models\Payroll\PayrollUpdate.cs" />
     <Compile Include="Models\Philhealth.cs" />
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\SchedulePost.cs" />
@@ -446,6 +459,7 @@
     <Compile Include="Services\EmployeeService.cs" />
     <Compile Include="Services\InstructorService.cs" />
     <Compile Include="Services\PagibigService.cs" />
+    <Compile Include="Services\PayrollService.cs" />
     <Compile Include="Services\PhilhealthService.cs" />
     <Compile Include="Services\PrintService.cs" />
     <Compile Include="Services\ScheduleService.cs" />
@@ -492,6 +506,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Payroll\frmCurrentPayroll.resx">
       <DependentUpon>frmCurrentPayroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Payroll\frmGeneratePayroll.resx">
+      <DependentUpon>frmGeneratePayroll.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Payroll\frmPayrollDetails.resx">
       <DependentUpon>frmPayrollDetails.cs</DependentUpon>

@@ -50,6 +50,7 @@
             this.btnDeleteCurrentPayroll = new System.Windows.Forms.Button();
             this.btnPrintSelected = new System.Windows.Forms.Button();
             this.btnPrintAll = new System.Windows.Forms.Button();
+            this.btnGeneratePayroll = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentPayroll)).BeginInit();
@@ -67,6 +68,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnGeneratePayroll);
             this.groupBox2.Controls.Add(this.btnPrintAll);
             this.groupBox2.Controls.Add(this.btnPrintSelected);
             this.groupBox2.Controls.Add(this.btnDeleteCurrentPayroll);
@@ -191,7 +193,7 @@
             this.btnViewDetails.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnViewDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewDetails.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnViewDetails.Location = new System.Drawing.Point(23, 35);
+            this.btnViewDetails.Location = new System.Drawing.Point(166, 35);
             this.btnViewDetails.Name = "btnViewDetails";
             this.btnViewDetails.Size = new System.Drawing.Size(127, 42);
             this.btnViewDetails.TabIndex = 13;
@@ -200,10 +202,10 @@
             // 
             // btnArchivePayroll
             // 
-            this.btnArchivePayroll.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnArchivePayroll.BackColor = System.Drawing.Color.DarkKhaki;
             this.btnArchivePayroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnArchivePayroll.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnArchivePayroll.Location = new System.Drawing.Point(166, 35);
+            this.btnArchivePayroll.Location = new System.Drawing.Point(309, 35);
             this.btnArchivePayroll.Name = "btnArchivePayroll";
             this.btnArchivePayroll.Size = new System.Drawing.Size(127, 42);
             this.btnArchivePayroll.TabIndex = 14;
@@ -224,10 +226,10 @@
             // 
             // btnPrintSelected
             // 
-            this.btnPrintSelected.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnPrintSelected.BackColor = System.Drawing.Color.SaddleBrown;
             this.btnPrintSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrintSelected.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnPrintSelected.Location = new System.Drawing.Point(309, 35);
+            this.btnPrintSelected.Location = new System.Drawing.Point(452, 35);
             this.btnPrintSelected.Name = "btnPrintSelected";
             this.btnPrintSelected.Size = new System.Drawing.Size(127, 42);
             this.btnPrintSelected.TabIndex = 16;
@@ -236,15 +238,27 @@
             // 
             // btnPrintAll
             // 
-            this.btnPrintAll.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnPrintAll.BackColor = System.Drawing.Color.OliveDrab;
             this.btnPrintAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrintAll.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnPrintAll.Location = new System.Drawing.Point(454, 35);
+            this.btnPrintAll.Location = new System.Drawing.Point(597, 35);
             this.btnPrintAll.Name = "btnPrintAll";
             this.btnPrintAll.Size = new System.Drawing.Size(127, 42);
             this.btnPrintAll.TabIndex = 17;
             this.btnPrintAll.Text = "Print All";
             this.btnPrintAll.UseVisualStyleBackColor = false;
+            // 
+            // btnGeneratePayroll
+            // 
+            this.btnGeneratePayroll.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.btnGeneratePayroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGeneratePayroll.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnGeneratePayroll.Location = new System.Drawing.Point(23, 35);
+            this.btnGeneratePayroll.Name = "btnGeneratePayroll";
+            this.btnGeneratePayroll.Size = new System.Drawing.Size(127, 42);
+            this.btnGeneratePayroll.TabIndex = 18;
+            this.btnGeneratePayroll.Text = "Generate Payroll";
+            this.btnGeneratePayroll.UseVisualStyleBackColor = false;
             // 
             // frmCurrentPayroll
             // 
@@ -261,6 +275,7 @@
             this.MinimizeBox = false;
             this.Name = "frmCurrentPayroll";
             this.Text = "Payroll";
+            this.Load += new System.EventHandler(this.frmCurrentPayroll_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentPayroll)).EndInit();
@@ -291,5 +306,6 @@
         private System.Windows.Forms.Button btnDeleteCurrentPayroll;
         private System.Windows.Forms.Button btnArchivePayroll;
         private System.Windows.Forms.Button btnViewDetails;
+        private System.Windows.Forms.Button btnGeneratePayroll;
     }
 }
