@@ -122,8 +122,18 @@ namespace CSIEmployeeMonitoringSystem.Services
             DrawPayrollString(e, "TAX", leftMargin + 380, topMargin + deduction, 150, dtrHeight, sfL);
             DrawPayrollString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
             DrawPayrollBoldString(e, payroll.tax.ToString(), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
-
-
+            deduction += 100;
+            DrawHeaderString(e, "TOTAL", leftMargin + 380, topMargin + rowHeight, 350, height, sfC);
+            deduction += 42;
+            DrawPayrollBoldString(e, "GROSS PAY", leftMargin + 380, topMargin + deduction, 150, dtrHeight, sfL);
+            DrawPayrollBoldString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
+            DrawPayrollBoldString(e, payroll.grossPay.ToString(), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+            deduction += 22;
+            DrawPayrollBoldString(e, "NET PAY", leftMargin + 380, topMargin + deduction, 150, dtrHeight, sfL);
+            DrawPayrollBoldString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
+            DrawPayrollBoldString(e, payroll.netPay.ToString(), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+            deduction += 42;
+            DrawSalaryString(e, $"SALARY: {payroll.netPay}", leftMargin + 380, topMargin + deduction, 350, height, sfC);
 
             rowHeight += 24;
             DrawPayrollBoldString(e, "TIME IN", leftMargin, topMargin + rowHeight, 70, dtrHeight, sfL);
@@ -142,6 +152,12 @@ namespace CSIEmployeeMonitoringSystem.Services
                 rowHeight += dtrRowDefaultHeight;
             }
 
+        }
+
+        private void DrawSalaryString(PrintPageEventArgs e, string content, float x, float y, float width, float height, StringFormat sF)
+        {
+            e.Graphics.DrawRectangle(new Pen(Brushes.Black, 2), x, y, width,40);
+            e.Graphics.DrawString(content, new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new RectangleF(x, y + 12, width, height), sF);
         }
         private void DrawHeaderString(PrintPageEventArgs e, string content, float x, float y, float width, float height, StringFormat sF)
         {
