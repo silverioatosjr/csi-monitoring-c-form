@@ -30,19 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDtrDetails));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtTimeIn = new System.Windows.Forms.TextBox();
-            this.txtTimeOut = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtHoursRendered = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtDay = new System.Windows.Forms.TextBox();
             this.txtDate = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtHoursRendered = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtTimeOut = new System.Windows.Forms.TextBox();
+            this.txtTimeIn = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnClose = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -66,41 +66,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DTR Details";
             // 
-            // txtTimeIn
+            // label5
             // 
-            this.txtTimeIn.Enabled = false;
-            this.txtTimeIn.Location = new System.Drawing.Point(24, 59);
-            this.txtTimeIn.Name = "txtTimeIn";
-            this.txtTimeIn.Size = new System.Drawing.Size(158, 22);
-            this.txtTimeIn.TabIndex = 0;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(21, 155);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 15);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Hours Rendered:";
             // 
-            // txtTimeOut
+            // txtHoursRendered
             // 
-            this.txtTimeOut.Enabled = false;
-            this.txtTimeOut.Location = new System.Drawing.Point(201, 60);
-            this.txtTimeOut.Name = "txtTimeOut";
-            this.txtTimeOut.Size = new System.Drawing.Size(158, 22);
-            this.txtTimeOut.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Time In:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(198, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Time Out:";
+            this.txtHoursRendered.Enabled = false;
+            this.txtHoursRendered.Location = new System.Drawing.Point(24, 173);
+            this.txtHoursRendered.Name = "txtHoursRendered";
+            this.txtHoursRendered.Size = new System.Drawing.Size(158, 22);
+            this.txtHoursRendered.TabIndex = 8;
             // 
             // label3
             // 
@@ -138,23 +120,41 @@
             this.txtDate.Size = new System.Drawing.Size(158, 22);
             this.txtDate.TabIndex = 4;
             // 
-            // label5
+            // label2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(21, 155);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 15);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Hours Rendered:";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(198, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 15);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Time Out:";
             // 
-            // txtHoursRendered
+            // label1
             // 
-            this.txtHoursRendered.Enabled = false;
-            this.txtHoursRendered.Location = new System.Drawing.Point(24, 173);
-            this.txtHoursRendered.Name = "txtHoursRendered";
-            this.txtHoursRendered.Size = new System.Drawing.Size(158, 22);
-            this.txtHoursRendered.TabIndex = 8;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(21, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 15);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Time In:";
+            // 
+            // txtTimeOut
+            // 
+            this.txtTimeOut.Enabled = false;
+            this.txtTimeOut.Location = new System.Drawing.Point(201, 60);
+            this.txtTimeOut.Name = "txtTimeOut";
+            this.txtTimeOut.Size = new System.Drawing.Size(158, 22);
+            this.txtTimeOut.TabIndex = 1;
+            // 
+            // txtTimeIn
+            // 
+            this.txtTimeIn.Enabled = false;
+            this.txtTimeIn.Location = new System.Drawing.Point(24, 59);
+            this.txtTimeIn.Name = "txtTimeIn";
+            this.txtTimeIn.Size = new System.Drawing.Size(158, 22);
+            this.txtTimeIn.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -167,32 +167,37 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Controls";
             // 
-            // btnClose
-            // 
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(231, 38);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(127, 42);
-            this.btnClose.TabIndex = 14;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
             // btnUpdate
             // 
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnUpdate.Location = new System.Drawing.Point(84, 38);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(127, 42);
             this.btnUpdate.TabIndex = 15;
             this.btnUpdate.Text = "Edit";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnClose.Location = new System.Drawing.Point(231, 38);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(127, 42);
+            this.btnClose.TabIndex = 14;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
             // 
             // frmDtrDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(433, 397);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

@@ -17,6 +17,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
         private frmPayrollDetails frmPayrollDetails = new frmPayrollDetails();
         private frmGeneratePayroll frmGeneratePayroll = new frmGeneratePayroll();
         private PayrollService payrollService;
+        private string payrollId;
         public frmCurrentPayroll()
         {
             InitializeComponent();
@@ -25,6 +26,53 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             btnGeneratePayroll.Click += BtnGeneratePayroll_Click;
             btnArchivePayroll.Click += BtnArchivePayroll_Click;
             btnDeleteCurrentPayroll.Click += BtnDeleteCurrentPayroll_Click;
+            mnuViewDetails.Click += MnuViewDetails_Click;
+            dgvCurrentPayroll.CellClick += DgvCurrentPayroll_CellClick;
+            dgvCurrentPayroll.MouseClick += DgvCurrentPayroll_MouseClick;
+        }
+
+        private void DgvCurrentPayroll_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dgvCurrentPayroll.HitTest(e.X, e.Y).RowIndex;
+                if (currentMouseOverRow >= 0)
+                {
+                    dgvCurrentPayroll.Rows[currentMouseOverRow].Selected = true;
+                    payrollId = dgvCurrentPayroll.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    contextMenu.Show(dgvCurrentPayroll, new Point(e.X, e.Y));
+                    btnViewDetails.Enabled = true;
+                    btnPrintSelected.Enabled = true;
+                }
+
+            }
+        }
+
+        private void DgvCurrentPayroll_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                payrollId = dgvCurrentPayroll.Rows[e.RowIndex].Cells[0].Value.ToString();
+                btnViewDetails.Enabled = true;
+                btnPrintSelected.Enabled = true;
+            }
+        }
+
+        private void MnuViewDetails_Click(object sender, EventArgs e)
+        {
+            if (!frmPayrollDetails.Created)
+            {
+                frmPayrollDetails = new frmPayrollDetails();
+            }
+            frmPayrollDetails.payrollId = payrollId;
+            if (frmPayrollDetails.ShowDialog() == DialogResult.OK)
+            {
+                GetCurrentPayrolls();
+            }
+            payrollId = string.Empty;
+            btnViewDetails.Enabled = false;
+            btnPrintSelected.Enabled = false;
         }
 
         private void BtnDeleteCurrentPayroll_Click(object sender, EventArgs e)
@@ -118,10 +166,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
         }
         private void BtnViewDetails_Click(object sender, EventArgs e)
         {
-            if(frmPayrollDetails.ShowDialog() == DialogResult.OK)
-            {
-
-            }
+            MnuViewDetails_Click(sender, e);
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -139,6 +184,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             btnDeleteCurrentPayroll.Enabled = false;
             btnArchivePayroll.Enabled = false;
             GetCurrentPayrolls();
+            payrollId = string.Empty;
         }
     }
 }

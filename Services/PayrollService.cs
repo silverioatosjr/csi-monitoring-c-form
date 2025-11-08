@@ -80,7 +80,7 @@ namespace CSIEmployeeMonitoringSystem.Services
                 string jsonContent = JsonConvert.SerializeObject(payload);
                 using (var content = new StringContent(jsonContent, UnicodeEncoding.UTF8, "application/json"))
                 {
-                    HttpResponseMessage response = await client.PostAsync(apiUrl + $"/payroll/{id}", null);
+                    HttpResponseMessage response = await client.PutAsync(apiUrl + $"/payroll/{id}", content);
                     response.EnsureSuccessStatusCode();
                     string responseBody = await response.Content.ReadAsStringAsync();
                     APIMessageParser res = JsonConvert.DeserializeObject<APIMessageParser>(responseBody);
