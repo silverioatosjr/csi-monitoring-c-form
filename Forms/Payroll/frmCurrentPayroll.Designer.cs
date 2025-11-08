@@ -46,7 +46,6 @@
             this.philhealth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnGeneratePayroll = new System.Windows.Forms.Button();
-            this.btnPrintAll = new System.Windows.Forms.Button();
             this.btnPrintSelected = new System.Windows.Forms.Button();
             this.btnDeleteCurrentPayroll = new System.Windows.Forms.Button();
             this.btnArchivePayroll = new System.Windows.Forms.Button();
@@ -54,6 +53,9 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuViewDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.printPayroll = new System.Drawing.Printing.PrintDocument();
+            this.printPayrollDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.mnuPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentPayroll)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -166,7 +168,6 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnGeneratePayroll);
-            this.groupBox2.Controls.Add(this.btnPrintAll);
             this.groupBox2.Controls.Add(this.btnPrintSelected);
             this.groupBox2.Controls.Add(this.btnDeleteCurrentPayroll);
             this.groupBox2.Controls.Add(this.btnArchivePayroll);
@@ -190,18 +191,6 @@
             this.btnGeneratePayroll.TabIndex = 18;
             this.btnGeneratePayroll.Text = "Generate Payroll";
             this.btnGeneratePayroll.UseVisualStyleBackColor = false;
-            // 
-            // btnPrintAll
-            // 
-            this.btnPrintAll.BackColor = System.Drawing.Color.OliveDrab;
-            this.btnPrintAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrintAll.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnPrintAll.Location = new System.Drawing.Point(597, 35);
-            this.btnPrintAll.Name = "btnPrintAll";
-            this.btnPrintAll.Size = new System.Drawing.Size(127, 42);
-            this.btnPrintAll.TabIndex = 17;
-            this.btnPrintAll.Text = "Print All";
-            this.btnPrintAll.UseVisualStyleBackColor = false;
             // 
             // btnPrintSelected
             // 
@@ -267,15 +256,36 @@
             // contextMenu
             // 
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuViewDetails});
+            this.mnuViewDetails,
+            this.mnuPrint});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(138, 26);
+            this.contextMenu.Size = new System.Drawing.Size(138, 48);
             // 
             // mnuViewDetails
             // 
             this.mnuViewDetails.Name = "mnuViewDetails";
             this.mnuViewDetails.Size = new System.Drawing.Size(137, 22);
             this.mnuViewDetails.Text = "View Details";
+            // 
+            // printPayroll
+            // 
+            this.printPayroll.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printPayroll_PrintPage);
+            // 
+            // printPayrollDialog
+            // 
+            this.printPayrollDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPayrollDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPayrollDialog.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPayrollDialog.Enabled = true;
+            this.printPayrollDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPayrollDialog.Icon")));
+            this.printPayrollDialog.Name = "printPayrollDialog";
+            this.printPayrollDialog.Visible = false;
+            // 
+            // mnuPrint
+            // 
+            this.mnuPrint.Name = "mnuPrint";
+            this.mnuPrint.Size = new System.Drawing.Size(137, 22);
+            this.mnuPrint.Text = "Print";
             // 
             // frmCurrentPayroll
             // 
@@ -319,7 +329,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sss;
         private System.Windows.Forms.DataGridViewTextBoxColumn pagibig;
         private System.Windows.Forms.DataGridViewTextBoxColumn philhealth;
-        private System.Windows.Forms.Button btnPrintAll;
         private System.Windows.Forms.Button btnPrintSelected;
         private System.Windows.Forms.Button btnDeleteCurrentPayroll;
         private System.Windows.Forms.Button btnArchivePayroll;
@@ -327,5 +336,8 @@
         private System.Windows.Forms.Button btnGeneratePayroll;
         private System.Windows.Forms.ContextMenuStrip contextMenu;
         private System.Windows.Forms.ToolStripMenuItem mnuViewDetails;
+        private System.Drawing.Printing.PrintDocument printPayroll;
+        private System.Windows.Forms.PrintPreviewDialog printPayrollDialog;
+        private System.Windows.Forms.ToolStripMenuItem mnuPrint;
     }
 }

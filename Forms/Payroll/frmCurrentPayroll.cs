@@ -17,7 +17,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
         private frmPayrollDetails frmPayrollDetails = new frmPayrollDetails();
         private frmGeneratePayroll frmGeneratePayroll = new frmGeneratePayroll();
         private PayrollService payrollService;
+        private PrintService printService;
         private string payrollId;
+        private PayrollData payrollData;
         public frmCurrentPayroll()
         {
             InitializeComponent();
@@ -29,8 +31,30 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             mnuViewDetails.Click += MnuViewDetails_Click;
             dgvCurrentPayroll.CellClick += DgvCurrentPayroll_CellClick;
             dgvCurrentPayroll.MouseClick += DgvCurrentPayroll_MouseClick;
+            mnuPrint.Click += MnuPrint_Click;
+            btnPrintSelected.Click += MnuPrint_Click;
         }
 
+        private void MnuPrint_Click(object sender, EventArgs e)
+        {
+            GetPayroll();
+            if(MessageBox.Show("Click OK to continue...", "Print Payroll", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+
+                printPayroll.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("payroll", 816, 1056);
+                printPayrollDialog.Document = printPayroll;
+                printPayrollDialog.Document.Print();
+            }
+        }
+        private async void GetPayroll()
+        {
+            var response = await payrollService.GetPayroll(payrollId);
+            if(null != response)
+            {
+                payrollData = response.data;
+            }
+        }
+        
         private void DgvCurrentPayroll_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -132,7 +156,6 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
                 btnGeneratePayroll.Enabled = true;
                 btnArchivePayroll.Enabled = false;
                 btnDeleteCurrentPayroll.Enabled = false;
-                btnPrintAll.Enabled = false;
             }
         }
 
@@ -141,14 +164,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             dgvCurrentPayroll.Rows.Clear();
             if (payrolls.Count > 0)
             {
-                btnPrintAll.Enabled = true;
                 btnGeneratePayroll.Enabled = false;
                 btnArchivePayroll.Enabled = true;
                 btnDeleteCurrentPayroll.Enabled = true;
             }
             else
             {
-                btnPrintAll.Enabled = false;
                 btnGeneratePayroll.Enabled = true;
                 btnArchivePayroll.Enabled = false;
                 btnDeleteCurrentPayroll.Enabled = false;
@@ -177,7 +198,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
         private void frmCurrentPayroll_Load(object sender, EventArgs e)
         {
             payrollService = new PayrollService(Program.xApiKey, Program.serverUrl);
-            btnPrintAll.Enabled = false;
+            printService = new PrintService();
+            payrollData = new PayrollData();
             btnPrintSelected.Enabled = false;
             btnViewDetails.Enabled = false;
             btnGeneratePayroll.Enabled = false;
@@ -185,6 +207,11 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             btnArchivePayroll.Enabled = false;
             GetCurrentPayrolls();
             payrollId = string.Empty;
+        }
+
+        private void printPayroll_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            printService.PrintPayroll(e, payrollData);
         }
     }
 }

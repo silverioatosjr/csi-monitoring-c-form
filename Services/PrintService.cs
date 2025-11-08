@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSIEmployeeMonitoringSystem.Models.Payroll;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -80,6 +81,17 @@ namespace CSIEmployeeMonitoringSystem.Services
                 DrawString(e, row.Cells[7].Value.ToString(), leftMargin + 672, topMargin + rowHeight, 96, height, sfL);
                 rowHeight += rowDefaultHeight;
             }
+
+        }
+
+        public void PrintPayroll(PrintPageEventArgs e, PayrollData payroll)
+        {
+            // 72 points = 1 inch
+            //9 points = 1/8 inch
+            //72/2 = 36
+            DrawBoldString(e, payroll.employee.firstName.ToString(), leftMargin, topMargin, 192, height, sfL);
+            
+            
 
         }
         private void DrawString(PrintPageEventArgs e, string content, float x, float y, float width, float height, StringFormat sF)

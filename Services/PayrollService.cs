@@ -102,7 +102,7 @@ namespace CSIEmployeeMonitoringSystem.Services
                 APIPayrollGetsParser res = JsonConvert.DeserializeObject<APIPayrollGetsParser>(responseBody);
                 return res;
             }
-            catch(Exception e)
+            catch
             {
                 return null;
             }
