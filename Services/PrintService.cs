@@ -1,4 +1,5 @@
-﻿using CSIEmployeeMonitoringSystem.Models.Payroll;
+﻿using CSIEmployeeMonitoringSystem.Models;
+using CSIEmployeeMonitoringSystem.Models.Payroll;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -20,16 +21,20 @@ namespace CSIEmployeeMonitoringSystem.Services
             sfR.Alignment = StringAlignment.Far;
             sfL = new StringFormat();
             sfL.Alignment = StringAlignment.Near;
-            height = 15;
+            height = 18;
             rowDefaultHeight = 22;
             leftMargin = 48;
             topMargin = 48;
+            dtrRowDefaultHeight = 12;
+            dtrHeight = 15;
         }
         private StringFormat sfC;
         private StringFormat sfR;
         private StringFormat sfL;
         private int height;
         private int rowDefaultHeight;
+        private int dtrRowDefaultHeight;
+        private int dtrHeight;
         private int leftMargin;
         private int topMargin;
         public void PrintSchedules(PrintPageEventArgs e, DataGridView dgv)
@@ -47,7 +52,7 @@ namespace CSIEmployeeMonitoringSystem.Services
             foreach (DataGridViewRow row in dgv.Rows)
             {
                 DrawString(e, $"{row.Cells[6].Value.ToString()}-{row.Cells[7].Value.ToString()}", leftMargin, topMargin+rowHeight, 96, height, sfL);
-                DrawString(e, $"({row.Cells[3].Value.ToString()}){row.Cells[4].Value.ToString()}", leftMargin + 96, topMargin + rowHeight, 240, height, sfL);
+                DrawString(e, $"({row.Cells[3].Value.ToString()}) {row.Cells[4].Value.ToString()}", leftMargin + 96, topMargin + rowHeight, 240, height, sfL);
                 DrawString(e, $"{row.Cells[9].Value.ToString()}", leftMargin + 336, topMargin + rowHeight, 96, height, sfL);
                 DrawString(e, $"{row.Cells[8].Value.ToString().Substring(0,3)}", leftMargin + 432, topMargin + rowHeight, 48, height, sfL);
                 DrawString(e, $"{row.Cells[2].Value.ToString()}", leftMargin + 480, topMargin + rowHeight, 192, height, sfL);
@@ -89,10 +94,39 @@ namespace CSIEmployeeMonitoringSystem.Services
             // 72 points = 1 inch
             //9 points = 1/8 inch
             //72/2 = 36
-            DrawBoldString(e, payroll.employee.firstName.ToString(), leftMargin, topMargin, 192, height, sfL);
-            
-            
+            int rowHeight = rowDefaultHeight;
+            DrawBoldString(e, "COMPUTER SYSTEMS INSTITUTE", 0, topMargin, 816, height, sfC);
+            DrawBoldString(e, "F. Imperial St., Kapantawan", 0, topMargin+rowHeight, 816, 22, sfC);
+            rowHeight += rowDefaultHeight;
+            DrawBoldString(e, "Legazpi City", 0, topMargin + rowHeight, 816, height, sfC);
+            rowHeight += 48;
+            DrawString(e, $"Name:", leftMargin, topMargin + rowHeight, 52, height, sfL);
+            DrawBoldString(e, $"{payroll.employee.lastName}, {payroll.employee.firstName}", leftMargin+52, topMargin + rowHeight, 300, height, sfL);
+            rowHeight += 32;
+            DrawHeaderString(e, $"DTR", leftMargin, topMargin + rowHeight, 350, height, sfC);
+            DrawHeaderString(e, "DEDUCTION", leftMargin+380, topMargin + rowHeight, 350, height, sfC);
+            rowHeight += 24;
+            DrawPayrollBoldString(e, "TIME IN", leftMargin, topMargin + rowHeight, 70, dtrHeight, sfL);
+            DrawPayrollBoldString(e, "TIME OUT", leftMargin + 70, topMargin + rowHeight, 70, dtrHeight, sfL);
+            DrawPayrollBoldString(e, "RENDERED", leftMargin + 140, topMargin + rowHeight, 80, dtrHeight, sfL);
+            DrawPayrollBoldString(e, "DAY", leftMargin + 220, topMargin + rowHeight, 50, dtrHeight, sfL);
+            DrawPayrollBoldString(e, "DATE", leftMargin + 270, topMargin + rowHeight, 70, dtrHeight, sfL);
+            rowHeight += 18;
+            foreach (var dtr in payroll.dtrs)
+            {
+                DrawPayrollString(e, dtr.timeIn.ToString(), leftMargin, topMargin + rowHeight, 70, dtrHeight, sfL);
+                DrawPayrollString(e, dtr.timeOut.ToString(), leftMargin + 70, topMargin + rowHeight, 70, dtrHeight, sfL);
+                DrawPayrollString(e, $"{dtr.hoursRendered.ToString()} hr(s)", leftMargin + 140, topMargin + rowHeight, 80, dtrHeight, sfL);
+                DrawPayrollString(e, dtr.day.Substring(0,3), leftMargin + 220, topMargin + rowHeight, 50, dtrHeight, sfL);
+                DrawPayrollString(e, dtr.date.ToString(), leftMargin + 270, topMargin + rowHeight, 65, dtrHeight, sfL);
+                rowHeight += dtrRowDefaultHeight;
+            }
 
+        }
+        private void DrawHeaderString(PrintPageEventArgs e, string content, float x, float y, float width, float height, StringFormat sF)
+        {
+            e.Graphics.FillRectangle(Brushes.LightGray, x, y, width, height+4);
+            e.Graphics.DrawString(content, new Font("Arial", 9, FontStyle.Bold), Brushes.Black, new RectangleF(x, y+5, width, height), sF);
         }
         private void DrawString(PrintPageEventArgs e, string content, float x, float y, float width, float height, StringFormat sF)
         {
@@ -100,7 +134,17 @@ namespace CSIEmployeeMonitoringSystem.Services
         }
         private void DrawBoldString(PrintPageEventArgs e, string content, float x, float y, float width, float height, StringFormat sF)
         {
-            e.Graphics.DrawString(content, new Font("Arial", 11, FontStyle.Bold), Brushes.Black, new RectangleF(x, y, width, height), sF);
+            e.Graphics.DrawString(content, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new RectangleF(x, y, width, height), sF);
+        }
+
+        private void DrawPayrollBoldString(PrintPageEventArgs e, string content, float x, float y, float width, float height, StringFormat sF)
+        {
+            e.Graphics.DrawString(content, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new RectangleF(x, y, width, height), sF);
+        }
+
+        private void DrawPayrollString(PrintPageEventArgs e, string content, float x, float y, float width, float height, StringFormat sF)
+        {
+            e.Graphics.DrawString(content, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new RectangleF(x, y, width, height), sF);
         }
     }
 }
