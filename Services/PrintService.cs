@@ -129,6 +129,10 @@ namespace CSIEmployeeMonitoringSystem.Services
             DrawPayrollBoldString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
             DrawPayrollBoldString(e, payroll.grossPay.ToString(), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
             deduction += 22;
+            DrawPayrollBoldString(e, "TOTAL DEDUCTIONS", leftMargin + 380, topMargin + deduction, 150, dtrHeight, sfL);
+            DrawPayrollBoldString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
+            DrawPayrollBoldString(e, (payroll.sss+payroll.tax+payroll.pagibig+payroll.philhealth).ToString(), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+            deduction += 22;
             DrawPayrollBoldString(e, "NET PAY", leftMargin + 380, topMargin + deduction, 150, dtrHeight, sfL);
             DrawPayrollBoldString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
             DrawPayrollBoldString(e, payroll.netPay.ToString(), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
