@@ -104,7 +104,27 @@ namespace CSIEmployeeMonitoringSystem.Services
             DrawBoldString(e, $"{payroll.employee.lastName}, {payroll.employee.firstName}", leftMargin+52, topMargin + rowHeight, 300, height, sfL);
             rowHeight += 32;
             DrawHeaderString(e, $"DTR", leftMargin, topMargin + rowHeight, 350, height, sfC);
-            DrawHeaderString(e, "DEDUCTION", leftMargin+380, topMargin + rowHeight, 350, height, sfC);
+            //Deductions
+            DrawHeaderString(e, "DEDUCTIONS", leftMargin+380, topMargin + rowHeight, 350, height, sfC);
+            int deduction = rowHeight + 42;
+            DrawPayrollString(e, "SSS", leftMargin + 380, topMargin + deduction, 130, dtrHeight, sfL);
+            DrawPayrollString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
+            DrawPayrollBoldString(e, payroll.sss.ToString(), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+            deduction += 22;
+            DrawPayrollString(e, "PAGIBIG", leftMargin + 380, topMargin + deduction, 130, dtrHeight, sfL);
+            DrawPayrollString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
+            DrawPayrollBoldString(e, payroll.pagibig.ToString(), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+            deduction += 22;
+            DrawPayrollString(e, "PHILHEALTH", leftMargin + 380, topMargin + deduction, 130, dtrHeight, sfL);
+            DrawPayrollString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
+            DrawPayrollBoldString(e, payroll.philhealth.ToString(), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+            deduction += 22;
+            DrawPayrollString(e, "TAX", leftMargin + 380, topMargin + deduction, 150, dtrHeight, sfL);
+            DrawPayrollString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
+            DrawPayrollBoldString(e, payroll.tax.ToString(), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+
+
+
             rowHeight += 24;
             DrawPayrollBoldString(e, "TIME IN", leftMargin, topMargin + rowHeight, 70, dtrHeight, sfL);
             DrawPayrollBoldString(e, "TIME OUT", leftMargin + 70, topMargin + rowHeight, 70, dtrHeight, sfL);
