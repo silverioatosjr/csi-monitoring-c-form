@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CSIEmployeeMonitoringSystem.Services
 {
@@ -24,7 +25,7 @@ namespace CSIEmployeeMonitoringSystem.Services
                 APIEmployeesGetParser res = JsonConvert.DeserializeObject<APIEmployeesGetParser>(responseBody);
                 return res;
             }
-            catch
+            catch(Exception e)
             {
                 return null;
             }

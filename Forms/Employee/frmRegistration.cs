@@ -277,6 +277,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             fingerPrint1 = string.Empty;
             picFingerprint2.Image = null;
             fingerPrint2 = string.Empty;
+            txtContractedHours.Text = "0";
         }
         private void EmployeeStatus()
         {

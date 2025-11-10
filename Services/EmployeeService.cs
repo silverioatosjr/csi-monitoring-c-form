@@ -32,8 +32,9 @@ namespace CSIEmployeeMonitoringSystem.Services
                     return res;
                 }
             }
-            catch
+            catch(Exception e)
             {
+                MessageBox.Show(e.ToString());
                 return null;
             }
         }
