@@ -37,6 +37,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 timerDtrTemp.Stop();
                 GetDtrTemp();
                 timerDtrTemp.Start();
+                timerDTR.Stop();
+                GetTodayDtr();
+                timerDTR.Start();
             }
         }
         private async void GetDtrTemp()
@@ -59,6 +62,24 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             }
             dgvDtr.Enabled = false;
         }
+
+        private async void GetTodayDtr()
+        {
+            var response = await dtrService.GetTodayDtrs();
+            dgvCurrenDtr.Rows.Clear();
+
+            if (null != response)
+            {
+                foreach (DTR d in response.data)
+                {
+                    dgvCurrenDtr.Rows.Add(
+                        $"{d.employee.firstName} {d.employee.lastName}",
+                        d.subjectCode, d.timeIn, d.timeOut, d.hoursRendered
+                    );
+                }
+            }
+        }
+
 
         private void frmDTR_Load(object sender, EventArgs e)
         {
@@ -86,6 +107,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 btnLogTime.Enabled = true;
                 timerDtrTemp.Stop();
                 GetDtrTemp();
+                timerDTR.Stop();
+                GetTodayDtr();
+                timerDTR.Start();
                 timerDtrTemp.Start();
                 btnLogTime.Focus();
             }
@@ -97,6 +121,13 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         {
             this.Invoke(new Action(delegate () {
                 GetDtrTemp();
+            }));
+        }
+
+        private void timerDTR_Tick(object sender, EventArgs e)
+        {
+            this.Invoke(new Action(delegate () {
+                GetTodayDtr();
             }));
         }
     }

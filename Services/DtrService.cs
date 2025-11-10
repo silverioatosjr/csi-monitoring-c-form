@@ -51,7 +51,23 @@ namespace CSIEmployeeMonitoringSystem.Services
                 //MessageBox.Show(err.Message);
                 return null;
             }
+        }
 
+        public async Task<APIDtrsParser> GetTodayDtrs()
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl + "/dtrs/today/record");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APIDtrsParser res = JsonConvert.DeserializeObject<APIDtrsParser>(responseBody);
+                return res;
+            }
+            catch
+            {
+                //MessageBox.Show(err.Message);
+                return null;
+            }
         }
 
         public async Task<APIDtrsParser> GetDtrs(DtrGetDateRange payload)
