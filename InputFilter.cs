@@ -26,7 +26,7 @@ namespace CSIEmployeeMonitoringSystem
                     {
                         if (!((input[i] == '0') || (input[i] == '1') || (input[i] == '2') || (input[i] == '3')
                                 || (input[i] == '4') || (input[i] == '5') || (input[i] == '6') || (input[i] == '7')
-                                || (input[i] == '8') || (input[i] == '9') || (input[i] == '.') || (input[i] == '-')))
+                                || (input[i] == '8') || (input[i] == '9') || (input[i] == '.') || (input[i] == '-') || (input[i] == ',')))
                         {
                             string newText = txt.Text.Replace(input[i].ToString(), "");
                             txt.Text = newText;
@@ -57,6 +57,30 @@ namespace CSIEmployeeMonitoringSystem
             }
         }
 
+        public string NumberFormatter(TextBox txt)
+        {
+            string input = txt.Text;
+            string output = string.Empty;
+            if(input.Trim()== "")
+            {
+                output = "0";
+            } else
+            {
+                if(input.Contains("."))
+                {
+                    int position = input.IndexOf(".");
+                } else
+                {
+
+                }
+                for(int i = txt.TextLength-1; i>=0; i--)
+                {
+
+                }
+            }
+
+            return output;
+        }
         public void SeriesFilter(TextBox txt)
         {
             try

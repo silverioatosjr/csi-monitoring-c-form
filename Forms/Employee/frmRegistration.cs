@@ -282,9 +282,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
         {
             List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
             items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
-            items.Add(new KeyValuePair<string, string>("Regular", "regular"));
-            items.Add(new KeyValuePair<string, string>("Full-time", "full_time"));
-            items.Add(new KeyValuePair<string, string>("Part-time", "part_time"));
+            items.Add(new KeyValuePair<string, string>("Regular", "Regular"));
+            items.Add(new KeyValuePair<string, string>("Full-time", "Full-time"));
+            items.Add(new KeyValuePair<string, string>("Part-time", "Part-time"));
             optEmployeeStatus.DataSource = items;
             optEmployeeStatus.DisplayMember = "Key";
             optEmployeeStatus.ValueMember = "Value";
@@ -294,10 +294,10 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
         {
             List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
             items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
-            items.Add(new KeyValuePair<string, string>("College", "college"));
-            items.Add(new KeyValuePair<string, string>("Senior High", "senior_high"));
-            items.Add(new KeyValuePair<string, string>("Both", "both"));
-            items.Add(new KeyValuePair<string, string>("Others (e.g.: Registrar)", "other"));
+            items.Add(new KeyValuePair<string, string>("College", "College"));
+            items.Add(new KeyValuePair<string, string>("Senior High", "Senior High"));
+            items.Add(new KeyValuePair<string, string>("Both", "Both"));
+            items.Add(new KeyValuePair<string, string>("Others (e.g.: Registrar)", "Other"));
             optDesignation.DataSource = items;
             optDesignation.DisplayMember = "Key";
             optDesignation.ValueMember = "Value";

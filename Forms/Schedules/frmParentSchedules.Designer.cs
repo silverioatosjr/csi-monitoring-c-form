@@ -44,6 +44,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.optInstructor = new System.Windows.Forms.ComboBox();
             this.dgvSubjectSchedules = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.printSchedulesDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.printSchedules = new System.Drawing.Printing.PrintDocument();
             this.subjectId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.instructorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.instructor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,11 +61,6 @@
             this.room = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.semester = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.schoolYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.printSchedulesDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.printSchedules = new System.Drawing.Printing.PrintDocument();
             this.grpControls.SuspendLayout();
             this.grpSchedules.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubjectSchedules)).BeginInit();
@@ -258,71 +258,6 @@
             this.dgvSubjectSchedules.Size = new System.Drawing.Size(1105, 349);
             this.dgvSubjectSchedules.TabIndex = 5;
             // 
-            // subjectId
-            // 
-            this.subjectId.HeaderText = "SUBJECT ID";
-            this.subjectId.Name = "subjectId";
-            this.subjectId.Visible = false;
-            // 
-            // instructorId
-            // 
-            this.instructorId.HeaderText = "INSTRUCTOR ID";
-            this.instructorId.Name = "instructorId";
-            this.instructorId.Visible = false;
-            // 
-            // instructor
-            // 
-            this.instructor.HeaderText = "INSTRUCTOR";
-            this.instructor.Name = "instructor";
-            this.instructor.Width = 200;
-            // 
-            // subjectCode
-            // 
-            this.subjectCode.HeaderText = "CODE";
-            this.subjectCode.Name = "subjectCode";
-            // 
-            // subject
-            // 
-            this.subject.HeaderText = "SUBJECT";
-            this.subject.Name = "subject";
-            this.subject.Width = 250;
-            // 
-            // course
-            // 
-            this.course.HeaderText = "COURSE";
-            this.course.Name = "course";
-            // 
-            // start
-            // 
-            this.start.HeaderText = "START";
-            this.start.Name = "start";
-            // 
-            // end
-            // 
-            this.end.HeaderText = "END";
-            this.end.Name = "end";
-            // 
-            // day
-            // 
-            this.day.HeaderText = "DAY";
-            this.day.Name = "day";
-            // 
-            // room
-            // 
-            this.room.HeaderText = "ROOM";
-            this.room.Name = "room";
-            // 
-            // semester
-            // 
-            this.semester.HeaderText = "SEMESTER";
-            this.semester.Name = "semester";
-            // 
-            // schoolYear
-            // 
-            this.schoolYear.HeaderText = "SCHOOL YEAR";
-            this.schoolYear.Name = "schoolYear";
-            this.schoolYear.Width = 130;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -356,6 +291,72 @@
             // printSchedules
             // 
             this.printSchedules.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printSchedules_PrintPage);
+            // 
+            // subjectId
+            // 
+            this.subjectId.HeaderText = "SUBJECT ID";
+            this.subjectId.Name = "subjectId";
+            this.subjectId.Visible = false;
+            // 
+            // instructorId
+            // 
+            this.instructorId.HeaderText = "INSTRUCTOR ID";
+            this.instructorId.Name = "instructorId";
+            this.instructorId.Visible = false;
+            // 
+            // instructor
+            // 
+            this.instructor.HeaderText = "INSTRUCTOR";
+            this.instructor.Name = "instructor";
+            this.instructor.Width = 200;
+            // 
+            // subjectCode
+            // 
+            this.subjectCode.HeaderText = "CODE";
+            this.subjectCode.Name = "subjectCode";
+            // 
+            // subject
+            // 
+            this.subject.HeaderText = "SUBJECT";
+            this.subject.Name = "subject";
+            this.subject.Width = 250;
+            // 
+            // course
+            // 
+            this.course.HeaderText = "COURSE/STRAND";
+            this.course.Name = "course";
+            this.course.Width = 170;
+            // 
+            // start
+            // 
+            this.start.HeaderText = "START";
+            this.start.Name = "start";
+            // 
+            // end
+            // 
+            this.end.HeaderText = "END";
+            this.end.Name = "end";
+            // 
+            // day
+            // 
+            this.day.HeaderText = "DAY";
+            this.day.Name = "day";
+            // 
+            // room
+            // 
+            this.room.HeaderText = "ROOM";
+            this.room.Name = "room";
+            // 
+            // semester
+            // 
+            this.semester.HeaderText = "SEMESTER";
+            this.semester.Name = "semester";
+            // 
+            // schoolYear
+            // 
+            this.schoolYear.HeaderText = "SCHOOL YEAR";
+            this.schoolYear.Name = "schoolYear";
+            this.schoolYear.Width = 130;
             // 
             // frmParentSchedules
             // 

@@ -120,7 +120,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
         {
             DateTime d = DateTime.Today;
             DateTime dF = new DateTime(d.Year, d.Day <= 15 ? 1 : 16, d.Month);
-            dtpFrom.Value = DateTime.Parse(dF.ToString("dd/MM/yyyy"));
+            dtpFrom.Value = DateTime.Parse(dF.ToShortDateString());
             dtpTo.Value = d;
         }
     }

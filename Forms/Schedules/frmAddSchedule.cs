@@ -142,9 +142,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             var response = await instructorService.GetInstructors();
             List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
             items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
-            items.Add(new KeyValuePair<string, string>("First Semester", "first"));
-            items.Add(new KeyValuePair<string, string>("Second Semester", "second"));
-            items.Add(new KeyValuePair<string, string>("Senior High", "senior"));
+            items.Add(new KeyValuePair<string, string>("First Semester", "First"));
+            items.Add(new KeyValuePair<string, string>("Second Semester", "Second"));
+            items.Add(new KeyValuePair<string, string>("Senior High", "Senior"));
             
             optSemester.DataSource = items;
             optSemester.DisplayMember = "Key";
