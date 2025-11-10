@@ -57,29 +57,16 @@ namespace CSIEmployeeMonitoringSystem
             }
         }
 
-        public string NumberFormatter(TextBox txt)
+        public void NumberFormatter(TextBox txt)
         {
             string input = txt.Text;
-            string output = string.Empty;
-            if(input.Trim()== "")
+            int numChar = input.Count(c => c == '.');
+            if (numChar > 0)
             {
-                output = "0";
-            } else
-            {
-                if(input.Contains("."))
-                {
-                    int position = input.IndexOf(".");
-                } else
-                {
-
-                }
-                for(int i = txt.TextLength-1; i>=0; i--)
-                {
-
-                }
+                
             }
 
-            return output;
+            
         }
         public void SeriesFilter(TextBox txt)
         {
