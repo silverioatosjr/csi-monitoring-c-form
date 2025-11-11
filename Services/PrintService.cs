@@ -99,9 +99,19 @@ namespace CSIEmployeeMonitoringSystem.Services
             DrawBoldString(e, "F. Imperial St., Kapantawan", 0, topMargin+rowHeight, 816, 22, sfC);
             rowHeight += rowDefaultHeight;
             DrawBoldString(e, "Legazpi City", 0, topMargin + rowHeight, 816, height, sfC);
+            rowHeight += 35;
+            DrawBoldString(e, "P A Y S L I P", 0, topMargin + rowHeight, 816, height, sfC);
             rowHeight += 48;
             DrawString(e, $"Name:", leftMargin, topMargin + rowHeight, 52, height, sfL);
             DrawBoldString(e, $"{payroll.employee.lastName}, {payroll.employee.firstName}", leftMargin+52, topMargin + rowHeight, 300, height, sfL);
+            DrawString(e, $"Basic Rate:", leftMargin+380, topMargin + rowHeight, 130, height, sfL);
+            DrawBoldString(e, (payroll.employee.basicSalary).ToString("0.##"), leftMargin + 530, topMargin + rowHeight, 200, dtrHeight, sfR);
+            rowHeight += 22;
+            DrawString(e, $"Semi-Monthly Rate:", leftMargin + 380, topMargin + rowHeight, 210, height, sfL);
+            DrawBoldString(e, (payroll.employee.basicSalary / 2).ToString("0.##"), leftMargin + 590, topMargin + rowHeight, 140, dtrHeight, sfR);
+            rowHeight += 22;
+            DrawString(e, $"Hourly Rate:", leftMargin + 380, topMargin + rowHeight, 130, height, sfL);
+            DrawBoldString(e, payroll.employee.hourlyRate.ToString("0.##"), leftMargin + 530, topMargin + rowHeight, 200, dtrHeight, sfR);
             rowHeight += 32;
             DrawHeaderString(e, $"DTR", leftMargin, topMargin + rowHeight, 350, height, sfC);
             //Deductions
@@ -135,7 +145,7 @@ namespace CSIEmployeeMonitoringSystem.Services
             deduction += 22;
             DrawPayrollBoldString(e, "NET PAY", leftMargin + 380, topMargin + deduction, 150, dtrHeight, sfL);
             DrawPayrollBoldString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
-            DrawPayrollBoldString(e, payroll.netPay.ToString(), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+            DrawPayrollBoldString(e, payroll.netPay.ToString("0.##"), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
             deduction += 42;
             DrawSalaryString(e, $"SALARY: {payroll.netPay}", leftMargin + 380, topMargin + deduction, 350, height, sfC);
 
@@ -146,16 +156,19 @@ namespace CSIEmployeeMonitoringSystem.Services
             DrawPayrollBoldString(e, "DAY", leftMargin + 220, topMargin + rowHeight, 50, dtrHeight, sfL);
             DrawPayrollBoldString(e, "DATE", leftMargin + 270, topMargin + rowHeight, 70, dtrHeight, sfL);
             rowHeight += 18;
+            float totalHours = 0;
             foreach (var dtr in payroll.dtrs)
             {
+                totalHours = totalHours + dtr.hoursRendered;
                 DrawPayrollString(e, dtr.timeIn.ToString(), leftMargin, topMargin + rowHeight, 70, dtrHeight, sfL);
                 DrawPayrollString(e, dtr.timeOut.ToString(), leftMargin + 70, topMargin + rowHeight, 70, dtrHeight, sfL);
-                DrawPayrollString(e, $"{dtr.hoursRendered.ToString()} hr(s)", leftMargin + 140, topMargin + rowHeight, 80, dtrHeight, sfL);
+                DrawPayrollString(e, dtr.hoursRendered.ToString("0.##"), leftMargin + 140, topMargin + rowHeight, 80, dtrHeight, sfL);
                 DrawPayrollString(e, dtr.day.Substring(0,3), leftMargin + 220, topMargin + rowHeight, 50, dtrHeight, sfL);
                 DrawPayrollString(e, dtr.date.ToString(), leftMargin + 270, topMargin + rowHeight, 65, dtrHeight, sfL);
                 rowHeight += dtrRowDefaultHeight;
             }
-
+            DrawPayrollBoldString(e, "TOTAL HOURS:", leftMargin, topMargin + rowHeight, 70, dtrHeight, sfL);
+            DrawPayrollBoldString(e, totalHours.ToString("0.##"), leftMargin+140, topMargin + rowHeight, 70, dtrHeight, sfL);
         }
 
         private void DrawSalaryString(PrintPageEventArgs e, string content, float x, float y, float width, float height, StringFormat sF)
