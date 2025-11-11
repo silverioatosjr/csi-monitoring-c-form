@@ -74,7 +74,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 {
                     dgvCurrenDtr.Rows.Add(
                         $"{d.employee.firstName} {d.employee.lastName}",
-                        d.subjectCode, d.timeIn, d.timeOut, d.hoursRendered
+                        d.subjectCode, d.timeIn, d.timeOut, d.hoursRendered.ToString("0.##")
                     );
                 }
             }

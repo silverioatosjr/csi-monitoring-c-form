@@ -167,7 +167,8 @@ namespace CSIEmployeeMonitoringSystem.Services
                 DrawPayrollString(e, dtr.date.ToString(), leftMargin + 270, topMargin + rowHeight, 65, dtrHeight, sfL);
                 rowHeight += dtrRowDefaultHeight;
             }
-            DrawPayrollBoldString(e, "TOTAL HOURS:", leftMargin, topMargin + rowHeight, 70, dtrHeight, sfL);
+            rowHeight += dtrRowDefaultHeight;
+            DrawPayrollBoldString(e, "TOTAL HRS:", leftMargin, topMargin + rowHeight, 75, dtrHeight, sfL);
             DrawPayrollBoldString(e, totalHours.ToString("0.##"), leftMargin+140, topMargin + rowHeight, 70, dtrHeight, sfL);
         }
 
