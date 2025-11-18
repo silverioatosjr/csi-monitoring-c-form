@@ -133,7 +133,7 @@ namespace CSIEmployeeMonitoringSystem.Services
             DrawPayrollString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
             DrawPayrollBoldString(e, payroll.tax.ToString(), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
             deduction += 100;
-            DrawHeaderString(e, "TOTAL", leftMargin + 380, topMargin + rowHeight, 350, height, sfC);
+            DrawHeaderString(e, "TOTAL", leftMargin + 380, topMargin + deduction, 350, height, sfC);
             deduction += 42;
             DrawPayrollBoldString(e, "GROSS PAY", leftMargin + 380, topMargin + deduction, 150, dtrHeight, sfL);
             DrawPayrollBoldString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
