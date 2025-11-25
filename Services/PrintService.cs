@@ -105,13 +105,13 @@ namespace CSIEmployeeMonitoringSystem.Services
             DrawString(e, $"Name:", leftMargin, topMargin + rowHeight, 52, height, sfL);
             DrawBoldString(e, $"{payroll.employee.lastName}, {payroll.employee.firstName}", leftMargin+52, topMargin + rowHeight, 300, height, sfL);
             DrawString(e, $"Basic Rate:", leftMargin+380, topMargin + rowHeight, 130, height, sfL);
-            DrawBoldString(e, (payroll.employee.basicSalary).ToString("0.##"), leftMargin + 530, topMargin + rowHeight, 200, dtrHeight, sfR);
+            DrawBoldString(e, FormattNumber(payroll.employee.basicSalary), leftMargin + 530, topMargin + rowHeight, 200, dtrHeight, sfR);
             rowHeight += 22;
             DrawString(e, $"Semi-Monthly Rate:", leftMargin + 380, topMargin + rowHeight, 210, height, sfL);
-            DrawBoldString(e, (payroll.employee.basicSalary / 2).ToString("0.##"), leftMargin + 590, topMargin + rowHeight, 140, dtrHeight, sfR);
+            DrawBoldString(e, FormattNumber((payroll.employee.basicSalary / 2)), leftMargin + 590, topMargin + rowHeight, 140, dtrHeight, sfR);
             rowHeight += 22;
             DrawString(e, $"Hourly Rate:", leftMargin + 380, topMargin + rowHeight, 130, height, sfL);
-            DrawBoldString(e, payroll.employee.hourlyRate.ToString("0.##"), leftMargin + 530, topMargin + rowHeight, 200, dtrHeight, sfR);
+            DrawBoldString(e, FormattNumber(payroll.employee.hourlyRate), leftMargin + 530, topMargin + rowHeight, 200, dtrHeight, sfR);
             rowHeight += 32;
             DrawHeaderString(e, $"DTR", leftMargin, topMargin + rowHeight, 350, height, sfC);
             //Deductions
@@ -119,35 +119,35 @@ namespace CSIEmployeeMonitoringSystem.Services
             int deduction = rowHeight + 42;
             DrawPayrollString(e, "SSS", leftMargin + 380, topMargin + deduction, 130, dtrHeight, sfL);
             DrawPayrollString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
-            DrawPayrollBoldString(e, payroll.sss.ToString("0.##"), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+            DrawPayrollBoldString(e, FormattNumber(payroll.sss), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
             deduction += 22;
             DrawPayrollString(e, "PAGIBIG", leftMargin + 380, topMargin + deduction, 130, dtrHeight, sfL);
             DrawPayrollString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
-            DrawPayrollBoldString(e, payroll.pagibig.ToString("0.##"), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+            DrawPayrollBoldString(e, FormattNumber(payroll.pagibig), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
             deduction += 22;
             DrawPayrollString(e, "PHILHEALTH", leftMargin + 380, topMargin + deduction, 130, dtrHeight, sfL);
             DrawPayrollString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
-            DrawPayrollBoldString(e, payroll.philhealth.ToString("0.##"), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+            DrawPayrollBoldString(e, FormattNumber(payroll.philhealth), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
             deduction += 22;
             DrawPayrollString(e, "TAX", leftMargin + 380, topMargin + deduction, 150, dtrHeight, sfL);
             DrawPayrollString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
-            DrawPayrollBoldString(e, payroll.tax.ToString("0.##"), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+            DrawPayrollBoldString(e, FormattNumber(payroll.tax), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
             deduction += 100;
             DrawHeaderString(e, "TOTAL", leftMargin + 380, topMargin + deduction, 350, height, sfC);
             deduction += 42;
             DrawPayrollBoldString(e, "GROSS PAY", leftMargin + 380, topMargin + deduction, 150, dtrHeight, sfL);
             DrawPayrollBoldString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
-            DrawPayrollBoldString(e, payroll.grossPay.ToString("0.##"), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+            DrawPayrollBoldString(e, FormattNumber(payroll.grossPay), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
             deduction += 22;
             DrawPayrollBoldString(e, "TOTAL DEDUCTIONS", leftMargin + 380, topMargin + deduction, 150, dtrHeight, sfL);
             DrawPayrollBoldString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
-            DrawPayrollBoldString(e, (payroll.sss+payroll.tax+payroll.pagibig+payroll.philhealth).ToString("0.##"), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+            DrawPayrollBoldString(e, FormattNumber(payroll.sss+payroll.tax+payroll.pagibig+payroll.philhealth), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
             deduction += 22;
             DrawPayrollBoldString(e, "NET PAY", leftMargin + 380, topMargin + deduction, 150, dtrHeight, sfL);
             DrawPayrollBoldString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
-            DrawPayrollBoldString(e, payroll.netPay.ToString("0.##"), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+            DrawPayrollBoldString(e, FormattNumber(payroll.netPay), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
             deduction += 42;
-            DrawSalaryString(e, "SALARY: " + payroll.netPay.ToString("0.##"), leftMargin + 380, topMargin + deduction, 350, height, sfC);
+            DrawSalaryString(e, "SALARY: " + FormattNumber(payroll.netPay), leftMargin + 380, topMargin + deduction, 350, height, sfC);
 
             rowHeight += 24;
             DrawPayrollBoldString(e, "TIME IN", leftMargin, topMargin + rowHeight, 70, dtrHeight, sfL);
@@ -162,14 +162,14 @@ namespace CSIEmployeeMonitoringSystem.Services
                 totalHours = totalHours + dtr.hoursRendered;
                 DrawPayrollString(e, dtr.timeIn.ToString(), leftMargin, topMargin + rowHeight, 70, dtrHeight, sfL);
                 DrawPayrollString(e, dtr.timeOut.ToString(), leftMargin + 70, topMargin + rowHeight, 70, dtrHeight, sfL);
-                DrawPayrollString(e, dtr.hoursRendered.ToString("0.##"), leftMargin + 140, topMargin + rowHeight, 80, dtrHeight, sfL);
+                DrawPayrollString(e, FormattNumber(dtr.hoursRendered), leftMargin + 140, topMargin + rowHeight, 80, dtrHeight, sfL);
                 DrawPayrollString(e, dtr.day.Substring(0,3), leftMargin + 220, topMargin + rowHeight, 50, dtrHeight, sfL);
                 DrawPayrollString(e, dtr.date.ToString(), leftMargin + 270, topMargin + rowHeight, 65, dtrHeight, sfL);
                 rowHeight += dtrRowDefaultHeight;
             }
             rowHeight += dtrRowDefaultHeight;
             DrawPayrollBoldString(e, "TOTAL HRS:", leftMargin, topMargin + rowHeight, 75, dtrHeight, sfL);
-            DrawPayrollBoldString(e, totalHours.ToString("0.##"), leftMargin+140, topMargin + rowHeight, 70, dtrHeight, sfL);
+            DrawPayrollBoldString(e, FormattNumber(totalHours), leftMargin+140, topMargin + rowHeight, 70, dtrHeight, sfL);
         }
 
         private void DrawSalaryString(PrintPageEventArgs e, string content, float x, float y, float width, float height, StringFormat sF)
@@ -199,6 +199,20 @@ namespace CSIEmployeeMonitoringSystem.Services
         private void DrawPayrollString(PrintPageEventArgs e, string content, float x, float y, float width, float height, StringFormat sF)
         {
             e.Graphics.DrawString(content, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new RectangleF(x, y, width, height), sF);
+        }
+
+        private string FormattNumber(float amount)
+        {
+            string output = "0";
+            if(amount >= 1000)
+            {
+                output = amount.ToString("0,000.00");
+            } else
+            {
+                output = amount.ToString("0.00");
+            }
+
+            return output;
         }
     }
 }
