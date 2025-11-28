@@ -23,7 +23,7 @@ namespace CSIEmployeeMonitoringSystem
             serverUrl = "http://localhost:3004/api";//Environment.GetEnvironmentVariable("SERVER_URL");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDTR()); //frmMain()
+            Application.Run(new frmMain()); //frmMain()
         }
     }
 }

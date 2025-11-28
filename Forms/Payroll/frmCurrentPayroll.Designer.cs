@@ -53,9 +53,9 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuViewDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.printPayroll = new System.Drawing.Printing.PrintDocument();
             this.printPayrollDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.mnuPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentPayroll)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -267,6 +267,12 @@
             this.mnuViewDetails.Size = new System.Drawing.Size(137, 22);
             this.mnuViewDetails.Text = "View Details";
             // 
+            // mnuPrint
+            // 
+            this.mnuPrint.Name = "mnuPrint";
+            this.mnuPrint.Size = new System.Drawing.Size(137, 22);
+            this.mnuPrint.Text = "Print";
+            // 
             // printPayroll
             // 
             this.printPayroll.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printPayroll_PrintPage);
@@ -280,12 +286,6 @@
             this.printPayrollDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPayrollDialog.Icon")));
             this.printPayrollDialog.Name = "printPayrollDialog";
             this.printPayrollDialog.Visible = false;
-            // 
-            // mnuPrint
-            // 
-            this.mnuPrint.Name = "mnuPrint";
-            this.mnuPrint.Size = new System.Drawing.Size(137, 22);
-            this.mnuPrint.Text = "Print";
             // 
             // frmCurrentPayroll
             // 
@@ -302,6 +302,7 @@
             this.MinimizeBox = false;
             this.Name = "frmCurrentPayroll";
             this.Text = "Payroll";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmCurrentPayroll_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentPayroll)).EndInit();

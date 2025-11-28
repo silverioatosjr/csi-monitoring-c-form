@@ -588,6 +588,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include=".gitignore" />
+    <None Include="Resources\csi.jpg" />
     <None Include="csiLogo.png" />
   </ItemGroup>
   <ItemGroup>

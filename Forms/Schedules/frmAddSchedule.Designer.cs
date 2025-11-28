@@ -424,6 +424,7 @@
             this.Name = "frmAddSchedule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add Schedule";
+            this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddSchedule_FormClosed);
             this.Load += new System.EventHandler(this.frmAddSchedule_Load);
             this.groupBox1.ResumeLayout(false);

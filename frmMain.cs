@@ -55,6 +55,7 @@ namespace CSIEmployeeMonitoringSystem
             }
 
             frmArchivedPayroll.BringToFront();
+            pictureBox1.SendToBack();
         }
 
         private void MnuCurrentPayroll_Click(object sender, EventArgs e)
@@ -67,6 +68,7 @@ namespace CSIEmployeeMonitoringSystem
             }
 
             frmCurrentPayroll.BringToFront();
+            pictureBox1.SendToBack();
         }
 
         private void MnuDtrHistory_Click(object sender, EventArgs e)
@@ -79,6 +81,7 @@ namespace CSIEmployeeMonitoringSystem
             }
 
             frmDtrList.BringToFront();
+            pictureBox1.SendToBack();
         }
 
         private void MnuCurrentDtr_Click(object sender, EventArgs e)
@@ -91,6 +94,7 @@ namespace CSIEmployeeMonitoringSystem
             }
 
             frmCurrentLogs.BringToFront();
+            pictureBox1.SendToBack();
         }
 
         private void MnuAddSchedule_Click(object sender, EventArgs e)
@@ -106,6 +110,7 @@ namespace CSIEmployeeMonitoringSystem
                 frmParentSchedules.WindowState = FormWindowState.Maximized;
             }
             frmParentSchedules.BringToFront();
+            pictureBox1.SendToBack();
         }
 
         private void MnuLogin_Click(object sender, EventArgs e)
@@ -149,6 +154,7 @@ namespace CSIEmployeeMonitoringSystem
                 frmEmployeesList.WindowState = FormWindowState.Maximized;
             }
             frmEmployeesList.BringToFront();
+            pictureBox1.SendToBack();
         }
 
         private void MnuConnectToServer_Click(object sender, EventArgs e)
@@ -188,6 +194,7 @@ namespace CSIEmployeeMonitoringSystem
                 frmRegistrationForm.WindowState = FormWindowState.Maximized;
             }
             frmRegistrationForm.BringToFront();
+            pictureBox1.SendToBack();
         }
 
         private void DisableAllButtons()

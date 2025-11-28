@@ -263,6 +263,7 @@
             this.Name = "frmArchivedPayroll";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Payroll Record";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmArchivedPayroll_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

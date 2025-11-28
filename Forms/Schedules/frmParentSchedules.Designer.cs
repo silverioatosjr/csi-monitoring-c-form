@@ -44,11 +44,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.optInstructor = new System.Windows.Forms.ComboBox();
             this.dgvSubjectSchedules = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.printSchedulesDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.printSchedules = new System.Drawing.Printing.PrintDocument();
             this.subjectId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.instructorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.instructor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +56,11 @@
             this.room = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.semester = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.schoolYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.printSchedulesDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.printSchedules = new System.Drawing.Printing.PrintDocument();
             this.grpControls.SuspendLayout();
             this.grpSchedules.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubjectSchedules)).BeginInit();
@@ -88,7 +88,7 @@
             this.btnPrint.BackColor = System.Drawing.Color.OliveDrab;
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnPrint.Location = new System.Drawing.Point(461, 36);
+            this.btnPrint.Location = new System.Drawing.Point(459, 36);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(127, 42);
@@ -127,7 +127,7 @@
             this.btnUpdateSchedule.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnUpdateSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateSchedule.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdateSchedule.Location = new System.Drawing.Point(317, 36);
+            this.btnUpdateSchedule.Location = new System.Drawing.Point(315, 36);
             this.btnUpdateSchedule.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateSchedule.Name = "btnUpdateSchedule";
             this.btnUpdateSchedule.Size = new System.Drawing.Size(127, 42);
@@ -140,7 +140,7 @@
             this.btnAddSchedule.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSchedule.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddSchedule.Location = new System.Drawing.Point(171, 36);
+            this.btnAddSchedule.Location = new System.Drawing.Point(169, 36);
             this.btnAddSchedule.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(127, 42);
@@ -173,6 +173,7 @@
             this.btnUploadXLSFile.TabIndex = 6;
             this.btnUploadXLSFile.Text = "Upload New Schedules";
             this.btnUploadXLSFile.UseVisualStyleBackColor = false;
+            this.btnUploadXLSFile.Visible = false;
             // 
             // grpSchedules
             // 
@@ -258,40 +259,6 @@
             this.dgvSubjectSchedules.Size = new System.Drawing.Size(1105, 349);
             this.dgvSubjectSchedules.TabIndex = 5;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuUpdate,
-            this.mnuDelete});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 48);
-            // 
-            // mnuUpdate
-            // 
-            this.mnuUpdate.Name = "mnuUpdate";
-            this.mnuUpdate.Size = new System.Drawing.Size(112, 22);
-            this.mnuUpdate.Text = "Update";
-            // 
-            // mnuDelete
-            // 
-            this.mnuDelete.Name = "mnuDelete";
-            this.mnuDelete.Size = new System.Drawing.Size(112, 22);
-            this.mnuDelete.Text = "Delete";
-            // 
-            // printSchedulesDialog
-            // 
-            this.printSchedulesDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printSchedulesDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printSchedulesDialog.ClientSize = new System.Drawing.Size(400, 300);
-            this.printSchedulesDialog.Enabled = true;
-            this.printSchedulesDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printSchedulesDialog.Icon")));
-            this.printSchedulesDialog.Name = "printSchedulesDialog";
-            this.printSchedulesDialog.Visible = false;
-            // 
-            // printSchedules
-            // 
-            this.printSchedules.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printSchedules_PrintPage);
-            // 
             // subjectId
             // 
             this.subjectId.HeaderText = "SUBJECT ID";
@@ -358,6 +325,40 @@
             this.schoolYear.Name = "schoolYear";
             this.schoolYear.Width = 130;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuUpdate,
+            this.mnuDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 48);
+            // 
+            // mnuUpdate
+            // 
+            this.mnuUpdate.Name = "mnuUpdate";
+            this.mnuUpdate.Size = new System.Drawing.Size(112, 22);
+            this.mnuUpdate.Text = "Update";
+            // 
+            // mnuDelete
+            // 
+            this.mnuDelete.Name = "mnuDelete";
+            this.mnuDelete.Size = new System.Drawing.Size(112, 22);
+            this.mnuDelete.Text = "Delete";
+            // 
+            // printSchedulesDialog
+            // 
+            this.printSchedulesDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printSchedulesDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printSchedulesDialog.ClientSize = new System.Drawing.Size(400, 300);
+            this.printSchedulesDialog.Enabled = true;
+            this.printSchedulesDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printSchedulesDialog.Icon")));
+            this.printSchedulesDialog.Name = "printSchedulesDialog";
+            this.printSchedulesDialog.Visible = false;
+            // 
+            // printSchedules
+            // 
+            this.printSchedules.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printSchedules_PrintPage);
+            // 
             // frmParentSchedules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -373,6 +374,7 @@
             this.MinimizeBox = false;
             this.Name = "frmParentSchedules";
             this.Text = "Subjects Schedule";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmParentSchedules_Load);
             this.grpControls.ResumeLayout(false);
             this.grpSchedules.ResumeLayout(false);

@@ -424,6 +424,7 @@
             this.Name = "frmUpdateSchedule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Update Schedule";
+            this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmUpdateSchedule_FormClosed);
             this.Load += new System.EventHandler(this.frmUpdateSchedule_Load);
             this.groupBox2.ResumeLayout(false);

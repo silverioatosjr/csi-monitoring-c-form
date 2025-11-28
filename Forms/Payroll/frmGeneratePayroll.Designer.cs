@@ -161,6 +161,7 @@
             this.Name = "frmGeneratePayroll";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Generate Payroll";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmGeneratePayroll_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
