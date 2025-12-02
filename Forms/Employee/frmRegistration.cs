@@ -59,11 +59,29 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             }
         }
 
+        private string FormattNumber(float amount)
+        {
+            string output = "0";
+            if (amount >= 1000)
+            {
+                output = amount.ToString("0,000.00");
+            }
+            else
+            {
+                output = amount.ToString("0.00");
+            }
+
+            return output;
+        }
+
         private void txt_LostFocus(object sender, EventArgs e)
         {
             if(((TextBox)sender).Text == string.Empty)
             {
                 ((TextBox)sender).Text = "0";
+            } else
+            {
+                ((TextBox)sender).Text = FormattNumber(float.Parse(((TextBox)sender).Text));
             }
         }
 
