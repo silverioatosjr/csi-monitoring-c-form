@@ -67,14 +67,23 @@ namespace CSIEmployeeMonitoringSystem.Services
             // 72 points = 1 inch
             //9 points = 1/8 inch
             //72/2 = 36
-            DrawBoldString(e, "EMPLOYEE", leftMargin, topMargin, 192, height, sfL);
-            DrawBoldString(e, "CODE", leftMargin + 192, topMargin, 96, height, sfL);
-            DrawBoldString(e, "TIME IN", leftMargin + 288, topMargin, 96, height, sfL);
-            DrawBoldString(e, "TIME OUT", leftMargin + 384, topMargin, 96, height, sfL);
-            DrawBoldString(e, "RENDERED", leftMargin + 480, topMargin, 96, height, sfL);
-            DrawBoldString(e, "DAY", leftMargin + 576, topMargin, 96, height, sfL);
-            DrawBoldString(e, "DATE", leftMargin + 672, topMargin, 96, height, sfL);
             int rowHeight = rowDefaultHeight;
+            leftMargin = leftMargin - 15;
+            DrawBoldString(e, "COMPUTER SYSTEMS INSTITUTE", 0, topMargin, 816, height, sfC);
+            DrawBoldString(e, "F. Imperial St., Kapantawan", 0, topMargin + rowHeight, 816, 22, sfC);
+            rowHeight += rowDefaultHeight;
+            DrawBoldString(e, "Legazpi City", 0, topMargin + rowHeight, 816, height, sfC);
+            rowHeight += 35;
+            DrawBoldString(e, "D T R", 0, topMargin + rowHeight, 816, height, sfC);
+            rowHeight += 48;
+            DrawBoldString(e, "EMPLOYEE", leftMargin, topMargin + rowHeight, 192, height, sfL);
+            DrawBoldString(e, "CODE", leftMargin + 192, topMargin + rowHeight, 96, height, sfL);
+            DrawBoldString(e, "TIME IN", leftMargin + 288, topMargin + rowHeight, 96, height, sfL);
+            DrawBoldString(e, "TIME OUT", leftMargin + 384, topMargin + rowHeight, 96, height, sfL);
+            DrawBoldString(e, "RENDERED", leftMargin + 480, topMargin + rowHeight, 96, height, sfL);
+            DrawBoldString(e, "DAY", leftMargin + 576, topMargin + rowHeight, 96, height, sfL);
+            DrawBoldString(e, "DATE", leftMargin + 672, topMargin + rowHeight, 96, height, sfL);
+            rowHeight += rowDefaultHeight;
             foreach (DataGridViewRow row in dgv.Rows)
             {
                 DrawString(e, $"{row.Cells[1].Value.ToString()}", leftMargin, topMargin + rowHeight, 192, height, sfL);
