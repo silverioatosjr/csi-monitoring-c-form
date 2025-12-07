@@ -73,7 +73,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
 
             return output;
         }
+        private string RemoveComma(float amount)
+        {
+            string output = amount.ToString("0.00");
 
+            return output;
+        }
         private void txt_LostFocus(object sender, EventArgs e)
         {
             if (((TextBox)sender).Text == string.Empty)
@@ -95,7 +100,14 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
         {
             if (sender.GetType().Name == "TextBox")
             {
-                ((TextBox)sender).Text = (((TextBox)sender).Text == "0") ? "" : ((TextBox)sender).Text;
+                if (((TextBox)sender).Text == "0")
+                {
+                    ((TextBox)sender).Text = "";
+                }
+                else
+                {
+                    ((TextBox)sender).Text = RemoveComma(float.Parse(((TextBox)sender).Text));
+                }
                 ((TextBox)sender).SelectionStart = ((TextBox)sender).TextLength;
             }
         }
@@ -146,8 +158,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             if(null != data)
             {
                 txtCode.Text = data.data.code;
-                txtBasicSalary.Text = data.data.basicSalary.ToString();
-                txtHourlyRate.Text = data.data.hourlyRate.ToString();
+                txtBasicSalary.Text = FormattNumber(data.data.basicSalary);
+                txtHourlyRate.Text = FormattNumber(data.data.hourlyRate);
                 txtFirstName.Text = data.data.firstName;
                 txtLastName.Text = data.data.lastName;
                 txtContractedHours.Text = data.data.contractedHours.ToString();

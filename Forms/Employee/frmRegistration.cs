@@ -73,6 +73,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
 
             return output;
         }
+        private string RemoveComma(float amount)
+        {
+            string output = amount.ToString("0.00");
+
+            return output;
+        }
 
         private void txt_LostFocus(object sender, EventArgs e)
         {
@@ -94,7 +100,13 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
         {
             if (sender.GetType().Name == "TextBox")
             {
-                ((TextBox)sender).Text = (((TextBox)sender).Text == "0") ? "" : ((TextBox)sender).Text;
+                if(((TextBox)sender).Text == "0")
+                {
+                    ((TextBox)sender).Text = "";
+                } else
+                {
+                    ((TextBox)sender).Text = RemoveComma(float.Parse(((TextBox)sender).Text));
+                }
                 ((TextBox)sender).SelectionStart = ((TextBox)sender).TextLength;
             }
         }

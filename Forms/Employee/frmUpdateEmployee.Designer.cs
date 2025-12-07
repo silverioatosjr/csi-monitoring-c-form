@@ -267,9 +267,9 @@
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(237, 146);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(208, 15);
+            this.label20.Size = new System.Drawing.Size(211, 15);
             this.label20.TabIndex = 28;
-            this.label20.Text = "Regular full time load (hrs per week):";
+            this.label20.Text = "Contracted hours load (hrs per week):";
             // 
             // txtContractedHours
             // 
