@@ -49,6 +49,7 @@
             this.mnuUsersManual = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.mnuChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMainStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -75,6 +76,7 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuConnectToServer,
             this.mnuLogin,
+            this.mnuChangePassword,
             this.mnuCloseWindow});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(71, 21);
@@ -209,6 +211,12 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // mnuChangePassword
+            // 
+            this.mnuChangePassword.Name = "mnuChangePassword";
+            this.mnuChangePassword.Size = new System.Drawing.Size(186, 22);
+            this.mnuChangePassword.Text = "Change Password";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,6 +263,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuUsersManual;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem mnuChangePassword;
     }
 }
 

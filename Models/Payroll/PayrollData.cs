@@ -23,5 +23,8 @@ namespace CSIEmployeeMonitoringSystem.Models.Payroll
         public float philhealth { get; set; }
         public string cutOff { get; set; }
         public string month { get; set; }
+        public float allowance { get; set; }
+        public float adjustment { get; set; }
+
 }
 }

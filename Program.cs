@@ -12,6 +12,7 @@ namespace CSIEmployeeMonitoringSystem
     {
         public static string xApiKey = "";
         public static string serverUrl = "";
+        public static string accessToken = "";
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

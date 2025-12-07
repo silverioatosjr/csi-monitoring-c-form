@@ -19,6 +19,7 @@ namespace CSIEmployeeMonitoringSystem
     public partial class frmMain : Form
     {
         private frmLogin frmLogin;
+        private frmChangePassword frmChangePassword;
         private frmParentSchedules frmParentSchedules = new frmParentSchedules();
         private frmRegistration frmRegistrationForm = new frmRegistration();
         private ConnectionService connectionService;
@@ -43,6 +44,17 @@ namespace CSIEmployeeMonitoringSystem
             mnuDtrHistory.Click += MnuDtrHistory_Click;
             mnuCurrentPayroll.Click += MnuCurrentPayroll_Click;
             mnuArchivedPayroll.Click += MnuArchivedPayroll_Click;
+            mnuChangePassword.Click += MnuChangePassword_Click;
+        }
+
+        private void MnuChangePassword_Click(object sender, EventArgs e)
+        {
+            if (frmChangePassword == null)
+            {
+                frmChangePassword = new frmChangePassword();
+            }
+
+            frmChangePassword.ShowDialog();
         }
 
         private void MnuArchivedPayroll_Click(object sender, EventArgs e)
@@ -203,6 +215,7 @@ namespace CSIEmployeeMonitoringSystem
             mnuSchedule.Enabled = false;
             mnuDtr.Enabled = false;
             mnuPayroll.Enabled = false;
+            mnuChangePassword.Enabled = false;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -238,6 +251,7 @@ namespace CSIEmployeeMonitoringSystem
                 mnuEmployeeRegistration.Enabled = false;
                 mnuDtrHistory.Enabled = false;
             }
+            mnuChangePassword.Enabled = true;
         }
     }
 }

@@ -32,6 +32,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             InitializeComponent();
             btnClose.Click += BtnClose_Click;
             btnUpdate.Click += BtnUpdate_Click;
+            txtAdjustment.TextChanged += txt_TextChanged;
+            txtAdjustment.GotFocus += txt_GotFocus;
+            txtAdjustment.LostFocus += txt_LostFocus;
+            txtAllowance.TextChanged += txt_TextChanged;
+            txtAllowance.GotFocus += txt_GotFocus;
+            txtAllowance.LostFocus += txt_LostFocus;
             txtNetPay.TextChanged += txt_TextChanged;
             txtNetPay.GotFocus += txt_GotFocus;
             txtNetPay.LostFocus += txt_LostFocus;

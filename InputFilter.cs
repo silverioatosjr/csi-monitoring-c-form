@@ -22,6 +22,7 @@ namespace CSIEmployeeMonitoringSystem
                 {
                     string input = txt.Text;
                     int numChar = input.Count(c => c == '.');
+                    int dashChar = input.Count(c => c == '-');
                     for (int i = 0; i < input.Length; i++)
                     {
                         if (!((input[i] == '0') || (input[i] == '1') || (input[i] == '2') || (input[i] == '3')

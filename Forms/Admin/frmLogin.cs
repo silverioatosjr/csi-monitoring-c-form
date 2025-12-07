@@ -62,6 +62,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Admin
             {
 
                 _sender.userRole = data.user.role;
+                Program.accessToken = data.user.token;
                 Cursor = Cursors.Arrow;
                 this.Invoke(new Action(delegate ()
                 {

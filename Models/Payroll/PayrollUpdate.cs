@@ -14,5 +14,8 @@ namespace CSIEmployeeMonitoringSystem.Models.Payroll
         public float pagibig { get; set; }
         public float tax { get; set; }
         public float philhealth { get; set; }
+        public float bonus { get; set; }
+        public float allowance { get; set; }
+        public float adjustment { get; set; }
     }
 }

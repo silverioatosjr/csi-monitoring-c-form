@@ -234,6 +234,12 @@
     <Compile Include="ApiParser\PayrollParser\APIPayrollGetParser.cs" />
     <Compile Include="ApiParser\PayrollParser\APIPayrollGetsParser.cs" />
     <Compile Include="ApiParser\PayrollParser\APIPayrollUpdateParser.cs" />
+    <Compile Include="Forms\Admin\frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Admin\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -466,6 +472,9 @@
     <Compile Include="Services\ScheduleService.cs" />
     <Compile Include="Services\SssService.cs" />
     <Compile Include="Services\TaxService.cs" />
+    <EmbeddedResource Include="Forms\Admin\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
