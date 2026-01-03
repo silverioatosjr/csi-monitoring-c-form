@@ -10,6 +10,6 @@ namespace CSIEmployeeMonitoringSystem.ApiParser
     class APIAuthParser
     {
         public string message { get; set; }
-        public Auth user { get; set; }
+        public AuthSignIn user { get; set; }
     }
 }

@@ -173,7 +173,6 @@
             this.btnUploadXLSFile.TabIndex = 6;
             this.btnUploadXLSFile.Text = "Upload New Schedules";
             this.btnUploadXLSFile.UseVisualStyleBackColor = false;
-            this.btnUploadXLSFile.Visible = false;
             // 
             // grpSchedules
             // 

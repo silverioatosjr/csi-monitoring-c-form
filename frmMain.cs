@@ -144,6 +144,7 @@ namespace CSIEmployeeMonitoringSystem
                 userRole = "";
                 mnuLogin.Text = "Login";
                 SetUserAccessPrivilege();
+                mnuChangePassword.Enabled = false;
             }
         }
 
@@ -250,6 +251,7 @@ namespace CSIEmployeeMonitoringSystem
                 mnuPayroll.Enabled = false;
                 mnuEmployeeRegistration.Enabled = false;
                 mnuDtrHistory.Enabled = false;
+                mnuChangePassword.Enabled = true;
             }
             mnuChangePassword.Enabled = true;
         }
