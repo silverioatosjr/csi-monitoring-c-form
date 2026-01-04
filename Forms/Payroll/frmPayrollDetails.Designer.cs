@@ -30,9 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPayrollDetails));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtAdjustment = new System.Windows.Forms.TextBox();
+            this.txtOverTime = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtAllowance = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -52,15 +51,18 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtTotalHours = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtTotalHours);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtAdjustment);
+            this.groupBox1.Controls.Add(this.txtOverTime);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtAllowance);
             this.groupBox1.Controls.Add(this.label8);
@@ -81,39 +83,28 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(373, 312);
+            this.groupBox1.Size = new System.Drawing.Size(373, 355);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Payroll Details";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(269, 175);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(29, 15);
-            this.label11.TabIndex = 24;
-            this.label11.Text = "(+/-)";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(200, 176);
+            this.label10.Location = new System.Drawing.Point(21, 229);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 15);
+            this.label10.Size = new System.Drawing.Size(67, 15);
             this.label10.TabIndex = 22;
-            this.label10.Text = "Adjustment:";
+            this.label10.Text = "OT/Wages:";
             // 
-            // txtAdjustment
+            // txtOverTime
             // 
-            this.txtAdjustment.Location = new System.Drawing.Point(203, 195);
-            this.txtAdjustment.Name = "txtAdjustment";
-            this.txtAdjustment.Size = new System.Drawing.Size(144, 22);
-            this.txtAdjustment.TabIndex = 23;
-            this.txtAdjustment.Text = "0";
+            this.txtOverTime.Location = new System.Drawing.Point(24, 248);
+            this.txtOverTime.Name = "txtOverTime";
+            this.txtOverTime.Size = new System.Drawing.Size(144, 22);
+            this.txtOverTime.TabIndex = 23;
+            this.txtOverTime.Text = "0";
             // 
             // label9
             // 
@@ -209,7 +200,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(200, 246);
+            this.label4.Location = new System.Drawing.Point(21, 287);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 15);
             this.label4.TabIndex = 7;
@@ -217,9 +208,10 @@
             // 
             // txtNetPay
             // 
-            this.txtNetPay.Location = new System.Drawing.Point(203, 265);
+            this.txtNetPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNetPay.Location = new System.Drawing.Point(24, 306);
             this.txtNetPay.Name = "txtNetPay";
-            this.txtNetPay.Size = new System.Drawing.Size(144, 22);
+            this.txtNetPay.Size = new System.Drawing.Size(323, 26);
             this.txtNetPay.TabIndex = 5;
             this.txtNetPay.Text = "0";
             // 
@@ -227,7 +219,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(20, 246);
+            this.label2.Location = new System.Drawing.Point(200, 229);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 15);
             this.label2.TabIndex = 3;
@@ -235,7 +227,7 @@
             // 
             // txtGrossPay
             // 
-            this.txtGrossPay.Location = new System.Drawing.Point(23, 265);
+            this.txtGrossPay.Location = new System.Drawing.Point(203, 248);
             this.txtGrossPay.Name = "txtGrossPay";
             this.txtGrossPay.Size = new System.Drawing.Size(144, 22);
             this.txtGrossPay.TabIndex = 4;
@@ -262,7 +254,7 @@
             // 
             this.groupBox2.Controls.Add(this.btnUpdate);
             this.groupBox2.Controls.Add(this.btnClose);
-            this.groupBox2.Location = new System.Drawing.Point(22, 341);
+            this.groupBox2.Location = new System.Drawing.Point(22, 390);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(373, 105);
             this.groupBox2.TabIndex = 2;
@@ -295,12 +287,30 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(200, 176);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(106, 15);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "OT/Hrs Rendered:";
+            // 
+            // txtTotalHours
+            // 
+            this.txtTotalHours.Location = new System.Drawing.Point(203, 195);
+            this.txtTotalHours.Name = "txtTotalHours";
+            this.txtTotalHours.Size = new System.Drawing.Size(144, 22);
+            this.txtTotalHours.TabIndex = 25;
+            this.txtTotalHours.Text = "0";
+            // 
             // frmPayrollDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(420, 466);
+            this.ClientSize = new System.Drawing.Size(420, 518);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -342,8 +352,9 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtAllowance;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtAdjustment;
+        private System.Windows.Forms.TextBox txtOverTime;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtTotalHours;
     }
 }

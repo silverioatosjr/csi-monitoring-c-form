@@ -9,13 +9,13 @@ namespace CSIEmployeeMonitoringSystem.Models.Payroll
     class PayrollUpdate
     {
         public float grossPay { get; set; }
+        public float overTime { get; set; }
+        public float totalHours { get; set; }
         public float netPay { get; set; }
         public float sss { get; set; }
         public float pagibig { get; set; }
         public float tax { get; set; }
         public float philhealth { get; set; }
-        public float bonus { get; set; }
         public float allowance { get; set; }
-        public float adjustment { get; set; }
     }
 }

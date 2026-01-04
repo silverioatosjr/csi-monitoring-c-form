@@ -18,6 +18,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
         public string payrollId;
         private const int CP_NOCLOSE_BUTTON = 0x200;
         private InputFilter inputs;
+        private Models.Employee employeeData;
         protected override CreateParams CreateParams
         {
             get
@@ -32,15 +33,15 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             InitializeComponent();
             btnClose.Click += BtnClose_Click;
             btnUpdate.Click += BtnUpdate_Click;
-            txtAdjustment.TextChanged += txt_TextChanged;
-            txtAdjustment.GotFocus += txt_GotFocus;
-            txtAdjustment.LostFocus += txt_LostFocus;
+            //txtOverTime.TextChanged += txt_TextChanged;
+            //txtOverTime.GotFocus += txt_GotFocus;
+            //txtOverTime.LostFocus += txt_LostFocus;
             txtAllowance.TextChanged += txt_TextChanged;
             txtAllowance.GotFocus += txt_GotFocus;
             txtAllowance.LostFocus += txt_LostFocus;
-            txtNetPay.TextChanged += txt_TextChanged;
-            txtNetPay.GotFocus += txt_GotFocus;
-            txtNetPay.LostFocus += txt_LostFocus;
+            //txtNetPay.TextChanged += txt_TextChanged;
+            //txtNetPay.GotFocus += txt_GotFocus;
+            //txtNetPay.LostFocus += txt_LostFocus;
             txtGrossPay.TextChanged += txt_TextChanged;
             txtGrossPay.GotFocus += txt_GotFocus;
             txtGrossPay.LostFocus += txt_LostFocus;
@@ -56,6 +57,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             txtPhilhealth.TextChanged += txt_TextChanged;
             txtPhilhealth.GotFocus += txt_GotFocus;
             txtPhilhealth.LostFocus += txt_LostFocus;
+            txtTotalHours.TextChanged += txt_TextChanged;
+            txtTotalHours.GotFocus += txt_GotFocus;
+            txtTotalHours.LostFocus += txt_LostFocus;
 
         }
 
@@ -85,11 +89,13 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             {
                 btnUpdate.Text = "Update";
                 txtGrossPay.Enabled = true;
-                txtNetPay.Enabled = true;
+                txtNetPay.Enabled = false;
                 txtPagibig.Enabled = true;
                 txtPhilhealth.Enabled = true;
                 txtSSS.Enabled = true;
                 txtTax.Enabled = true;
+                txtOverTime.Enabled = false;
+                txtTotalHours.Enabled = true;
             } else
             {
                 
@@ -97,10 +103,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
                 btnUpdate.Text = "Edit";
                 txtGrossPay.Enabled = false;
                 txtNetPay.Enabled = false;
+                txtOverTime.Enabled = false;
                 txtPagibig.Enabled = false;
                 txtPhilhealth.Enabled = false;
                 txtSSS.Enabled = false;
                 txtTax.Enabled = false;
+                txtTotalHours.Enabled = false;
             }
         }
 
@@ -113,6 +121,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             payload.philhealth = float.Parse(txtPhilhealth.Text);
             payload.sss = float.Parse(txtSSS.Text);
             payload.tax = float.Parse(txtTax.Text);
+            payload.allowance = float.Parse(txtAllowance.Text);
+            payload.totalHours = float.Parse(txtTotalHours.Text);
+            payload.overTime = float.Parse(txtOverTime.Text);
 
             var response = await payrollService.UpdatePayroll(payrollId, payload);
             if(null != response)
@@ -137,11 +148,14 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             {
                 txtName.Text = $"{response.data.employee.firstName} {response.data.employee.lastName}";
                 txtGrossPay.Text = response.data.grossPay.ToString();
-                txtNetPay.Text = response.data.netPay.ToString();
+                txtTotalHours.Text = response.data.totalHours.ToString();
+                txtNetPay.Text = response.data.netPay.ToString("0,000.00");
+                txtOverTime.Text = response.data.overTime.ToString();
                 txtTax.Text = response.data.tax.ToString();
                 txtSSS.Text = response.data.sss.ToString();
                 txtPagibig.Text = response.data.pagibig.ToString();
                 txtPhilhealth.Text = response.data.philhealth.ToString();
+                employeeData = response.data.employee;
             }
         }
 
@@ -154,9 +168,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             txtNetPay.Enabled = false;
             txtPagibig.Enabled = false;
             txtPhilhealth.Enabled = false;
+            txtTotalHours.Enabled = false;
+            txtOverTime.Enabled = false;
             txtSSS.Enabled = false;
             txtTax.Enabled = false;
             inputs = new InputFilter();
+            employeeData = new Models.Employee();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace CSIEmployeeMonitoringSystem.Models.Payroll
         public float totalHours { get; set; }
         public List<PayrollDtr> dtrs { get; set; }
         public float grossPay { get; set; }
+        public float overTime { get; set; }
         public float netPay { get; set; }
         public float sss { get; set; }
         public float pagibig { get; set; }
@@ -24,7 +25,6 @@ namespace CSIEmployeeMonitoringSystem.Models.Payroll
         public string cutOff { get; set; }
         public string month { get; set; }
         public float allowance { get; set; }
-        public float adjustment { get; set; }
-
-}
+  
+    }
 }
