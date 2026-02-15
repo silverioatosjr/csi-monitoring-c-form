@@ -14,6 +14,7 @@ namespace CSIEmployeeMonitoringSystem.Models
         public string subjectCode { get; set; }
         public string timeIn { get; set; }
         public string timeOut { get; set; }
+        public string building { get; set; }
         public float hoursRendered { get; set; }
         public string date { get; set; }
         public string day { get; set; }

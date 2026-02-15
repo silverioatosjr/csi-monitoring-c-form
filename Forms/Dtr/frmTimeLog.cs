@@ -77,6 +77,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 //Save the dtr
                 var employee = new DTRVerfication();
                 employee.employee = employeeId;
+                employee.building = Program.building;
                 var response = await dtrService.SaveDtr(employee);
                 if(null != response)
                 {
