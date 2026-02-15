@@ -15,15 +15,36 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
     public partial class frmDTR : Form
     {
         private frmTimeLog frmTimeLog = new frmTimeLog();
+        private frmLoggedIn frmLoggedIn = new frmLoggedIn();
+        private frmTodaysLogs frmTodaysLogs = new frmTodaysLogs();
         private string apiKey = Program.xApiKey;
         private string apiUrl = Program.serverUrl;
         private EmployeeService employeeService;
         private ConnectionService connectionService;
-        private DtrService dtrService;
         public frmDTR()
         {
             InitializeComponent();
             btnLogTime.Click += BtnLogTime_Click;
+            mnuLoggedIn.Click += MnuLoggedIn_Click;
+            mnuTodaysLogs.Click += MnuTodaysLogs_Click;
+        }
+
+        private void MnuTodaysLogs_Click(object sender, EventArgs e)
+        {
+            if (!frmTodaysLogs.Created)
+            {
+                frmTodaysLogs = new frmTodaysLogs();
+            }
+            frmTodaysLogs.ShowDialog();
+        }
+
+        private void MnuLoggedIn_Click(object sender, EventArgs e)
+        {
+            if (!frmLoggedIn.Created)
+            {
+                frmLoggedIn = new frmLoggedIn();
+            }
+            frmLoggedIn.ShowDialog();
         }
 
         private void BtnLogTime_Click(object sender, EventArgs e)
@@ -32,59 +53,13 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             {
                 frmTimeLog = new frmTimeLog();
             }
-            if(frmTimeLog.ShowDialog() == DialogResult.OK)
-            {
-                timerDtrTemp.Stop();
-                GetDtrTemp();
-                timerDtrTemp.Start();
-                timerDTR.Stop();
-                GetTodayDtr();
-                timerDTR.Start();
-            }
+            frmTimeLog.ShowDialog();
         }
-        private async void GetDtrTemp()
-        {
-            var response = await dtrService.GetDtrTempList();
-            dgvDtr.Enabled = true;
-            dgvDtr.Rows.Clear();
-            
-            if (null != response)
-            {
-                foreach (DtrTemp d in response.data)
-                {
-                    dgvDtr.Rows.Add(
-                        $"{d.employee.firstName} {d.employee.lastName}",
-                        d.schedule != null? d.schedule.subject:"",
-                        d.time,
-                        d.schedule != null ? d.schedule.room : ""
-                    );
-                }
-            }
-            dgvDtr.Enabled = false;
-        }
-
-        private async void GetTodayDtr()
-        {
-            var response = await dtrService.GetTodayDtrs();
-            dgvCurrenDtr.Rows.Clear();
-
-            if (null != response)
-            {
-                foreach (DTR d in response.data)
-                {
-                    dgvCurrenDtr.Rows.Add(
-                        $"{d.employee.firstName} {d.employee.lastName}",
-                        d.subjectCode, d.timeIn, d.timeOut, d.hoursRendered.ToString("0.##")
-                    );
-                }
-            }
-        }
-
-
+        
         private void frmDTR_Load(object sender, EventArgs e)
         {
             employeeService = new EmployeeService(apiKey, apiUrl);
-            dtrService = new DtrService(apiKey, apiUrl);
+            mnuViewLogs.Enabled = false;
             connectionService = new ConnectionService(apiKey, apiUrl);
             CheckApiConnection();
         }
@@ -105,30 +80,10 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             } else
             {
                 btnLogTime.Enabled = true;
-                timerDtrTemp.Stop();
-                GetDtrTemp();
-                timerDTR.Stop();
-                GetTodayDtr();
-                timerDTR.Start();
-                timerDtrTemp.Start();
+                mnuViewLogs.Enabled = true;
                 btnLogTime.Focus();
             }
             Cursor = Cursors.Arrow;
-        }
-
-
-        private void timerDtrTemp_Tick(object sender, EventArgs e)
-        {
-            this.Invoke(new Action(delegate () {
-                GetDtrTemp();
-            }));
-        }
-
-        private void timerDTR_Tick(object sender, EventArgs e)
-        {
-            this.Invoke(new Action(delegate () {
-                GetTodayDtr();
-            }));
         }
     }
 }

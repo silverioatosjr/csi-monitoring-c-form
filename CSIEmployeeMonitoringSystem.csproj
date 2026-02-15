@@ -288,11 +288,23 @@
     <Compile Include="Forms\Dtr\frmDtrList.Designer.cs">
       <DependentUpon>frmDtrList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Dtr\frmLoggedIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmLoggedIn.Designer.cs">
+      <DependentUpon>frmLoggedIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Dtr\frmTimeLog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Dtr\frmTimeLog.Designer.cs">
       <DependentUpon>frmTimeLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmTodaysLogs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmTodaysLogs.Designer.cs">
+      <DependentUpon>frmTodaysLogs.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Employee\frmEmployeesList.cs">
       <SubType>Form</SubType>
@@ -440,8 +452,14 @@
     <EmbeddedResource Include="Forms\Dtr\frmDtrList.resx">
       <DependentUpon>frmDtrList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dtr\frmLoggedIn.resx">
+      <DependentUpon>frmLoggedIn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dtr\frmTimeLog.resx">
       <DependentUpon>frmTimeLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dtr\frmTodaysLogs.resx">
+      <DependentUpon>frmTodaysLogs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Employee\frmEmployeesList.resx">
       <DependentUpon>frmEmployeesList.cs</DependentUpon>
@@ -510,6 +528,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <None Include="9187604.png" />
     <None Include="Resources\csi.jpg" />
     <None Include="csiLogo.png" />
   </ItemGroup>
