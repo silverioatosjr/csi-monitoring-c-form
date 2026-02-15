@@ -13,6 +13,7 @@ namespace CSIEmployeeMonitoringSystem
         public static string xApiKey = "";
         public static string serverUrl = "";
         public static string accessToken = "";
+        public static string building = "";
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -24,7 +25,7 @@ namespace CSIEmployeeMonitoringSystem
             serverUrl = "http://localhost:3004/api";//Environment.GetEnvironmentVariable("SERVER_URL");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain()); //frmMain()
+            Application.Run(new frmDTR()); //frmMain()
         }
     }
 }
