@@ -235,7 +235,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
                 }
                 foreach (Schedule s in response.data)
                 {
-                    dgvSubjectSchedules.Rows.Add(s._id, s.instructor._id, $"{s.instructor.firstName} {s.instructor.lastName}", s.subjectCode, s.subject, s.course, s.startTime, s.endTime, s.day, s.room, s.semester, s.schoolYear);
+                    string id = (s.instructor != null) ? s.instructor._id : "";
+                    string name = (s.instructor != null) ? $"{s.instructor.firstName} {s.instructor.lastName}" : "";
+                    dgvSubjectSchedules.Rows.Add(s._id, id, name, s.subjectCode, s.subject, s.course, s.startTime, s.endTime, s.day, s.room, s.semester, s.schoolYear);
                 }
                 if(response.data.Count>0)
                     btnDeleteSchedules.Enabled = true;

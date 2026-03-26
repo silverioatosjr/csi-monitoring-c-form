@@ -344,7 +344,7 @@ namespace CSIEmployeeMonitoringSystem.Services
 
         private bool IsValidSemester(string semester)
         {
-            string[] semesters = { "first", "second", "senior" };
+            string[] semesters = { "First", "Second", "Senior" };
             return semesters.Any(semester.Contains);
         }
         private bool IsValidMongoId(string id)

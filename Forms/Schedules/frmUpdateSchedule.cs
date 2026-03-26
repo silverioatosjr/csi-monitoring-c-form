@@ -141,7 +141,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             var data = await scheduleService.GetSchedule(scheduleId);
             if(null != data)
             {
-                optInstructor.SelectedValue = data.data.instructor._id;
+                optInstructor.SelectedValue = (data.data.instructor!= null)? data.data.instructor._id: "";
                 optDay.SelectedValue = data.data.day;
                 optSemester.SelectedValue = data.data.semester;
                 txtRoom.Text = data.data.room;

@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 namespace CSIEmployeeMonitoringSystem.Models
 {
 
-    class EmployeePost
+    class EmployeePost : Employee
     {
         public Deduction deduction { get; set; }
-        public string code { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string employmentStatus { get; set; }
-        public string biometric1 { get; set; }
-        public string biometric2 { get; set; }
-        public string designation { get; set; }
-        public float hourlyRate { get; set; }
-        public float contractedHours { get; set; }
-        public float basicSalary {get; set;}
+        //public string code { get; set; }
+        //public string firstName { get; set; }
+        //public string lastName { get; set; }
+        //public string employmentStatus { get; set; }
+        //public string biometric1 { get; set; }
+        //public string biometric2 { get; set; }
+        //public string designation { get; set; }
+        //public float hourlyRate { get; set; }
+        //public float contractedHours { get; set; }
+        //public float basicSalary {get; set;}
     }
 }
