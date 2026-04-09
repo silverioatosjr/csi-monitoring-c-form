@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DotNetEnv;
 using CSIEmployeeMonitoringSystem.Forms.Dtr;
 
 namespace CSIEmployeeMonitoringSystem
@@ -20,7 +19,6 @@ namespace CSIEmployeeMonitoringSystem
         [STAThread]
         static void Main()
         {
-            Env.TraversePath().Load();
             xApiKey = "x2TUlfsc09tGoetyBo4p8HT3zi";//Environment.GetEnvironmentVariable("X_API_KEY");
             serverUrl = "http://localhost:3004/api";//Environment.GetEnvironmentVariable("SERVER_URL");
             building = "Main";

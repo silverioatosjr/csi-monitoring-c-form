@@ -66,7 +66,7 @@ namespace CSIEmployeeMonitoringSystem.Services
                 APIEmployeesWithBiometricsParser res = JsonConvert.DeserializeObject<APIEmployeesWithBiometricsParser>(responseBody);
                 return res;
             }
-            catch(Exception ex)
+            catch
             {
                 return null;
             }

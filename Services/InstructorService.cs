@@ -25,7 +25,7 @@ namespace CSIEmployeeMonitoringSystem.Services
                 APIEmployeesGetParser res = JsonConvert.DeserializeObject<APIEmployeesGetParser>(responseBody);
                 return res;
             }
-            catch(Exception e)
+            catch
             {
                 return null;
             }
