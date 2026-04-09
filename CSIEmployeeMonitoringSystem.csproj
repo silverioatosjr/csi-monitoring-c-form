@@ -223,6 +223,7 @@
     <Compile Include="ApiParser\APIDtrTempParser.cs" />
     <Compile Include="ApiParser\APIEmployeeGetParser.cs" />
     <Compile Include="ApiParser\APIEmployeeLogParser.cs" />
+    <Compile Include="ApiParser\APIEmployeesWithBiometricsParser.cs" />
     <Compile Include="ApiParser\APIMessageParser.cs" />
     <Compile Include="ApiParser\APIPagibigResponseParser.cs" />
     <Compile Include="ApiParser\APIPhilhealthResponseParser.cs" />
@@ -527,6 +528,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <None Include="Resources\Gemini_Generated_Image_mfnae4mfnae4mfna.png" />
+    <None Include="Resources\csiheader.png" />
     <None Include="9187604.png" />
     <None Include="Resources\csi.jpg" />
     <None Include="csiLogo.png" />

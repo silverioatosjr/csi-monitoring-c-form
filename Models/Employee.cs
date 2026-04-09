@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSIEmployeeMonitoringSystem.Models
 {
-    class Employee
+    public class Employee
     {
         public string code { get; set; }
         public string _id { get; set; }

@@ -551,6 +551,7 @@
             this.Name = "frmRegistration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Employee Registration";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmRegistration_FormClosed);
             this.Load += new System.EventHandler(this.frmRegistration_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

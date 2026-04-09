@@ -46,6 +46,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             txtContractedHours.GotFocus += txt_GotFocus;
             optEmployeeStatus.SelectedIndexChanged += OptEmployeeStatus_SelectedValueChanged;
             optDesignation.SelectedIndexChanged += OptEmployeeStatus_SelectedValueChanged;
+            
         }
 
         private void OptEmployeeStatus_SelectedValueChanged(object sender, EventArgs e)
@@ -363,6 +364,10 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             fingerPrint1 = string.Empty;
             fingerPrint2 = string.Empty;
         }
-        
+
+        private void frmRegistration_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }

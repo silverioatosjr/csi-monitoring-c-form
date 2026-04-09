@@ -30,18 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDTR));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.btnLogTime = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuViewLogs = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLoggedIn = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTodaysLogs = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnLogTime = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -51,18 +51,6 @@
             this.statusStrip1.Size = new System.Drawing.Size(1274, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // btnLogTime
-            // 
-            this.btnLogTime.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnLogTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLogTime.Location = new System.Drawing.Point(36, 260);
-            this.btnLogTime.Name = "btnLogTime";
-            this.btnLogTime.Size = new System.Drawing.Size(228, 69);
-            this.btnLogTime.TabIndex = 0;
-            this.btnLogTime.Text = "LOG YOUR TIME";
-            this.btnLogTime.UseVisualStyleBackColor = false;
             // 
             // menuStrip1
             // 
@@ -89,14 +77,49 @@
             // mnuLoggedIn
             // 
             this.mnuLoggedIn.Name = "mnuLoggedIn";
-            this.mnuLoggedIn.Size = new System.Drawing.Size(155, 22);
+            this.mnuLoggedIn.Size = new System.Drawing.Size(141, 22);
             this.mnuLoggedIn.Text = "Logged In";
             // 
             // mnuTodaysLogs
             // 
             this.mnuTodaysLogs.Name = "mnuTodaysLogs";
-            this.mnuTodaysLogs.Size = new System.Drawing.Size(155, 22);
-            this.mnuTodaysLogs.Text = "Today\'s Logs";
+            this.mnuTodaysLogs.Size = new System.Drawing.Size(141, 22);
+            this.mnuTodaysLogs.Text = "Daily Logs";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnLogTime);
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Location = new System.Drawing.Point(27, 171);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(297, 356);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            // 
+            // btnLogTime
+            // 
+            this.btnLogTime.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnLogTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLogTime.Location = new System.Drawing.Point(36, 260);
+            this.btnLogTime.Name = "btnLogTime";
+            this.btnLogTime.Size = new System.Drawing.Size(228, 69);
+            this.btnLogTime.TabIndex = 0;
+            this.btnLogTime.Text = "LOG YOUR TIME";
+            this.btnLogTime.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Image = global::CSIEmployeeMonitoringSystem.Properties.Resources.Gemini_Generated_Image_mfnae4mfnae4mfna;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 28);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(1274, 144);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 11;
+            this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -109,43 +132,16 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.9389F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.0611F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 369F));
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 1, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.12341F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.87659F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 126F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1274, 583);
-            this.tableLayoutPanel1.TabIndex = 8;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnLogTime);
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Location = new System.Drawing.Point(473, 180);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(301, 356);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            // 
             // frmDTR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1274, 583);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -160,9 +156,9 @@
             this.Load += new System.EventHandler(this.frmDTR_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,13 +166,13 @@
 
         #endregion
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.Button btnLogTime;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mnuViewLogs;
         private System.Windows.Forms.ToolStripMenuItem mnuLoggedIn;
         private System.Windows.Forms.ToolStripMenuItem mnuTodaysLogs;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnLogTime;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

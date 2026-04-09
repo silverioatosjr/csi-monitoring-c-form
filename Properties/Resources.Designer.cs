@@ -83,6 +83,16 @@ namespace CSIEmployeeMonitoringSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap csiheader {
+            get {
+                object obj = ResourceManager.GetObject("csiheader", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap csiLogo {
             get {
                 object obj = ResourceManager.GetObject("csiLogo", resourceCulture);
@@ -96,6 +106,16 @@ namespace CSIEmployeeMonitoringSystem.Properties {
         internal static System.Drawing.Bitmap csiLogo1 {
             get {
                 object obj = ResourceManager.GetObject("csiLogo1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gemini_Generated_Image_mfnae4mfnae4mfna {
+            get {
+                object obj = ResourceManager.GetObject("Gemini_Generated_Image_mfnae4mfnae4mfna", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

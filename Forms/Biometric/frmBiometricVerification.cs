@@ -16,7 +16,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
 {
     public partial class frmBiometricVerification : Form
     {
-        public frmTimeLog _sender;
+        public frmDTR _sender;
         private ReaderCollection _readers;
         private Reader currentReader;
         private Fmd preenrollmentFmd;
@@ -74,13 +74,24 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
                 DataResult<Fmd> resultConversion = FeatureExtraction.CreateFmdFromFid(captureResult.Data, Constants.Formats.Fmd.ANSI);
 
                 SendMessage(Actions.SendMessage, "A finger was captured.");
-
+                _sender.isMatched = false;
                 preenrollmentFmd = resultConversion.Data;
-                Fmd finger1 = Fmd.DeserializeXml(_sender.fingerPrint1);
-                Fmd finger2 = Fmd.DeserializeXml(_sender.fingerPrint2);
-                CompareResult compare1 = Comparison.Compare(preenrollmentFmd, 0, finger1, 0);
-                CompareResult compare2 = Comparison.Compare(preenrollmentFmd, 0, finger2, 0);
-                if (compare1.Score < (PROBABILITY_ONE / 100000) || compare2.Score < (PROBABILITY_ONE / 100000))
+                for(int i = 0; i<= _sender.employees.Count-1; i++ )
+                {
+
+                    Fmd finger1 = Fmd.DeserializeXml(_sender.employees[i].biometric1);
+                    Fmd finger2 = Fmd.DeserializeXml(_sender.employees[i].biometric2);
+                    CompareResult compare1 = Comparison.Compare(preenrollmentFmd, 0, finger1, 0);
+                    CompareResult compare2 = Comparison.Compare(preenrollmentFmd, 0, finger2, 0);
+                    if (compare1.Score < (PROBABILITY_ONE / 100000) || compare2.Score < (PROBABILITY_ONE / 100000))
+                    {
+                        _sender.isMatched = true;
+                        _sender.employeeId = _sender.employees[i]._id;
+                        break;
+                    }
+                }
+
+                if (_sender.isMatched)
                 {
                     this.Invoke(new Action(delegate() {
                         this.DialogResult = DialogResult.OK;

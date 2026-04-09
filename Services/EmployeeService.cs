@@ -56,6 +56,23 @@ namespace CSIEmployeeMonitoringSystem.Services
 
         }
 
+        public async Task<APIEmployeesWithBiometricsParser> GetEmployeesWithBiometrics()
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl + "/employees/include/biometrics");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APIEmployeesWithBiometricsParser res = JsonConvert.DeserializeObject<APIEmployeesWithBiometricsParser>(responseBody);
+                return res;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+
+        }
+
         public async Task<APIEmployeeGetParser> GetEmployeeDetails(string id)
         {
             try
@@ -78,6 +95,23 @@ namespace CSIEmployeeMonitoringSystem.Services
             try
             {
                 HttpResponseMessage response = await client.GetAsync(apiUrl + $"/dtrs/validate-employee-by-code/{code}");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APIEmployeeLogParser res = JsonConvert.DeserializeObject<APIEmployeeLogParser>(responseBody);
+                return res;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+
+        public async Task<APIEmployeeLogParser> GetEmployeesWithLogStatus()
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl + $"/employees/with/log-status");
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 APIEmployeeLogParser res = JsonConvert.DeserializeObject<APIEmployeeLogParser>(responseBody);

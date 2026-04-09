@@ -70,7 +70,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             if(frmBiometricVerification == null)
             {
                 frmBiometricVerification = new frmBiometricVerification();
-                frmBiometricVerification._sender = this;
+                //frmBiometricVerification._sender = this;
             }
             if(frmBiometricVerification.ShowDialog() == DialogResult.OK)
             {
