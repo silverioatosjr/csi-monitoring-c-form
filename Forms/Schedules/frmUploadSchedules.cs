@@ -35,8 +35,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
                     btnCancel.Enabled = false;
                     btnSelectFile.Enabled = false;
                     Cursor = Cursors.WaitCursor;
-                    List<SchedulePost> schedules = scheduleService.ParseSchedules(sheet);
-                    PostSchedules(schedules);
+                    List<SchedulesData> schedules = scheduleService.ParseSchedules(sheet);
+                    string employeeCode = scheduleService.GetEmployeeCodeFromWorkSheet(sheet);
+                    PostSchedules(schedules, employeeCode);
                 }
                 catch
                 {
@@ -52,9 +53,10 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             }
         }
 
-        private async void PostSchedules(List<SchedulePost> schedules)
+        private async void PostSchedules(List<SchedulesData> schedules, string employeeCode)
         {
             SchedulesPostData payload = new SchedulesPostData();
+            payload.employeeCode = employeeCode;
             payload.schedules = schedules;
             var response = await scheduleService.PostSchedules(payload);
             if(null!= response)

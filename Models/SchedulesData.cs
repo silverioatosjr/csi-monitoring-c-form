@@ -8,6 +8,10 @@ namespace CSIEmployeeMonitoringSystem.Models
 {
     class SchedulesData
     {
-        public List<Schedule> schedules { get; set; }
+        public string subject { get; set; }
+        public string startTime { get; set; }
+        public string endTime { get; set; }
+        public string room { get; set; }
+        public string day { get; set; }
     }
 }

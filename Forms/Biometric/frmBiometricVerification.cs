@@ -86,6 +86,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
                     if (compare1.Score < (PROBABILITY_ONE / 100000) || compare2.Score < (PROBABILITY_ONE / 100000))
                     {
                         _sender.isMatched = true;
+                        _sender.fullName = $"{_sender.employees[i].firstName} {_sender.employees[i].lastName}";
                         _sender.employeeId = _sender.employees[i]._id;
                         break;
                     }

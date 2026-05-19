@@ -172,37 +172,27 @@ namespace CSIEmployeeMonitoringSystem.Services
                 return null;
             }
         }
-        public List<SchedulePost> ParseSchedules(WorkSheet sheet)
+        public List<SchedulesData> ParseSchedules(WorkSheet sheet)
         {
-            List<SchedulePost> schedules = new List<SchedulePost>();
+            List<SchedulesData> schedules = new List<SchedulesData>();
             try
             {
-              foreach (var row in sheet.Rows.Skip(1))
+              foreach (var row in sheet.Rows.Skip(4))
                 {
-                    SchedulePost sched = new SchedulePost();
+                    SchedulesData sched = new SchedulesData();
                     int counter = 0;
                     foreach (Cell cell in row)
                     {
                         if (counter == 0)
-                            sched.subjectCode = cell.Value.ToString();
-                        else if (counter == 1)
                             sched.subject = cell.Value.ToString();
-                        else if (counter == 2)
-                            sched.course = cell.Value.ToString();
-                        else if (counter == 3)
+                        else if (counter == 1)
                             sched.day = cell.Value.ToString();
-                        else if (counter == 4)
+                        else if (counter == 2)
                             sched.startTime = FormatTime(cell.Value.ToString());
-                        else if (counter == 5)
+                        else if (counter == 3)
                             sched.endTime = FormatTime(cell.Value.ToString());
-                        else if (counter == 6)
+                        else if (counter == 4)
                             sched.room = cell.Value.ToString();
-                        else if (counter == 7)
-                            sched.semester = cell.Value.ToString();
-                        else if (counter == 8)
-                            sched.schoolYear = cell.Value.ToString();
-                        else if (counter == 9)
-                            sched.instructor = cell.Value.ToString();
                         counter++;
                     }
                     schedules.Add(sched);
@@ -216,29 +206,25 @@ namespace CSIEmployeeMonitoringSystem.Services
 
             return schedules;
         }
+        public string GetEmployeeCodeFromWorkSheet(WorkSheet sheet)
+        {
+            return sheet["B2"].Value.ToString();
+        }
         public string ExcelValidator(WorkSheet sheet)
         {
             string errors = string.Empty;
-            if (sheet["A1"].Value.ToString() != "Code")
-                errors = errors + "Error on A1: Code Column header\n";
-            if (sheet["B1"].Value.ToString() != "Subject")
-                errors = errors + "Error on B1: Subject Column header\n";
-            if (sheet["C1"].Value.ToString() != "Course")
-                errors = errors + "Error on C1: Course Column header\n";
-            if (sheet["D1"].Value.ToString() != "Day")
-                errors = errors + "Error on D1: Day Column header\n";
-            if (sheet["E1"].Value.ToString() != "Start Time")
-                errors = errors + "Error on E1: Start Time Column header\n";
-            if (sheet["F1"].Value.ToString() != "End Time")
-                errors = errors + "Error on F1: End Time Column header\n";
-            if (sheet["G1"].Value.ToString() != "Room")
-                errors = errors + "Error on G1: Room Column header\n";
-            if (sheet["H1"].Value.ToString() != "Semester")
-                errors = errors + "Error on H1: Semester Column header\n";
-            if (sheet["I1"].Value.ToString() != "School Year")
-                errors = errors + "Error on I1: School Year Column header\n";
-            if (sheet["J1"].Value.ToString() != "Instructor Id")
-                errors = errors + "Error on J1: Instructor Id Column header\n";
+            if (sheet["A4"].Value.ToString() != "Subject")
+                errors = errors + "Error on A4: Subject Column header\n";
+            if (sheet["B4"].Value.ToString() != "Day")
+                errors = errors + "Error on B4: Day Column header\n";
+            if (sheet["C4"].Value.ToString() != "Start Time")
+                errors = errors + "Error on C4: Start Time Column header\n";
+            if (sheet["D4"].Value.ToString() != "End Time")
+                errors = errors + "Error on D4: End Time Column header\n";
+            if (sheet["E4"].Value.ToString() != "Room")
+                errors = errors + "Error on E4: Room Column header\n";
+            if (sheet["B2"].Value.ToString() == string.Empty)
+                errors = errors + "Error on B2: Instructor code is required\n";
             /**
              * 0-A CODE
              * 1-B SUBJECT
@@ -250,8 +236,8 @@ namespace CSIEmployeeMonitoringSystem.Services
              * 7-H SCHOOL YEAR
              * 8-I INSTRUCTOR ID FORMAT 63340dc711243bf8dbf56c39 LENGTH 24 excluded g-z
              */
-            int rowCounter = 2;
-            foreach (var row in sheet.Rows.Skip(1))
+            int rowCounter = 5;
+            foreach (var row in sheet.Rows.Skip(4))
             {
                 int counter = 0;
                 foreach (Cell cell in row)
@@ -260,69 +246,37 @@ namespace CSIEmployeeMonitoringSystem.Services
                     {
                         if (cell.Value.ToString() == string.Empty)
                         {
-                            errors = errors + $"Error on row {rowCounter} - Code: {cell.Value.ToString()}\n";
+                            errors = errors + $"Error on row {rowCounter} - Subject: {cell.Value.ToString()}\n";
                         }
                     } else if (counter == 1)
                     {
                         if (cell.Value.ToString() == string.Empty)
                         {
-                            errors = errors + $"Error on row {rowCounter} - Subject: {cell.Value.ToString()}\n";
+                            errors = errors + $"Error on row {rowCounter} - Day: {cell.Value.ToString()}\n";
                         }
                     }
                     else if (counter == 2)
                     {
-                        if (cell.Value.ToString() == string.Empty)
-                        {
-                            errors = errors + $"Error on row {rowCounter} - Course: {cell.Value.ToString()}\n";
-                        }
-                    } else if (counter == 3)
-                    {
-                        if (!IsValidDay(cell.Value.ToString()))
-                        {
-                            errors = errors + $"Error on row {rowCounter} - Day: {cell.Value.ToString()}\n";
-                        }
-                    } else if(counter == 4)
-                    {
                         if (cell.Value.ToString() != string.Empty)
-                            if(!IsValidTime(cell.Value.ToString())) {
+                            if (!IsValidTime(cell.Value.ToString()))
+                            {
                                 errors = errors + $"Error on row {rowCounter} - Start Time: {cell.Value.ToString()}\n";
                             }
-                    }
-                    else if(counter == 5)
+                    } else if (counter == 3)
                     {
-                        if(cell.Value.ToString() != string.Empty)
+                        if (cell.Value.ToString() != string.Empty)
                             if (!IsValidTime(cell.Value.ToString()))
                             {
                                 errors = errors + $"Error on row {rowCounter} - End Time: {cell.Value.ToString()}\n";
                             }
-                    }
-                    else if (counter == 6)
+                    } else if(counter == 4)
                     {
                         if (cell.Value.ToString() == string.Empty)
                         {
                             errors = errors + $"Error on row {rowCounter} - Room: {cell.Value.ToString()}\n";
                         }
                     }
-                    else if (counter == 7)
-                    {
-                        if (!IsValidSemester(cell.Value.ToString()) || cell.Value.ToString() == string.Empty)
-                        {
-                            errors = errors + $"Error on row {rowCounter} - Semester: {cell.Value.ToString()}\n";
-                        }
-                    }
-                    else if (counter == 8)
-                    {
-                        if (cell.Value.ToString() == string.Empty)
-                        {
-                            errors = errors + $"Error on row {rowCounter} - School Year: {cell.Value.ToString()}\n";
-                        }
-                    } else if (counter == 9)
-                    {
-                        if (!IsValidMongoId(cell.Value.ToString()) || cell.Value.ToString() == string.Empty)
-                        {
-                            errors = errors + $"Error on row {rowCounter} - Instructor Id: {cell.Value.ToString()}\n";
-                        }
-                    }
+                    
                     counter++;
                 }
                 rowCounter++;

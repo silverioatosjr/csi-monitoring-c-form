@@ -57,13 +57,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
                 payload.endTime = dtEndTime.Value.ToString("HH:mm");
             }
             payload.instructor = optInstructor.SelectedValue.ToString();
-            payload.schoolYear = txtSchoolYear.Text;
             payload.room = txtRoom.Text.Trim();
-            payload.semester = optSemester.SelectedValue.ToString();
-            payload.subjectCode = txtSubjectCode.Text.Trim();
             payload.subject = txtSubject.Text.Trim();
-            payload.course = txtCourse.Text.Trim();
-
+            
             var data = await scheduleService.UpdateSchedule(scheduleId, payload);
             if (null != data)
             {
@@ -122,20 +118,6 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             optDay.ValueMember = "Value";
         }
 
-        private async void GetSemesters()
-        {
-            var response = await instructorService.GetInstructors();
-            List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
-            items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
-            items.Add(new KeyValuePair<string, string>("First Semester", "First"));
-            items.Add(new KeyValuePair<string, string>("Second Semester", "Second"));
-            items.Add(new KeyValuePair<string, string>("Senior High", "Senior"));
-
-            optSemester.DataSource = items;
-            optSemester.DisplayMember = "Key";
-            optSemester.ValueMember = "Value";
-        }
-
         private async void GetSchedule()
         {
             var data = await scheduleService.GetSchedule(scheduleId);
@@ -143,12 +125,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             {
                 optInstructor.SelectedValue = (data.data.instructor!= null)? data.data.instructor._id: "";
                 optDay.SelectedValue = data.data.day;
-                optSemester.SelectedValue = data.data.semester;
                 txtRoom.Text = data.data.room;
-                txtSchoolYear.Text = data.data.schoolYear;
                 txtSubject.Text = data.data.subject;
-                txtSubjectCode.Text = data.data.subjectCode;
-                txtCourse.Text = data.data.course;
                 if(data.data.endTime == string.Empty)
                 {
                     chkOpenTime.Checked = true;
@@ -165,12 +143,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
         {
             bool hasError = false;
             if (optDay.SelectedIndex == 0 ||
-                optSemester.SelectedIndex == 0 ||
                 optInstructor.SelectedIndex == 0 ||
                 txtSubject.Text.Trim() == string.Empty ||
-                txtSubjectCode.Text.Trim() == string.Empty ||
-                txtRoom.Text.Trim() == string.Empty ||
-                txtCourse.Text.Trim() == string.Empty)
+                txtRoom.Text.Trim() == string.Empty)
 
             {
                 hasError = true;
@@ -185,7 +160,6 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             scheduleService = new ScheduleService(Program.xApiKey, Program.serverUrl);
             GetInstructors();
             GetDays();
-            GetSemesters();
             Thread.Sleep(1000);
             GetSchedule();
             Cursor = Cursors.Arrow;

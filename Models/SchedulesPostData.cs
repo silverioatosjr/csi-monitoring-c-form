@@ -8,6 +8,7 @@ namespace CSIEmployeeMonitoringSystem.Models
 {
     class SchedulesPostData
     {
-        public List<SchedulePost> schedules { get; set; }
+        public List<SchedulesData> schedules { get; set; }
+        public string employeeCode { get; set; }
     }
 }

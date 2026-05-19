@@ -28,6 +28,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         public List<Models.Employee> employees;
         public bool isMatched;
         public string employeeId;
+        public string fullName;
         private DtrService dtrService;
         public frmDTR()
         {
@@ -36,6 +37,14 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             mnuLoggedIn.Click += MnuLoggedIn_Click;
             mnuTodaysLogs.Click += MnuTodaysLogs_Click;
             btnLogTime.KeyDown += FrmDTR_KeyDown;
+            timer1.Tick += Timer1_Tick;
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            this.Invoke(new Action(delegate () {
+                CheckApiConnection();
+            }));
         }
 
         private void FrmDTR_KeyDown(object sender, KeyEventArgs e)
@@ -87,9 +96,10 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 var response = await dtrService.SaveDtr(employee);
                 if (null != response)
                 {
-                    MessageBox.Show(response.message, "Log Time", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    MessageBox.Show($"{fullName}\nStatus: {response.message}", "Log Time", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    isMatched = false;
+                    employeeId = String.Empty;
+                    fullName = String.Empty;
                 }
                 else
                 {
@@ -121,9 +131,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             dtrService = new DtrService(Program.xApiKey, Program.serverUrl);
             isMatched = false;
             employeeId = String.Empty;
+            fullName = String.Empty;
             groupBox1.Left = (this.ClientSize.Width - groupBox1.Width) / 2;
             groupBox1.Top = (this.ClientSize.Height - groupBox1.Height) / 2;
             groupBox1.Anchor = AnchorStyles.None;
+            timer1.Interval = (1000 * 60) * 5;
+            timer1.Enabled = false;
         }
 
         private async void CheckApiConnection()
@@ -138,6 +151,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                     Cursor = Cursors.WaitCursor;
                     CheckApiConnection();
                     Cursor = Cursors.Arrow;
+                    timer1.Enabled = false;
+                    mnuViewLogs.Enabled = false;
                 }
             } else
             {
@@ -145,6 +160,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 GetEmployeesWithBiometrics();
                 mnuViewLogs.Enabled = true;
                 btnLogTime.Focus();
+                timer1.Enabled = true;
             }
             Cursor = Cursors.Arrow;
         }

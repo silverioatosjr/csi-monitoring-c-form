@@ -9,15 +9,11 @@ namespace CSIEmployeeMonitoringSystem.Models
     class SchedulePost
     {
         public string subject { get; set; }
-        public string subjectCode { get; set; }
         public string instructor { get; set; }
         public string startTime { get; set; }
         public string endTime { get; set; }
         public string room { get; set; }
         public string day { get; set; }
-        public string course { get; set; }
-        //public string schedule { get; set; }
-        public string schoolYear { get; set; }
-        public string semester { get; set; }
+        
     }
 }
