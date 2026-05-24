@@ -64,7 +64,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             if (null != data)
             {
                 MessageBox.Show("Schedule has been updated", "Update Schedule", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               
+                this.DialogResult = DialogResult.OK;
+
             }
             else
             {
@@ -100,9 +101,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             optInstructor.ValueMember = "Value";
         }
 
-        private async void GetDays()
+        private void GetDays()
         {
-            var response = await instructorService.GetInstructors();
+            
             List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
             items.Add(new KeyValuePair<string, string>("<<Select>>", ""));
             items.Add(new KeyValuePair<string, string>("Monday", "Monday"));
@@ -167,7 +168,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
 
         private void frmUpdateSchedule_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            
         }
     }
 }

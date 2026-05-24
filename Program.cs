@@ -20,7 +20,7 @@ namespace CSIEmployeeMonitoringSystem
         static void Main()
         {
             xApiKey = "x2TUlfsc09tGoetyBo4p8HT3zi";//Environment.GetEnvironmentVariable("X_API_KEY");
-            serverUrl = "http://localhost:3004/api";//"http://172.104.170.34:3010/api";
+            serverUrl = "http://localhost:3004/api";//"http://localhost:3004/api";//"http://172.104.170.34:3010/api";
             building = "Main";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

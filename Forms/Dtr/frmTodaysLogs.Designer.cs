@@ -55,7 +55,7 @@
             this.groupBox2.Size = new System.Drawing.Size(830, 528);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "TODAY\'S DTR";
+            this.groupBox2.Text = "DAILY DTR";
             // 
             // dgvCurrenDtr
             // 
@@ -140,12 +140,12 @@
             this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmTodaysLogs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Today\'s Logs View";
+            this.Text = "Daily Logs Viewer";
             this.Load += new System.EventHandler(this.frmTodaysLogs_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrenDtr)).EndInit();

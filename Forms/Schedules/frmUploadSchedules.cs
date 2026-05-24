@@ -15,7 +15,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
 {
     public partial class frmUploadSchedules : Form
     {
-        private WorkSheet sheet;
+        private WorkBook book;
         private ScheduleService scheduleService;
         public frmUploadSchedules()
         {
@@ -25,9 +25,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             btnUpload.Click += BtnUpload_Click;
         }
 
-        private void BtnUpload_Click(object sender, EventArgs e)
+        private async void BtnUpload_Click(object sender, EventArgs e)
         {
-            if(null != sheet)
+            if(null != book)
             {
                 try
                 {
@@ -35,9 +35,24 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
                     btnCancel.Enabled = false;
                     btnSelectFile.Enabled = false;
                     Cursor = Cursors.WaitCursor;
-                    List<SchedulesData> schedules = scheduleService.ParseSchedules(sheet);
-                    string employeeCode = scheduleService.GetEmployeeCodeFromWorkSheet(sheet);
-                    PostSchedules(schedules, employeeCode);
+                    bool uploadSuccess = true;
+                    foreach (WorkSheet sheet in book.WorkSheets)
+                    {
+                        List<SchedulesData> schedules = scheduleService.ParseSchedules(sheet);
+                        string employeeCode = scheduleService.GetEmployeeCodeFromWorkSheet(sheet);
+                        bool response = await PostSchedules(schedules, employeeCode);
+                        if(!response)
+                        {
+                            MessageBox.Show("Error during upload", "Schedules upload", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            uploadSuccess = false;
+                            break;
+                        }                  
+                    }
+                    Cursor = Cursors.Arrow;
+                    if(uploadSuccess)
+                    {
+                        MessageBox.Show("Schedules successfully uploaded", "Schedules upload", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 catch
                 {
@@ -53,21 +68,13 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             }
         }
 
-        private async void PostSchedules(List<SchedulesData> schedules, string employeeCode)
+        private async Task<bool> PostSchedules(List<SchedulesData> schedules, string employeeCode)
         {
             SchedulesPostData payload = new SchedulesPostData();
             payload.employeeCode = employeeCode;
             payload.schedules = schedules;
             var response = await scheduleService.PostSchedules(payload);
-            if(null!= response)
-            {
-                MessageBox.Show("Schedules has been successfully uploaded", "Upload Schedule",MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            } else
-            {
-                MessageBox.Show("Failed to upload schedules", "Upload Schedule", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            return (null != response);
         }
 
         private void BtnSelectFile_Click(object sender, EventArgs e)
@@ -80,23 +87,30 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
                 {
                     Cursor = Cursors.WaitCursor;
                     string selectedFilePath = openFileDialog.FileName;
-                    WorkBook workbook = WorkBook.Load(selectedFilePath);
+                    book = WorkBook.Load(selectedFilePath);
                     lblFilename.Text = selectedFilePath;
-                    sheet = workbook.WorkSheets.First();
-
-                    var errors  = scheduleService.ExcelValidator(sheet);
-                    Cursor = Cursors.Arrow;
-                    if(errors != string.Empty)
+                    bool hasError = false;
+                    foreach (WorkSheet sheet in book.WorkSheets)
                     {
-                        MessageBox.Show(errors, "Error File Content", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        btnUpload.Enabled = false;
-                        selectedFilePath = string.Empty;
-                        lblFilename.Text = string.Empty;
-                    } else
+                        var errors  = scheduleService.ExcelValidator(sheet);
+                        if(errors != string.Empty)
+                        {
+                            MessageBox.Show(errors, "Error File Content", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            btnUpload.Enabled = false;
+                            selectedFilePath = string.Empty;
+                            lblFilename.Text = string.Empty;
+                            hasError = true;
+                            break;
+                        }
+                        
+                    }
+                    if(!hasError)
                     {
                         MessageBox.Show("Click the Upload File button to upload schedules.", "Subjects Schedule", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         btnUpload.Enabled = true;
                     }
+
+                    Cursor = Cursors.Arrow;
 
                 }catch (Exception err)
                 {
@@ -118,7 +132,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
         {
             btnUpload.Enabled = false;
             lblFilename.Text = string.Empty;
-            sheet = null;
+            book = null;
             scheduleService = new ScheduleService(Program.xApiKey, Program.serverUrl);
         }
     }
