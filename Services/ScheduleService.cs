@@ -208,7 +208,10 @@ namespace CSIEmployeeMonitoringSystem.Services
         }
         public string GetEmployeeCodeFromWorkSheet(WorkSheet sheet)
         {
-            return sheet["B2"].Value.ToString();
+            string code = sheet["B2"].Value.ToString();
+            if(code.Length < 6)
+                code = $"0{code}";
+            return code;
         }
         public string ExcelValidator(WorkSheet sheet)
         {
