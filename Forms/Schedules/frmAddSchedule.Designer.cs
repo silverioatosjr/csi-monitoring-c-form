@@ -50,12 +50,16 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtHour = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txtHour);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.txtRoom);
@@ -75,7 +79,7 @@
             this.groupBox1.Controls.Add(this.optInstructor);
             this.groupBox1.Location = new System.Drawing.Point(21, 26);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(541, 259);
+            this.groupBox1.Size = new System.Drawing.Size(616, 259);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Subject Schedule";
@@ -105,7 +109,7 @@
             // 
             this.txtRoom.Location = new System.Drawing.Point(28, 146);
             this.txtRoom.Name = "txtRoom";
-            this.txtRoom.Size = new System.Drawing.Size(224, 22);
+            this.txtRoom.Size = new System.Drawing.Size(307, 22);
             this.txtRoom.TabIndex = 24;
             // 
             // label13
@@ -145,7 +149,7 @@
             // 
             this.chkOpenTime.AutoSize = true;
             this.chkOpenTime.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.chkOpenTime.Location = new System.Drawing.Point(287, 96);
+            this.chkOpenTime.Location = new System.Drawing.Point(361, 52);
             this.chkOpenTime.Name = "chkOpenTime";
             this.chkOpenTime.Size = new System.Drawing.Size(133, 20);
             this.chkOpenTime.TabIndex = 19;
@@ -155,7 +159,7 @@
             // dtEndTime
             // 
             this.dtEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtEndTime.Location = new System.Drawing.Point(286, 196);
+            this.dtEndTime.Location = new System.Drawing.Point(360, 196);
             this.dtEndTime.Name = "dtEndTime";
             this.dtEndTime.Size = new System.Drawing.Size(224, 22);
             this.dtEndTime.TabIndex = 18;
@@ -163,7 +167,7 @@
             // dtStartTime
             // 
             this.dtStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtStartTime.Location = new System.Drawing.Point(286, 146);
+            this.dtStartTime.Location = new System.Drawing.Point(360, 146);
             this.dtStartTime.Name = "dtStartTime";
             this.dtStartTime.Size = new System.Drawing.Size(224, 22);
             this.dtStartTime.TabIndex = 17;
@@ -172,7 +176,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(283, 178);
+            this.label7.Location = new System.Drawing.Point(357, 178);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(32, 15);
             this.label7.TabIndex = 16;
@@ -182,7 +186,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(284, 128);
+            this.label8.Location = new System.Drawing.Point(358, 128);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 15);
             this.label8.TabIndex = 14;
@@ -205,7 +209,7 @@
             this.optDay.FormattingEnabled = true;
             this.optDay.Location = new System.Drawing.Point(27, 197);
             this.optDay.Name = "optDay";
-            this.optDay.Size = new System.Drawing.Size(223, 24);
+            this.optDay.Size = new System.Drawing.Size(308, 24);
             this.optDay.TabIndex = 11;
             // 
             // label3
@@ -222,7 +226,7 @@
             // 
             this.txtSubject.Location = new System.Drawing.Point(28, 95);
             this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(224, 22);
+            this.txtSubject.Size = new System.Drawing.Size(307, 22);
             this.txtSubject.TabIndex = 5;
             // 
             // label1
@@ -242,7 +246,7 @@
             this.optInstructor.FormattingEnabled = true;
             this.optInstructor.Location = new System.Drawing.Point(28, 48);
             this.optInstructor.Name = "optInstructor";
-            this.optInstructor.Size = new System.Drawing.Size(482, 24);
+            this.optInstructor.Size = new System.Drawing.Size(307, 24);
             this.optInstructor.TabIndex = 1;
             // 
             // groupBox2
@@ -251,7 +255,7 @@
             this.groupBox2.Controls.Add(this.btnCancel);
             this.groupBox2.Location = new System.Drawing.Point(21, 315);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(541, 100);
+            this.groupBox2.Size = new System.Drawing.Size(616, 100);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Controls";
@@ -261,7 +265,7 @@
             this.btnSave.BackColor = System.Drawing.Color.DarkGreen;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSave.Location = new System.Drawing.Point(383, 36);
+            this.btnSave.Location = new System.Drawing.Point(457, 31);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(127, 42);
             this.btnSave.TabIndex = 1;
@@ -273,19 +277,37 @@
             this.btnCancel.BackColor = System.Drawing.Color.LightSlateGray;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Location = new System.Drawing.Point(233, 36);
+            this.btnCancel.Location = new System.Drawing.Point(307, 31);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(127, 42);
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "Close";
             this.btnCancel.UseVisualStyleBackColor = false;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(357, 77);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 15);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "Hour:";
+            // 
+            // txtHour
+            // 
+            this.txtHour.Enabled = false;
+            this.txtHour.Location = new System.Drawing.Point(360, 95);
+            this.txtHour.Name = "txtHour";
+            this.txtHour.Size = new System.Drawing.Size(224, 22);
+            this.txtHour.TabIndex = 27;
+            // 
             // frmAddSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(590, 447);
+            this.ClientSize = new System.Drawing.Size(661, 447);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -330,5 +352,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtRoom;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtHour;
     }
 }

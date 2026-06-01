@@ -382,7 +382,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
             items.Add(new KeyValuePair<string, string>("College", "College"));
             items.Add(new KeyValuePair<string, string>("Senior High", "Senior High"));
             items.Add(new KeyValuePair<string, string>("Both", "Both"));
-            items.Add(new KeyValuePair<string, string>("Others (e.g.: Registrar)", "Other"));
+            items.Add(new KeyValuePair<string, string>("Non-teaching", "Other"));
             optDesignation.DataSource = items;
             optDesignation.DisplayMember = "Key";
             optDesignation.ValueMember = "Value";

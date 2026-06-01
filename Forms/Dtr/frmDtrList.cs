@@ -223,7 +223,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             {
                 dgvDtrs.Rows.Add(
                     d._id, $"{d.employee.firstName} {d.employee.lastName}",
-                    d.subjectCode, d.timeIn, d.timeOut, d.hoursRendered,
+                    d.schedule?.subject, d.timeIn, d.timeOut, d.hoursRendered,
                     d.day, DateTime.Parse(d.date).ToString("MM/dd/yyyy")
                 );
             }

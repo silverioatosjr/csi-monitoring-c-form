@@ -17,13 +17,53 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
     {
         private InstructorService instructorService;
         private ScheduleService scheduleService;
+        private InputFilter inputs = new InputFilter();
         public frmAddSchedule()
         {
             InitializeComponent();
             btnCancel.Click += BtnCancel_Click;
             btnSave.Click += BtnSave_Click;
+            txtHour.TextChanged += txt_TextChanged;
+            txtHour.GotFocus += txt_GotFocus;
+            chkOpenTime.CheckedChanged += ChkOpenTime_CheckedChanged;
         }
 
+        private void ChkOpenTime_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkOpenTime.Checked)
+            {
+                txtHour.Enabled = true;
+                dtEndTime.Enabled = false;
+                dtStartTime.Enabled = false;
+            } else
+            {
+                txtHour.Enabled = false;
+                txtHour.Text = string.Empty;
+                dtEndTime.Enabled = true;
+                dtStartTime.Enabled = true;
+            }
+        }
+
+        private void txt_TextChanged(object sender, EventArgs e)
+        {
+            inputs.Filter((TextBox)sender);
+        }
+
+        private void txt_GotFocus(object sender, EventArgs e)
+        {
+            if (sender.GetType().Name == "TextBox")
+            {
+                if (((TextBox)sender).Text == "0")
+                {
+                    ((TextBox)sender).Text = "";
+                }
+                else
+                {
+                    ((TextBox)sender).Text = ((TextBox)sender).Text;
+                }
+                ((TextBox)sender).SelectionStart = ((TextBox)sender).TextLength;
+            }
+        }
         private void BtnSave_Click(object sender, EventArgs e)
         {
             if(InputValidator())
@@ -46,10 +86,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             {
                 payload.startTime = "";
                 payload.endTime = "";
+                payload.hour = txtHour.Text;
             } else
             {
                 payload.startTime = dtStartTime.Value.ToString("HH:mm");
                 payload.endTime = dtEndTime.Value.ToString("HH:mm");
+                payload.hour = string.Empty;
             }
             payload.instructor = optInstructor.SelectedValue.ToString();
             payload.room = txtRoom.Text.Trim();
@@ -75,6 +117,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             optDay.SelectedIndex = 0;
             optInstructor.SelectedIndex = 0;
             chkOpenTime.Checked = false;
+            txtHour.Text = string.Empty;
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
@@ -134,7 +177,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             if (optDay.SelectedIndex == 0 ||
                 optInstructor.SelectedIndex == 0 ||
                 txtSubject.Text.Trim() == string.Empty ||
-                txtRoom.Text.Trim() == string.Empty)
+                txtRoom.Text.Trim() == string.Empty || (chkOpenTime.Checked && txtHour.Text== string.Empty))
                 
             {
                 hasError = true;

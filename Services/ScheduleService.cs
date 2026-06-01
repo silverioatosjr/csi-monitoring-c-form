@@ -193,6 +193,8 @@ namespace CSIEmployeeMonitoringSystem.Services
                             sched.endTime = FormatTime(cell.Value.ToString());
                         else if (counter == 4)
                             sched.room = cell.Value.ToString();
+                        else if (counter == 5)
+                            sched.hour = cell.Value.ToString();
                         counter++;
                     }
                     schedules.Add(sched);
@@ -243,6 +245,8 @@ namespace CSIEmployeeMonitoringSystem.Services
             foreach (var row in sheet.Rows.Skip(4))
             {
                 int counter = 0;
+                MessageBox.Show(sheet["B2"].Value.ToString());
+                bool isOpenSchedule = false;
                 foreach (Cell cell in row)
                 {
                     if (counter == 0)
@@ -261,22 +265,39 @@ namespace CSIEmployeeMonitoringSystem.Services
                     else if (counter == 2)
                     {
                         if (cell.Value.ToString() != string.Empty)
+                        { 
                             if (!IsValidTime(cell.Value.ToString()))
                             {
                                 errors = errors + $"Error on row {rowCounter} - Start Time: {cell.Value.ToString()}\n";
                             }
-                    } else if (counter == 3)
+                        }
+                        else
+                        {
+                            isOpenSchedule = true;
+                        }
+                } else if (counter == 3)
                     {
                         if (cell.Value.ToString() != string.Empty)
+                        {
                             if (!IsValidTime(cell.Value.ToString()))
                             {
                                 errors = errors + $"Error on row {rowCounter} - End Time: {cell.Value.ToString()}\n";
                             }
+                        } else
+                        {
+                            isOpenSchedule = true;
+                        }
                     } else if(counter == 4)
                     {
                         if (cell.Value.ToString() == string.Empty)
                         {
                             errors = errors + $"Error on row {rowCounter} - Room: {cell.Value.ToString()}\n";
+                        }
+                    } else if(counter == 5)
+                    {
+                        if(isOpenSchedule && cell.Value.ToString() == string.Empty)
+                        {
+                            errors = errors + $"Error on row {rowCounter} - Hour: Hour is required for open schedule\n";
                         }
                     }
                     
@@ -285,6 +306,7 @@ namespace CSIEmployeeMonitoringSystem.Services
                 rowCounter++;
 
             }
+            MessageBox.Show(sheet["B2"].Value.ToString());
             return errors;
         }
 

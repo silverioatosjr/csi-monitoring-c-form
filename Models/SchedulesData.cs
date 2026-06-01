@@ -13,5 +13,6 @@ namespace CSIEmployeeMonitoringSystem.Models
         public string endTime { get; set; }
         public string room { get; set; }
         public string day { get; set; }
+        public string hour { get; set; }
     }
 }
