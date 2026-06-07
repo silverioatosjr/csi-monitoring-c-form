@@ -60,7 +60,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
                 }finally
                 {
                     btnUpload.Enabled = true;
-                    btnCancel.Enabled = false;
+                    btnCancel.Enabled = true;
                     btnSelectFile.Enabled = false;
                     Cursor = Cursors.Arrow;
                 }

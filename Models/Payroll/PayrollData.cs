@@ -19,6 +19,7 @@ namespace CSIEmployeeMonitoringSystem.Models.Payroll
         public float pagibig { get; set; }
         public int days { get; set; } // for non teaching only
         public float daysWorked { get; set; }
+        public float ratePerDay { get; set; }
         public float daysAbsent { get; set; }
         public float tax { get; set; }
         public float philhealth { get; set; }

@@ -245,7 +245,6 @@ namespace CSIEmployeeMonitoringSystem.Services
             foreach (var row in sheet.Rows.Skip(4))
             {
                 int counter = 0;
-                MessageBox.Show(sheet["B2"].Value.ToString());
                 bool isOpenSchedule = false;
                 foreach (Cell cell in row)
                 {
@@ -306,7 +305,6 @@ namespace CSIEmployeeMonitoringSystem.Services
                 rowCounter++;
 
             }
-            MessageBox.Show(sheet["B2"].Value.ToString());
             return errors;
         }
 

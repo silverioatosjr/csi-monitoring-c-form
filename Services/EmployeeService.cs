@@ -68,6 +68,7 @@ namespace CSIEmployeeMonitoringSystem.Services
             }
             catch
             {
+                MessageBox.Show("error");
                 return null;
             }
 

@@ -277,9 +277,15 @@ namespace CSIEmployeeMonitoringSystem.Forms.Employee
                 {
                     if(preenrollmentFmds != null)
                     {
-                        fingerPrint1 = Fmd.SerializeXml(preenrollmentFmds[0]);
-                        fingerPrint2 = Fmd.SerializeXml(preenrollmentFmds[1]);
+                            fingerPrint1 = Fmd.SerializeXml(preenrollmentFmds[0]);
+                        if(Fmd.SerializeXml(preenrollmentFmds[0])!= string.Empty)
+                        {
+                            fingerPrint2 = Fmd.SerializeXml(preenrollmentFmds[1]);
+                        }
+                        if (Fmd.SerializeXml(preenrollmentFmds[1]) != string.Empty)
+                        {
                         preenrollmentFmds.Clear();
+                        }
                     }
                 }
             }

@@ -24,7 +24,7 @@ namespace CSIEmployeeMonitoringSystem
             building = "Main";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDTR()); //frmMain() frmDTR()
+            Application.Run(new frmMain()); //frmMain() frmDTR()
         }
     }
 }

@@ -120,6 +120,10 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             if(null != response)
             {
                 employees = response.data;
+                
+            } else
+            {
+                MessageBox.Show(response.ToString());
             }
         }
         private void frmDTR_Load(object sender, EventArgs e)

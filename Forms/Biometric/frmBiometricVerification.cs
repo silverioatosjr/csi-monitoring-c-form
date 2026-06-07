@@ -78,7 +78,6 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
                 preenrollmentFmd = resultConversion.Data;
                 for(int i = 0; i<= _sender.employees.Count-1; i++ )
                 {
-
                     Fmd finger1 = Fmd.DeserializeXml(_sender.employees[i].biometric1);
                     Fmd finger2 = Fmd.DeserializeXml(_sender.employees[i].biometric2);
                     CompareResult compare1 = Comparison.Compare(preenrollmentFmd, 0, finger1, 0);
