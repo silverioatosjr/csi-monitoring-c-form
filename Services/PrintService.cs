@@ -119,7 +119,7 @@ namespace CSIEmployeeMonitoringSystem.Services
             DrawString(e, $"Semi-Monthly Rate:", leftMargin + 380, topMargin + rowHeight, 210, height, sfL);
             DrawBoldString(e, FormattNumber((payroll.employee.basicSalary / 2)), leftMargin + 590, topMargin + rowHeight, 140, dtrHeight, sfR);
             rowHeight += 22;
-            DrawString(e, $"Cut-off:", leftMargin, topMargin + rowHeight, 130, height, sfL);
+            DrawString(e, $"Cut-off:", leftMargin, topMargin + rowHeight, 230, height, sfL);
             DrawBoldString(e, payroll.cutOff, leftMargin + 52, topMargin + rowHeight, 200, dtrHeight, sfL);
             DrawString(e, $"Hourly Rate:", leftMargin + 380, topMargin + rowHeight, 130, height, sfL);
             DrawBoldString(e, FormattNumber(payroll.employee.hourlyRate), leftMargin + 530, topMargin + rowHeight, 200, dtrHeight, sfR);
@@ -146,6 +146,10 @@ namespace CSIEmployeeMonitoringSystem.Services
             deduction += 100;
             DrawHeaderString(e, "TOTAL", leftMargin + 380, topMargin + deduction, 350, height, sfC);
             deduction += 42;
+            DrawPayrollBoldString(e, "ALLOW/ADJ", leftMargin + 380, topMargin + deduction, 150, dtrHeight, sfL);
+            DrawPayrollBoldString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
+            DrawPayrollBoldString(e, FormattNumber(payroll.allowance), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
+            deduction += 22;
             DrawPayrollBoldString(e, "GROSS PAY", leftMargin + 380, topMargin + deduction, 150, dtrHeight, sfL);
             DrawPayrollBoldString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
             DrawPayrollBoldString(e, FormattNumber(payroll.grossPay), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
@@ -158,7 +162,7 @@ namespace CSIEmployeeMonitoringSystem.Services
             DrawPayrollBoldString(e, ":", leftMargin + 510, topMargin + deduction, 20, dtrHeight, sfL);
             DrawPayrollBoldString(e, FormattNumber(payroll.netPay), leftMargin + 530, topMargin + deduction, 200, dtrHeight, sfR);
             deduction += 42;
-            DrawSalaryString(e, "SALARY: " + FormattNumber(payroll.netPay), leftMargin + 380, topMargin + deduction, 350, height, sfC);
+            DrawSalaryString(e, "SALARY: " + FormattNumber(payroll.netPay+payroll.allowance), leftMargin + 380, topMargin + deduction, 350, height, sfC);
 
             rowHeight += 24;
             DrawPayrollBoldString(e, "TIME IN", leftMargin, topMargin + rowHeight, 70, dtrHeight, sfL);

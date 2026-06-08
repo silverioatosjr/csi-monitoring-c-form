@@ -32,18 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCurrentPayroll));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvCurrentPayroll = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.month = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.days = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.daysWorked = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grossPay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.netPay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sss = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pagibig = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.philhealth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnGeneratePayroll = new System.Windows.Forms.Button();
             this.btnPrintSelected = new System.Windows.Forms.Button();
@@ -56,6 +44,19 @@
             this.mnuPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.printPayroll = new System.Drawing.Printing.PrintDocument();
             this.printPayrollDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.month = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.days = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.daysWorked = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grossPay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.netPay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.allowance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sss = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pagibig = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.philhealth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentPayroll)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -87,6 +88,7 @@
             this.totalHours,
             this.grossPay,
             this.netPay,
+            this.allowance,
             this.tax,
             this.sss,
             this.pagibig,
@@ -98,72 +100,6 @@
             this.dgvCurrentPayroll.ShowEditingIcon = false;
             this.dgvCurrentPayroll.Size = new System.Drawing.Size(1005, 376);
             this.dgvCurrentPayroll.TabIndex = 0;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // employee
-            // 
-            this.employee.HeaderText = "EMPLOYEE";
-            this.employee.Name = "employee";
-            this.employee.Width = 200;
-            // 
-            // month
-            // 
-            this.month.HeaderText = "MONTH";
-            this.month.Name = "month";
-            this.month.Width = 150;
-            // 
-            // days
-            // 
-            this.days.HeaderText = "DAYS";
-            this.days.Name = "days";
-            // 
-            // daysWorked
-            // 
-            this.daysWorked.HeaderText = "DAYS WORKED";
-            this.daysWorked.Name = "daysWorked";
-            this.daysWorked.Width = 140;
-            // 
-            // totalHours
-            // 
-            this.totalHours.HeaderText = "TOTAL HOURS";
-            this.totalHours.Name = "totalHours";
-            this.totalHours.Width = 140;
-            // 
-            // grossPay
-            // 
-            this.grossPay.HeaderText = "GROSS PAY";
-            this.grossPay.Name = "grossPay";
-            this.grossPay.Width = 130;
-            // 
-            // netPay
-            // 
-            this.netPay.HeaderText = "NET PAY";
-            this.netPay.Name = "netPay";
-            // 
-            // tax
-            // 
-            this.tax.HeaderText = "TAX";
-            this.tax.Name = "tax";
-            // 
-            // sss
-            // 
-            this.sss.HeaderText = "SSS";
-            this.sss.Name = "sss";
-            // 
-            // pagibig
-            // 
-            this.pagibig.HeaderText = "PAGIBIG";
-            this.pagibig.Name = "pagibig";
-            // 
-            // philhealth
-            // 
-            this.philhealth.HeaderText = "PHILHEALTH";
-            this.philhealth.Name = "philhealth";
             // 
             // groupBox2
             // 
@@ -287,6 +223,77 @@
             this.printPayrollDialog.Name = "printPayrollDialog";
             this.printPayrollDialog.Visible = false;
             // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // employee
+            // 
+            this.employee.HeaderText = "EMPLOYEE";
+            this.employee.Name = "employee";
+            this.employee.Width = 200;
+            // 
+            // month
+            // 
+            this.month.HeaderText = "MONTH";
+            this.month.Name = "month";
+            this.month.Width = 150;
+            // 
+            // days
+            // 
+            this.days.HeaderText = "DAYS";
+            this.days.Name = "days";
+            // 
+            // daysWorked
+            // 
+            this.daysWorked.HeaderText = "DAYS WORKED";
+            this.daysWorked.Name = "daysWorked";
+            this.daysWorked.Width = 140;
+            // 
+            // totalHours
+            // 
+            this.totalHours.HeaderText = "TOTAL HOURS";
+            this.totalHours.Name = "totalHours";
+            this.totalHours.Width = 140;
+            // 
+            // grossPay
+            // 
+            this.grossPay.HeaderText = "GROSS PAY";
+            this.grossPay.Name = "grossPay";
+            this.grossPay.Width = 130;
+            // 
+            // netPay
+            // 
+            this.netPay.HeaderText = "NET PAY";
+            this.netPay.Name = "netPay";
+            // 
+            // allowance
+            // 
+            this.allowance.HeaderText = "ALL/ADJ";
+            this.allowance.Name = "allowance";
+            // 
+            // tax
+            // 
+            this.tax.HeaderText = "TAX";
+            this.tax.Name = "tax";
+            // 
+            // sss
+            // 
+            this.sss.HeaderText = "SSS";
+            this.sss.Name = "sss";
+            // 
+            // pagibig
+            // 
+            this.pagibig.HeaderText = "PAGIBIG";
+            this.pagibig.Name = "pagibig";
+            // 
+            // philhealth
+            // 
+            this.philhealth.HeaderText = "PHILHEALTH";
+            this.philhealth.Name = "philhealth";
+            // 
             // frmCurrentPayroll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -318,18 +325,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DataGridView dgvCurrentPayroll;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn employee;
-        private System.Windows.Forms.DataGridViewTextBoxColumn month;
-        private System.Windows.Forms.DataGridViewTextBoxColumn days;
-        private System.Windows.Forms.DataGridViewTextBoxColumn daysWorked;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalHours;
-        private System.Windows.Forms.DataGridViewTextBoxColumn grossPay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn netPay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tax;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sss;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pagibig;
-        private System.Windows.Forms.DataGridViewTextBoxColumn philhealth;
         private System.Windows.Forms.Button btnPrintSelected;
         private System.Windows.Forms.Button btnDeleteCurrentPayroll;
         private System.Windows.Forms.Button btnArchivePayroll;
@@ -340,5 +335,18 @@
         private System.Drawing.Printing.PrintDocument printPayroll;
         private System.Windows.Forms.PrintPreviewDialog printPayrollDialog;
         private System.Windows.Forms.ToolStripMenuItem mnuPrint;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn employee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn month;
+        private System.Windows.Forms.DataGridViewTextBoxColumn days;
+        private System.Windows.Forms.DataGridViewTextBoxColumn daysWorked;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalHours;
+        private System.Windows.Forms.DataGridViewTextBoxColumn grossPay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn netPay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn allowance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sss;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pagibig;
+        private System.Windows.Forms.DataGridViewTextBoxColumn philhealth;
     }
 }

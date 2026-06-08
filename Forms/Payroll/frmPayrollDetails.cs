@@ -88,14 +88,15 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             if(btnUpdate.Text == "Edit")
             {
                 btnUpdate.Text = "Update";
-                txtGrossPay.Enabled = true;
+                txtGrossPay.Enabled = false;
                 txtNetPay.Enabled = false;
                 txtPagibig.Enabled = true;
                 txtPhilhealth.Enabled = true;
                 txtSSS.Enabled = true;
                 txtTax.Enabled = true;
+                txtAllowance.Enabled = true;
                 txtOverTime.Enabled = false;
-                txtTotalHours.Enabled = true;
+                txtTotalHours.Enabled = false;
             } else
             {
                 
@@ -108,6 +109,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
                 txtPhilhealth.Enabled = false;
                 txtSSS.Enabled = false;
                 txtTax.Enabled = false;
+                txtAllowance.Enabled = false;
                 txtTotalHours.Enabled = false;
             }
         }
@@ -155,6 +157,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
                 txtSSS.Text = response.data.sss.ToString();
                 txtPagibig.Text = response.data.pagibig.ToString();
                 txtPhilhealth.Text = response.data.philhealth.ToString();
+                txtAllowance.Text = response.data.allowance.ToString();
                 employeeData = response.data.employee;
             }
         }
@@ -165,6 +168,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             GetPayroll();
             txtName.Enabled = false;
             txtGrossPay.Enabled = false;
+            txtAllowance.Enabled = false;
             txtNetPay.Enabled = false;
             txtPagibig.Enabled = false;
             txtPhilhealth.Enabled = false;

@@ -179,7 +179,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             {
                 dgvCurrentPayroll.Rows.Add(
                     p._id, $"{p.employee.firstName} {p.employee.lastName}",
-                    p.month, p.days, p.daysWorked, p.totalHours,p.grossPay, p.netPay,
+                    p.month, p.days, p.daysWorked, p.totalHours,p.grossPay, p.netPay,p.allowance,
                     p.tax, p.sss, p.pagibig, p.philhealth
                     //d.day, DateTime.Parse(d.date).ToString("MM/dd/yyyy")
                 );
