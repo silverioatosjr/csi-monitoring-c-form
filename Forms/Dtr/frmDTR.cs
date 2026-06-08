@@ -21,6 +21,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         private frmTodaysLogs frmTodaysLogs = new frmTodaysLogs();
         private frmBiometricVerification frmBiometricVerification;
         private frmRegistration frmRegistrationForm = new frmRegistration();
+        private frmEmployeesList frmEmployeesList = new frmEmployeesList();
+        private frmPassword frmPassword = new frmPassword();
         private string apiKey = Program.xApiKey;
         private string apiUrl = Program.serverUrl;
         private EmployeeService employeeService;
@@ -59,6 +61,19 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 {
                     GetEmployeesWithBiometrics();
                 }
+            } else if(e.KeyCode == Keys.F1)
+            {
+                if (!frmPassword.Created)
+                {
+                    frmPassword = new frmPassword();
+                }
+                if(frmPassword.ShowDialog() == DialogResult.OK)
+                {
+                    frmEmployeesList.ShowDialog();
+                }
+            } else if (e.KeyCode == Keys.F5)
+            {
+                GetEmployeesWithBiometrics();
             }
         }
 

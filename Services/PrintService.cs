@@ -113,7 +113,7 @@ namespace CSIEmployeeMonitoringSystem.Services
             rowHeight += 48;
             DrawString(e, $"Name:", leftMargin, topMargin + rowHeight, 52, height, sfL);
             DrawBoldString(e, $"{payroll.employee.lastName}, {payroll.employee.firstName}", leftMargin+52, topMargin + rowHeight, 300, height, sfL);
-            DrawString(e, $"Basic Rate:", leftMargin+380, topMargin + rowHeight, 130, height, sfL);
+            DrawString(e, $"Monthly Rate:", leftMargin+380, topMargin + rowHeight, 130, height, sfL);
             DrawBoldString(e, FormattNumber(payroll.employee.basicSalary), leftMargin + 530, topMargin + rowHeight, 200, dtrHeight, sfR);
             rowHeight += 22;
             DrawString(e, $"Semi-Monthly Rate:", leftMargin + 380, topMargin + rowHeight, 210, height, sfL);
