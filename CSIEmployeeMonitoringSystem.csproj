@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>15</ApplicationRevision>
+    <ApplicationRevision>16</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -63,6 +63,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>csiLogo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetEnv, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -537,6 +540,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="csiLogo.ico" />
+    <None Include="Resources\archive.png" />
+    <None Include="Resources\payroll.png" />
+    <None Include="Resources\dtrRecord.png" />
+    <None Include="Resources\nonteaching.jpg" />
+    <None Include="Resources\teacher_icon.png" />
+    <None Include="Resources\manual.png" />
+    <None Include="Resources\dtr.png" />
+    <None Include="Resources\schedule.png" />
+    <None Include="Resources\employeeList.png" />
+    <None Include="Resources\register.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\password.jpg" />
+    <None Include="Resources\key.png" />
+    <None Include="Resources\connectServer.jpg" />
     <None Include="Resources\Gemini_Generated_Image_mfnae4mfnae4mfna.png" />
     <None Include="Resources\csiheader.png" />
     <None Include="9187604.png" />

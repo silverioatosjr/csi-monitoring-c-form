@@ -116,6 +116,8 @@ namespace CSIEmployeeMonitoringSystem.Services
             DrawString(e, $"Monthly Rate:", leftMargin+380, topMargin + rowHeight, 130, height, sfL);
             DrawBoldString(e, FormattNumber(payroll.employee.basicSalary), leftMargin + 530, topMargin + rowHeight, 200, dtrHeight, sfR);
             rowHeight += 22;
+            DrawString(e, $"Days Worked:", leftMargin, topMargin + rowHeight, 230, height, sfL);
+            DrawBoldString(e, (payroll.employee.designation== "Other")?payroll.daysWorked.ToString():"", leftMargin + 52, topMargin + rowHeight, 200, dtrHeight, sfL);
             DrawString(e, $"Semi-Monthly Rate:", leftMargin + 380, topMargin + rowHeight, 210, height, sfL);
             DrawBoldString(e, FormattNumber((payroll.employee.basicSalary / 2)), leftMargin + 590, topMargin + rowHeight, 140, dtrHeight, sfR);
             rowHeight += 22;
