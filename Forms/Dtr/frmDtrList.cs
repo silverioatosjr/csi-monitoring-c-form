@@ -126,7 +126,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 optEmployees.SelectedIndex = 0;
             }
             ResetDateFilter();
-            GetDtrs();
+            dgvDtrs.Rows.Clear();
+            //GetDtrs();
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -184,17 +185,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         }
         private async void GetDtrs()
         {
-            if(optEmployees.SelectedIndex == 0)
-            {
-                var payload = new DtrGetDateRange();
-                payload.dateFrom = dtpFrom.Value;
-                payload.dateTo = dtpTo.Value;
-                var response = await dtrService.GetDtrs(payload);
-                if(null != response)
-                {
-                    PopulateDgv(response.data);
-                }
-            } else
+            if(optEmployees.SelectedIndex > 0)
             {
                 var payload = new DtrGetWithEmployee();
                 payload.dateFrom = dtpFrom.Value;
@@ -205,6 +196,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 {
                     PopulateDgv(response.data);
                 }
+            } else
+            {
+                MessageBox.Show("Please select employee","Dtr", MessageBoxButtons.OK);
             }
         }
 
@@ -232,7 +226,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
 
         private void printDtr_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            printService.PrintDtrs(e, dgvDtrs);
+            printService.PrintDtrs(e, dgvDtrs, optEmployees.SelectedValue.ToString(), $"{dtpFrom.Value.ToShortDateString()}-{dtpTo.Value.ToShortDateString()}");
         }
     }
 }

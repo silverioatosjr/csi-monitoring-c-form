@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>16</ApplicationRevision>
+    <ApplicationRevision>29</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -267,6 +267,12 @@
     <Compile Include="Forms\Biometric\frmBiometricVerification.Designer.cs">
       <DependentUpon>frmBiometricVerification.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Dtr\frmAddDTR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmAddDTR.Designer.cs">
+      <DependentUpon>frmAddDTR.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Dtr\frmDTR.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,11 +297,35 @@
     <Compile Include="Forms\Dtr\frmDtrList.Designer.cs">
       <DependentUpon>frmDtrList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Dtr\frmEditDTR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmEditDTR.Designer.cs">
+      <DependentUpon>frmEditDTR.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Dtr\frmLoggedIn.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Dtr\frmLoggedIn.Designer.cs">
       <DependentUpon>frmLoggedIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmLogMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmLogMessage.Designer.cs">
+      <DependentUpon>frmLogMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmManualNonTeaching.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmManualNonTeaching.Designer.cs">
+      <DependentUpon>frmManualNonTeaching.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmManualTeaching.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dtr\frmManualTeaching.Designer.cs">
+      <DependentUpon>frmManualTeaching.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dtr\frmPassword.cs">
       <SubType>Form</SubType>
@@ -389,6 +419,8 @@
     </Compile>
     <Compile Include="ApiParser\APISssResponseParser.cs" />
     <Compile Include="InputFilter.cs" />
+    <Compile Include="Models\AddDTRNonTeaching.cs" />
+    <Compile Include="Models\AddDTRTeaching.cs" />
     <Compile Include="Models\Auth\Auth.cs" />
     <Compile Include="Models\Auth\AuthPost.cs" />
     <Compile Include="Models\Auth\ResetPassword.cs" />
@@ -449,6 +481,9 @@
     <EmbeddedResource Include="Forms\Biometric\frmBiometricVerification.resx">
       <DependentUpon>frmBiometricVerification.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dtr\frmAddDTR.resx">
+      <DependentUpon>frmAddDTR.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dtr\frmDTR.resx">
       <DependentUpon>frmDTR.cs</DependentUpon>
     </EmbeddedResource>
@@ -461,8 +496,20 @@
     <EmbeddedResource Include="Forms\Dtr\frmDtrList.resx">
       <DependentUpon>frmDtrList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dtr\frmEditDTR.resx">
+      <DependentUpon>frmEditDTR.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dtr\frmLoggedIn.resx">
       <DependentUpon>frmLoggedIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dtr\frmLogMessage.resx">
+      <DependentUpon>frmLogMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dtr\frmManualNonTeaching.resx">
+      <DependentUpon>frmManualNonTeaching.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dtr\frmManualTeaching.resx">
+      <DependentUpon>frmManualTeaching.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dtr\frmPassword.resx">
       <DependentUpon>frmPassword.cs</DependentUpon>

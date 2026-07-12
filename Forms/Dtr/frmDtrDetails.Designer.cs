@@ -170,6 +170,7 @@
             // btnUpdate
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnUpdate.Enabled = false;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnUpdate.Location = new System.Drawing.Point(84, 38);

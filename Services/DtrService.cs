@@ -31,6 +31,23 @@ namespace CSIEmployeeMonitoringSystem.Services
                     return res;
                 }
             }
+            catch(Exception error)
+            {
+                MessageBox.Show(error.ToString(), "Log", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public async Task<APIMessageParser> LogoutDtrs()
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl + "/dtrs/logout/forgotten-dtrs");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APIMessageParser res = JsonConvert.DeserializeObject<APIMessageParser>(responseBody);
+                return res;
+            }
             catch
             {
                 return null;
@@ -108,6 +125,65 @@ namespace CSIEmployeeMonitoringSystem.Services
             }
             catch
             {
+                return null;
+            }
+        }
+
+        public async Task<APIDtrsParser> PostManualTeachingDTR(AddDTRTeaching payload)
+        {
+            try
+            {
+                string jsonContent = JsonConvert.SerializeObject(payload);
+                using (var content = new StringContent(jsonContent, UnicodeEncoding.UTF8, "application/json"))
+                {
+
+                    HttpResponseMessage response = await client.PostAsync(apiUrl + $"/dtrs/teaching/manual-dtr", content);
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    APIDtrsParser res = JsonConvert.DeserializeObject<APIDtrsParser>(responseBody);
+                    return res;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<APIDtrsParser> PostManualNonTeachingDTR(AddDTRNonTeaching payload)
+        {
+            try
+            {
+                string jsonContent = JsonConvert.SerializeObject(payload);
+                using (var content = new StringContent(jsonContent, UnicodeEncoding.UTF8, "application/json"))
+                {
+
+                    HttpResponseMessage response = await client.PostAsync(apiUrl + $"/dtrs/non-teaching/manual-dtr", content);
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    APIDtrsParser res = JsonConvert.DeserializeObject<APIDtrsParser>(responseBody);
+                    return res;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<APIDtrsParser> GetEmployeeActiveDtrs(string employeeId)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl + $"/dtrs/employee/active-dtrs/{employeeId}");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APIDtrsParser res = JsonConvert.DeserializeObject<APIDtrsParser>(responseBody);
+                return res;
+            }
+            catch
+            {
+                //MessageBox.Show(err.Message);
                 return null;
             }
         }

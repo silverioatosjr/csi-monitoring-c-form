@@ -175,7 +175,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
                 {
                     Cursor = Cursors.WaitCursor;
                     DeleteSchedule();
-                    GetSchedules();
+                    //GetSchedules();
+                    GetFilteredInstructors();
                     btnDeleteSchedule.Enabled = false;
                     btnUpdateSchedule.Enabled = false;
                     scheduleId = string.Empty;
@@ -269,7 +270,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Schedules
             Cursor = Cursors.WaitCursor;
             scheduleService = new ScheduleService(Program.xApiKey, Program.serverUrl);
             printService = new PrintService();
-            GetSchedules();
+            //GetSchedules();
             instructorService = new InstructorService(Program.xApiKey, Program.serverUrl);
             GetInstructors();
             btnUpdateSchedule.Enabled = false;

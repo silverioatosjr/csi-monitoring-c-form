@@ -56,6 +56,23 @@ namespace CSIEmployeeMonitoringSystem.Services
 
         }
 
+        public async Task<APIEmployeesGetParser> GetNonTeachingStaffs()
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl + "/employees/non-teaching-staffs");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APIEmployeesGetParser res = JsonConvert.DeserializeObject<APIEmployeesGetParser>(responseBody);
+                return res;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+
         public async Task<APIEmployeesWithBiometricsParser> GetEmployeesWithBiometrics()
         {
             try

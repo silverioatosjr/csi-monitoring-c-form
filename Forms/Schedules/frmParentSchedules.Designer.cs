@@ -44,11 +44,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.optInstructor = new System.Windows.Forms.ComboBox();
             this.dgvSubjectSchedules = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.printSchedulesDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.printSchedules = new System.Drawing.Printing.PrintDocument();
             this.subjectId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.instructorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.instructor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +52,11 @@
             this.end = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.room = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.printSchedulesDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.printSchedules = new System.Drawing.Printing.PrintDocument();
             this.grpControls.SuspendLayout();
             this.grpSchedules.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubjectSchedules)).BeginInit();
@@ -250,40 +250,6 @@
             this.dgvSubjectSchedules.Size = new System.Drawing.Size(895, 349);
             this.dgvSubjectSchedules.TabIndex = 5;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuUpdate,
-            this.mnuDelete});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 48);
-            // 
-            // mnuUpdate
-            // 
-            this.mnuUpdate.Name = "mnuUpdate";
-            this.mnuUpdate.Size = new System.Drawing.Size(112, 22);
-            this.mnuUpdate.Text = "Update";
-            // 
-            // mnuDelete
-            // 
-            this.mnuDelete.Name = "mnuDelete";
-            this.mnuDelete.Size = new System.Drawing.Size(112, 22);
-            this.mnuDelete.Text = "Delete";
-            // 
-            // printSchedulesDialog
-            // 
-            this.printSchedulesDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printSchedulesDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printSchedulesDialog.ClientSize = new System.Drawing.Size(400, 300);
-            this.printSchedulesDialog.Enabled = true;
-            this.printSchedulesDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printSchedulesDialog.Icon")));
-            this.printSchedulesDialog.Name = "printSchedulesDialog";
-            this.printSchedulesDialog.Visible = false;
-            // 
-            // printSchedules
-            // 
-            this.printSchedules.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printSchedules_PrintPage);
-            // 
             // subjectId
             // 
             this.subjectId.HeaderText = "SUBJECT ID";
@@ -328,6 +294,40 @@
             this.room.HeaderText = "ROOM";
             this.room.Name = "room";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuUpdate,
+            this.mnuDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 48);
+            // 
+            // mnuUpdate
+            // 
+            this.mnuUpdate.Name = "mnuUpdate";
+            this.mnuUpdate.Size = new System.Drawing.Size(112, 22);
+            this.mnuUpdate.Text = "Update";
+            // 
+            // mnuDelete
+            // 
+            this.mnuDelete.Name = "mnuDelete";
+            this.mnuDelete.Size = new System.Drawing.Size(112, 22);
+            this.mnuDelete.Text = "Delete";
+            // 
+            // printSchedulesDialog
+            // 
+            this.printSchedulesDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printSchedulesDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printSchedulesDialog.ClientSize = new System.Drawing.Size(400, 300);
+            this.printSchedulesDialog.Enabled = true;
+            this.printSchedulesDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printSchedulesDialog.Icon")));
+            this.printSchedulesDialog.Name = "printSchedulesDialog";
+            this.printSchedulesDialog.Visible = false;
+            // 
+            // printSchedules
+            // 
+            this.printSchedules.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printSchedules_PrintPage);
+            // 
             // frmParentSchedules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -342,6 +342,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmParentSchedules";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Subjects Schedule";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.frmParentSchedules_Load);

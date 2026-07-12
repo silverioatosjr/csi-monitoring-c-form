@@ -77,6 +77,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
 
         private async void GeneratePayrolls()
         {
+            Cursor = Cursors.WaitCursor;
             GeneratePayroll payload = new GeneratePayroll();
             payload.dateFrom = dtpFrom.Value;
             payload.dateTo = dtpTo.Value;
@@ -85,11 +86,15 @@ namespace CSIEmployeeMonitoringSystem.Forms.Payroll
             if (null != response)
             {
                 MessageBox.Show("Payroll has been generated successfully", "Payroll", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Invoke(new Action(delegate() {
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }));
+            } else
+            {
+                MessageBox.Show("No payroll created");
             }
+            this.Invoke(new Action(delegate() {
+               this.DialogResult = DialogResult.OK;
+               this.Close();
+            }));
+            Cursor = Cursors.Arrow;
         }
 
         private void BtnClose_Click(object sender, EventArgs e)

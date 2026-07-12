@@ -28,7 +28,10 @@ namespace CSIEmployeeMonitoringSystem
         private frmDtrList frmDtrList = new frmDtrList();
         private frmCurrentPayroll frmCurrentPayroll = new frmCurrentPayroll();
         private frmArchivedPayroll frmArchivedPayroll = new frmArchivedPayroll();
-      
+        private frmManualTeaching frmManualTeaching = new frmManualTeaching();
+        private frmManualNonTeaching frmManualNonTeaching = new frmManualNonTeaching();
+
+
         public string userRole;
         public frmMain()
         {
@@ -45,6 +48,34 @@ namespace CSIEmployeeMonitoringSystem
             mnuCurrentPayroll.Click += MnuCurrentPayroll_Click;
             mnuArchivedPayroll.Click += MnuArchivedPayroll_Click;
             mnuChangePassword.Click += MnuChangePassword_Click;
+            mnuTeachingStaffs.Click += MnuTeachingStaffs_Click;
+            mnuNonTeachingStaffs.Click += MnuNonTeachingStaffs_Click;
+        }
+
+        private void MnuNonTeachingStaffs_Click(object sender, EventArgs e)
+        {
+            if (!frmManualNonTeaching.Created)
+            {
+                frmManualNonTeaching = new frmManualNonTeaching();
+                frmManualNonTeaching.MdiParent = this;
+                frmManualNonTeaching.Show();
+            }
+
+            frmManualNonTeaching.BringToFront();
+            pictureBox1.SendToBack();
+        }
+
+        private void MnuTeachingStaffs_Click(object sender, EventArgs e)
+        {
+            if (!frmManualTeaching.Created)
+            {
+                frmManualTeaching = new frmManualTeaching();
+                frmManualTeaching.MdiParent = this;
+                frmManualTeaching.Show();
+            }
+
+            frmManualTeaching.BringToFront();
+            pictureBox1.SendToBack();
         }
 
         private void MnuChangePassword_Click(object sender, EventArgs e)
@@ -183,12 +214,13 @@ namespace CSIEmployeeMonitoringSystem
             {
                 mnuConnectToServer.Enabled = true;
                 mnuConnectToServer.Text = "Connect to Server";
-                MessageBox.Show("Unable to connect to API. Please check your network connection", "Service error", MessageBoxButtons.OK);
+                MessageBox.Show("Unable to connect to API. Please check your network connection", "Server Connection", MessageBoxButtons.OK);
             } else
             {
                 mnuConnectToServer.Enabled = false;
                 mnuLogin.Enabled = true;
                 mnuConnectToServer.Text = "Connected to Server";
+                //MessageBox.Show("Connected to API Server", "Server Connection", MessageBoxButtons.OK);
             }
             Cursor = Cursors.Arrow;
         }

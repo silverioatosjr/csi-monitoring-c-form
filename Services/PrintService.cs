@@ -22,7 +22,7 @@ namespace CSIEmployeeMonitoringSystem.Services
             sfL = new StringFormat();
             sfL.Alignment = StringAlignment.Near;
             height = 18;
-            rowDefaultHeight = 22;
+            rowDefaultHeight = 15;
             leftMargin = 48;
             topMargin = 48;
             dtrRowDefaultHeight = 12;
@@ -62,7 +62,7 @@ namespace CSIEmployeeMonitoringSystem.Services
 
         }
 
-        public void PrintDtrs(PrintPageEventArgs e, DataGridView dgv)
+        public void PrintDtrs(PrintPageEventArgs e, DataGridView dgv, string name, string cutoff)
         {
             // 72 points = 1 inch
             //9 points = 1/8 inch
@@ -70,32 +70,36 @@ namespace CSIEmployeeMonitoringSystem.Services
             int rowHeight = rowDefaultHeight;
             leftMargin = leftMargin - 15;
             DrawBoldString(e, "COMPUTER SYSTEMS INSTITUTE", 0, topMargin, 816, height, sfC);
-            DrawBoldString(e, "F. Imperial St., Kapantawan", 0, topMargin + rowHeight, 816, 22, sfC);
-            rowHeight += rowDefaultHeight;
-            DrawBoldString(e, "Legazpi City", 0, topMargin + rowHeight, 816, height, sfC);
-            rowHeight += 35;
+            DrawBoldString(e, "F. Imperial St., Kapantawan, Legazpi City", 0, topMargin + rowHeight, 816, 22, sfC);
+            rowHeight += 22;
             DrawBoldString(e, "D T R", 0, topMargin + rowHeight, 816, height, sfC);
-            rowHeight += 48;
-            DrawBoldString(e, "EMPLOYEE", leftMargin, topMargin + rowHeight, 192, height, sfL);
-            DrawBoldString(e, "CODE", leftMargin + 192, topMargin + rowHeight, 96, height, sfL);
+            rowHeight += 22;
+            DrawBoldString(e, $"Cut-Off: {cutoff}", 0, topMargin + rowHeight, 816, height, sfC);
+            rowHeight += 32;
+            DrawBoldString(e, $"EMPLOYEE:     {dgv.Rows[0].Cells[1].Value?.ToString()}", leftMargin, topMargin + rowHeight, 288, height, sfL);
+            rowHeight += 28;
+            DrawBoldString(e, "SUBJECT", leftMargin, topMargin + rowHeight,288, height, sfL);
             DrawBoldString(e, "TIME IN", leftMargin + 288, topMargin + rowHeight, 96, height, sfL);
             DrawBoldString(e, "TIME OUT", leftMargin + 384, topMargin + rowHeight, 96, height, sfL);
             DrawBoldString(e, "RENDERED", leftMargin + 480, topMargin + rowHeight, 96, height, sfL);
             DrawBoldString(e, "DAY", leftMargin + 576, topMargin + rowHeight, 96, height, sfL);
             DrawBoldString(e, "DATE", leftMargin + 672, topMargin + rowHeight, 96, height, sfL);
-            rowHeight += rowDefaultHeight;
+            rowHeight += rowDefaultHeight+7;
+            float totalHours = 0;
             foreach (DataGridViewRow row in dgv.Rows)
             {
-                DrawString(e, $"{row.Cells[1].Value.ToString()}", leftMargin, topMargin + rowHeight, 192, height, sfL);
-                DrawString(e, (row.Cells[2].Value == null) ? "" : row.Cells[2].Value.ToString(), leftMargin + 192, topMargin + rowHeight, 96, height, sfL);
-                DrawString(e, row.Cells[3].Value.ToString(), leftMargin + 288, topMargin + rowHeight, 96, height, sfL);
-                DrawString(e, row.Cells[4].Value.ToString(), leftMargin + 384, topMargin + rowHeight, 96, height, sfL);
-                DrawString(e, row.Cells[5].Value.ToString(), leftMargin + 480, topMargin + rowHeight, 96, height, sfL);
-                DrawString(e, row.Cells[6].Value.ToString(), leftMargin + 576, topMargin + rowHeight, 96, height, sfL);
-                DrawString(e, row.Cells[7].Value.ToString(), leftMargin + 672, topMargin + rowHeight, 96, height, sfL);
+                DrawString(e, row.Cells[2].Value?.ToString(), leftMargin, topMargin + rowHeight, 288, height, sfL);
+                DrawString(e, row.Cells[3].Value?.ToString(), leftMargin + 288, topMargin + rowHeight, 96, height, sfL);
+                DrawString(e, row.Cells[4].Value?.ToString(), leftMargin + 384, topMargin + rowHeight, 96, height, sfL);
+                DrawString(e, row.Cells[5].Value?.ToString(), leftMargin + 480, topMargin + rowHeight, 96, height, sfL);
+                DrawString(e, row.Cells[6].Value?.ToString(), leftMargin + 576, topMargin + rowHeight, 96, height, sfL);
+                DrawString(e, row.Cells[7].Value?.ToString(), leftMargin + 672, topMargin + rowHeight, 96, height, sfL);
                 rowHeight += rowDefaultHeight;
+                totalHours += float.Parse(row.Cells[5].Value.ToString());
             }
-
+            
+            rowHeight += rowDefaultHeight;
+            DrawBoldString(e, $"TOTAL HOURS: {totalHours}", leftMargin, topMargin + rowHeight, 288, height, sfL);
         }
 
         public void PrintPayroll(PrintPageEventArgs e, PayrollData payroll)
@@ -201,7 +205,7 @@ namespace CSIEmployeeMonitoringSystem.Services
         }
         private void DrawString(PrintPageEventArgs e, string content, float x, float y, float width, float height, StringFormat sF)
         {
-            e.Graphics.DrawString(content, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new RectangleF(x, y, width, height), sF);
+            e.Graphics.DrawString(content, new Font("Arial", 9, FontStyle.Regular), Brushes.Black, new RectangleF(x, y, width, height), sF);
         }
         private void DrawBoldString(PrintPageEventArgs e, string content, float x, float y, float width, float height, StringFormat sF)
         {

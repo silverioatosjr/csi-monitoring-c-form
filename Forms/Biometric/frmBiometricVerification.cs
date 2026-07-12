@@ -100,7 +100,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
                 } else
                 {
                     this.Invoke(new Action(delegate () {
-                        MessageBox.Show("Fingerprint did not matched. Try again.", "Verification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Fingerprint did not match. Please try again.\nMake sure your finger is properly positioned on the scanner.", "Verification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }));
                 }
                 
