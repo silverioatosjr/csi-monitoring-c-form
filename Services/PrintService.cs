@@ -99,7 +99,7 @@ namespace CSIEmployeeMonitoringSystem.Services
             }
             
             rowHeight += rowDefaultHeight;
-            DrawBoldString(e, $"TOTAL HOURS: {totalHours}", leftMargin, topMargin + rowHeight, 288, height, sfL);
+            DrawBoldString(e, $"TOTAL HOURS: {totalHours.ToString("0.00")}", leftMargin, topMargin + rowHeight, 288, height, sfL);
         }
 
         public void PrintPayroll(PrintPageEventArgs e, PayrollData payroll)

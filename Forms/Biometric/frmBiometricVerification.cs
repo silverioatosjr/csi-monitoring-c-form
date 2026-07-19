@@ -103,6 +103,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
                         MessageBox.Show("Fingerprint did not match. Please try again.\nMake sure your finger is properly positioned on the scanner.", "Verification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }));
                 }
+
+
                 
                 if (resultConversion.ResultCode != Constants.ResultCode.DP_SUCCESS)
                 {

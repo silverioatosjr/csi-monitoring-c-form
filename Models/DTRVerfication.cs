@@ -10,5 +10,6 @@ namespace CSIEmployeeMonitoringSystem.Models
     {
         public string employee { get; set; }
         public string building { get; set; }
+        public string timeString { get; set; }
     }
 }

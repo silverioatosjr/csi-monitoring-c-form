@@ -108,6 +108,23 @@ namespace CSIEmployeeMonitoringSystem.Services
 
         }
 
+        public async Task<APIEmployeesGetParser> GetInstructorsWithSchedules()
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl + $"/employees/instructors-with-schedules");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                APIEmployeesGetParser res = JsonConvert.DeserializeObject<APIEmployeesGetParser>(responseBody);
+                return res;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+
         public async Task<APIEmployeeLogParser> GetEmployeeDetailsByCode(string code)
         {
             try

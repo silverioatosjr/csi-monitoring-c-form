@@ -31,6 +31,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         private EmployeeService employeeService;
         private ConnectionService connectionService;
         public List<Models.Employee> employees;
+        private List<Models.Employee> instructors;
         private frmDtrList frmDtrList = new frmDtrList();
         public bool isMatched;
         public string employeeId;
@@ -84,6 +85,59 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             //this.Invoke(new Action(delegate () {
             //    CheckApiConnection();
             //}));
+        }
+
+        private async void GetDtrTemp()
+        {
+            var response = await dtrService.GetDtrTempList();
+        
+            if (null != response)
+            {
+                foreach (DtrTemp d in response.data)
+                {
+                }
+            }
+        }
+        private async void GetInstructorsWithSchedules()
+        {
+            var responseTemp = await dtrService.GetDtrTempList();
+            List<DtrTemp> tempDTR = new List<DtrTemp>();
+            if (null != responseTemp)
+            {
+                tempDTR = responseTemp.data;
+            }
+
+            var response = await employeeService.GetInstructorsWithSchedules();
+            if (response != null)
+            {
+                
+                int locXL = 50;
+                int locXR = 500;
+                int locXRE = 950;
+                int locY = 86;
+                int locIncrement = 61;
+                int counter = 0;
+                
+                foreach(EmployeesList e in response.data)
+                {
+                    
+                    var loggedIn = tempDTR?.Find(d=>d?.employee?._id == e._id);
+                        if (counter < 10)
+                        {
+                            CustomLabel(e._id, locXL, locY + (counter * locIncrement), $"{e.firstName} {e.lastName}", (loggedIn!=null)?true:false);
+                        }
+                        else if (counter >= 10 && counter < 20)
+                        {
+                            CustomLabel(e._id, locXR, locY + ((counter - 10) * locIncrement), $"{e.firstName} {e.lastName}", (loggedIn != null) ? true : false);
+                        }
+                        else
+                        {
+                            CustomLabel(e._id, locXRE, locY + ((counter - 20) * locIncrement), $"{e.firstName} {e.lastName}", (loggedIn != null) ? true : false);
+                        }
+                    
+                    counter++;
+                }
+            }
         }
 
         private async void FrmDTR_KeyDown(object sender, KeyEventArgs e)
@@ -165,7 +219,10 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 btnLogTime.Enabled = false;
                 employee.employee = employeeId;
                 employee.building = Program.building;
+                DateTime timeString = DateTime.Now;
+                employee.timeString = timeString.ToString("HH:mm");
                 var response = await dtrService.SaveDtr(employee);
+                
                 if (null != response)
                 {
                     if (!frmLogMessage.Created)
@@ -175,6 +232,17 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                     frmLogMessage.message = $"{fullName}\n\n{response.message}";
                     frmLogMessage.ShowDialog();
                     isMatched = false;
+
+                    
+                    Label lbl = panelLogs.Controls.Find(employeeId, true).FirstOrDefault() as Label;
+                    if (response.message.Contains("Logged in") && lbl !=null)
+                    {
+                        ChangeLabelStatus(lbl, "Logged in");
+                    } else if(response.message.Contains("Logout") && lbl != null)
+                    {
+                        ChangeLabelStatus(lbl, "Logout");
+                    }
+
                     employeeId = String.Empty;
                     fullName = String.Empty;
                 }
@@ -183,7 +251,15 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 
             }
         }
+        private void ChangeLabelStatus(Label lbl, string status)
+        {
+            if(status =="Logged in" || status =="Logout")
+            {
+                lbl.ForeColor = status=="Logged in" ? Color.White : Color.DarkSlateGray;
+                lbl.BackColor = status == "Logged in" ? Color.Green : Color.Gray;
 
+            }
+        }
         private void BtnLogTime_Click(object sender, EventArgs e)
         {
             OpenBiometric();
@@ -214,15 +290,28 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             isMatched = false;
             employeeId = String.Empty;
             fullName = String.Empty;
-            panel1.Left = (this.ClientSize.Width - panel1.Width) / 2;
-            panel1.Top = (this.ClientSize.Height - panel1.Height) / 2;
-            panel1.Anchor = AnchorStyles.None;
             timer1.Interval = (1000 * 60) * 5;
             timer1.Enabled = false;
             timer2.Interval = 2000;
             timer2.Enabled = false;
         }
 
+        private void CustomLabel(string id, int locX, int locY, string name, bool isOnline)
+        {
+            Label lblTeacher = new Label();
+            panelLogs.Controls.Add(lblTeacher);
+            lblTeacher.Left = locX;
+            lblTeacher.Top = locY;
+            lblTeacher.Text = name.ToUpper();
+            lblTeacher.Name = $"{id}";
+            lblTeacher.ForeColor = isOnline?Color.White:Color.DarkSlateGray;
+            lblTeacher.BackColor = isOnline?Color.Green:Color.Gray;
+            lblTeacher.AutoSize = false;
+            lblTeacher.Height = 40;
+            lblTeacher.Width = 400;
+            lblTeacher.Font = new Font(FontFamily.GenericSansSerif,16, FontStyle.Bold);
+            lblTeacher.Padding = new Padding(8); 
+        }
         private async void CheckApiConnection()
         {
             Cursor = Cursors.WaitCursor;
@@ -246,6 +335,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             {
                 btnLogTime.Enabled = true;
                 GetEmployeesWithBiometrics();
+                GetInstructorsWithSchedules();
                 mnuViewLogs.Enabled = true;
                 btnLogTime.Focus();
                 timer1.Enabled = true;

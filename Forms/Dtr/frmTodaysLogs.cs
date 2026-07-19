@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,9 +43,13 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             {
                 foreach (DTR d in response.data)
                 {
+                    DateTime dateTimeIn = DateTime.Parse(d.timeIn);
+                    DateTime dateTimeOut = DateTime.Parse(d.timeOut);
+                    string timeIn = dateTimeIn.ToString("h:mm tt", CultureInfo.InvariantCulture);
+                    string timeOut = dateTimeOut.ToString("h:mm tt", CultureInfo.InvariantCulture);
                     dgvCurrenDtr.Rows.Add(
                         $"{d.employee.firstName} {d.employee.lastName}",
-                        d.schedule?.subject, d.timeIn, d.timeOut, d.hoursRendered.ToString("0.##")
+                        d.schedule?.subject, timeIn, timeOut, d.hoursRendered.ToString("0.##")
                     );
                 }
             }

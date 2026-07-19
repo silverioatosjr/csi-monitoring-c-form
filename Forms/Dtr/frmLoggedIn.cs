@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,9 +44,11 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             {
                 foreach (DtrTemp d in response.data)
                 {
+                    DateTime dateTime = DateTime.Parse(d.time);
+                    string time12Hour = dateTime.ToString("h:mm tt", CultureInfo.InvariantCulture);
                     dgvDtr.Rows.Add(
                         $"{d.employee.firstName} {d.employee.lastName}",
-                        d.time,
+                        time12Hour,
                         d.building != null ? d.building : "",
                         d.createdAt.Split('T')[0] 
                     );
