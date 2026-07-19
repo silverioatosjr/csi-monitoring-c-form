@@ -36,6 +36,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         public string employeeId;
         public string fullName;
         private DtrService dtrService;
+        private int color = 0;
         public frmDTR()
         {
             InitializeComponent();
@@ -51,12 +52,16 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
 
         private void Timer2_Tick(object sender, EventArgs e)
         {
-            if(btnLogTime.BackColor == Color.MediumBlue)
+            if (color == 0) btnLogTime.BackColor = Color.Navy;
+            else if (color == 1) btnLogTime.BackColor = Color.MediumBlue;
+            else if (color == 2) btnLogTime.BackColor = Color.Maroon;
+            else if (color == 3) btnLogTime.BackColor = Color.Gray;
+            if(color==3)
             {
-                btnLogTime.BackColor = Color.Navy;
+                color = 0;
             } else
             {
-                btnLogTime.BackColor = Color.MediumBlue;
+                color++;
             }
         }
 
@@ -157,6 +162,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             {
                 //Save the dtr
                 var employee = new DTRVerfication();
+                btnLogTime.Enabled = false;
                 employee.employee = employeeId;
                 employee.building = Program.building;
                 var response = await dtrService.SaveDtr(employee);
@@ -172,6 +178,8 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                     employeeId = String.Empty;
                     fullName = String.Empty;
                 }
+                btnLogTime.Enabled = true;
+                btnLogTime.Focus();
                 
             }
         }

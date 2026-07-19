@@ -32,12 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLoggedIn));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvDtr = new System.Windows.Forms.DataGridView();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.room = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.building = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDtr)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +51,7 @@
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox3.Location = new System.Drawing.Point(22, 60);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(922, 459);
+            this.groupBox3.Size = new System.Drawing.Size(782, 459);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "LOGGED IN";
@@ -71,15 +70,26 @@
             this.name,
             this.subject,
             this.time,
-            this.room,
-            this.building});
+            this.room});
             this.dgvDtr.Location = new System.Drawing.Point(18, 45);
             this.dgvDtr.MultiSelect = false;
             this.dgvDtr.Name = "dgvDtr";
             this.dgvDtr.ReadOnly = true;
             this.dgvDtr.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDtr.Size = new System.Drawing.Size(885, 390);
+            this.dgvDtr.Size = new System.Drawing.Size(744, 390);
             this.dgvDtr.TabIndex = 1;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnRefresh.Location = new System.Drawing.Point(677, 12);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(127, 42);
+            this.btnRefresh.TabIndex = 6;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = false;
             // 
             // name
             // 
@@ -88,57 +98,39 @@
             this.name.HeaderText = "EMPLOYEE";
             this.name.Name = "name";
             this.name.ReadOnly = true;
-            this.name.Width = 230;
+            this.name.Width = 300;
             // 
             // subject
             // 
-            this.subject.HeaderText = "SUBJECT";
+            this.subject.HeaderText = "TIME IN";
             this.subject.Name = "subject";
             this.subject.ReadOnly = true;
-            this.subject.Width = 260;
             // 
             // time
             // 
-            this.time.HeaderText = "TIME";
+            this.time.HeaderText = "BUILDING";
             this.time.Name = "time";
             this.time.ReadOnly = true;
+            this.time.Width = 150;
             // 
             // room
             // 
-            this.room.HeaderText = "ROOM";
+            this.room.HeaderText = "DATE";
             this.room.Name = "room";
             this.room.ReadOnly = true;
-            // 
-            // building
-            // 
-            this.building.HeaderText = "BUILDING";
-            this.building.Name = "building";
-            this.building.ReadOnly = true;
-            this.building.Width = 150;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnRefresh.Location = new System.Drawing.Point(817, 12);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(127, 42);
-            this.btnRefresh.TabIndex = 6;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.room.Width = 150;
             // 
             // frmLoggedIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(965, 542);
+            this.ClientSize = new System.Drawing.Size(826, 542);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.groupBox3);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLoggedIn";
@@ -155,11 +147,10 @@
 
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgvDtr;
+        private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn subject;
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewTextBoxColumn room;
-        private System.Windows.Forms.DataGridViewTextBoxColumn building;
-        private System.Windows.Forms.Button btnRefresh;
     }
 }

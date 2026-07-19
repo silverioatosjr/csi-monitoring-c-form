@@ -45,10 +45,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 {
                     dgvDtr.Rows.Add(
                         $"{d.employee.firstName} {d.employee.lastName}",
-                        d.schedule != null ? d.schedule.subject : "",
                         d.time,
-                        d.schedule != null ? d.schedule.room : "",
-                        d.building != null ? d.building : ""
+                        d.building != null ? d.building : "",
+                        d.createdAt.Split('T')[0] 
                     );
                 }
             }

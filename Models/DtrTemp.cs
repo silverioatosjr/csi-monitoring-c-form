@@ -11,6 +11,7 @@ namespace CSIEmployeeMonitoringSystem.Models
         public string _id { get; set; }
         public string time { get; set; }
         public string building { get; set; }
+        public string createdAt { get; set; }
         public Employee employee { get; set; }
         public Schedule schedule { get; set; } 
     }

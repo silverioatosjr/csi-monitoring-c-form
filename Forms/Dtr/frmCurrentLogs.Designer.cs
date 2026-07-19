@@ -32,11 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCurrentLogs));
             this.dgvDtr = new System.Windows.Forms.DataGridView();
+            this.timerDtrTemp = new System.Windows.Forms.Timer(this.components);
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.room = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timerDtrTemp = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDtr)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,6 +61,10 @@
             this.dgvDtr.Size = new System.Drawing.Size(735, 433);
             this.dgvDtr.TabIndex = 2;
             // 
+            // timerDtrTemp
+            // 
+            this.timerDtrTemp.Interval = 30000;
+            // 
             // name
             // 
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -68,30 +72,26 @@
             this.name.HeaderText = "EMPLOYEE";
             this.name.Name = "name";
             this.name.ReadOnly = true;
-            this.name.Width = 230;
+            this.name.Width = 300;
             // 
             // subject
             // 
-            this.subject.HeaderText = "SUBJECT";
+            this.subject.HeaderText = "TIME IN";
             this.subject.Name = "subject";
             this.subject.ReadOnly = true;
-            this.subject.Width = 260;
             // 
             // time
             // 
-            this.time.HeaderText = "TIME";
+            this.time.HeaderText = "ROOM";
             this.time.Name = "time";
             this.time.ReadOnly = true;
             // 
             // room
             // 
-            this.room.HeaderText = "ROOM";
+            this.room.HeaderText = "DATE";
             this.room.Name = "room";
             this.room.ReadOnly = true;
-            // 
-            // timerDtrTemp
-            // 
-            this.timerDtrTemp.Interval = 30000;
+            this.room.Width = 150;
             // 
             // frmCurrentLogs
             // 
@@ -117,10 +117,10 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvDtr;
+        private System.Windows.Forms.Timer timerDtrTemp;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn subject;
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewTextBoxColumn room;
-        private System.Windows.Forms.Timer timerDtrTemp;
     }
 }
