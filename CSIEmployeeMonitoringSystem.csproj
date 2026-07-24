@@ -588,6 +588,7 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="csiLogo.ico" />
+    <None Include="Resources\offline.png" />
     <None Include="Resources\Screenshot 2026-07-19 120823.jpg" />
     <None Include="Resources\ChatGPT Image Jul 19, 2026, 12_07_40 PM.png" />
     <None Include="Resources\ChatGPT Image Jul 19, 2026, 12_04_17 PM.png" />

@@ -42,15 +42,19 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panelLogs = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnLogTime = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnLogTime = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.btnCloseWindow = new System.Windows.Forms.Button();
+            this.btnViewDTR = new System.Windows.Forms.Button();
+            this.btnDailyLogs = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelLogs.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -59,7 +63,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 561);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 863);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1274, 22);
             this.statusStrip1.TabIndex = 1;
@@ -147,14 +151,68 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelLogs.BackgroundImage = global::CSIEmployeeMonitoringSystem.Properties.Resources.Screenshot_2026_07_19_120823;
             this.panelLogs.Controls.Add(this.label4);
+            this.panelLogs.Controls.Add(this.btnLogTime);
             this.panelLogs.Controls.Add(this.label5);
             this.panelLogs.Controls.Add(this.label3);
             this.panelLogs.Controls.Add(this.label2);
             this.panelLogs.Controls.Add(this.label1);
-            this.panelLogs.Location = new System.Drawing.Point(351, 186);
+            this.panelLogs.Location = new System.Drawing.Point(307, 186);
             this.panelLogs.Name = "panelLogs";
-            this.panelLogs.Size = new System.Drawing.Size(923, 372);
+            this.panelLogs.Size = new System.Drawing.Size(967, 674);
             this.panelLogs.TabIndex = 18;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(417, 30);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 20);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Logged Out";
+            // 
+            // btnLogTime
+            // 
+            this.btnLogTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLogTime.BackColor = System.Drawing.Color.MediumBlue;
+            this.btnLogTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLogTime.Location = new System.Drawing.Point(701, 15);
+            this.btnLogTime.Name = "btnLogTime";
+            this.btnLogTime.Size = new System.Drawing.Size(228, 49);
+            this.btnLogTime.TabIndex = 0;
+            this.btnLogTime.Text = "LOG YOUR TIME";
+            this.btnLogTime.UseVisualStyleBackColor = false;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.DarkGray;
+            this.label5.Location = new System.Drawing.Point(390, 29);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(20, 21);
+            this.label5.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(288, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 20);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Logged In";
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Green;
+            this.label2.Location = new System.Drawing.Point(261, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(20, 21);
+            this.label2.TabIndex = 1;
             // 
             // label1
             // 
@@ -196,71 +254,73 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.BackgroundImage = global::CSIEmployeeMonitoringSystem.Properties.Resources.side_bg;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.btnLogTime);
+            this.panel2.Controls.Add(this.btnCloseWindow);
+            this.panel2.Controls.Add(this.btnViewDTR);
+            this.panel2.Controls.Add(this.btnDailyLogs);
+            this.panel2.Controls.Add(this.btnRefresh);
             this.panel2.Location = new System.Drawing.Point(0, 28);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(350, 530);
+            this.panel2.Size = new System.Drawing.Size(306, 832);
             this.panel2.TabIndex = 15;
             // 
-            // btnLogTime
+            // btnCloseWindow
             // 
-            this.btnLogTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnLogTime.BackColor = System.Drawing.Color.MediumBlue;
-            this.btnLogTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLogTime.Location = new System.Drawing.Point(57, 423);
-            this.btnLogTime.Name = "btnLogTime";
-            this.btnLogTime.Size = new System.Drawing.Size(228, 69);
-            this.btnLogTime.TabIndex = 0;
-            this.btnLogTime.Text = "LOG YOUR TIME";
-            this.btnLogTime.UseVisualStyleBackColor = false;
+            this.btnCloseWindow.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnCloseWindow.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCloseWindow.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCloseWindow.ForeColor = System.Drawing.Color.White;
+            this.btnCloseWindow.Location = new System.Drawing.Point(37, 612);
+            this.btnCloseWindow.Name = "btnCloseWindow";
+            this.btnCloseWindow.Size = new System.Drawing.Size(228, 105);
+            this.btnCloseWindow.TabIndex = 5;
+            this.btnCloseWindow.Text = "CLOSE WINDOW";
+            this.btnCloseWindow.UseVisualStyleBackColor = false;
             // 
-            // label2
+            // btnViewDTR
             // 
-            this.label2.BackColor = System.Drawing.Color.Green;
-            this.label2.Location = new System.Drawing.Point(261, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 21);
-            this.label2.TabIndex = 1;
+            this.btnViewDTR.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnViewDTR.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnViewDTR.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewDTR.ForeColor = System.Drawing.Color.White;
+            this.btnViewDTR.Location = new System.Drawing.Point(37, 336);
+            this.btnViewDTR.Name = "btnViewDTR";
+            this.btnViewDTR.Size = new System.Drawing.Size(228, 105);
+            this.btnViewDTR.TabIndex = 4;
+            this.btnViewDTR.Text = "VIEW DTRS";
+            this.btnViewDTR.UseVisualStyleBackColor = false;
             // 
-            // label3
+            // btnDailyLogs
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(288, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Logged In";
+            this.btnDailyLogs.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnDailyLogs.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDailyLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDailyLogs.ForeColor = System.Drawing.Color.White;
+            this.btnDailyLogs.Location = new System.Drawing.Point(37, 474);
+            this.btnDailyLogs.Name = "btnDailyLogs";
+            this.btnDailyLogs.Size = new System.Drawing.Size(228, 105);
+            this.btnDailyLogs.TabIndex = 3;
+            this.btnDailyLogs.Text = "DAILY LOGS";
+            this.btnDailyLogs.UseVisualStyleBackColor = false;
             // 
-            // label4
+            // btnRefresh
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(417, 30);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 20);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Logged Out";
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.DarkGray;
-            this.label5.Location = new System.Drawing.Point(390, 29);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(20, 21);
-            this.label5.TabIndex = 3;
+            this.btnRefresh.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.Color.White;
+            this.btnRefresh.Location = new System.Drawing.Point(37, 198);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(228, 105);
+            this.btnRefresh.TabIndex = 1;
+            this.btnRefresh.Text = "REFRESH WINDOW";
+            this.btnRefresh.UseVisualStyleBackColor = false;
             // 
             // frmDTR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(1274, 583);
+            this.ClientSize = new System.Drawing.Size(1274, 885);
             this.Controls.Add(this.panelLogs);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.statusStrip1);
@@ -311,5 +371,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnCloseWindow;
+        private System.Windows.Forms.Button btnViewDTR;
+        private System.Windows.Forms.Button btnDailyLogs;
     }
 }

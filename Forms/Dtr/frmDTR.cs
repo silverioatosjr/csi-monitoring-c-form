@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,12 +45,39 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             btnLogTime.Click += BtnLogTime_Click;
             mnuLoggedIn.Click += MnuLoggedIn_Click;
             mnuTodaysLogs.Click += MnuTodaysLogs_Click;
+            btnDailyLogs.Click += MnuTodaysLogs_Click;
             btnLogTime.KeyDown += FrmDTR_KeyDown;
+            btnCloseWindow.KeyDown += FrmDTR_KeyDown;
+            btnDailyLogs.KeyDown += FrmDTR_KeyDown;
+            btnRefresh.KeyDown += FrmDTR_KeyDown;
+            btnViewDTR.KeyDown += FrmDTR_KeyDown;
             timer1.Tick += Timer1_Tick;
             mnuClose.Click += MnuClose_Click;
+            btnCloseWindow.Click += MnuClose_Click;
             mnuViewDTR.Click += MnuViewDTR_Click;
+            btnViewDTR.Click += MnuViewDTR_Click;
             timer2.Tick += Timer2_Tick;
+            btnRefresh.Click += BtnRefresh_Click;
         }
+
+        private void BtnRefresh_Click(object sender, EventArgs e)
+        {
+            btnRefresh.Enabled = false;
+            Cursor = Cursors.WaitCursor;
+            
+            foreach (Models.Employee emp in employees)
+            {
+                Label lbl = panelLogs.Controls.Find(emp._id, true).FirstOrDefault() as Label;
+                if(lbl != null)
+                {
+                    panelLogs.Controls.Remove(lbl);
+                }
+            }
+            GetInstructorsWithSchedules();
+            Cursor = Cursors.Hand;
+            btnRefresh.Enabled = true;
+        }
+        
 
         private void Timer2_Tick(object sender, EventArgs e)
         {
@@ -82,9 +110,10 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            //this.Invoke(new Action(delegate () {
-            //    CheckApiConnection();
-            //}));
+            this.Invoke(new Action(delegate ()
+            {
+                CheckOnlyConnection();
+            }));
         }
 
         private async void GetDtrTemp()
@@ -100,6 +129,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         }
         private async void GetInstructorsWithSchedules()
         {
+            Cursor = Cursors.WaitCursor;
             var responseTemp = await dtrService.GetDtrTempList();
             List<DtrTemp> tempDTR = new List<DtrTemp>();
             if (null != responseTemp)
@@ -112,32 +142,45 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             {
                 
                 int locXL = 50;
-                int locXR = 500;
-                int locXRE = 950;
-                int locY = 86;
-                int locIncrement = 61;
+                int locXR = 450;
+                int locXRE = 850;
+                int locXREE = 1250;
+                int locY = 90;
+                int locIncrement = 50;
                 int counter = 0;
                 
-                foreach(EmployeesList e in response.data)
+                foreach(EmployeesList e in response.data.OrderBy(x => Guid.NewGuid()))
                 {
                     
                     var loggedIn = tempDTR?.Find(d=>d?.employee?._id == e._id);
+                    string loggedTime = string.Empty;
+                    if (loggedIn!=null)
+                    {
+                        DateTime dateTime = DateTime.Parse(loggedIn.time);
+                        loggedTime = dateTime.ToString("h:mm tt", CultureInfo.InvariantCulture);
+                    }
+
                         if (counter < 10)
                         {
-                            CustomLabel(e._id, locXL, locY + (counter * locIncrement), $"{e.firstName} {e.lastName}", (loggedIn!=null)?true:false);
+                            CustomLabel(e._id, locXL, locY + (counter * locIncrement), $"{e.firstName} {e.lastName}     {loggedTime}", (loggedIn!=null)?true:false);
                         }
                         else if (counter >= 10 && counter < 20)
                         {
-                            CustomLabel(e._id, locXR, locY + ((counter - 10) * locIncrement), $"{e.firstName} {e.lastName}", (loggedIn != null) ? true : false);
+                            CustomLabel(e._id, locXR, locY + ((counter - 10) * locIncrement), $"{e.firstName} {e.lastName}     {loggedTime}", (loggedIn != null) ? true : false);
+                        }
+                        else if (counter >= 20 && counter < 30)
+                        {
+                            CustomLabel(e._id, locXRE, locY + ((counter - 20) * locIncrement), $"{e.firstName} {e.lastName}     {loggedTime}", (loggedIn != null) ? true : false);
                         }
                         else
                         {
-                            CustomLabel(e._id, locXRE, locY + ((counter - 20) * locIncrement), $"{e.firstName} {e.lastName}", (loggedIn != null) ? true : false);
+                            CustomLabel(e._id, locXREE, locY + ((counter - 30) * locIncrement), $"{e.firstName} {e.lastName}     {loggedTime}", (loggedIn != null) ? true : false);
                         }
                     
                     counter++;
                 }
             }
+            Cursor = Cursors.Default;
         }
 
         private async void FrmDTR_KeyDown(object sender, KeyEventArgs e)
@@ -257,7 +300,6 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             {
                 lbl.ForeColor = status=="Logged in" ? Color.White : Color.DarkSlateGray;
                 lbl.BackColor = status == "Logged in" ? Color.Green : Color.Gray;
-
             }
         }
         private void BtnLogTime_Click(object sender, EventArgs e)
@@ -307,10 +349,46 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             lblTeacher.ForeColor = isOnline?Color.White:Color.DarkSlateGray;
             lblTeacher.BackColor = isOnline?Color.Green:Color.Gray;
             lblTeacher.AutoSize = false;
-            lblTeacher.Height = 40;
-            lblTeacher.Width = 400;
-            lblTeacher.Font = new Font(FontFamily.GenericSansSerif,16, FontStyle.Bold);
+            lblTeacher.Height = 35;
+            lblTeacher.Width = 370;
+            lblTeacher.Font = new Font(FontFamily.GenericSansSerif,13, FontStyle.Bold);
             lblTeacher.Padding = new Padding(8); 
+        }
+        private async void CheckOnlyConnection()
+        {
+            Cursor = Cursors.WaitCursor;
+            var con = await connectionService.APIConnection();
+            if (null == con)
+            {
+                if (MessageBox.Show("Unable to connect to Server. Please check if server is running", "Service error", MessageBoxButtons.OK) == DialogResult.OK)
+                {
+                    Cursor = Cursors.WaitCursor;
+                    CheckOnlyConnection();
+                    Cursor = Cursors.Arrow;
+                    timer1.Enabled = false;
+                    mnuViewLogs.Enabled = false;
+                    mnuViewDTR.Enabled = false;
+                    btnDailyLogs.Enabled = false;
+                    btnRefresh.Enabled = false;
+                    btnViewDTR.Enabled = false;
+                    timer2.Enabled = false;
+                    btnLogTime.Enabled = false;
+                    viewDTRsToolStripMenuItem.Enabled = false;
+                }
+            } else
+            {
+                btnLogTime.Enabled = true;
+                mnuViewLogs.Enabled = true;
+                btnLogTime.Focus();
+                timer1.Enabled = true;
+                mnuViewDTR.Enabled = true;
+                btnDailyLogs.Enabled = true;
+                btnRefresh.Enabled = true;
+                btnViewDTR.Enabled = true;
+                timer2.Enabled = true;
+                viewDTRsToolStripMenuItem.Enabled = true;
+            }
+            Cursor = Cursors.Arrow;
         }
         private async void CheckApiConnection()
         {
@@ -319,7 +397,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             var con = await connectionService.APIConnection();
             if (null == con)
             {
-                if (MessageBox.Show("Unable to connect to API. Please check your network connection", "Service error", MessageBoxButtons.OK) == DialogResult.OK)
+                if (MessageBox.Show("Unable to connect to Server. Please check if server is running", "Service error", MessageBoxButtons.OK) == DialogResult.OK)
                 {
                     Cursor = Cursors.WaitCursor;
                     CheckApiConnection();
@@ -327,6 +405,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                     timer1.Enabled = false;
                     mnuViewLogs.Enabled = false;
                     mnuViewDTR.Enabled = false;
+                    btnDailyLogs.Enabled = false;
+                    btnRefresh.Enabled = false;
+                    btnViewDTR.Enabled = false;
                     timer2.Enabled = false;
                     btnLogTime.Enabled = false;
                     viewDTRsToolStripMenuItem.Enabled = false;
@@ -340,6 +421,9 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
                 btnLogTime.Focus();
                 timer1.Enabled = true;
                 mnuViewDTR.Enabled = true;
+                btnDailyLogs.Enabled = true;
+                btnRefresh.Enabled = true;
+                btnViewDTR.Enabled = true;
                 timer2.Enabled = true;
                 viewDTRsToolStripMenuItem.Enabled = true;
             }
