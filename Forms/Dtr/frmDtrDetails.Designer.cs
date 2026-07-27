@@ -210,6 +210,7 @@
             this.Name = "frmDtrDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DTR Details";
+            this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDtrDetails_FormClosed);
             this.Load += new System.EventHandler(this.frmDtrDetails_Load);
             this.groupBox1.ResumeLayout(false);

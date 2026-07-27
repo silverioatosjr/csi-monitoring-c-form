@@ -277,6 +277,7 @@
             this.MinimizeBox = false;
             this.Name = "frmEmployeesList";
             this.Text = "Employees List";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmEmployeesList_Load);
             this.contextMenu.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

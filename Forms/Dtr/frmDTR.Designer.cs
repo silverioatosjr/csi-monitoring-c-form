@@ -51,10 +51,15 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSchedules = new System.Windows.Forms.Button();
             this.btnCloseWindow = new System.Windows.Forms.Button();
             this.btnViewDTR = new System.Windows.Forms.Button();
             this.btnDailyLogs = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.toolTipSchedules = new System.Windows.Forms.ToolTip(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelLogs.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -63,11 +68,12 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 863);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1274, 22);
             this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
             // 
             // menuStrip1
             // 
@@ -254,6 +260,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.BackgroundImage = global::CSIEmployeeMonitoringSystem.Properties.Resources.side_bg;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.btnSchedules);
             this.panel2.Controls.Add(this.btnCloseWindow);
             this.panel2.Controls.Add(this.btnViewDTR);
             this.panel2.Controls.Add(this.btnDailyLogs);
@@ -263,6 +270,19 @@
             this.panel2.Size = new System.Drawing.Size(306, 832);
             this.panel2.TabIndex = 15;
             // 
+            // btnSchedules
+            // 
+            this.btnSchedules.BackColor = System.Drawing.Color.DarkOrchid;
+            this.btnSchedules.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSchedules.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedules.ForeColor = System.Drawing.Color.White;
+            this.btnSchedules.Location = new System.Drawing.Point(37, 506);
+            this.btnSchedules.Name = "btnSchedules";
+            this.btnSchedules.Size = new System.Drawing.Size(228, 77);
+            this.btnSchedules.TabIndex = 6;
+            this.btnSchedules.Text = "Schedules";
+            this.btnSchedules.UseVisualStyleBackColor = false;
+            // 
             // btnCloseWindow
             // 
             this.btnCloseWindow.BackColor = System.Drawing.Color.MediumVioletRed;
@@ -271,9 +291,9 @@
             this.btnCloseWindow.ForeColor = System.Drawing.Color.White;
             this.btnCloseWindow.Location = new System.Drawing.Point(37, 612);
             this.btnCloseWindow.Name = "btnCloseWindow";
-            this.btnCloseWindow.Size = new System.Drawing.Size(228, 105);
+            this.btnCloseWindow.Size = new System.Drawing.Size(228, 77);
             this.btnCloseWindow.TabIndex = 5;
-            this.btnCloseWindow.Text = "CLOSE WINDOW";
+            this.btnCloseWindow.Text = "Close Window";
             this.btnCloseWindow.UseVisualStyleBackColor = false;
             // 
             // btnViewDTR
@@ -282,11 +302,11 @@
             this.btnViewDTR.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnViewDTR.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewDTR.ForeColor = System.Drawing.Color.White;
-            this.btnViewDTR.Location = new System.Drawing.Point(37, 336);
+            this.btnViewDTR.Location = new System.Drawing.Point(37, 299);
             this.btnViewDTR.Name = "btnViewDTR";
-            this.btnViewDTR.Size = new System.Drawing.Size(228, 105);
+            this.btnViewDTR.Size = new System.Drawing.Size(228, 77);
             this.btnViewDTR.TabIndex = 4;
-            this.btnViewDTR.Text = "VIEW DTRS";
+            this.btnViewDTR.Text = "View DTR";
             this.btnViewDTR.UseVisualStyleBackColor = false;
             // 
             // btnDailyLogs
@@ -295,11 +315,11 @@
             this.btnDailyLogs.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDailyLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDailyLogs.ForeColor = System.Drawing.Color.White;
-            this.btnDailyLogs.Location = new System.Drawing.Point(37, 474);
+            this.btnDailyLogs.Location = new System.Drawing.Point(37, 403);
             this.btnDailyLogs.Name = "btnDailyLogs";
-            this.btnDailyLogs.Size = new System.Drawing.Size(228, 105);
+            this.btnDailyLogs.Size = new System.Drawing.Size(228, 77);
             this.btnDailyLogs.TabIndex = 3;
-            this.btnDailyLogs.Text = "DAILY LOGS";
+            this.btnDailyLogs.Text = "Daily Logs";
             this.btnDailyLogs.UseVisualStyleBackColor = false;
             // 
             // btnRefresh
@@ -310,10 +330,18 @@
             this.btnRefresh.ForeColor = System.Drawing.Color.White;
             this.btnRefresh.Location = new System.Drawing.Point(37, 198);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(228, 105);
+            this.btnRefresh.Size = new System.Drawing.Size(228, 77);
             this.btnRefresh.TabIndex = 1;
-            this.btnRefresh.Text = "REFRESH WINDOW";
+            this.btnRefresh.Text = "Refresh Window";
             this.btnRefresh.UseVisualStyleBackColor = false;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.White;
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.Black;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(34, 17);
+            this.toolStripStatusLabel1.Text = "SOTA";
             // 
             // frmDTR
             // 
@@ -336,8 +364,11 @@
             this.Name = "frmDTR";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CSI DTR SYSTEM";
+            this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmDTR_Load);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelLogs.ResumeLayout(false);
@@ -375,5 +406,9 @@
         private System.Windows.Forms.Button btnCloseWindow;
         private System.Windows.Forms.Button btnViewDTR;
         private System.Windows.Forms.Button btnDailyLogs;
+        private System.Windows.Forms.ToolTip toolTipSchedules;
+        private System.Windows.Forms.Button btnSchedules;
+        private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

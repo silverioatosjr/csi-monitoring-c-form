@@ -147,6 +147,7 @@
             this.Name = "frmTodaysLogs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Daily Logs Viewer";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmTodaysLogs_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrenDtr)).EndInit();

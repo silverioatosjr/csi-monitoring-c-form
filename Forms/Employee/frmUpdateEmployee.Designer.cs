@@ -550,6 +550,7 @@
             this.Name = "frmUpdateEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Update Employee";
+            this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmUpdateEmployee_FormClosed);
             this.Load += new System.EventHandler(this.frmUpdateEmployee_Load);
             this.groupBox3.ResumeLayout(false);

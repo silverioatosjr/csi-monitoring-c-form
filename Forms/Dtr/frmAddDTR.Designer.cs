@@ -32,10 +32,10 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtDate = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtRenderedHour = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtRenderedHour = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,14 +78,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Details";
             // 
-            // dtDate
+            // label2
             // 
-            this.dtDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtDate.Location = new System.Drawing.Point(31, 63);
-            this.dtDate.Name = "dtDate";
-            this.dtDate.Size = new System.Drawing.Size(247, 29);
-            this.dtDate.TabIndex = 0;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(28, 123);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(123, 20);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Rendered Hour:";
+            // 
+            // txtRenderedHour
+            // 
+            this.txtRenderedHour.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRenderedHour.Location = new System.Drawing.Point(31, 146);
+            this.txtRenderedHour.Name = "txtRenderedHour";
+            this.txtRenderedHour.Size = new System.Drawing.Size(247, 29);
+            this.txtRenderedHour.TabIndex = 2;
             // 
             // label1
             // 
@@ -97,23 +106,14 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Date:";
             // 
-            // txtRenderedHour
+            // dtDate
             // 
-            this.txtRenderedHour.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRenderedHour.Location = new System.Drawing.Point(31, 146);
-            this.txtRenderedHour.Name = "txtRenderedHour";
-            this.txtRenderedHour.Size = new System.Drawing.Size(247, 29);
-            this.txtRenderedHour.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(28, 123);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Rendered Hour:";
+            this.dtDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtDate.Location = new System.Drawing.Point(31, 63);
+            this.dtDate.Name = "dtDate";
+            this.dtDate.Size = new System.Drawing.Size(247, 29);
+            this.dtDate.TabIndex = 0;
             // 
             // frmAddDTR
             // 
@@ -132,6 +132,7 @@
             this.Name = "frmAddDTR";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add New DTR";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmAddNonTeachingDTR_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

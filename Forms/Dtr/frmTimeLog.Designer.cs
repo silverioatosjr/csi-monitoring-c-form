@@ -67,6 +67,7 @@
             this.Name = "frmTimeLog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Verification";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmTimeLog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -36,6 +36,14 @@
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.dgvDtrs = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subjectCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hoursRendered = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,14 +57,6 @@
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.printDtr = new System.Drawing.Printing.PrintDocument();
             this.printDtrDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subjectCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timeOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hoursRendered = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDtrs)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -137,6 +137,51 @@
             this.dgvDtrs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDtrs.Size = new System.Drawing.Size(1117, 337);
             this.dgvDtrs.TabIndex = 15;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "DTR";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // employee
+            // 
+            this.employee.HeaderText = "EMPLOYEE";
+            this.employee.Name = "employee";
+            this.employee.Width = 250;
+            // 
+            // subjectCode
+            // 
+            this.subjectCode.HeaderText = "SUBJECT";
+            this.subjectCode.Name = "subjectCode";
+            this.subjectCode.Width = 300;
+            // 
+            // timeIn
+            // 
+            this.timeIn.HeaderText = "TIME IN";
+            this.timeIn.Name = "timeIn";
+            // 
+            // timeOut
+            // 
+            this.timeOut.HeaderText = "TIME OUT";
+            this.timeOut.Name = "timeOut";
+            // 
+            // hoursRendered
+            // 
+            this.hoursRendered.HeaderText = "HOURS RENDERED";
+            this.hoursRendered.Name = "hoursRendered";
+            this.hoursRendered.Width = 160;
+            // 
+            // day
+            // 
+            this.day.HeaderText = "DAY";
+            this.day.Name = "day";
+            this.day.Width = 150;
+            // 
+            // date
+            // 
+            this.date.HeaderText = "DATE";
+            this.date.Name = "date";
             // 
             // btnReset
             // 
@@ -266,51 +311,6 @@
             this.printDtrDialog.Name = "printDtrDialog";
             this.printDtrDialog.Visible = false;
             // 
-            // id
-            // 
-            this.id.HeaderText = "DTR";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // employee
-            // 
-            this.employee.HeaderText = "EMPLOYEE";
-            this.employee.Name = "employee";
-            this.employee.Width = 250;
-            // 
-            // subjectCode
-            // 
-            this.subjectCode.HeaderText = "SUBJECT";
-            this.subjectCode.Name = "subjectCode";
-            this.subjectCode.Width = 300;
-            // 
-            // timeIn
-            // 
-            this.timeIn.HeaderText = "TIME IN";
-            this.timeIn.Name = "timeIn";
-            // 
-            // timeOut
-            // 
-            this.timeOut.HeaderText = "TIME OUT";
-            this.timeOut.Name = "timeOut";
-            // 
-            // hoursRendered
-            // 
-            this.hoursRendered.HeaderText = "HOURS RENDERED";
-            this.hoursRendered.Name = "hoursRendered";
-            this.hoursRendered.Width = 160;
-            // 
-            // day
-            // 
-            this.day.HeaderText = "DAY";
-            this.day.Name = "day";
-            this.day.Width = 150;
-            // 
-            // date
-            // 
-            this.date.HeaderText = "DATE";
-            this.date.Name = "date";
-            // 
             // frmDtrList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -328,6 +328,7 @@
             this.Name = "frmDtrList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DTR List";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmDtrList_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

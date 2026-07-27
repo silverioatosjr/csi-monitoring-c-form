@@ -84,7 +84,7 @@
             this.btnPrint.BackColor = System.Drawing.Color.OliveDrab;
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnPrint.Location = new System.Drawing.Point(169, 98);
+            this.btnPrint.Location = new System.Drawing.Point(26, 98);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(127, 42);
@@ -123,7 +123,7 @@
             this.btnUpdateSchedule.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnUpdateSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateSchedule.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdateSchedule.Location = new System.Drawing.Point(26, 98);
+            this.btnUpdateSchedule.Location = new System.Drawing.Point(169, 36);
             this.btnUpdateSchedule.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateSchedule.Name = "btnUpdateSchedule";
             this.btnUpdateSchedule.Size = new System.Drawing.Size(127, 42);
@@ -136,7 +136,7 @@
             this.btnAddSchedule.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSchedule.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddSchedule.Location = new System.Drawing.Point(169, 36);
+            this.btnAddSchedule.Location = new System.Drawing.Point(26, 36);
             this.btnAddSchedule.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(127, 42);
@@ -162,13 +162,14 @@
             this.btnUploadXLSFile.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.btnUploadXLSFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUploadXLSFile.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUploadXLSFile.Location = new System.Drawing.Point(26, 36);
+            this.btnUploadXLSFile.Location = new System.Drawing.Point(169, 98);
             this.btnUploadXLSFile.Margin = new System.Windows.Forms.Padding(4);
             this.btnUploadXLSFile.Name = "btnUploadXLSFile";
             this.btnUploadXLSFile.Size = new System.Drawing.Size(127, 42);
             this.btnUploadXLSFile.TabIndex = 6;
             this.btnUploadXLSFile.Text = "Upload New Schedules";
             this.btnUploadXLSFile.UseVisualStyleBackColor = false;
+            this.btnUploadXLSFile.Visible = false;
             // 
             // grpSchedules
             // 
