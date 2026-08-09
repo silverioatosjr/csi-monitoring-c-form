@@ -475,5 +475,12 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
             }
             Cursor = Cursors.Arrow;
         }
+
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+            DateTime now = DateTime.Now;
+
+            lblTime.Text = now.ToLongTimeString();
+        }
     }
 }

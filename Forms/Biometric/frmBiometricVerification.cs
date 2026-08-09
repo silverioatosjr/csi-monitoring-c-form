@@ -25,6 +25,16 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
         {
             InitializeComponent();
             btnReload.Click += BtnReload_Click;
+            timer1.Tick += Timer1_Tick;
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            this.Invoke(new Action(delegate ()
+            {
+                timer1.Enabled = false;
+                this.Close();
+            }));
         }
 
         private void BtnReload_Click(object sender, EventArgs e)
@@ -94,6 +104,7 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
                 if (_sender.isMatched)
                 {
                     this.Invoke(new Action(delegate() {
+                        timer1.Enabled = false;
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }));
@@ -310,11 +321,19 @@ namespace CSIEmployeeMonitoringSystem.Forms.Biometric
         private void frmBiometricVerification_Load(object sender, EventArgs e)
         {
             getReaders();
+            timer1.Interval = 30000;
+            timer1.Enabled = true;
         }
 
         private void frmBiometricVerification_FormClosed(object sender, FormClosedEventArgs e)
         {
+            timer1.Enabled = false;
             CancelCaptureAndCloseReader(this.OnCaptured);
+        }
+
+        private void frmBiometricVerification_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer1.Enabled = false;
         }
     }
 }

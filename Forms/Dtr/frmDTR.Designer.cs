@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDTR));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuClose = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +43,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panelLogs = new System.Windows.Forms.Panel();
+            this.lblTime = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnLogTime = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -58,7 +60,7 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.toolTipSchedules = new System.Windows.Forms.ToolTip(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelLogs.SuspendLayout();
@@ -74,6 +76,14 @@
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1274, 22);
             this.statusStrip1.TabIndex = 1;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.White;
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.Black;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(34, 17);
+            this.toolStripStatusLabel1.Text = "SOTA";
             // 
             // menuStrip1
             // 
@@ -156,6 +166,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelLogs.BackgroundImage = global::CSIEmployeeMonitoringSystem.Properties.Resources.Screenshot_2026_07_19_120823;
+            this.panelLogs.Controls.Add(this.lblTime);
             this.panelLogs.Controls.Add(this.label4);
             this.panelLogs.Controls.Add(this.btnLogTime);
             this.panelLogs.Controls.Add(this.label5);
@@ -166,6 +177,20 @@
             this.panelLogs.Name = "panelLogs";
             this.panelLogs.Size = new System.Drawing.Size(967, 674);
             this.panelLogs.TabIndex = 18;
+            // 
+            // lblTime
+            // 
+            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTime.AutoSize = true;
+            this.lblTime.BackColor = System.Drawing.Color.Transparent;
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.ForeColor = System.Drawing.Color.LimeGreen;
+            this.lblTime.Location = new System.Drawing.Point(554, 25);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(69, 29);
+            this.lblTime.TabIndex = 5;
+            this.lblTime.Text = "Time";
+            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
@@ -335,13 +360,11 @@
             this.btnRefresh.Text = "Refresh Window";
             this.btnRefresh.UseVisualStyleBackColor = false;
             // 
-            // toolStripStatusLabel1
+            // timer4
             // 
-            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.White;
-            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.Black;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(34, 17);
-            this.toolStripStatusLabel1.Text = "SOTA";
+            this.timer4.Enabled = true;
+            this.timer4.Interval = 1000;
+            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
             // 
             // frmDTR
             // 
@@ -410,5 +433,7 @@
         private System.Windows.Forms.Button btnSchedules;
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Timer timer4;
     }
 }

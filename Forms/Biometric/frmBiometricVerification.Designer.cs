@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBiometricVerification));
             this.btnReload = new System.Windows.Forms.Button();
             this.lblPlaceFinger = new System.Windows.Forms.Label();
             this.pbFingerprint = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbFingerprint)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,6 +83,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Verification";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBiometricVerification_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmBiometricVerification_FormClosed);
             this.Load += new System.EventHandler(this.frmBiometricVerification_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbFingerprint)).EndInit();
@@ -94,5 +97,6 @@
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Label lblPlaceFinger;
         private System.Windows.Forms.PictureBox pbFingerprint;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -17,10 +17,21 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         {
             InitializeComponent();
             btnOk.Click += BtnOk_Click;
+            timer1.Tick += Timer1_Tick;
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            this.Invoke(new Action(delegate ()
+            {
+                timer1.Enabled = false;
+                this.Close();
+            }));
         }
 
         private void BtnOk_Click(object sender, EventArgs e)
         {
+            timer1.Enabled = false;
             this.Close();
         }
 
@@ -28,6 +39,18 @@ namespace CSIEmployeeMonitoringSystem.Forms.Dtr
         {
             label1.Text = message;
             btnOk.Focus();
+            timer1.Interval = 2000;
+            timer1.Enabled = true;
+        }
+
+        private void frmLogMessage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            timer1.Enabled = false;
+        }
+
+        private void frmLogMessage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer1.Enabled = false;
         }
     }
 }
